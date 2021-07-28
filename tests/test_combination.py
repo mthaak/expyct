@@ -4,7 +4,7 @@ import expyct as exp
 
 
 @pytest.mark.parametrize(
-    ["value", "expect", "should_match"],
+    ["value", "expect", "result"],
     [
         (1, exp.OneOf([1]), True),
         (1, exp.OneOf([2]), False),
@@ -17,5 +17,5 @@ import expyct as exp
         ("d", exp.OneOf("abc"), False),
     ]
 )
-def test_one_of(value, expect, should_match):
-    assert (value == expect) == should_match
+def test_one_of(value, expect, result):
+    assert (value == expect) == result
