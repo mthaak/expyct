@@ -1,0 +1,9 @@
+collection
+callable / functions
+string length
+datetime formats (e.g. ISO)
+
+make library
+make opensource
+push to pypi automatically
+circleci
