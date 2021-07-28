@@ -5,7 +5,6 @@ from expyct.base import MapBefore, Pred, Instance, Class
 
 @dataclass
 class Any(MapBefore, Pred):
-
     def __eq__(self, other):
         try:
             other = MapBefore.map(self, other)
@@ -18,7 +17,6 @@ class Any(MapBefore, Pred):
 
 @dataclass
 class AnyValue(Any, Instance):
-
     def __eq__(self, other):
         if not Any.__eq__(self, other):
             return False
@@ -29,7 +27,6 @@ class AnyValue(Any, Instance):
 
 @dataclass
 class AnyClass(Any, Class):
-
     def __eq__(self, other):
         if not Any.__eq__(self, other):
             return False

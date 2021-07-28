@@ -42,7 +42,7 @@ import expyct as exp
         (1.2, exp.Number(close_to=1, error=0.1), False),
         (0.8, exp.Number(close_to=1, error=0.3), True),
         (1.2, exp.Number(close_to=1, error=0.3), True),
-    ]
+    ],
 )
 def test_number(value, expect, result):
     assert (value == expect) == result
@@ -55,8 +55,7 @@ def test_number(value, expect, result):
         (1, exp.Int(), True),
         (1.2, exp.Int(), False),
         ("abc", exp.Int(), False),
-
-    ]
+    ],
 )
 def test_int(value, expect, result):
     assert (value == expect) == result
@@ -69,8 +68,7 @@ def test_int(value, expect, result):
         (1, exp.Float(), False),
         (1.2, exp.Float(), True),
         ("abc", exp.Float(), False),
-
-    ]
+    ],
 )
 def test_float(value, expect, result):
     assert (value == expect) == result

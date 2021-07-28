@@ -69,8 +69,11 @@ class AnyDateTime:
         return True
 
     @staticmethod
-    def _handle_timedelta(bound: typing.Union[datetime, date, time, timedelta]) -> typing.Union[datetime, date, time]:
-        """ When timedelta is passed, it is used as a relative time compared when the assertion is executed. """
+    def _handle_timedelta(
+            bound: typing.Union[datetime, date, time, timedelta]
+    ) -> typing.Union[datetime, date, time]:
+        """When timedelta is passed, it is used as a relative time compared when
+        the assertion is executed."""
         if type(bound) == timedelta:
             return datetime.now() + bound
         else:
@@ -78,7 +81,7 @@ class AnyDateTime:
 
     @staticmethod
     def _coerce_types(other, bound):
-        """ Makes the types of bound and other equal, if possible. """
+        """Makes the types of bound and other equal, if possible."""
 
         def error():
             raise ValueError(f"Cannot coerce types {type(bound)} and {type(other)}")
@@ -107,8 +110,9 @@ LAST_YEAR = AnyDateTime(after=timedelta(days=-365), before=timedelta(millisecond
 # TODO:
 # THIS_MINUTE
 # THIS_HOUR
-THIS_DAY = AnyDateTime(after=date.today() - timedelta(days=1),
-                       before=date.today() + timedelta(days=1))
+THIS_DAY = AnyDateTime(
+    after=date.today() - timedelta(days=1), before=date.today() + timedelta(days=1)
+)
 TODAY = THIS_DAY
 # THIS_DAY / TODAY
 # THIS_WEEK

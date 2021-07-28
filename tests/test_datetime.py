@@ -21,7 +21,7 @@ import expyct as exp
         (datetime(2020, 3, 3), exp.DateTime(before=datetime(2020, 1, 1)), False),
         (datetime(2020, 3, 3), exp.DateTime(before=datetime(2020, 3, 3)), False),
         (datetime(2020, 3, 3), exp.DateTime(before=datetime(2020, 3, 4)), True),
-    ]
+    ],
 )
 def test_datetime(value, expect, result):
     assert (value == expect) == result
@@ -43,7 +43,7 @@ def test_datetime(value, expect, result):
         (date(2020, 3, 3), exp.Date(before=date(2020, 1, 1)), False),
         (date(2020, 3, 3), exp.Date(before=date(2020, 3, 3)), False),
         (date(2020, 3, 3), exp.Date(before=date(2020, 3, 4)), True),
-    ]
+    ],
 )
 def test_date(value, expect, result):
     assert (value == expect) == result
@@ -65,7 +65,7 @@ def test_date(value, expect, result):
         (time(3, 3), exp.Time(before=time(1, 1)), False),
         (time(3, 3), exp.Time(before=time(3, 3)), False),
         (time(3, 3), exp.Time(before=time(3, 4)), True),
-    ]
+    ],
 )
 def test_time(value, expect, result):
     assert (value == expect) == result
@@ -120,11 +120,23 @@ def test_time(value, expect, result):
         (time(3, 3), exp.AnyDateTime(before=time(3, 3)), False),
         (time(3, 3), exp.AnyDateTime(before=time(3, 4)), True),
         # timedelta
-        (datetime.now() + timedelta(seconds=-3), exp.AnyDateTime(after=timedelta(seconds=-2)), False),
-        (datetime.now() + timedelta(seconds=-1), exp.AnyDateTime(after=timedelta(seconds=-2)), True),
-        (datetime.now() + timedelta(seconds=3), exp.AnyDateTime(before=timedelta(seconds=2)), False),
+        (
+                datetime.now() + timedelta(seconds=-3),
+                exp.AnyDateTime(after=timedelta(seconds=-2)),
+                False,
+        ),
+        (
+                datetime.now() + timedelta(seconds=-1),
+                exp.AnyDateTime(after=timedelta(seconds=-2)),
+                True,
+        ),
+        (
+                datetime.now() + timedelta(seconds=3),
+                exp.AnyDateTime(before=timedelta(seconds=2)),
+                False,
+        ),
         (datetime.now() + timedelta(seconds=1), exp.AnyDateTime(before=timedelta(seconds=2)), True),
-    ]
+    ],
 )
 def test_any_datetime(value, expect, result):
     if type(result) == type and issubclass(result, Exception):

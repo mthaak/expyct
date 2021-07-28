@@ -24,7 +24,7 @@ from expyct import String
         ("abc", String(regex="ABC", ignore_case=True), True),
         ("abc", String(regex=re.compile("ABC")), False),
         ("abc", String(regex=re.compile("ABC", re.IGNORECASE)), True),
-    ]
+    ],
 )
 def test_string(value, expect, result):
     assert (value == expect) == result

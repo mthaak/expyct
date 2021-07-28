@@ -5,6 +5,7 @@ from numbers import Number as ParentNumber
 
 # TODO use in other objects
 
+
 @dataclass
 class MapBefore:
     map_before: typing.Optional[typing.Callable] = None

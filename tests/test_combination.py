@@ -15,7 +15,7 @@ import expyct as exp
         (4, exp.OneOf({1, 2, 3}), False),
         ("c", exp.OneOf("abc"), True),
         ("d", exp.OneOf("abc"), False),
-    ]
+    ],
 )
 def test_one_of(value, expect, result):
     assert (value == expect) == result
