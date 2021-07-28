@@ -53,3 +53,6 @@ workflows:
             - lint-and-test
           context:
             - pypi-secrets
+          filters:
+            branches:
+              only: main
