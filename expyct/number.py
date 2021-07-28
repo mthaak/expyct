@@ -32,7 +32,20 @@ class MinMaxStrict:
 
 
 @dataclass
-class Number(MapBefore, Pred, MinMax, MinMaxStrict):
+class CloseTo:
+    close_to: typing.Optional[ParentNumber] = None
+    error: float = 0.001
+
+    def __eq__(self, other):
+        if self.close_to is not None:
+            d = self.error * self.close_to
+            if not self.close_to - d <= other <= self.close_to + d:
+                return False
+        return True
+
+
+@dataclass
+class Number(MapBefore, Pred, MinMax, MinMaxStrict, CloseTo):
     def __eq__(self, other):
         try:
             other = MapBefore.map(self, other)
@@ -45,6 +58,8 @@ class Number(MapBefore, Pred, MinMax, MinMaxStrict):
         if not MinMax.__eq__(self, other):
             return False
         if not MinMaxStrict.__eq__(self, other):
+            return False
+        if not CloseTo.__eq__(self, other):
             return False
         return True
 
