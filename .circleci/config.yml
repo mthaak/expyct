@@ -20,7 +20,7 @@ jobs:
           command: pipenv run flake8 expyct tests
           name: Run flake8
       - run:
-          command: pipenv run mypy expcyt
+          command: pipenv run mypy expyct
           name: Run mypy
       - run:
           command: |
