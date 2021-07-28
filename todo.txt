@@ -3,6 +3,7 @@ callable / functions
 string length
 datetime formats (e.g. ISO)
 
+run mypy on tests
 make library
 make opensource
 push to pypi automatically
