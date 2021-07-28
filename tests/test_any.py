@@ -37,11 +37,11 @@ def test_any_value(value, expect, should_match):
     ["value", "expect", "should_match"],
     [
         # test type
-        (1, exp.AnyType(), False),
-        ("abc", exp.AnyType(), False),
-        ([], exp.AnyType(), False),
-        (int, exp.AnyType(), True),
-        (lambda x: x + 1, exp.AnyType(), False),
+        (1, exp.AnyClass(), False),
+        ("abc", exp.AnyClass(), False),
+        ([], exp.AnyClass(), False),
+        (int, exp.AnyClass(), True),
+        (lambda x: x + 1, exp.AnyClass(), False),
     ]
 )
 def test_any_type(value, expect, should_match):

@@ -1,13 +1,13 @@
+import typing
 from dataclasses import dataclass
 from numbers import Number as ParentNumber
-from typing import Callable, Optional, Type, Collection
 
 
 # TODO use in other objects
 
 @dataclass
 class MapBefore:
-    map_before: Optional[Callable] = None
+    map_before: typing.Optional[typing.Callable] = None
 
     def map(self, other):
         if self.map_before:
@@ -18,7 +18,7 @@ class MapBefore:
 
 @dataclass
 class Pred:
-    pred: Optional[Callable[[], bool]] = None
+    pred: typing.Optional[typing.Callable[[], bool]] = None
 
     def __eq__(self, other):
         if self.pred:
@@ -31,11 +31,12 @@ class Pred:
 
 @dataclass
 class Instance:
-    type: Optional[Type] = None
-    instanceof: Optional[Type] = None
+    type: typing.Optional[typing.Type] = None
+    instanceof: typing.Optional[typing.Type] = None
 
     def __eq__(self, other):
-        if not (isinstance(other, ParentNumber) or isinstance(other, Collection)):  # TODO check
+        # TODO check
+        if not (isinstance(other, ParentNumber) or isinstance(other, typing.Collection)):
             return False
         if self.type and type(other) != self.type:
             return False
@@ -45,9 +46,9 @@ class Instance:
 
 
 @dataclass
-class Type:
-    type: Optional[Type] = None
-    subclassof: Optional[Type] = None
+class Class:
+    type: typing.Optional[typing.Type] = None
+    subclassof: typing.Optional[typing.Type] = None
 
     def __eq__(self, other):
         if not type(other) == type:
