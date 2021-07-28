@@ -6,8 +6,6 @@ orbs:
 jobs:
   lint-and-test:
     executor: python/default
-    environment:
-      PIPENV_YES: 1
     steps:
       - checkout
       - run:
@@ -17,15 +15,15 @@ jobs:
           command: pip install -r dev_requirements.txt
           name: Install dev requirements
       - run:
-          command: pipenv run flake8 expyct tests
+          command: flake8 expyct tests
           name: Run flake8
       - run:
-          command: pipenv run mypy expyct
+          command: mypy expyct
           name: Run mypy
       - run:
           command: |
             mkdir test-results
-            pipenv run python -m pytest -v --junitxml=test-results/junit.xml
+            pytest -v --junitxml=test-results/junit.xml
           name: Run pytest
       - store_test_results:
           path: test-results
