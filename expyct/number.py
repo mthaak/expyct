@@ -1,14 +1,14 @@
+import typing
 from dataclasses import dataclass
 from numbers import Number as ParentNumber
-from typing import Optional
 
 from expyct.base import MapBefore, Pred
 
 
 @dataclass
 class MinMax:
-    min: Optional[ParentNumber] = None  # TODO better type?
-    max: Optional[ParentNumber] = None
+    min: typing.Optional[ParentNumber] = None  # TODO better type?
+    max: typing.Optional[ParentNumber] = None
 
     def __eq__(self, other):
         if self.min is not None and not other >= self.min:
@@ -20,8 +20,8 @@ class MinMax:
 
 @dataclass
 class MinMaxStrict:
-    min_strict: Optional[ParentNumber] = None
-    max_strict: Optional[ParentNumber] = None
+    min_strict: typing.Optional[ParentNumber] = None
+    max_strict: typing.Optional[ParentNumber] = None
 
     def __eq__(self, other):
         if self.min_strict is not None and not other > self.min_strict:

@@ -1,12 +1,12 @@
+import typing
 from dataclasses import dataclass
 from datetime import datetime, date, time, timedelta
-from typing import Optional, Union
 
 
 @dataclass
 class BeforeAfter:
-    after: Optional[Union[datetime, date, time]] = None
-    before: Optional[Union[datetime, date, time]] = None
+    after: typing.Optional[typing.Union[datetime, date, time]] = None
+    before: typing.Optional[typing.Union[datetime, date, time]] = None
 
     def __eq__(self, other):
         if self.after and not other > self.after:
@@ -56,7 +56,8 @@ LAST_YEAR = BeforeAfter(after=datetime.now() - timedelta(days=365), before=datet
 # TODO:
 # THIS_MINUTE
 # THIS_HOUR
-THIS_DAY = BeforeAfter(after=datetime.now().date() - timedelta(days=1), before=datetime.now().date() + timedelta(days=1))
+THIS_DAY = BeforeAfter(after=datetime.now().date() - timedelta(days=1),
+                       before=datetime.now().date() + timedelta(days=1))
 TODAY = THIS_DAY
 # THIS_DAY / TODAY
 # THIS_WEEK

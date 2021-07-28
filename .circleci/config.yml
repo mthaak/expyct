@@ -1,0 +1,57 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@1.3.2
+
+jobs:
+  lint-and-test:
+    executor: python/default
+    environment:
+      PIPENV_YES: 1
+    steps:
+      - checkout
+      - run:
+          command: pip install .
+          name: Install package
+      - run:
+          command: pip install -r dev_requirements.txt
+          name: Install dev requirements
+      - run:
+          command: pipenv run flake8 expyct tests
+          name: Run flake8
+      - run:
+          command: pipenv run mypy expyct tests
+          name: Run mypy
+      - run:
+          command: |
+            mkdir test-results
+            pipenv run python -m pytest -v --junitxml=test-results/junit.xml
+          name: Run pytest
+      - store_test_results:
+          path: test-results
+
+  publish-to-pypi:
+    executor: python/default
+    steps:
+      - checkout
+      - run:
+          command: pip install -r dev_requirements.txt
+          name: Install dev requirements
+      - run:
+          command: |
+            python setup.py sdist
+            python setup.py bdist_wheel
+          name: Build package
+      - run:
+          command: twine upload -u $PYPI_USERNAME $ PYPI_PASSWORD dist/*
+          name: Upload to Pypi
+
+workflows:
+  main:
+    jobs:
+      - lint-and-test
+      - publish-to-pypi:
+          requires:
+            - lint-and-test
+          context:
+            - pypi-secrets

@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from expyct.base import MapBefore, Pred, Instance, Type
+from expyct.base import MapBefore, Pred, Instance, Class
 
 
 @dataclass
@@ -28,15 +28,16 @@ class AnyValue(Any, Instance):
 
 
 @dataclass
-class AnyType(Any, Type):
+class AnyClass(Any, Class):
 
     def __eq__(self, other):
         if not Any.__eq__(self, other):
             return False
-        if not Type.__eq__(self, other):
+        if not Class.__eq__(self, other):
             return False
         return True
 
+
 ANY = Any()
 ANYVALUE = AnyValue()
-ANYTYPE = AnyType()
+ANYCLASS = AnyClass()
