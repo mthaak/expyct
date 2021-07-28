@@ -74,7 +74,7 @@ class AnyDateTime:
     ) -> typing.Union[datetime, date, time]:
         """When timedelta is passed, it is used as a relative time compared when
         the assertion is executed."""
-        if type(bound) == timedelta:
+        if isinstance(bound, timedelta):
             return datetime.now() + bound
         else:
             return bound
