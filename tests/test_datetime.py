@@ -1,8 +1,9 @@
-from datetime import datetime, date, time, timedelta
+from datetime import datetime, date, time, timedelta, timezone
 
 import pytest
 
 import expyct as exp
+from expyct import parse_isoformat
 
 
 @pytest.mark.parametrize(
@@ -14,6 +15,9 @@ import expyct as exp
         (date(2020, 1, 1), exp.DateTime(), False),
         (time(3, 2, 1), exp.DateTime(), False),
         ("abc", exp.DateTime(), False),
+        # test equals
+        (datetime(2020, 1, 1, 3, 2, 1), exp.DateTime(equals=datetime(2020, 1, 1, 3, 2, 1)), True),
+        (datetime(2020, 1, 1, 3, 2, 1), exp.DateTime(equals=datetime(2020, 1, 1, 3, 2, 2)), False),
         # test before and after
         (datetime(2020, 3, 3), exp.DateTime(after=datetime(2020, 1, 1)), True),
         (datetime(2020, 3, 3), exp.DateTime(after=datetime(2020, 3, 3)), False),
@@ -36,6 +40,9 @@ def test_datetime(value, expect, result):
         (date(2020, 1, 1), exp.Date(), True),
         (time(3, 2, 1), exp.Date(), False),
         ("abc", exp.Date(), False),
+        # test equals
+        (date(2020, 1, 1), exp.Date(equals=date(2020, 1, 1)), True),
+        (date(2020, 1, 1), exp.Date(equals=date(2020, 1, 2)), False),
         # test before and after
         (date(2020, 3, 3), exp.Date(after=date(2020, 1, 1)), True),
         (date(2020, 3, 3), exp.Date(after=date(2020, 3, 3)), False),
@@ -58,6 +65,9 @@ def test_date(value, expect, result):
         (date(2020, 1, 1), exp.Time(), False),
         (time(3, 2, 1), exp.Time(), True),
         ("abc", exp.Time(), False),
+        # test equals
+        (time(3, 2, 1), exp.Time(equals=time(3, 2, 1)), True),
+        (time(3, 2, 1), exp.Time(equals=time(3, 2, 2)), False),
         # test before and after
         (time(3, 3), exp.Time(after=time(1, 1)), True),
         (time(3, 3), exp.Time(after=time(3, 3)), False),
@@ -80,6 +90,13 @@ def test_time(value, expect, result):
         (date(2020, 1, 1), exp.AnyDateTime(), True),
         (time(3, 2, 1), exp.AnyDateTime(), True),
         ("abc", exp.AnyDateTime(), False),
+        # test equals
+        (datetime(2020, 1, 1, 3, 2, 1), exp.DateTime(equals=datetime(2020, 1, 1, 3, 2, 1)), True),
+        (datetime(2020, 1, 1, 3, 2, 1), exp.DateTime(equals=datetime(2020, 1, 1, 3, 2, 2)), False),
+        (date(2020, 1, 1), exp.Date(equals=date(2020, 1, 1)), True),
+        (date(2020, 1, 1), exp.Date(equals=date(2020, 1, 2)), False),
+        (time(3, 2, 1), exp.Time(equals=time(3, 2, 1)), True),
+        (time(3, 2, 1), exp.Time(equals=time(3, 2, 2)), False),
         # test before and after
         # both given and bound is datetime
         (datetime(2020, 3, 3), exp.AnyDateTime(after=datetime(2020, 1, 1)), True),
@@ -96,9 +113,9 @@ def test_time(value, expect, result):
         (datetime(2020, 3, 3), exp.AnyDateTime(before=date(2020, 3, 3)), False),
         (datetime(2020, 3, 3), exp.AnyDateTime(before=date(2020, 3, 4)), True),
         # datetime is given but bound is time
-        (datetime(2020, 3, 3), exp.AnyDateTime(after=time(1, 1)), ValueError),
+        (datetime(2020, 3, 3), exp.AnyDateTime(after=time(1, 1)), False),
         # date is given but bound is datetime
-        (date(2020, 3, 3), exp.AnyDateTime(after=datetime(2020, 1, 1)), ValueError),
+        (date(2020, 3, 3), exp.AnyDateTime(after=datetime(2020, 1, 1)), False),
         # both given and bound is date
         (date(2020, 3, 3), exp.AnyDateTime(after=date(2020, 1, 1)), True),
         (date(2020, 3, 3), exp.AnyDateTime(after=date(2020, 3, 3)), False),
@@ -107,11 +124,11 @@ def test_time(value, expect, result):
         (date(2020, 3, 3), exp.AnyDateTime(before=date(2020, 3, 3)), False),
         (date(2020, 3, 3), exp.AnyDateTime(before=date(2020, 3, 4)), True),
         # date is given but bound is time
-        (date(2020, 3, 3), exp.AnyDateTime(after=time(1, 1)), ValueError),
-        # time is given but bound is datetime
-        (time(3, 3), exp.AnyDateTime(after=datetime(2020, 1, 1)), ValueError),
+        (date(2020, 3, 3), exp.AnyDateTime(after=time(1, 1)), False),
+        # time is given but bound is datetime`
+        (time(3, 3), exp.AnyDateTime(after=datetime(2020, 1, 1)), False),
         # time is given but bound is date
-        (time(3, 3), exp.AnyDateTime(after=date(2020, 1, 1)), ValueError),
+        (time(3, 3), exp.AnyDateTime(after=date(2020, 1, 1)), False),
         # both given and bound is time
         (time(3, 3), exp.AnyDateTime(after=time(1, 1)), True),
         (time(3, 3), exp.AnyDateTime(after=time(3, 3)), False),
@@ -121,26 +138,63 @@ def test_time(value, expect, result):
         (time(3, 3), exp.AnyDateTime(before=time(3, 4)), True),
         # timedelta
         (
-                datetime.now() + timedelta(seconds=-3),
-                exp.AnyDateTime(after=timedelta(seconds=-2)),
-                False,
+            datetime.now().astimezone(timezone.utc) + timedelta(seconds=-3),
+            exp.AnyDateTime(after=timedelta(seconds=-2)),
+            False,
         ),
         (
-                datetime.now() + timedelta(seconds=-1),
-                exp.AnyDateTime(after=timedelta(seconds=-2)),
-                True,
+            datetime.now().astimezone(timezone.utc) + timedelta(seconds=-1),
+            exp.AnyDateTime(after=timedelta(seconds=-2)),
+            True,
         ),
         (
-                datetime.now() + timedelta(seconds=3),
-                exp.AnyDateTime(before=timedelta(seconds=2)),
-                False,
+            datetime.now().astimezone(timezone.utc) + timedelta(seconds=3),
+            exp.AnyDateTime(before=timedelta(seconds=2)),
+            False,
         ),
-        (datetime.now() + timedelta(seconds=1), exp.AnyDateTime(before=timedelta(seconds=2)), True),
+        (
+            datetime.now().astimezone(timezone.utc) + timedelta(seconds=1),
+            exp.AnyDateTime(before=timedelta(seconds=2)),
+            True,
+        ),
+        # test map before
+        ("2020-01-01", exp.AnyDateTime(equals=date(2020, 1, 1), map_before=parse_isoformat), True),
+        ("01:01:03", exp.AnyDateTime(equals=time(1, 1, 3), map_before=parse_isoformat), True),
+        (
+            "2020-01-01T01:01:03",
+            exp.AnyDateTime(
+                equals=datetime(2020, 1, 1, 1, 1, 3, tzinfo=timezone.utc),
+                map_before=parse_isoformat,
+            ),
+            True,
+        ),
+        (
+            "2020-01-01T01:01:03+00:00",
+            exp.AnyDateTime(
+                equals=datetime(2020, 1, 1, 1, 1, 3, tzinfo=timezone.utc),
+                map_before=parse_isoformat,
+            ),
+            True,
+        ),
+        (
+            date(2020, 1, 1),
+            exp.AnyDateTime(equals=date(2020, 1, 1), map_before=parse_isoformat),
+            False,
+        ),
     ],
 )
 def test_any_datetime(value, expect, result):
-    if type(result) == type and issubclass(result, Exception):
-        with pytest.raises(result):
-            value == expect
-    else:
-        assert (value == expect) == result
+    assert (value == expect) == result
+
+
+@pytest.mark.parametrize(
+    ["dt", "expect"],
+    [
+        ("2020-01-01", date(2020, 1, 1)),
+        ("01:01:03", time(1, 1, 3)),
+        ("2020-01-01T01:01:03", datetime(2020, 1, 1, 1, 1, 3, tzinfo=timezone.utc)),
+        ("2020-01-01T01:01:03+00:00", datetime(2020, 1, 1, 1, 1, 3, tzinfo=timezone.utc)),
+    ],
+)
+def test_parse_isoformat(dt, expect):
+    assert parse_isoformat(dt) == expect
