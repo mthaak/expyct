@@ -15,6 +15,9 @@ jobs:
           command: pip install -r dev_requirements.txt
           name: Install dev requirements
       - run:
+          command: black -l 100 expyct tests
+          name: Run black
+      - run:
           command: flake8 expyct tests
           name: Run flake8
       - run:
