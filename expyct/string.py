@@ -13,7 +13,7 @@ class String:
             return False
         if self.regex:
             if isinstance(self.regex, str) and not re.fullmatch(
-                    self.regex, str(other), self.flags()
+                self.regex, str(other), self.flags()
             ):
                 return False
             if isinstance(self.regex, re.Pattern) and not self.regex.fullmatch(other):

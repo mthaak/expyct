@@ -6,13 +6,13 @@ class List:
     pass
 
 
+class Tuple:
+    pass
+
+
 class Set:
     pass
 
 
 class Dict:
-    pass
-
-
-class Tuple:
     pass
