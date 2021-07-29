@@ -28,4 +28,4 @@ from .datetime import (
     TODAY_ISO,
 )
 from .number import MinMax, MinMaxStrict, CloseTo, Number, Int, Float, NUMBER, INT, FLOAT
-from .string import String
+from .string import String, UUID
