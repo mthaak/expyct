@@ -2,7 +2,7 @@ import typing
 from dataclasses import dataclass
 from numbers import Number as ParentNumber
 
-from expyct.base import MapBefore, Pred
+from expyct.base import MapBefore, Predicate
 
 
 @dataclass
@@ -45,7 +45,7 @@ class CloseTo:
 
 
 @dataclass
-class Number(MapBefore, Pred, MinMax, MinMaxStrict, CloseTo):
+class Number(MapBefore, Predicate, MinMax, MinMaxStrict, CloseTo):
     def __eq__(self, other):
         try:
             other = MapBefore.map(self, other)
@@ -53,7 +53,7 @@ class Number(MapBefore, Pred, MinMax, MinMaxStrict, CloseTo):
             return False
         if not isinstance(other, ParentNumber):
             return False
-        if not Pred.__eq__(self, other):
+        if not Predicate.__eq__(self, other):
             return False
         if not MinMax.__eq__(self, other):
             return False

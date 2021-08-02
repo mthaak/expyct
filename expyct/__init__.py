@@ -1,7 +1,7 @@
 # flake8: noqa
 
 from .any import Any, AnyValue, AnyClass, ANY, ANYVALUE, ANYCLASS
-from .base import MapBefore, Pred, Instance, Class
+from .base import MapBefore, Predicate, Instance, Class
 from .collection import Collection, List, Tuple, Set, Dict
 from .combination import OneOf
 from .datetime import (
