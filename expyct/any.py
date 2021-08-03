@@ -1,16 +1,19 @@
+import typing
 from dataclasses import dataclass
 
-from expyct.base import MapBefore, Pred, Instance, Class
+from expyct.base import MapBefore, Predicate, Instance, Class, Equals
 
 
 @dataclass
-class Any(MapBefore, Pred):
+class Any(MapBefore, Equals[typing.Any], Predicate):
     def __eq__(self, other):
         try:
             other = MapBefore.map(self, other)
         except Exception:
             return False
-        if not Pred.__eq__(self, other):
+        if not Equals.__eq__(self, other):
+            return False
+        if not Predicate.__eq__(self, other):
             return False
         return True
 

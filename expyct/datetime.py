@@ -2,78 +2,85 @@ import typing
 from dataclasses import dataclass
 from datetime import datetime, date, time, timedelta, timezone
 
-from expyct import MapBefore
+from expyct import MapBefore, Predicate, Instance
+from expyct.base import Equals
+
+T = typing.TypeVar("T")
 
 
 @dataclass
-class DateTime(MapBefore):
-    equals: typing.Optional[datetime] = None
-    after: typing.Optional[datetime] = None
-    before: typing.Optional[datetime] = None
+class AfterBefore(typing.Generic[T]):
+    after: typing.Optional[T] = None
+    before: typing.Optional[T] = None
 
+    def __eq__(self, other):
+        if self.after is not None and not other > self.after:
+            return False
+        if self.before is not None and not other < self.before:
+            return False
+        return True
+
+
+@dataclass
+class DateTime(MapBefore, Equals[datetime], AfterBefore[datetime], Predicate):
     def __eq__(self, other):
         try:
             other = MapBefore.map(self, other)
         except Exception:
             return False
-        if self.equals is not None:
-            return other == self.equals
         if not type(other) == datetime:
             return False
-        if self.after is not None and not other > self.after:
+        if not Equals.__eq__(self, other):
             return False
-        if self.before is not None and not other < self.before:
+        if not AfterBefore.__eq__(self, other):
+            return False
+        if not Predicate.__eq__(self, other):
             return False
         return True
 
 
 @dataclass
-class Date(MapBefore):
-    equals: typing.Optional[date] = None
-    after: typing.Optional[date] = None
-    before: typing.Optional[date] = None
-
+class Date(MapBefore, Equals[date], AfterBefore[date], Predicate):
     def __eq__(self, other):
         try:
             other = MapBefore.map(self, other)
         except Exception:
             return False
-        if self.equals is not None:
-            return other == self.equals
         if not type(other) == date:
             return False
-        if self.after is not None and not other > self.after:
+        if not Equals.__eq__(self, other):
             return False
-        if self.before is not None and not other < self.before:
+        if not AfterBefore.__eq__(self, other):
+            return False
+        if not Predicate.__eq__(self, other):
             return False
         return True
 
 
 @dataclass
-class Time(MapBefore):
-    equals: typing.Optional[time] = None
-    after: typing.Optional[time] = None
-    before: typing.Optional[time] = None
-
+class Time(MapBefore, Equals[time], AfterBefore[time], Predicate):
     def __eq__(self, other):
         try:
             other = MapBefore.map(self, other)
         except Exception:
             return False
-        if self.equals is not None:
-            return other == self.equals
         if not type(other) == time:
             return False
-        if self.after is not None and not other > self.after:
+        if not Equals.__eq__(self, other):
             return False
-        if self.before is not None and not other < self.before:
+        if not AfterBefore.__eq__(self, other):
+            return False
+        if not Predicate.__eq__(self, other):
             return False
         return True
 
 
 @dataclass
-class AnyDateTime(MapBefore):
-    equals: typing.Optional[typing.Union[datetime, date, time]] = None
+class AnyDateTime(
+    MapBefore, Equals[typing.Union[datetime, date, time, timedelta]], Instance, Predicate
+):
+    # after / before is a bit more complicated in this case
+    # because there can be disparity between the types
     after: typing.Optional[typing.Union[datetime, date, time, timedelta]] = None
     before: typing.Optional[typing.Union[datetime, date, time, timedelta]] = None
 
@@ -84,8 +91,10 @@ class AnyDateTime(MapBefore):
             return False
         if not (isinstance(other, datetime) or isinstance(other, date) or isinstance(other, time)):
             return False
-        if self.equals is not None:
-            return other == self.equals
+        if not Equals.__eq__(self, other):
+            return False
+        if not Instance.__eq__(self, other):
+            return False
         if self.after is not None:
             after = self._handle_timedelta(self.after)
             try:
@@ -104,6 +113,8 @@ class AnyDateTime(MapBefore):
             else:
                 if not coerced_other < before:
                     return False
+        if not Predicate.__eq__(self, other):
+            return False
         return True
 
     @staticmethod

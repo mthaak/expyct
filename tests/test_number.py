@@ -14,7 +14,7 @@ import expyct as exp
         ("1", exp.Number(map_before=int), True),
         ("abc", exp.Number(map_before=int), False),
         ("abc", exp.Number(map_before=str), False),
-        # test pred
+        # test predicate
         (1, exp.Number(pred=lambda x: x % 2 == 1), True),
         (1, exp.Number(pred=lambda x: x % 2 == 0), False),
         # test min
