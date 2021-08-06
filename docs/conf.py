@@ -13,11 +13,7 @@
 import os
 import sys
 
-from expyct import __version__
-
 sys.path.insert(0, os.path.abspath(".."))
-print(sys.path)
-
 
 # -- Project information -----------------------------------------------------
 
@@ -26,9 +22,9 @@ copyright = "2021, Hummingbird Technologies"
 author = "Hummingbird Technologies"
 
 # The full version, including alpha/beta/rc tags
+from expyct import __version__  # noqa: E402
 
 release = __version__
-
 
 # -- General configuration ---------------------------------------------------
 
