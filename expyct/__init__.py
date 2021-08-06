@@ -2,7 +2,7 @@
 
 from .any import Any, AnyValue, AnyClass, ANY, ANYVALUE, ANYCLASS
 from .base import MapBefore, Predicate, Instance, Class
-from .collection import Collection, List, Tuple, Set, Dict
+from .collection import Collection, Length, List, Tuple, Set, Dict
 from .combination import OneOf
 from .datetime import (
     DateTime,
@@ -29,3 +29,5 @@ from .datetime import (
 )
 from .number import MinMax, MinMaxStrict, CloseTo, Number, Int, Float, NUMBER, INT, FLOAT
 from .string import String, UUID
+
+__all__ = dir()

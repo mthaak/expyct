@@ -1,8 +1,3 @@
-.. expyct documentation master file, created by
-   sphinx-quickstart on Wed Aug  4 19:14:58 2021.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 Welcome to expyct's documentation!
 ==================================
 
@@ -11,10 +6,54 @@ Welcome to expyct's documentation!
    :caption: Contents:
 
 
-
-Indices and tables
-==================
-
 * :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+
+Any
+----
+
+.. automodule:: expyct.any
+    :members:
+    :show-inheritance:
+
+Base
+----
+
+.. automodule:: expyct.base
+    :members:
+    :show-inheritance:
+
+Collection
+----------
+
+.. automodule:: expyct.collection
+    :members:
+    :show-inheritance:
+
+
+Combination
+-----------
+
+.. automodule:: expyct.combination
+    :members:
+    :show-inheritance:
+
+Date / time
+-----------
+
+.. automodule:: expyct.datetime
+    :members:
+    :show-inheritance:
+
+Number
+------
+
+.. automodule:: expyct.number
+    :members:
+    :show-inheritance:
+
+String
+------
+
+.. automodule:: expyct.string
+    :members:
+    :show-inheritance:

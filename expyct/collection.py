@@ -1,12 +1,22 @@
 import typing
 from dataclasses import dataclass
 
-from expyct import Instance
 from expyct.base import Equals, MapBefore, Predicate
+from expyct.base import Instance
 
 
 @dataclass
 class Length:
+    """Constrain by object len().
+
+    Attributes:
+        length : Object length must be exactly
+        min_length : Object length must be at least
+        max_length : Object length must be at most
+        non_empty : Object must have at least one member
+    """
+
+    # blabla
     length: typing.Optional[int] = None
     min_length: typing.Optional[int] = None
     max_length: typing.Optional[int] = None
@@ -72,6 +82,8 @@ class Collection(MapBefore, Equals[typing.Collection], Instance, Length, Contain
 
 @dataclass
 class List(MapBefore, Equals[list], Length, Contains, Predicate):
+    """Any instance of a list."""
+
     def __eq__(self, other):
         try:
             other = MapBefore.map(self, other)

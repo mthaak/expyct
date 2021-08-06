@@ -2,8 +2,7 @@ import typing
 from dataclasses import dataclass
 from datetime import datetime, date, time, timedelta, timezone
 
-from expyct import MapBefore, Predicate, Instance
-from expyct.base import Equals
+from expyct.base import Equals, MapBefore, Predicate, Instance
 
 T = typing.TypeVar("T")
 

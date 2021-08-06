@@ -6,6 +6,15 @@ from expyct.base import MapBefore, Predicate, Instance, Class, Equals
 
 @dataclass
 class Any(MapBefore, Equals[typing.Any], Predicate):
+    """Match any object.
+
+    Attributes:
+        map_before : apply function before checking equality
+        equals : object must equal exactly. This is useful together with
+            `map_before` to check a value after applying a function
+        pred : object must satisfy predicate
+    """
+
     def __eq__(self, other):
         try:
             other = MapBefore.map(self, other)
