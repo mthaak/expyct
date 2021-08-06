@@ -94,17 +94,17 @@ def test_time(value, expect, result):
     ["value", "expect", "result"],
     [
         # test type
-        (datetime(2020, 1, 1), exp.AnyDateTime(), True),
-        (datetime(2020, 1, 1, 3, 2, 1), exp.AnyDateTime(), True),
-        (date(2020, 1, 1), exp.AnyDateTime(), True),
-        (time(3, 2, 1), exp.AnyDateTime(), True),
-        ("abc", exp.AnyDateTime(), False),
+        (datetime(2020, 1, 1), exp.DateOrTime(), True),
+        (datetime(2020, 1, 1, 3, 2, 1), exp.DateOrTime(), True),
+        (date(2020, 1, 1), exp.DateOrTime(), True),
+        (time(3, 2, 1), exp.DateOrTime(), True),
+        ("abc", exp.DateOrTime(), False),
         # test map before
-        ("2020-01-01", exp.AnyDateTime(equals=date(2020, 1, 1), map_before=parse_isoformat), True),
-        ("01:01:03", exp.AnyDateTime(equals=time(1, 1, 3), map_before=parse_isoformat), True),
+        ("2020-01-01", exp.DateOrTime(equals=date(2020, 1, 1), map_before=parse_isoformat), True),
+        ("01:01:03", exp.DateOrTime(equals=time(1, 1, 3), map_before=parse_isoformat), True),
         (
             "2020-01-01T01:01:03",
-            exp.AnyDateTime(
+            exp.DateOrTime(
                 equals=datetime(2020, 1, 1, 1, 1, 3, tzinfo=timezone.utc),
                 map_before=parse_isoformat,
             ),
@@ -112,7 +112,7 @@ def test_time(value, expect, result):
         ),
         (
             "2020-01-01T01:01:03+00:00",
-            exp.AnyDateTime(
+            exp.DateOrTime(
                 equals=datetime(2020, 1, 1, 1, 1, 3, tzinfo=timezone.utc),
                 map_before=parse_isoformat,
             ),
@@ -120,80 +120,80 @@ def test_time(value, expect, result):
         ),
         (
             date(2020, 1, 1),
-            exp.AnyDateTime(equals=date(2020, 1, 1), map_before=parse_isoformat),
+            exp.DateOrTime(equals=date(2020, 1, 1), map_before=parse_isoformat),
             False,
         ),
         # test equals
         (datetime(2020, 1, 1, 3, 2, 1), exp.DateTime(equals=datetime(2020, 1, 1, 3, 2, 1)), True),
         (datetime(2020, 1, 1, 3, 2, 1), exp.DateTime(equals=datetime(2020, 1, 1, 3, 2, 2)), False),
-        (date(2020, 1, 1), exp.AnyDateTime(equals=date(2020, 1, 1)), True),
-        (date(2020, 1, 1), exp.AnyDateTime(equals=date(2020, 1, 2)), False),
-        (time(3, 2, 1), exp.AnyDateTime(equals=time(3, 2, 1)), True),
-        (time(3, 2, 1), exp.AnyDateTime(equals=time(3, 2, 2)), False),
+        (date(2020, 1, 1), exp.DateOrTime(equals=date(2020, 1, 1)), True),
+        (date(2020, 1, 1), exp.DateOrTime(equals=date(2020, 1, 2)), False),
+        (time(3, 2, 1), exp.DateOrTime(equals=time(3, 2, 1)), True),
+        (time(3, 2, 1), exp.DateOrTime(equals=time(3, 2, 2)), False),
         # test instance
-        (datetime(2020, 1, 1), exp.AnyDateTime(type=datetime), True),
-        (datetime(2020, 1, 1), exp.AnyDateTime(type=date), False),
-        (datetime(2020, 1, 1), exp.AnyDateTime(instance_of=datetime), True),
-        (datetime(2020, 1, 1), exp.AnyDateTime(instance_of=date), True),
-        ("abc", exp.AnyDateTime(instance_of=datetime), False),
+        (datetime(2020, 1, 1), exp.DateOrTime(type=datetime), True),
+        (datetime(2020, 1, 1), exp.DateOrTime(type=date), False),
+        (datetime(2020, 1, 1), exp.DateOrTime(instance_of=datetime), True),
+        (datetime(2020, 1, 1), exp.DateOrTime(instance_of=date), True),
+        ("abc", exp.DateOrTime(instance_of=datetime), False),
         # test before and after
         # both given and bound is datetime
-        (datetime(2020, 3, 3), exp.AnyDateTime(after=datetime(2020, 1, 1)), True),
-        (datetime(2020, 3, 3), exp.AnyDateTime(after=datetime(2020, 3, 3)), False),
-        (datetime(2020, 3, 3), exp.AnyDateTime(after=datetime(2020, 3, 4)), False),
-        (datetime(2020, 3, 3), exp.AnyDateTime(before=datetime(2020, 1, 1)), False),
-        (datetime(2020, 3, 3), exp.AnyDateTime(before=datetime(2020, 3, 3)), False),
-        (datetime(2020, 3, 3), exp.AnyDateTime(before=datetime(2020, 3, 4)), True),
+        (datetime(2020, 3, 3), exp.DateOrTime(after=datetime(2020, 1, 1)), True),
+        (datetime(2020, 3, 3), exp.DateOrTime(after=datetime(2020, 3, 3)), False),
+        (datetime(2020, 3, 3), exp.DateOrTime(after=datetime(2020, 3, 4)), False),
+        (datetime(2020, 3, 3), exp.DateOrTime(before=datetime(2020, 1, 1)), False),
+        (datetime(2020, 3, 3), exp.DateOrTime(before=datetime(2020, 3, 3)), False),
+        (datetime(2020, 3, 3), exp.DateOrTime(before=datetime(2020, 3, 4)), True),
         # datetime is given but bound is date
-        (datetime(2020, 3, 3), exp.AnyDateTime(after=date(2020, 1, 1)), True),
-        (datetime(2020, 3, 3), exp.AnyDateTime(after=date(2020, 3, 3)), False),
-        (datetime(2020, 3, 3), exp.AnyDateTime(after=date(2020, 3, 4)), False),
-        (datetime(2020, 3, 3), exp.AnyDateTime(before=date(2020, 1, 1)), False),
-        (datetime(2020, 3, 3), exp.AnyDateTime(before=date(2020, 3, 3)), False),
-        (datetime(2020, 3, 3), exp.AnyDateTime(before=date(2020, 3, 4)), True),
+        (datetime(2020, 3, 3), exp.DateOrTime(after=date(2020, 1, 1)), True),
+        (datetime(2020, 3, 3), exp.DateOrTime(after=date(2020, 3, 3)), False),
+        (datetime(2020, 3, 3), exp.DateOrTime(after=date(2020, 3, 4)), False),
+        (datetime(2020, 3, 3), exp.DateOrTime(before=date(2020, 1, 1)), False),
+        (datetime(2020, 3, 3), exp.DateOrTime(before=date(2020, 3, 3)), False),
+        (datetime(2020, 3, 3), exp.DateOrTime(before=date(2020, 3, 4)), True),
         # datetime is given but bound is time
-        (datetime(2020, 3, 3), exp.AnyDateTime(after=time(1, 1)), False),
+        (datetime(2020, 3, 3), exp.DateOrTime(after=time(1, 1)), False),
         # date is given but bound is datetime
-        (date(2020, 3, 3), exp.AnyDateTime(after=datetime(2020, 1, 1)), False),
+        (date(2020, 3, 3), exp.DateOrTime(after=datetime(2020, 1, 1)), False),
         # both given and bound is date
-        (date(2020, 3, 3), exp.AnyDateTime(after=date(2020, 1, 1)), True),
-        (date(2020, 3, 3), exp.AnyDateTime(after=date(2020, 3, 3)), False),
-        (date(2020, 3, 3), exp.AnyDateTime(after=date(2020, 3, 4)), False),
-        (date(2020, 3, 3), exp.AnyDateTime(before=date(2020, 1, 1)), False),
-        (date(2020, 3, 3), exp.AnyDateTime(before=date(2020, 3, 3)), False),
-        (date(2020, 3, 3), exp.AnyDateTime(before=date(2020, 3, 4)), True),
+        (date(2020, 3, 3), exp.DateOrTime(after=date(2020, 1, 1)), True),
+        (date(2020, 3, 3), exp.DateOrTime(after=date(2020, 3, 3)), False),
+        (date(2020, 3, 3), exp.DateOrTime(after=date(2020, 3, 4)), False),
+        (date(2020, 3, 3), exp.DateOrTime(before=date(2020, 1, 1)), False),
+        (date(2020, 3, 3), exp.DateOrTime(before=date(2020, 3, 3)), False),
+        (date(2020, 3, 3), exp.DateOrTime(before=date(2020, 3, 4)), True),
         # date is given but bound is time
-        (date(2020, 3, 3), exp.AnyDateTime(after=time(1, 1)), False),
+        (date(2020, 3, 3), exp.DateOrTime(after=time(1, 1)), False),
         # time is given but bound is datetime`
-        (time(3, 3), exp.AnyDateTime(after=datetime(2020, 1, 1)), False),
+        (time(3, 3), exp.DateOrTime(after=datetime(2020, 1, 1)), False),
         # time is given but bound is date
-        (time(3, 3), exp.AnyDateTime(after=date(2020, 1, 1)), False),
+        (time(3, 3), exp.DateOrTime(after=date(2020, 1, 1)), False),
         # both given and bound is time
-        (time(3, 3), exp.AnyDateTime(after=time(1, 1)), True),
-        (time(3, 3), exp.AnyDateTime(after=time(3, 3)), False),
-        (time(3, 3), exp.AnyDateTime(after=time(3, 4)), False),
-        (time(3, 3), exp.AnyDateTime(before=time(1, 1)), False),
-        (time(3, 3), exp.AnyDateTime(before=time(3, 3)), False),
-        (time(3, 3), exp.AnyDateTime(before=time(3, 4)), True),
+        (time(3, 3), exp.DateOrTime(after=time(1, 1)), True),
+        (time(3, 3), exp.DateOrTime(after=time(3, 3)), False),
+        (time(3, 3), exp.DateOrTime(after=time(3, 4)), False),
+        (time(3, 3), exp.DateOrTime(before=time(1, 1)), False),
+        (time(3, 3), exp.DateOrTime(before=time(3, 3)), False),
+        (time(3, 3), exp.DateOrTime(before=time(3, 4)), True),
         # timedelta
         (
             datetime.now().astimezone(timezone.utc) + timedelta(seconds=-3),
-            exp.AnyDateTime(after=timedelta(seconds=-2)),
+            exp.DateOrTime(after=timedelta(seconds=-2)),
             False,
         ),
         (
             datetime.now().astimezone(timezone.utc) + timedelta(seconds=-1),
-            exp.AnyDateTime(after=timedelta(seconds=-2)),
+            exp.DateOrTime(after=timedelta(seconds=-2)),
             True,
         ),
         (
             datetime.now().astimezone(timezone.utc) + timedelta(seconds=3),
-            exp.AnyDateTime(before=timedelta(seconds=2)),
+            exp.DateOrTime(before=timedelta(seconds=2)),
             False,
         ),
         (
             datetime.now().astimezone(timezone.utc) + timedelta(seconds=1),
-            exp.AnyDateTime(before=timedelta(seconds=2)),
+            exp.DateOrTime(before=timedelta(seconds=2)),
             True,
         ),
         # test predicate

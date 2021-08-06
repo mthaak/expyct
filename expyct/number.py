@@ -84,6 +84,6 @@ class Float(Number):
         return True
 
 
-NUMBER = Number()
-INT = Int()
-FLOAT = Float()
+ANY_NUMBER = Number()
+ANY_INT = Int()
+ANY_FLOAT = Float()

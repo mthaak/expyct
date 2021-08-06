@@ -19,3 +19,5 @@ repos:
     files: expyct/
     hooks:
       - id: mypy
+        args: [ expyct ]
+        pass_filenames: false

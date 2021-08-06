@@ -8,8 +8,14 @@ from .datetime import (
     DateTime,
     Date,
     Time,
-    AnyDateTime,
+    DateOrTime,
     parse_isoformat,
+    ANY_DATETIME,
+    ANY_DATE,
+    ANY_TIME,
+    ANY_DATETIME_ISO,
+    ANY_DATE_ISO,
+    ANY_TIME_ISO,
     LAST_SECOND,
     LAST_MINUTE,
     LAST_HOUR,
@@ -27,7 +33,17 @@ from .datetime import (
     THIS_DAY_ISO,
     TODAY_ISO,
 )
-from .number import MinMax, MinMaxStrict, CloseTo, Number, Int, Float, NUMBER, INT, FLOAT
-from .string import String, UUID
+from .number import (
+    MinMax,
+    MinMaxStrict,
+    CloseTo,
+    Number,
+    Int,
+    Float,
+    ANY_NUMBER,
+    ANY_INT,
+    ANY_FLOAT,
+)
+from .string import String, ANY_UUID
 
 __all__ = dir()
