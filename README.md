@@ -1,5 +1,7 @@
 # Expyct
 
+[![CircleCI](https://circleci.com/gh/HummingbirdTechGroup/expyct/tree/main.svg?style=svg)](https://circleci.com/gh/HummingbirdTechGroup/expyct/tree/main)
+
 Partial matching of any object. This is especially useful for testing that your functions return expected values.
 
 
