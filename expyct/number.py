@@ -7,6 +7,8 @@ from expyct.base import MapBefore, Predicate
 
 @dataclass
 class MinMax:
+    """Constrain a number to be equal, larger or smaller than given bounds."""
+
     min: typing.Optional[ParentNumber] = None  # TODO better type?
     max: typing.Optional[ParentNumber] = None
 
@@ -20,6 +22,8 @@ class MinMax:
 
 @dataclass
 class MinMaxStrict:
+    """Constrain a number to be strictly larger or smaller than given bounds."""
+
     min_strict: typing.Optional[ParentNumber] = None
     max_strict: typing.Optional[ParentNumber] = None
 
@@ -33,6 +37,8 @@ class MinMaxStrict:
 
 @dataclass
 class CloseTo:
+    """Constrain a number close to given target within a certain two-side error."""
+
     close_to: typing.Optional[ParentNumber] = None
     error: float = 0.001
 
@@ -46,6 +52,8 @@ class CloseTo:
 
 @dataclass
 class Number(MapBefore, Predicate, MinMax, MinMaxStrict, CloseTo):
+    """Any number object."""
+
     def __eq__(self, other):
         try:
             other = MapBefore.map(self, other)
@@ -66,6 +74,8 @@ class Number(MapBefore, Predicate, MinMax, MinMaxStrict, CloseTo):
 
 @dataclass
 class Int(Number):
+    """Any `int`."""
+
     def __eq__(self, other):
         if not isinstance(other, int):
             return False
@@ -76,6 +86,8 @@ class Int(Number):
 
 @dataclass
 class Float(Number):
+    """Any `float`."""
+
     def __eq__(self, other):
         if not isinstance(other, float):
             return False

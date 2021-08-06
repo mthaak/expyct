@@ -9,6 +9,9 @@ T = typing.TypeVar("T")
 
 @dataclass
 class AfterBefore(typing.Generic[T]):
+    """Match a `date`, `time`, or `datetime` only if it takes place after and/or
+    before given timestamps."""
+
     after: typing.Optional[T] = None
     before: typing.Optional[T] = None
 
@@ -22,6 +25,8 @@ class AfterBefore(typing.Generic[T]):
 
 @dataclass
 class DateTime(MapBefore, Equals[datetime], AfterBefore[datetime], Predicate):
+    """Any `datetime` object."""
+
     def __eq__(self, other):
         try:
             other = MapBefore.map(self, other)
@@ -40,6 +45,8 @@ class DateTime(MapBefore, Equals[datetime], AfterBefore[datetime], Predicate):
 
 @dataclass
 class Date(MapBefore, Equals[date], AfterBefore[date], Predicate):
+    """Any `date` object."""
+
     def __eq__(self, other):
         try:
             other = MapBefore.map(self, other)
@@ -58,6 +65,8 @@ class Date(MapBefore, Equals[date], AfterBefore[date], Predicate):
 
 @dataclass
 class Time(MapBefore, Equals[time], AfterBefore[time], Predicate):
+    """Any `time` object."""
+
     def __eq__(self, other):
         try:
             other = MapBefore.map(self, other)
@@ -147,7 +156,12 @@ class DateOrTime(
         }[(type(other), type(bound))]()
 
 
-def parse_isoformat(dt):
+def parse_isoformat(dt: str) -> typing.Union[date, time, datetime]:
+    """Parse a ISO8601 string as a `date`, `datetime` or `datetime` object.
+
+    Args:
+        dt : the date/time string to parse
+    """
     if isinstance(dt, str):
         try:
             return date.fromisoformat(dt)
@@ -197,19 +211,23 @@ LAST_YEAR_ISO = DateOrTime(
 # TODO:
 # THIS_MINUTE
 # THIS_HOUR
+#: A date, time or datetime occurring on the current day
 THIS_DAY = DateOrTime(
     after=date.today() - timedelta(days=1),
     before=date.today() + timedelta(days=1),
 )
+#: The same as THIS_DAY
 TODAY = THIS_DAY
 # THIS_DAY / TODAY
 # THIS_WEEK
 # THIS_MONTH
 # THIS_YEAR
 
+#: A ISO8601-formatted timestamp occurring on the current day
 THIS_DAY_ISO = DateOrTime(
     after=date.today() - timedelta(days=1),
     before=date.today() + timedelta(days=1),
     map_before=parse_isoformat,
 )
+#: The same as THIS_DAY_ISO
 TODAY_ISO = THIS_DAY_ISO

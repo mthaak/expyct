@@ -1,7 +1,7 @@
 import typing
 from dataclasses import dataclass
 
-from expyct.base import MapBefore, Predicate, Instance, Class, Equals
+from expyct.base import MapBefore, Predicate, Instance, Type, Equals
 
 
 @dataclass
@@ -29,6 +29,17 @@ class Any(MapBefore, Equals[typing.Any], Predicate):
 
 @dataclass
 class AnyValue(Any, Instance):
+    """Match any value.
+
+    Attributes:
+        map_before : apply function before checking equality
+        equals : object must equal exactly. This is useful together with
+            `map_before` to check a value after applying a function
+        pred : object must satisfy predicate
+        type : type of object must equal given type
+        instance_of : object must be an instance of given type
+    """
+
     def __eq__(self, other):
         if not Any.__eq__(self, other):
             return False
@@ -38,15 +49,29 @@ class AnyValue(Any, Instance):
 
 
 @dataclass
-class AnyClass(Any, Class):
+class AnyType(Any, Type):
+    """Match any class.
+
+    Attributes:
+        map_before : apply function before checking equality
+        equals : object must equal exactly. This is useful together with
+            `map_before` to check a value after applying a function
+        pred : object must satisfy predicate
+        superclass_of : class must be superclass of given type
+        subclass_of : class must be subclass of given type
+    """
+
     def __eq__(self, other):
         if not Any.__eq__(self, other):
             return False
-        if not Class.__eq__(self, other):
+        if not Type.__eq__(self, other):
             return False
         return True
 
 
+#: Literally anything
 ANY = Any()
-ANYVALUE = AnyValue()
-ANYCLASS = AnyClass()
+#: Any value
+ANY_VALUE = AnyValue()
+#: Any type (i.e. class)
+ANY_TYPE = AnyType()

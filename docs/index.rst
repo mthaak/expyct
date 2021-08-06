@@ -1,59 +1,53 @@
-Welcome to expyct's documentation!
-==================================
+expyct package
+==============
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+Partial matching of any object. This is especially useful for testing that your functions return expected values.
+
+This library provides convenient classes that allow you to set constraints on the object you would like to test.
+
+Some example of these are `Float`, `String`, `Any` and `DateTime`. As you can see they closely match the built-in Python types.
+
+The constraints can be provided as constructor arguments. For example `Number(min=3, max=5)`
+
+The library also comes with many commonly used data validators like `ANY_UUID` which matches any UUID string. And `TODAY` which matches any `datetime` occurring on the current day.
+
+Checking nested data structures is easy as well:
+
+.. code-block:: python
+
+    import expyct as exp
+    from datetime import datetime
 
 
-* :ref:`genindex`
+    def test_my_function():
+        result = my_function()
 
-Any
-----
+        assert result == {
+            "first_name": exp.String(regex="(mary)|(peter)", ignore_case=True),
+            "last_name": "Johnson",
+            "signup_date": exp.DateTime(after=datetime(2020, 1, 2), before=datetime(2020, 3, 5)),
+            "details": {
+                "number": exp.Int(min=2),
+                "amount": exp.Float(close_to=2.3, error=0.001),
+                "purchases": exp.List(of=exp.Dict(), non_empty=True),
+            },
+            "time_of_purchase": exp.OneOf([exp.TODAY, exp.THIS_WEEK]),
+            "type": exp.AnyType(subclass_of=str),
+            "item_ids": exp.Set(subset_of=[1, 2, 3]),
+            "metadata": exp.Dict(keys=exp.Collection(superset_of=["a", "b"])),
+            "context": exp.ANY,
+        }
 
-.. automodule:: expyct.any
-    :members:
-    :show-inheritance:
-
-Base
-----
-
-.. automodule:: expyct.base
-    :members:
-    :show-inheritance:
-
-Collection
+Submodules
 ----------
 
-.. automodule:: expyct.collection
-    :members:
-    :show-inheritance:
+.. toctree::
+   :maxdepth: 4
 
-
-Combination
------------
-
-.. automodule:: expyct.combination
-    :members:
-    :show-inheritance:
-
-Date / time
------------
-
-.. automodule:: expyct.datetime
-    :members:
-    :show-inheritance:
-
-Number
-------
-
-.. automodule:: expyct.number
-    :members:
-    :show-inheritance:
-
-String
-------
-
-.. automodule:: expyct.string
-    :members:
-    :show-inheritance:
+   expyct.any
+   expyct.base
+   expyct.collection
+   expyct.combination
+   expyct.datetime
+   expyct.number
+   expyct.string

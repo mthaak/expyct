@@ -13,6 +13,8 @@
 import os
 import sys
 
+from expyct import __version__
+
 sys.path.insert(0, os.path.abspath(".."))
 print(sys.path)
 
@@ -24,7 +26,8 @@ copyright = "2021, Hummingbird Technologies"
 author = "Hummingbird Technologies"
 
 # The full version, including alpha/beta/rc tags
-release = "0.0.4"
+
+release = __version__
 
 
 # -- General configuration ---------------------------------------------------
@@ -43,17 +46,18 @@ templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 autodoc_default_options = {"autodoc_member_order": "bysource"}
+autodoc_default_flags = ["members"]
 
 autodoc_inherit_docstrings = True
 autoclass_content = "class"
-autodoc_class_signature = "separated"
+autodoc_member_order = "groupwise"
 
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = "haiku"
+html_theme = "nature"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

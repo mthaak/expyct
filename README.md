@@ -27,11 +27,10 @@ def test_my_function():
             "purchases": exp.List(of=exp.Dict(), non_empty=True),
         },
         "time_of_purchase": exp.OneOf([exp.TODAY, exp.THIS_WEEK]),
-        "type": exp.AnyClass(subclass_of=str),
+        "type": exp.AnyType(subclass_of=str),
         "item_ids": exp.Set(subset_of=[1, 2, 3]),
         "metadata": exp.Dict(keys=exp.Collection(superset_of=["a", "b"])),
         "context": exp.ANY,
     }
 
 ```
-

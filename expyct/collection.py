@@ -60,6 +60,8 @@ class Contains:
 
 @dataclass
 class Collection(MapBefore, Equals[typing.Collection], Instance, Length, Contains, Predicate):
+    """Any instance of `Collection`."""
+
     def __eq__(self, other):
         try:
             other = MapBefore.map(self, other)
@@ -82,7 +84,7 @@ class Collection(MapBefore, Equals[typing.Collection], Instance, Length, Contain
 
 @dataclass
 class List(MapBefore, Equals[list], Length, Contains, Predicate):
-    """Any instance of a list."""
+    """Any instance of `list`."""
 
     def __eq__(self, other):
         try:
@@ -104,6 +106,8 @@ class List(MapBefore, Equals[list], Length, Contains, Predicate):
 
 @dataclass
 class Tuple(MapBefore, Equals[tuple], Length, Contains, Predicate):
+    """Any instance of `tuple`."""
+
     def __eq__(self, other):
         try:
             other = MapBefore.map(self, other)
@@ -124,6 +128,8 @@ class Tuple(MapBefore, Equals[tuple], Length, Contains, Predicate):
 
 @dataclass
 class Set(MapBefore, Equals[set], Length, Contains, Predicate):
+    """Any instance of `set`."""
+
     def __eq__(self, other):
         try:
             other = MapBefore.map(self, other)
@@ -144,6 +150,8 @@ class Set(MapBefore, Equals[set], Length, Contains, Predicate):
 
 @dataclass
 class Dict(MapBefore, Equals[dict], Length, Contains, Predicate):
+    """Any instance of `dict`."""
+
     keys: typing.Optional[typing.Any] = None
     values: typing.Optional[typing.Any] = None
     subset_of: typing.Optional[dict] = None
