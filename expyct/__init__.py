@@ -8,7 +8,7 @@ from .datetime import (
     DateTime,
     Date,
     Time,
-    AnyDateTime,
+    DateOrTime,
     parse_isoformat,
     LAST_SECOND,
     LAST_MINUTE,
@@ -27,5 +27,15 @@ from .datetime import (
     THIS_DAY_ISO,
     TODAY_ISO,
 )
-from .number import MinMax, MinMaxStrict, CloseTo, Number, Int, Float, NUMBER, INT, FLOAT
-from .string import String, UUID
+from .number import (
+    MinMax,
+    MinMaxStrict,
+    CloseTo,
+    Number,
+    Int,
+    Float,
+    ANY_NUMBER,
+    ANY_INT,
+    ANY_FLOAT,
+)
+from .string import String, ANY_UUID
