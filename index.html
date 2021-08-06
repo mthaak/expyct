@@ -6,344 +6,142 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Welcome to expyct’s documentation! &#8212; expyct 0.0.4 documentation</title>
+    <title>expyct package &#8212; expyct 0.1.3 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="expyct.any module" href="expyct.any.html" /> 
   </head><body>
-      <div class="header" role="banner"><h1 class="heading"><a href="#">
-          <span>expyct 0.0.4 documentation</span></a></h1>
-        <h2 class="heading"><span>Welcome to expyct’s documentation!</span></h2>
-      </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
-      
-        <p>
-        <a class="uplink" href="#">Contents</a>
-        </p>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="expyct.any.html" title="expyct.any module"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">expyct 0.1.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">expyct package</a></li> 
+      </ul>
+    </div>  
 
-      </div>
-      <div class="content" role="main">
-        
-        
-  <section id="welcome-to-expyct-s-documentation">
-<h1>Welcome to expyct’s documentation!<a class="headerlink" href="#welcome-to-expyct-s-documentation" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="expyct-package">
+<h1>expyct package<a class="headerlink" href="#expyct-package" title="Permalink to this headline">¶</a></h1>
+<p>Partial matching of any object. This is especially useful for testing that your functions return expected values.</p>
+<p>This library provides convenient classes that allow you to set constraints on the object you would like to test.</p>
+<p>Some example of these are <cite>Float</cite>, <cite>String</cite>, <cite>Any</cite> and <cite>DateTime</cite>. As you can see they closely match the built-in Python types.</p>
+<p>The constraints can be provided as constructor arguments. For example <cite>Number(min=3, max=5)</cite></p>
+<p>The library also comes with many commonly used data validators like <cite>ANY_UUID</cite> which matches any UUID string. And <cite>TODAY</cite> which matches any <cite>datetime</cite> occurring on the current day.</p>
+<p>Checking nested data structures is easy as well:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">expyct</span> <span class="k">as</span> <span class="nn">exp</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+
+<span class="k">def</span> <span class="nf">test_my_function</span><span class="p">():</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">my_function</span><span class="p">()</span>
+
+    <span class="k">assert</span> <span class="n">result</span> <span class="o">==</span> <span class="p">{</span>
+        <span class="s2">&quot;first_name&quot;</span><span class="p">:</span> <span class="n">exp</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="s2">&quot;(mary)|(peter)&quot;</span><span class="p">,</span> <span class="n">ignore_case</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="s2">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Johnson&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;signup_date&quot;</span><span class="p">:</span> <span class="n">exp</span><span class="o">.</span><span class="n">DateTime</span><span class="p">(</span><span class="n">after</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">before</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span>
+        <span class="s2">&quot;details&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="n">exp</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+            <span class="s2">&quot;amount&quot;</span><span class="p">:</span> <span class="n">exp</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="n">close_to</span><span class="o">=</span><span class="mf">2.3</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="mf">0.001</span><span class="p">),</span>
+            <span class="s2">&quot;purchases&quot;</span><span class="p">:</span> <span class="n">exp</span><span class="o">.</span><span class="n">List</span><span class="p">(</span><span class="n">of</span><span class="o">=</span><span class="n">exp</span><span class="o">.</span><span class="n">Dict</span><span class="p">(),</span> <span class="n">non_empty</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;time_of_purchase&quot;</span><span class="p">:</span> <span class="n">exp</span><span class="o">.</span><span class="n">OneOf</span><span class="p">([</span><span class="n">exp</span><span class="o">.</span><span class="n">TODAY</span><span class="p">,</span> <span class="n">exp</span><span class="o">.</span><span class="n">THIS_WEEK</span><span class="p">]),</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">exp</span><span class="o">.</span><span class="n">AnyType</span><span class="p">(</span><span class="n">subclass_of</span><span class="o">=</span><span class="nb">str</span><span class="p">),</span>
+        <span class="s2">&quot;item_ids&quot;</span><span class="p">:</span> <span class="n">exp</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">subset_of</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),</span>
+        <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="n">exp</span><span class="o">.</span><span class="n">Dict</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="n">exp</span><span class="o">.</span><span class="n">Collection</span><span class="p">(</span><span class="n">superset_of</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">])),</span>
+        <span class="s2">&quot;context&quot;</span><span class="p">:</span> <span class="n">exp</span><span class="o">.</span><span class="n">ANY</span><span class="p">,</span>
+    <span class="p">}</span>
+</pre></div>
 </div>
-<ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="expyct.any.html">expyct.any module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expyct.base.html">expyct.base module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expyct.collection.html">expyct.collection module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expyct.combination.html">expyct.combination module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expyct.datetime.html">expyct.datetime module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expyct.number.html">expyct.number module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expyct.string.html">expyct.string module</a></li>
 </ul>
-<section id="module-expyct.any">
-<span id="any"></span><h2>Any<a class="headerlink" href="#module-expyct.any" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.any.Any">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.any.</span></span><span class="sig-name descname"><span class="pre">Any</span></span><a class="headerlink" href="#expyct.any.Any" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code>], <a class="reference internal" href="#expyct.base.Predicate" title="expyct.base.Predicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Predicate</span></code></a></p>
-<p>Match any object.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="expyct.any.Any.map_before">
-<span class="sig-name descname"><span class="pre">map_before</span></span><a class="headerlink" href="#expyct.any.Any.map_before" title="Permalink to this definition">¶</a></dt>
-<dd><p>apply function before checking equality</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>Optional[Callable]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="expyct.any.Any.equals">
-<span class="sig-name descname"><span class="pre">equals</span></span><a class="headerlink" href="#expyct.any.Any.equals" title="Permalink to this definition">¶</a></dt>
-<dd><p>object must equal exactly. This is useful together with
-<cite>map_before</cite> to check a value after applying a function</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>Optional[expyct.base.T]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="expyct.any.Any.pred">
-<span class="sig-name descname"><span class="pre">pred</span></span><a class="headerlink" href="#expyct.any.Any.pred" title="Permalink to this definition">¶</a></dt>
-<dd><p>object must satisfy predicate</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>Optional[Callable[[], bool]]</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.any.AnyClass">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.any.</span></span><span class="sig-name descname"><span class="pre">AnyClass</span></span><a class="headerlink" href="#expyct.any.AnyClass" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code>], <a class="reference internal" href="#expyct.base.Predicate" title="expyct.base.Predicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Predicate</span></code></a></p>
-<p>AnyClass(<a href="#id1"><span class="problematic" id="id2">*</span></a>args, <a href="#id3"><span class="problematic" id="id4">**</span></a>kwds)</p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.any.AnyValue">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.any.</span></span><span class="sig-name descname"><span class="pre">AnyValue</span></span><a class="headerlink" href="#expyct.any.AnyValue" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code>], <a class="reference internal" href="#expyct.base.Predicate" title="expyct.base.Predicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Predicate</span></code></a></p>
-<p>AnyValue(<a href="#id5"><span class="problematic" id="id6">*</span></a>args, <a href="#id7"><span class="problematic" id="id8">**</span></a>kwds)</p>
-</dd></dl>
-
-</section>
-<section id="module-expyct.base">
-<span id="base"></span><h2>Base<a class="headerlink" href="#module-expyct.base" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.base.Class">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.base.</span></span><span class="sig-name descname"><span class="pre">Class</span></span><a class="headerlink" href="#expyct.base.Class" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Class(type: Union[Type, NoneType] = None, subclass_of: Union[Type, NoneType] = None)</p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.base.Equals">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.base.</span></span><span class="sig-name descname"><span class="pre">Equals</span></span><a class="headerlink" href="#expyct.base.Equals" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">expyct.base.T</span></code>]</p>
-<p>Equals(<a href="#id9"><span class="problematic" id="id10">*</span></a>args, <a href="#id11"><span class="problematic" id="id12">**</span></a>kwds)</p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.base.Instance">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.base.</span></span><span class="sig-name descname"><span class="pre">Instance</span></span><a class="headerlink" href="#expyct.base.Instance" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Instance(type: Union[Type, NoneType] = None, instance_of: Union[Type, NoneType] = None)</p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.base.MapBefore">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.base.</span></span><span class="sig-name descname"><span class="pre">MapBefore</span></span><a class="headerlink" href="#expyct.base.MapBefore" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>MapBefore(map_before: Union[Callable, NoneType] = None)</p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.base.Predicate">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.base.</span></span><span class="sig-name descname"><span class="pre">Predicate</span></span><a class="headerlink" href="#expyct.base.Predicate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Predicate(pred: Union[Callable[[], bool], NoneType] = None)</p>
-</dd></dl>
-
-</section>
-<section id="module-expyct.collection">
-<span id="collection"></span><h2>Collection<a class="headerlink" href="#module-expyct.collection" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.collection.Collection">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.collection.</span></span><span class="sig-name descname"><span class="pre">Collection</span></span><a class="headerlink" href="#expyct.collection.Collection" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Collection</span></code>], <a class="reference internal" href="#expyct.base.Instance" title="expyct.base.Instance"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Instance</span></code></a>, <a class="reference internal" href="#expyct.collection.Length" title="expyct.collection.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.Length</span></code></a>, <a class="reference internal" href="#expyct.collection.Contains" title="expyct.collection.Contains"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.Contains</span></code></a>, <a class="reference internal" href="#expyct.base.Predicate" title="expyct.base.Predicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Predicate</span></code></a></p>
-<p>Collection(<a href="#id13"><span class="problematic" id="id14">*</span></a>args, <a href="#id15"><span class="problematic" id="id16">**</span></a>kwds)</p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.collection.Contains">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.collection.</span></span><span class="sig-name descname"><span class="pre">Contains</span></span><a class="headerlink" href="#expyct.collection.Contains" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Contains(subset_of: Union[Collection, NoneType] = None, superset_of: Union[Collection, NoneType] = None)</p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.collection.Dict">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.collection.</span></span><span class="sig-name descname"><span class="pre">Dict</span></span><a class="headerlink" href="#expyct.collection.Dict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>], <a class="reference internal" href="#expyct.collection.Length" title="expyct.collection.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.Length</span></code></a>, <a class="reference internal" href="#expyct.collection.Contains" title="expyct.collection.Contains"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.Contains</span></code></a>, <a class="reference internal" href="#expyct.base.Predicate" title="expyct.base.Predicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Predicate</span></code></a></p>
-<p>Dict(<a href="#id17"><span class="problematic" id="id18">*</span></a>args, <a href="#id19"><span class="problematic" id="id20">**</span></a>kwds)</p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.collection.Length">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.collection.</span></span><span class="sig-name descname"><span class="pre">Length</span></span><a class="headerlink" href="#expyct.collection.Length" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Constrain by object len().</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="expyct.collection.Length.length">
-<span class="sig-name descname"><span class="pre">length</span></span><a class="headerlink" href="#expyct.collection.Length.length" title="Permalink to this definition">¶</a></dt>
-<dd><p>Object length must be exactly</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>Optional[int]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="expyct.collection.Length.min_length">
-<span class="sig-name descname"><span class="pre">min_length</span></span><a class="headerlink" href="#expyct.collection.Length.min_length" title="Permalink to this definition">¶</a></dt>
-<dd><p>Object length must be at least</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>Optional[int]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="expyct.collection.Length.max_length">
-<span class="sig-name descname"><span class="pre">max_length</span></span><a class="headerlink" href="#expyct.collection.Length.max_length" title="Permalink to this definition">¶</a></dt>
-<dd><p>Object length must be at most</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>Optional[int]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="expyct.collection.Length.non_empty">
-<span class="sig-name descname"><span class="pre">non_empty</span></span><a class="headerlink" href="#expyct.collection.Length.non_empty" title="Permalink to this definition">¶</a></dt>
-<dd><p>Object must have at least one member</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.collection.List">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.collection.</span></span><span class="sig-name descname"><span class="pre">List</span></span><a class="headerlink" href="#expyct.collection.List" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>], <a class="reference internal" href="#expyct.collection.Length" title="expyct.collection.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.Length</span></code></a>, <a class="reference internal" href="#expyct.collection.Contains" title="expyct.collection.Contains"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.Contains</span></code></a>, <a class="reference internal" href="#expyct.base.Predicate" title="expyct.base.Predicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Predicate</span></code></a></p>
-<p>Any instance of a list.</p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.collection.Set">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.collection.</span></span><span class="sig-name descname"><span class="pre">Set</span></span><a class="headerlink" href="#expyct.collection.Set" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">set</span></code>], <a class="reference internal" href="#expyct.collection.Length" title="expyct.collection.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.Length</span></code></a>, <a class="reference internal" href="#expyct.collection.Contains" title="expyct.collection.Contains"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.Contains</span></code></a>, <a class="reference internal" href="#expyct.base.Predicate" title="expyct.base.Predicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Predicate</span></code></a></p>
-<p>Set(<a href="#id21"><span class="problematic" id="id22">*</span></a>args, <a href="#id23"><span class="problematic" id="id24">**</span></a>kwds)</p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.collection.Tuple">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.collection.</span></span><span class="sig-name descname"><span class="pre">Tuple</span></span><a class="headerlink" href="#expyct.collection.Tuple" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>], <a class="reference internal" href="#expyct.collection.Length" title="expyct.collection.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.Length</span></code></a>, <a class="reference internal" href="#expyct.collection.Contains" title="expyct.collection.Contains"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.Contains</span></code></a>, <a class="reference internal" href="#expyct.base.Predicate" title="expyct.base.Predicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Predicate</span></code></a></p>
-<p>Tuple(<a href="#id25"><span class="problematic" id="id26">*</span></a>args, <a href="#id27"><span class="problematic" id="id28">**</span></a>kwds)</p>
-</dd></dl>
-
-</section>
-<section id="module-expyct.combination">
-<span id="combination"></span><h2>Combination<a class="headerlink" href="#module-expyct.combination" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.combination.OneOf">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.combination.</span></span><span class="sig-name descname"><span class="pre">OneOf</span></span><a class="headerlink" href="#expyct.combination.OneOf" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>OneOf(options: Collection)</p>
-</dd></dl>
-
-</section>
-<section id="module-expyct.datetime">
-<span id="date-time"></span><h2>Date / time<a class="headerlink" href="#module-expyct.datetime" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.datetime.AfterBefore">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">AfterBefore</span></span><a class="headerlink" href="#expyct.datetime.AfterBefore" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">expyct.datetime.T</span></code>]</p>
-<p>AfterBefore(<a href="#id29"><span class="problematic" id="id30">*</span></a>args, <a href="#id31"><span class="problematic" id="id32">**</span></a>kwds)</p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.datetime.AnyDateTime">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">AnyDateTime</span></span><a class="headerlink" href="#expyct.datetime.AnyDateTime" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.date</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.time</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.timedelta</span></code>]], <a class="reference internal" href="#expyct.base.Instance" title="expyct.base.Instance"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Instance</span></code></a>, <a class="reference internal" href="#expyct.base.Predicate" title="expyct.base.Predicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Predicate</span></code></a></p>
-<p>AnyDateTime(<a href="#id33"><span class="problematic" id="id34">*</span></a>args, <a href="#id35"><span class="problematic" id="id36">**</span></a>kwds)</p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.datetime.Date">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">Date</span></span><a class="headerlink" href="#expyct.datetime.Date" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.date</span></code>], <a class="reference internal" href="#expyct.datetime.AfterBefore" title="expyct.datetime.AfterBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.datetime.AfterBefore</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.date</span></code>], <a class="reference internal" href="#expyct.base.Predicate" title="expyct.base.Predicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Predicate</span></code></a></p>
-<p>Date(<a href="#id37"><span class="problematic" id="id38">*</span></a>args, <a href="#id39"><span class="problematic" id="id40">**</span></a>kwds)</p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.datetime.DateTime">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">DateTime</span></span><a class="headerlink" href="#expyct.datetime.DateTime" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code>], <a class="reference internal" href="#expyct.datetime.AfterBefore" title="expyct.datetime.AfterBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.datetime.AfterBefore</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code>], <a class="reference internal" href="#expyct.base.Predicate" title="expyct.base.Predicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Predicate</span></code></a></p>
-<p>DateTime(<a href="#id41"><span class="problematic" id="id42">*</span></a>args, <a href="#id43"><span class="problematic" id="id44">**</span></a>kwds)</p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.datetime.Time">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">Time</span></span><a class="headerlink" href="#expyct.datetime.Time" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.time</span></code>], <a class="reference internal" href="#expyct.datetime.AfterBefore" title="expyct.datetime.AfterBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.datetime.AfterBefore</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.time</span></code>], <a class="reference internal" href="#expyct.base.Predicate" title="expyct.base.Predicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Predicate</span></code></a></p>
-<p>Time(<a href="#id45"><span class="problematic" id="id46">*</span></a>args, <a href="#id47"><span class="problematic" id="id48">**</span></a>kwds)</p>
-</dd></dl>
-
-</section>
-<section id="module-expyct.number">
-<span id="number"></span><h2>Number<a class="headerlink" href="#module-expyct.number" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.number.CloseTo">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">CloseTo</span></span><a class="headerlink" href="#expyct.number.CloseTo" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>CloseTo(close_to: Union[numbers.Number, NoneType] = None, error: float = 0.001)</p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.number.Float">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">Float</span></span><a class="headerlink" href="#expyct.number.Float" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#expyct.number.Number" title="expyct.number.Number"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.number.Number</span></code></a></p>
-<p>Float(close_to: Union[numbers.Number, NoneType] = None, error: float = 0.001, min_strict: Union[numbers.Number, NoneType] = None, max_strict: Union[numbers.Number, NoneType] = None, min: Union[numbers.Number, NoneType] = None, max: Union[numbers.Number, NoneType] = None, pred: Union[Callable[[], bool], NoneType] = None, map_before: Union[Callable, NoneType] = None)</p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.number.Int">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">Int</span></span><a class="headerlink" href="#expyct.number.Int" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#expyct.number.Number" title="expyct.number.Number"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.number.Number</span></code></a></p>
-<p>Int(close_to: Union[numbers.Number, NoneType] = None, error: float = 0.001, min_strict: Union[numbers.Number, NoneType] = None, max_strict: Union[numbers.Number, NoneType] = None, min: Union[numbers.Number, NoneType] = None, max: Union[numbers.Number, NoneType] = None, pred: Union[Callable[[], bool], NoneType] = None, map_before: Union[Callable, NoneType] = None)</p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.number.MinMax">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">MinMax</span></span><a class="headerlink" href="#expyct.number.MinMax" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>MinMax(min: Union[numbers.Number, NoneType] = None, max: Union[numbers.Number, NoneType] = None)</p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.number.MinMaxStrict">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">MinMaxStrict</span></span><a class="headerlink" href="#expyct.number.MinMaxStrict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>MinMaxStrict(min_strict: Union[numbers.Number, NoneType] = None, max_strict: Union[numbers.Number, NoneType] = None)</p>
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.number.Number">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">Number</span></span><a class="headerlink" href="#expyct.number.Number" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="#expyct.base.Predicate" title="expyct.base.Predicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Predicate</span></code></a>, <a class="reference internal" href="#expyct.number.MinMax" title="expyct.number.MinMax"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.number.MinMax</span></code></a>, <a class="reference internal" href="#expyct.number.MinMaxStrict" title="expyct.number.MinMaxStrict"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.number.MinMaxStrict</span></code></a>, <a class="reference internal" href="#expyct.number.CloseTo" title="expyct.number.CloseTo"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.number.CloseTo</span></code></a></p>
-<p>Number(close_to: Union[numbers.Number, NoneType] = None, error: float = 0.001, min_strict: Union[numbers.Number, NoneType] = None, max_strict: Union[numbers.Number, NoneType] = None, min: Union[numbers.Number, NoneType] = None, max: Union[numbers.Number, NoneType] = None, pred: Union[Callable[[], bool], NoneType] = None, map_before: Union[Callable, NoneType] = None)</p>
-</dd></dl>
-
-</section>
-<section id="module-expyct.string">
-<span id="string"></span><h2>String<a class="headerlink" href="#module-expyct.string" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.string.String">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.string.</span></span><span class="sig-name descname"><span class="pre">String</span></span><a class="headerlink" href="#expyct.string.String" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>], <a class="reference internal" href="#expyct.base.Instance" title="expyct.base.Instance"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Instance</span></code></a>, <a class="reference internal" href="#expyct.collection.Length" title="expyct.collection.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.Length</span></code></a>, <a class="reference internal" href="#expyct.collection.Contains" title="expyct.collection.Contains"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.Contains</span></code></a>, <a class="reference internal" href="#expyct.base.Predicate" title="expyct.base.Predicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Predicate</span></code></a></p>
-<p>String(<a href="#id49"><span class="problematic" id="id50">*</span></a>args, <a href="#id51"><span class="problematic" id="id52">**</span></a>kwds)</p>
-</dd></dl>
-
+</div>
 </section>
 </section>
 
 
+            <div class="clearer"></div>
+          </div>
+        </div>
       </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
-      
-        <p>
-        <a class="uplink" href="#">Contents</a>
-        </p>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">expyct package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
 
+  <h4>Next topic</h4>
+  <p class="topless"><a href="expyct.any.html"
+                        title="next chapter">expyct.any module</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
       </div>
-
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="expyct.any.html" title="expyct.any module"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">expyct 0.1.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">expyct package</a></li> 
+      </ul>
+    </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Hummingbird Technologies.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
