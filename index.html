@@ -43,7 +43,7 @@
 <h1>expyct package<a class="headerlink" href="#expyct-package" title="Permalink to this headline">¶</a></h1>
 <p>Partial matching of any object. This is especially useful for testing that your functions return expected values.</p>
 <p>This library provides convenient classes that allow you to set constraints on the object you would like to test.</p>
-<p>The constraints can be provided as constructor arguments. For example <cite>Number(min=3, max=5)</cite> matches any number between 3 and 5. In other words, <cite>Number(min=3, max=5) == n</cite> is <cite>True</cite> for all 3 &lt;= n &lt;= 5.</p>
+<p>The constraints can be provided as constructor arguments. For example <cite>Number(min=3, max=5)</cite> matches any number between 3 and 5. In other words, <cite>Number(min=3, max=5) == n</cite> is <cite>True</cite> for all <cite>3 &lt;= n &lt;= 5</cite>.</p>
 <p>Some other examples of classes are <cite>Float</cite>, <cite>String</cite>, <cite>Any</cite> and <cite>DateTime</cite>. As you can see, they closely match the built-in Python types.</p>
 <p>The library also comes with many commonly used data validators like <cite>ANY_UUID</cite> which matches any UUID string. And <cite>TODAY</cite> which matches any <cite>datetime</cite> occurring on the current day.</p>
 <p>Checking nested data structures is easy as well:</p>
