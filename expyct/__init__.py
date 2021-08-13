@@ -1,14 +1,14 @@
 # flake8: noqa
 
-from .any import Any, AnyValue, AnyClass, ANY, ANYVALUE, ANYCLASS
-from .base import MapBefore, Predicate, Instance, Class
-from .collection import Collection, List, Tuple, Set, Dict
+from .any import Any, AnyValue, AnyType, ANY, ANY_VALUE, ANY_TYPE
+from .base import MapBefore, Predicate, Instance, Type
+from .collection import Collection, Length, List, Tuple, Set, Dict
 from .combination import OneOf
 from .datetime import (
     DateTime,
+    DateTimeTz,
     Date,
     Time,
-    DateOrTime,
     parse_isoformat,
     ANY_DATETIME,
     ANY_DATE,
@@ -28,6 +28,9 @@ from .datetime import (
     LAST_DAY_ISO,
     LAST_WEEK_ISO,
     LAST_YEAR_ISO,
+    THIS_SECOND,
+    THIS_MINUTE,
+    THIS_HOUR,
     THIS_DAY,
     TODAY,
     THIS_DAY_ISO,
@@ -45,3 +48,7 @@ from .number import (
     ANY_FLOAT,
 )
 from .string import String, ANY_UUID
+
+__version__ = "0.2.0"
+
+__all__ = dir()

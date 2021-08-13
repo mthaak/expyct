@@ -1,3 +1,5 @@
+from collections import Collection
+
 import pytest
 
 import expyct as exp
@@ -49,17 +51,24 @@ def test_any_value(value, expect, result):
     ["value", "expect", "result"],
     [
         # test type
-        (1, exp.AnyClass(), False),
-        ("abc", exp.AnyClass(), False),
-        ([], exp.AnyClass(), False),
-        (int, exp.AnyClass(), True),
-        (lambda x: x + 1, exp.AnyClass(), False),
+        (1, exp.AnyType(), False),
+        ("abc", exp.AnyType(), False),
+        ([], exp.AnyType(), False),
+        (int, exp.AnyType(), True),
+        (lambda x: x + 1, exp.AnyType(), False),
         # test map before and equals
-        (int, exp.AnyClass(equals=str), False),
-        (int, exp.AnyClass(equals=str, map_before=lambda x: str), True),
+        (int, exp.AnyType(equals=str), False),
+        (int, exp.AnyType(equals=str, map_before=lambda x: str), True),
         # test predicate
-        (int, exp.AnyClass(pred=lambda x: x == str), False),
-        (str, exp.AnyClass(pred=lambda x: x == str), True),
+        (int, exp.AnyType(pred=lambda x: x == str), False),
+        (str, exp.AnyType(pred=lambda x: x == str), True),
+        # test type
+        (list, exp.AnyType(subclass_of=Collection), True),
+        (list, exp.AnyType(superclass_of=Collection), False),
+        (Collection, exp.AnyType(subclass_of=list), False),
+        (Collection, exp.AnyType(superclass_of=list), True),
+        (list, exp.AnyType(superclass_of=list), True),
+        (list, exp.AnyType(subclass_of=list), True),
     ],
 )
 def test_any_type(value, expect, result):

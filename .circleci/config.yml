@@ -47,6 +47,44 @@ jobs:
           command: twine upload -u $PYPI_USERNAME -p $PYPI_PASSWORD dist/*
           name: Upload to Pypi
 
+  docs-build:
+    docker:
+      - image: python:3.7
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: pip install -r dev_requirements.txt
+      - run:
+          name: Build docs
+          command: cd docs/ && make html
+      - persist_to_workspace:
+          root: docs/_build
+          paths: html
+
+  docs-deploy:
+    docker:
+      - image: node:8.10.0
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "73:47:15:f3:51:ce:35:93:ff:c7:c4:41:75:0f:73:47"
+      - attach_workspace:
+          at: docs/_build
+      - run:
+          name: Disable jekyll builds
+          command: touch docs/_build/html/.nojekyll
+      - run:
+          name: Install and configure dependencies
+          command: |
+            npm install -g --silent gh-pages@2.0.1
+            git config user.email "ci-build@hummingbirdtech.com"
+            git config user.name "ci-build"
+      - run:
+          name: Deploy docs to gh-pages branch
+          command: gh-pages --dotfiles --message "[skip ci] Updates" --dist docs/_build/html
+
 workflows:
   main:
     jobs:
@@ -56,6 +94,17 @@ workflows:
             - lint-and-test
           context:
             - pypi-secrets
+          filters:
+            branches:
+              only: main
+      - docs-build:
+          filters:
+            branches:
+              only: main
+      - docs-deploy:
+          requires:
+            - lint-and-test
+            - docs-build
           filters:
             branches:
               only: main

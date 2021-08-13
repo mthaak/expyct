@@ -14,9 +14,17 @@ import expyct as exp
         ("1", exp.Number(map_before=int), True),
         ("abc", exp.Number(map_before=int), False),
         ("abc", exp.Number(map_before=str), False),
+        # test instance
+        (1, exp.Number(type=int), True),
+        (1, exp.Number(type=float), False),
+        (1, exp.Number(instance_of=int), True),
+        (1, exp.Number(instance_of=float), False),
         # test predicate
         (1, exp.Number(pred=lambda x: x % 2 == 1), True),
         (1, exp.Number(pred=lambda x: x % 2 == 0), False),
+        # test equals
+        (1, exp.Number(equals=1), True),
+        (1, exp.Number(equals=2), False),
         # test min
         (2, exp.Number(min=1), True),
         (2, exp.Number(min=2), True),
