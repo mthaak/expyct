@@ -6,9 +6,9 @@ from .collection import Collection, Length, List, Tuple, Set, Dict
 from .combination import OneOf
 from .datetime import (
     DateTime,
+    DateTimeTz,
     Date,
     Time,
-    DateOrTime,
     parse_isoformat,
     ANY_DATETIME,
     ANY_DATE,
@@ -28,6 +28,9 @@ from .datetime import (
     LAST_DAY_ISO,
     LAST_WEEK_ISO,
     LAST_YEAR_ISO,
+    THIS_SECOND,
+    THIS_MINUTE,
+    THIS_HOUR,
     THIS_DAY,
     TODAY,
     THIS_DAY_ISO,

@@ -7,16 +7,15 @@ from expyct.base import Instance
 
 @dataclass
 class Length:
-    """Constrain by object len().
+    """Match a collection object by its length as the result of len().
 
     Attributes:
-        length : Object length must be exactly
-        min_length : Object length must be at least
-        max_length : Object length must be at most
-        non_empty : Object must have at least one member
+        length : object length must be exactly
+        min_length : object length must be at least
+        max_length : object length must be at most
+        non_empty : object must have at least one member
     """
 
-    # blabla
     length: typing.Optional[int] = None
     min_length: typing.Optional[int] = None
     max_length: typing.Optional[int] = None
@@ -36,8 +35,15 @@ class Length:
 
 @dataclass
 class Contains:
-    subset_of: typing.Optional[typing.Collection] = None
+    """Match a collection object by the containment of specified members.
+
+    Attributes:
+        superset_of : collection of which the object must be a superset
+        subset_of : collection of which the object must be a subset
+    """
+
     superset_of: typing.Optional[typing.Collection] = None
+    subset_of: typing.Optional[typing.Collection] = None
 
     def __eq__(self, other):
         if self.subset_of is not None:
@@ -60,7 +66,22 @@ class Contains:
 
 @dataclass
 class Collection(MapBefore, Equals[typing.Collection], Instance, Length, Contains, Predicate):
-    """Any instance of `Collection`."""
+    """Match any object that is an instance of `Collection`.
+
+    Attributes:
+        map_before : apply function before checking equality
+        equals : object must equal exactly. This is useful together with
+            `map_before` to check a value after applying a function
+        type : type of object must equal to given type
+        instance_of : object must be an instance of given type
+        length : object length must be exactly
+        min_length : object length must be at least
+        max_length : object length must be at most
+        non_empty : object must have at least one member
+        superset_of : collection of which the object must be a superset
+        subset_of : collection of which the object must be a subset
+        pred : object must satisfy predicate
+    """
 
     def __eq__(self, other):
         try:
@@ -84,7 +105,20 @@ class Collection(MapBefore, Equals[typing.Collection], Instance, Length, Contain
 
 @dataclass
 class List(MapBefore, Equals[list], Length, Contains, Predicate):
-    """Any instance of `list`."""
+    """Match any object that is an instance of `list`.
+
+    Attributes:
+        map_before : apply function before checking equality
+        equals : object must equal exactly. This is useful together with
+            `map_before` to check a value after applying a function
+        length : object length must be exactly
+        min_length : object length must be at least
+        max_length : object length must be at most
+        non_empty : object must have at least one member
+        superset_of : collection of which the object must be a superset
+        subset_of : collection of which the object must be a subset
+        pred : object must satisfy predicate
+    """
 
     def __eq__(self, other):
         try:
@@ -106,7 +140,20 @@ class List(MapBefore, Equals[list], Length, Contains, Predicate):
 
 @dataclass
 class Tuple(MapBefore, Equals[tuple], Length, Contains, Predicate):
-    """Any instance of `tuple`."""
+    """Match any object that is an instance of `tuple`.
+
+    Attributes:
+        map_before : apply function before checking equality
+        equals : object must equal exactly. This is useful together with
+            `map_before` to check a value after applying a function
+        length : object length must be exactly
+        min_length : object length must be at least
+        max_length : object length must be at most
+        non_empty : object must have at least one member
+        superset_of : collection of which the object must be a superset
+        subset_of : collection of which the object must be a subset
+        pred : object must satisfy predicate
+    """
 
     def __eq__(self, other):
         try:
@@ -128,7 +175,20 @@ class Tuple(MapBefore, Equals[tuple], Length, Contains, Predicate):
 
 @dataclass
 class Set(MapBefore, Equals[set], Length, Contains, Predicate):
-    """Any instance of `set`."""
+    """Match any object that is an instance of `set`.
+
+    Attributes:
+        map_before : apply function before checking equality
+        equals : object must equal exactly. This is useful together with
+            `map_before` to check a value after applying a function
+        length : object length must be exactly
+        min_length : object length must be at least
+        max_length : object length must be at most
+        non_empty : object must have at least one member
+        superset_of : collection of which the object must be a superset
+        subset_of : collection of which the object must be a subset
+        pred : object must satisfy predicate
+    """
 
     def __eq__(self, other):
         try:
@@ -150,10 +210,25 @@ class Set(MapBefore, Equals[set], Length, Contains, Predicate):
 
 @dataclass
 class Dict(MapBefore, Equals[dict], Length, Contains, Predicate):
-    """Any instance of `dict`."""
+    """Match any object that is an instance of `dict`.
 
-    keys: typing.Optional[typing.Any] = None
-    values: typing.Optional[typing.Any] = None
+    Attributes:
+        map_before : apply function before checking equality
+        equals : object must equal exactly. This is useful together with
+            `map_before` to check a value after applying a function
+        length : object length must be exactly
+        min_length : object length must be at least
+        max_length : object length must be at most
+        non_empty : object must have at least one member
+        keys : object keys must equal
+        values : object values must equal
+        superset_of : collection of which the object must be a superset
+        subset_of : collection of which the object must be a subset
+        pred : object must satisfy predicate
+    """
+
+    keys: typing.Optional[typing.Set] = None
+    values: typing.Optional[typing.List] = None
     subset_of: typing.Optional[dict] = None
     superset_of: typing.Optional[dict] = None
 

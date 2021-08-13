@@ -10,6 +10,11 @@ repos:
     hooks:
       - id: black
         args: [ --line-length=100 ]
+  - repo: http://github.com/myint/docformatter
+    rev: v1.4
+    hooks:
+      - id: docformatter
+        args: [ --wrap-summaries=100, --wrap-descriptions=100 ]
   - repo: https://github.com/pycqa/flake8
     rev: 3.9.2
     hooks:

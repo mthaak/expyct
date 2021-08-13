@@ -36,7 +36,7 @@ class AnyValue(Any, Instance):
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
         pred : object must satisfy predicate
-        type : type of object must equal given type
+        type : type of object must equal to given type
         instance_of : object must be an instance of given type
     """
 

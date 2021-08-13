@@ -12,9 +12,8 @@ class OneOf:
 
         expyct.OneOf([
             expyct.ANY_DATE,
-            expyct.dict(keys=["from", "until"], values_eq=expyct.ANY_DATE)
+            expyct.dict(keys=["from", "until"], values=expyct.ANY_DATE)
         ])
-
     """
 
     options: typing.Collection
