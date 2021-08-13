@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>expyct package &#8212; expyct 0.1.3 documentation</title>
+    <title>expyct package &#8212; expyct 0.2.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/nature.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
@@ -29,7 +29,7 @@
         <li class="right" >
           <a href="expyct.any.html" title="expyct.any module"
              accesskey="N">next</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">expyct 0.1.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="#">expyct 0.2.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">expyct package</a></li> 
       </ul>
     </div>  
@@ -43,8 +43,8 @@
 <h1>expyct package<a class="headerlink" href="#expyct-package" title="Permalink to this headline">¶</a></h1>
 <p>Partial matching of any object. This is especially useful for testing that your functions return expected values.</p>
 <p>This library provides convenient classes that allow you to set constraints on the object you would like to test.</p>
-<p>Some example of these are <cite>Float</cite>, <cite>String</cite>, <cite>Any</cite> and <cite>DateTime</cite>. As you can see they closely match the built-in Python types.</p>
-<p>The constraints can be provided as constructor arguments. For example <cite>Number(min=3, max=5)</cite></p>
+<p>The constraints can be provided as constructor arguments. For example <cite>Number(min=3, max=5)</cite> matches any number between 3 and 5. In other words, <cite>Number(min=3, max=5) == n</cite> is <cite>True</cite> for all 3 &lt;= n &lt;= 5.</p>
+<p>Some other examples of classes are <cite>Float</cite>, <cite>String</cite>, <cite>Any</cite> and <cite>DateTime</cite>. As you can see, they closely match the built-in Python types.</p>
 <p>The library also comes with many commonly used data validators like <cite>ANY_UUID</cite> which matches any UUID string. And <cite>TODAY</cite> which matches any <cite>datetime</cite> occurring on the current day.</p>
 <p>Checking nested data structures is easy as well:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">expyct</span> <span class="k">as</span> <span class="nn">exp</span>
@@ -138,7 +138,7 @@
         <li class="right" >
           <a href="expyct.any.html" title="expyct.any module"
              >next</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">expyct 0.1.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="#">expyct 0.2.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">expyct package</a></li> 
       </ul>
     </div>
