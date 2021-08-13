@@ -97,7 +97,10 @@ workflows:
           filters:
             branches:
               only: main
-      - docs-build
+      - docs-build:
+          filters:
+            branches:
+              only: main
       - docs-deploy:
           requires:
             - lint-and-test
