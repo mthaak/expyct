@@ -43,8 +43,8 @@ import expyct as exp
         ("123", exp.String(superset_of="12"), True),
         ("14", exp.String(superset_of="12"), False),
         # test predicate
-        ("1234", exp.String(pred=lambda x: x.startswith("12")), True),
-        ("1234", exp.String(pred=lambda x: len(x) == 10), False),
+        ("1234", exp.String(satisfies=lambda x: x.startswith("12")), True),
+        ("1234", exp.String(satisfies=lambda x: len(x) == 10), False),
         # test regex
         ("abc", exp.String(regex="abcd?"), True),
         ("abc", exp.String(regex="defG?"), False),

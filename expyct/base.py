@@ -24,21 +24,21 @@ class MapBefore:
 
 
 @dataclass
-class Predicate:
+class Satisfies:
     """Mixin for checking equality by using a predicate function.
 
-    If the pred returns True, then it is equal.
+    If `satisfies(obj)` returns `True`, then it is equal.
 
     Attributes:
-        pred : the predicate to apply
+        satisfies : object must satisfy predicate
     """
 
-    pred: typing.Optional[typing.Callable[[typing.Any], bool]] = None
+    satisfies: typing.Optional[typing.Callable[[typing.Any], bool]] = None
 
     def __eq__(self, other):
-        if self.pred:
+        if self.satisfies:
             try:
-                return self.pred(other)
+                return self.satisfies(other)
             except Exception:
                 return False
         return True

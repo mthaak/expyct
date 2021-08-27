@@ -2,7 +2,7 @@ import typing
 from dataclasses import dataclass
 from datetime import datetime, date, time, timedelta, timezone
 
-from expyct.base import Equals, MapBefore, Predicate, Optional
+from expyct.base import Equals, MapBefore, Satisfies, Optional
 
 T = typing.TypeVar("T")
 
@@ -56,7 +56,7 @@ class DateTime(
     Equals[datetime],
     AfterBefore[datetime],
     AfterBeforeStrict[datetime],
-    Predicate,
+    Satisfies,
 ):
     """Match any object that is an instance of `datetime`.
 
@@ -69,7 +69,7 @@ class DateTime(
         before : object must occur before or exactly on given
         after_strict : object must occur after given
         before_strict : object must occur before given
-        pred : object must satisfy predicate
+        satisfies : object must satisfy predicate
     """
 
     def __eq__(self, other):
@@ -87,7 +87,7 @@ class DateTime(
             return False
         if not AfterBeforeStrict.__eq__(self, other):
             return False
-        if not Predicate.__eq__(self, other):
+        if not Satisfies.__eq__(self, other):
             return False
         return True
 
@@ -99,7 +99,7 @@ class DateTimeTz(
     Equals[datetime],
     AfterBefore[datetime],
     AfterBeforeStrict[datetime],
-    Predicate,
+    Satisfies,
 ):
     """Match any object that is an instance of `datetime` and has timezone information (`tzinfo`).
     In other words, is a timestamp.
@@ -115,7 +115,7 @@ class DateTimeTz(
             relative to when the assertion is run
         after_strict : object must occur after given
         before_strict : object must occur before given
-        pred : object must satisfy predicate
+        satisfies : object must satisfy predicate
     """
 
     after: typing.Optional[typing.Union[datetime, timedelta]] = None  # type: ignore
@@ -159,7 +159,7 @@ class DateTimeTz(
                 raise ValueError("after_strict is missing tzinfo")
         if not AfterBeforeStrict.__eq__(self, other):
             return False
-        if not Predicate.__eq__(self, other):
+        if not Satisfies.__eq__(self, other):
             return False
         return True
 
@@ -178,7 +178,7 @@ class DateTimeTz(
 
 @dataclass
 class Date(
-    MapBefore, Optional, Equals[date], AfterBefore[date], AfterBeforeStrict[date], Predicate
+    MapBefore, Optional, Equals[date], AfterBefore[date], AfterBeforeStrict[date], Satisfies
 ):
     """Match any object that is an instance of `date`.
 
@@ -191,7 +191,7 @@ class Date(
         before : object must occur before or exactly on given
         after_strict : object must occur after given
         before_strict : object must occur before given
-        pred : object must satisfy predicate
+        satisfies : object must satisfy predicate
     """
 
     def __eq__(self, other):
@@ -209,14 +209,14 @@ class Date(
             return False
         if not AfterBeforeStrict.__eq__(self, other):
             return False
-        if not Predicate.__eq__(self, other):
+        if not Satisfies.__eq__(self, other):
             return False
         return True
 
 
 @dataclass
 class Time(
-    MapBefore, Optional, Equals[time], AfterBefore[time], AfterBeforeStrict[time], Predicate
+    MapBefore, Optional, Equals[time], AfterBefore[time], AfterBeforeStrict[time], Satisfies
 ):
     """Match any object that is an instance of `time`.
 
@@ -229,7 +229,7 @@ class Time(
         before : object must occur before or exactly on given
         after_strict : object must occur after given
         before_strict : object must occur before given
-        pred : object must satisfy predicate
+        satisfies : object must satisfy predicate
     """
 
     def __eq__(self, other):
@@ -247,7 +247,7 @@ class Time(
             return False
         if not AfterBeforeStrict.__eq__(self, other):
             return False
-        if not Predicate.__eq__(self, other):
+        if not Satisfies.__eq__(self, other):
             return False
         return True
 

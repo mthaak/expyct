@@ -1,7 +1,7 @@
 import typing
 from dataclasses import dataclass
 
-from expyct.base import Equals, MapBefore, Predicate, Optional
+from expyct.base import Equals, MapBefore, Satisfies, Optional
 from expyct.base import Instance
 
 
@@ -66,7 +66,7 @@ class Contains:
 
 @dataclass
 class Collection(
-    MapBefore, Optional, Equals[typing.Collection], Instance, Length, Contains, Predicate
+    MapBefore, Optional, Equals[typing.Collection], Instance, Length, Contains, Satisfies
 ):
     """Match any object that is an instance of `Collection`.
 
@@ -83,7 +83,7 @@ class Collection(
         non_empty : object must have at least one member
         superset_of : collection of which the object must be a superset
         subset_of : collection of which the object must be a subset
-        pred : object must satisfy predicate
+        satisfies : object must satisfy predicate
     """
 
     def __eq__(self, other):
@@ -103,13 +103,13 @@ class Collection(
             return False
         if not Contains.__eq__(self, other):
             return False
-        if not Predicate.__eq__(self, other):
+        if not Satisfies.__eq__(self, other):
             return False
         return True
 
 
 @dataclass
-class List(MapBefore, Optional, Equals[list], Length, Contains, Predicate):
+class List(MapBefore, Optional, Equals[list], Length, Contains, Satisfies):
     """Match any object that is an instance of `list`.
 
     Attributes:
@@ -123,7 +123,7 @@ class List(MapBefore, Optional, Equals[list], Length, Contains, Predicate):
         non_empty : object must have at least one member
         superset_of : collection of which the object must be a superset
         subset_of : collection of which the object must be a subset
-        pred : object must satisfy predicate
+        satisfies : object must satisfy predicate
     """
 
     def __eq__(self, other):
@@ -141,13 +141,13 @@ class List(MapBefore, Optional, Equals[list], Length, Contains, Predicate):
             return False
         if not Contains.__eq__(self, other):
             return False
-        if not Predicate.__eq__(self, other):
+        if not Satisfies.__eq__(self, other):
             return False
         return True
 
 
 @dataclass
-class Tuple(MapBefore, Optional, Equals[tuple], Length, Contains, Predicate):
+class Tuple(MapBefore, Optional, Equals[tuple], Length, Contains, Satisfies):
     """Match any object that is an instance of `tuple`.
 
     Attributes:
@@ -161,7 +161,7 @@ class Tuple(MapBefore, Optional, Equals[tuple], Length, Contains, Predicate):
         non_empty : object must have at least one member
         superset_of : collection of which the object must be a superset
         subset_of : collection of which the object must be a subset
-        pred : object must satisfy predicate
+        satisfies : object must satisfy predicate
     """
 
     def __eq__(self, other):
@@ -179,13 +179,13 @@ class Tuple(MapBefore, Optional, Equals[tuple], Length, Contains, Predicate):
             return False
         if not Contains.__eq__(self, other):
             return False
-        if not Predicate.__eq__(self, other):
+        if not Satisfies.__eq__(self, other):
             return False
         return True
 
 
 @dataclass
-class Set(MapBefore, Optional, Equals[set], Length, Contains, Predicate):
+class Set(MapBefore, Optional, Equals[set], Length, Contains, Satisfies):
     """Match any object that is an instance of `set`.
 
     Attributes:
@@ -199,7 +199,7 @@ class Set(MapBefore, Optional, Equals[set], Length, Contains, Predicate):
         non_empty : object must have at least one member
         superset_of : collection of which the object must be a superset
         subset_of : collection of which the object must be a subset
-        pred : object must satisfy predicate
+        satisfies : object must satisfy predicate
     """
 
     def __eq__(self, other):
@@ -217,13 +217,13 @@ class Set(MapBefore, Optional, Equals[set], Length, Contains, Predicate):
             return False
         if not Contains.__eq__(self, other):
             return False
-        if not Predicate.__eq__(self, other):
+        if not Satisfies.__eq__(self, other):
             return False
         return True
 
 
 @dataclass
-class Dict(MapBefore, Optional, Equals[dict], Length, Contains, Predicate):
+class Dict(MapBefore, Optional, Equals[dict], Length, Contains, Satisfies):
     """Match any object that is an instance of `dict`.
 
     Attributes:
@@ -239,7 +239,7 @@ class Dict(MapBefore, Optional, Equals[dict], Length, Contains, Predicate):
         values : object values must equal
         superset_of : collection of which the object must be a superset
         subset_of : collection of which the object must be a subset
-        pred : object must satisfy predicate
+        satisfies : object must satisfy predicate
     """
 
     keys: typing.Optional[typing.Set] = None
@@ -266,6 +266,6 @@ class Dict(MapBefore, Optional, Equals[dict], Length, Contains, Predicate):
             return False
         if not Contains.__eq__(self, other):
             return False
-        if not Predicate.__eq__(self, other):
+        if not Satisfies.__eq__(self, other):
             return False
         return True

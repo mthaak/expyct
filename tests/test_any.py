@@ -35,8 +35,8 @@ class ABC:
         (ABC(), exp.Any(vars={"x": 4}), False),
         (ABC(), exp.Any(vars=exp.Dict(length=3)), True),
         # test predicate
-        (1, exp.Any(pred=lambda x: x % 2 == 0), False),
-        (2, exp.Any(pred=lambda x: x % 2 == 0), True),
+        (1, exp.Any(satisfies=lambda x: x % 2 == 0), False),
+        (2, exp.Any(satisfies=lambda x: x % 2 == 0), True),
     ],
 )
 def test_any(value, expect, result):
@@ -62,8 +62,8 @@ def test_any(value, expect, result):
         (ABC(), exp.AnyValue(vars={"x": 4}), False),
         (ABC(), exp.AnyValue(vars=exp.Dict(length=3)), True),
         # test predicate
-        (1, exp.AnyValue(pred=lambda x: x % 2 == 0), False),
-        (2, exp.AnyValue(pred=lambda x: x % 2 == 0), True),
+        (1, exp.AnyValue(satisfies=lambda x: x % 2 == 0), False),
+        (2, exp.AnyValue(satisfies=lambda x: x % 2 == 0), True),
     ],
 )
 def test_any_value(value, expect, result):
@@ -89,8 +89,8 @@ def test_any_value(value, expect, result):
         (ABC, exp.AnyType(vars={"a": 1}), False),
         (ABC, exp.AnyType(vars=exp.Dict(superset_of={"a": 1})), True),
         # test predicate
-        (int, exp.AnyType(pred=lambda x: x == str), False),
-        (str, exp.AnyType(pred=lambda x: x == str), True),
+        (int, exp.AnyType(satisfies=lambda x: x == str), False),
+        (str, exp.AnyType(satisfies=lambda x: x == str), True),
         # test type
         (list, exp.AnyType(subclass_of=Collection), True),
         (list, exp.AnyType(superclass_of=Collection), False),

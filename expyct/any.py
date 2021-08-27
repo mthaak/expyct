@@ -1,11 +1,11 @@
 import typing
 from dataclasses import dataclass
 
-from expyct.base import MapBefore, Predicate, Instance, Type, Equals, Vars, Optional
+from expyct.base import MapBefore, Satisfies, Instance, Type, Equals, Vars, Optional
 
 
 @dataclass
-class Any(MapBefore, Optional, Equals[typing.Any], Vars, Predicate):
+class Any(MapBefore, Optional, Equals[typing.Any], Vars, Satisfies):
     """Match any object.
 
     Attributes:
@@ -14,7 +14,7 @@ class Any(MapBefore, Optional, Equals[typing.Any], Vars, Predicate):
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
         vars : object attributes (result of `vars()`) must equal
-        pred : object must satisfy predicate
+        satisfies : object must satisfy predicate
     """
 
     def __eq__(self, other):
@@ -28,13 +28,13 @@ class Any(MapBefore, Optional, Equals[typing.Any], Vars, Predicate):
             return False
         if not Vars.__eq__(self, other):
             return False
-        if not Predicate.__eq__(self, other):
+        if not Satisfies.__eq__(self, other):
             return False
         return True
 
 
 @dataclass
-class AnyValue(MapBefore, Optional, Equals[typing.Any], Vars, Predicate, Instance):
+class AnyValue(MapBefore, Optional, Equals[typing.Any], Vars, Satisfies, Instance):
     """Match any value.
 
     Attributes:
@@ -42,7 +42,7 @@ class AnyValue(MapBefore, Optional, Equals[typing.Any], Vars, Predicate, Instanc
         optional : whether `None` is allowed
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
-        pred : object must satisfy predicate
+        satisfies : object must satisfy predicate
         type : type of object must equal to given type
         instance_of : object must be an instance of given type
     """
@@ -58,7 +58,7 @@ class AnyValue(MapBefore, Optional, Equals[typing.Any], Vars, Predicate, Instanc
             return False
         if not Vars.__eq__(self, other):
             return False
-        if not Predicate.__eq__(self, other):
+        if not Satisfies.__eq__(self, other):
             return False
         if not Instance.__eq__(self, other):
             return False
@@ -66,7 +66,7 @@ class AnyValue(MapBefore, Optional, Equals[typing.Any], Vars, Predicate, Instanc
 
 
 @dataclass
-class AnyType(MapBefore, Optional, Equals[typing.Any], Vars, Type, Predicate):
+class AnyType(MapBefore, Optional, Equals[typing.Any], Vars, Type, Satisfies):
     """Match any class.
 
     Attributes:
@@ -74,7 +74,7 @@ class AnyType(MapBefore, Optional, Equals[typing.Any], Vars, Type, Predicate):
         optional : whether `None` is allowed
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
-        pred : object must satisfy predicate
+        satisfies : object must satisfy predicate
         superclass_of : class must be superclass of given type
         subclass_of : class must be subclass of given type
     """
@@ -90,7 +90,7 @@ class AnyType(MapBefore, Optional, Equals[typing.Any], Vars, Type, Predicate):
             return False
         if not Vars.__eq__(self, other):
             return False
-        if not Predicate.__eq__(self, other):
+        if not Satisfies.__eq__(self, other):
             return False
         if not Type.__eq__(self, other):
             return False

@@ -51,8 +51,8 @@ import expyct as exp
         ([1, 2, 3], exp.Collection(superset_of=[1, 2]), True),
         ([1, 3], exp.Collection(superset_of=[1, 2]), False),
         # test predicate
-        ([1, 2, 3, 4], exp.Collection(pred=lambda x: sum(x) == 10), True),
-        ([1, 2, 3, 4], exp.Collection(pred=lambda x: len(x) == 10), False),
+        ([1, 2, 3, 4], exp.Collection(satisfies=lambda x: sum(x) == 10), True),
+        ([1, 2, 3, 4], exp.Collection(satisfies=lambda x: len(x) == 10), False),
     ],
 )
 def test_collection(value, expect, result):
@@ -98,8 +98,8 @@ def test_collection(value, expect, result):
         ([1, 2, 3], exp.List(superset_of=[1, 2]), True),
         ([1, 3], exp.List(superset_of=[1, 2]), False),
         # test predicate
-        ([1, 2, 3, 4], exp.List(pred=lambda x: sum(x) == 10), True),
-        ([1, 2, 3, 4], exp.List(pred=lambda x: len(x) == 10), False),
+        ([1, 2, 3, 4], exp.List(satisfies=lambda x: sum(x) == 10), True),
+        ([1, 2, 3, 4], exp.List(satisfies=lambda x: len(x) == 10), False),
     ],
 )
 def test_list(value, expect, result):
@@ -145,8 +145,8 @@ def test_list(value, expect, result):
         ((1, 2, 3), exp.Tuple(superset_of=(1, 2)), True),
         ((1, 3), exp.Tuple(superset_of=(1, 2)), False),
         # test predicate
-        ((1, 2, 3, 4), exp.Tuple(pred=lambda x: sum(x) == 10), True),
-        ((1, 2, 3, 4), exp.Tuple(pred=lambda x: len(x) == 10), False),
+        ((1, 2, 3, 4), exp.Tuple(satisfies=lambda x: sum(x) == 10), True),
+        ((1, 2, 3, 4), exp.Tuple(satisfies=lambda x: len(x) == 10), False),
     ],
 )
 def test_tuple(value, expect, result):
@@ -192,8 +192,8 @@ def test_tuple(value, expect, result):
         ({1, 2, 3}, exp.Set(superset_of={1, 2}), True),
         ({1, 3}, exp.Set(superset_of={1, 2}), False),
         # test predicate
-        ({1, 2, 3, 4}, exp.Set(pred=lambda x: sum(x) == 10), True),
-        ({1, 2, 3, 4}, exp.Set(pred=lambda x: len(x) == 10), False),
+        ({1, 2, 3, 4}, exp.Set(satisfies=lambda x: sum(x) == 10), True),
+        ({1, 2, 3, 4}, exp.Set(satisfies=lambda x: len(x) == 10), False),
     ],
 )
 def test_set(value, expect, result):
@@ -239,8 +239,8 @@ def test_set(value, expect, result):
         ({1: "a", 2: "b", 3: "c"}, exp.Dict(superset_of={1: "a", 2: "b"}), True),
         ({1: "a", 3: "c"}, exp.Dict(superset_of={1: "a", 2: "b"}), False),
         # test predicate
-        ({1: "a", 2: "b", 3: "c", 4: "d"}, exp.Dict(pred=lambda x: sum(x) == 10), True),
-        ({1: "a", 2: "b", 3: "c", 4: "d"}, exp.Dict(pred=lambda x: len(x) == 10), False),
+        ({1: "a", 2: "b", 3: "c", 4: "d"}, exp.Dict(satisfies=lambda x: sum(x) == 10), True),
+        ({1: "a", 2: "b", 3: "c", 4: "d"}, exp.Dict(satisfies=lambda x: len(x) == 10), False),
     ],
 )
 def test_dict(value, expect, result):

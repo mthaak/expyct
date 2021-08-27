@@ -23,8 +23,8 @@ import expyct as exp
         (1, exp.Number(instance_of=int), True),
         (1, exp.Number(instance_of=float), False),
         # test predicate
-        (1, exp.Number(pred=lambda x: x % 2 == 1), True),
-        (1, exp.Number(pred=lambda x: x % 2 == 0), False),
+        (1, exp.Number(satisfies=lambda x: x % 2 == 1), True),
+        (1, exp.Number(satisfies=lambda x: x % 2 == 0), False),
         # test equals
         (1, exp.Number(equals=1), True),
         (1, exp.Number(equals=2), False),

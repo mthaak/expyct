@@ -2,7 +2,7 @@ import typing
 from dataclasses import dataclass
 from numbers import Number as ParentNumber
 
-from expyct.base import MapBefore, Predicate, Equals, Instance, Optional
+from expyct.base import MapBefore, Satisfies, Equals, Instance, Optional
 
 
 @dataclass
@@ -68,7 +68,7 @@ class CloseTo:
 
 @dataclass
 class Number(
-    MapBefore, Optional, Instance, Equals[ParentNumber], Predicate, MinMax, MinMaxStrict, CloseTo
+    MapBefore, Optional, Instance, Equals[ParentNumber], Satisfies, MinMax, MinMaxStrict, CloseTo
 ):
     """Match any number.
 
@@ -79,7 +79,7 @@ class Number(
         instance_of : object must be an instance of given type
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
-        pred : object must satisfy predicate
+        satisfies : object must satisfy predicate
         min : number must be larger than or equal to given
         max : number must be smaller than or equal to given
         min_strict : number must be larger than given
@@ -101,7 +101,7 @@ class Number(
             return False
         if not Equals.__eq__(self, other):
             return False
-        if not Predicate.__eq__(self, other):
+        if not Satisfies.__eq__(self, other):
             return False
         if not MinMax.__eq__(self, other):
             return False
@@ -122,7 +122,7 @@ class Int(Number):
         instance_of : object must be an instance of given type
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
-        pred : object must satisfy predicate
+        satisfies : object must satisfy predicate
         min : number must be larger than or equal to given
         max : number must be smaller than or equal to given
         min_strict : number must be larger than given
@@ -149,7 +149,7 @@ class Float(Number):
         instance_of : object must be an instance of given type
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
-        pred : object must satisfy predicate
+        satisfies : object must satisfy predicate
         min : number must be larger than or equal to given
         max : number must be smaller than or equal to given
         min_strict : number must be larger than given

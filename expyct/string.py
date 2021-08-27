@@ -2,12 +2,12 @@ import re
 import typing
 from dataclasses import dataclass
 
-from expyct.base import Equals, MapBefore, Instance, Predicate, Optional
+from expyct.base import Equals, MapBefore, Instance, Satisfies, Optional
 from expyct.collection import Length, Contains
 
 
 @dataclass
-class String(MapBefore, Optional, Instance, Equals[str], Length, Contains, Predicate):
+class String(MapBefore, Optional, Instance, Equals[str], Length, Contains, Satisfies):
     """Match any object that is a string.
 
     Arguments:
@@ -23,7 +23,7 @@ class String(MapBefore, Optional, Instance, Equals[str], Length, Contains, Predi
           non_empty : object must have at least one member
           superset_of : collection of which the object must be a superset
           subset_of : collection of which the object must be a subset
-          pred : object must satisfy predicate
+          satisfies : object must satisfy predicate
           regex : string must fully mach predicate
           ignore_case : whether to ignore case for equality and regex matching
     """
@@ -52,7 +52,7 @@ class String(MapBefore, Optional, Instance, Equals[str], Length, Contains, Predi
             return False
         if not Contains.__eq__(self, other):
             return False
-        if not Predicate.__eq__(self, other):
+        if not Satisfies.__eq__(self, other):
             return False
         if self.regex:
             if isinstance(self.regex, str) and not re.fullmatch(
