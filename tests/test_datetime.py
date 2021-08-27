@@ -27,6 +27,9 @@ UTC = timezone.utc
             ),
             True,
         ),
+        # test optional
+        (None, exp.DateTime(), False),
+        (None, exp.DateTime(optional=True), True),
         # test equals
         (datetime(2020, 1, 1, 3, 2, 1), exp.DateTime(equals=datetime(2020, 1, 1, 3, 2, 1)), True),
         (datetime(2020, 1, 1, 3, 2, 1), exp.DateTime(equals=datetime(2020, 1, 1, 3, 2, 2)), False),
@@ -65,6 +68,9 @@ def test_datetime(value, expect, result):
             ),
             True,
         ),
+        # test optional
+        (None, exp.DateTimeTz(), False),
+        (None, exp.DateTimeTz(optional=True), True),
         # test equals
         (
             datetime(2020, 1, 1, 3, 2, 1, tzinfo=UTC),
@@ -201,6 +207,9 @@ def test_datetime_tz(value, expect, result):
         ("abc", exp.Date(), False),
         # test map before
         ("2020-01-01", exp.Date(equals=date(2020, 1, 1), map_before=parse_isoformat), True),
+        # test optional
+        (None, exp.Date(), False),
+        (None, exp.Date(optional=True), True),
         # test equals
         (date(2020, 1, 1), exp.Date(equals=date(2020, 1, 1)), True),
         (date(2020, 1, 1), exp.Date(equals=date(2020, 1, 2)), False),
@@ -239,6 +248,9 @@ def test_date(value, expect, result):
         ("abc", exp.Time(), False),
         # test map before
         ("01:01:03", exp.Time(equals=time(1, 1, 3), map_before=parse_isoformat), True),
+        # test optional
+        (None, exp.Time(), False),
+        (None, exp.Time(optional=True), True),
         # test equals
         (time(3, 2, 1), exp.Time(equals=time(3, 2, 1)), True),
         (time(3, 2, 1), exp.Time(equals=time(3, 2, 2)), False),

@@ -2,16 +2,17 @@ import re
 import typing
 from dataclasses import dataclass
 
-from expyct.base import Equals, MapBefore, Instance, Predicate
+from expyct.base import Equals, MapBefore, Instance, Predicate, Optional
 from expyct.collection import Length, Contains
 
 
 @dataclass
-class String(MapBefore, Equals[str], Instance, Length, Contains, Predicate):
+class String(MapBefore, Optional, Equals[str], Instance, Length, Contains, Predicate):
     """Match any object that is a string.
 
     Arguments:
           map_before : apply function before checking equality
+          optional : whether `None` is allowed
           type : type of object must equal to given type
           instance_of : object must be an instance of given type
           equals : object must equal exactly. This is useful together with
@@ -35,6 +36,8 @@ class String(MapBefore, Equals[str], Instance, Length, Contains, Predicate):
             other = MapBefore.map(self, other)
         except Exception:
             return False
+        if other is None:
+            return Optional.__eq__(self, other)
         if self.ignore_case:
             other = other.lower()
             if self.equals is not None:

@@ -24,6 +24,9 @@ import expyct as exp
         (tuple(), exp.Collection(type=list), False),
         # test map before
         (1, exp.Collection(map_before=lambda x: [x]), True),
+        # test optional
+        (None, exp.Collection(), False),
+        (None, exp.Collection(optional=True), True),
         # test equals
         ([1, 2, 3], exp.Collection(equals=[1, 2, 3]), True),
         ([1, 2, 3], exp.Collection(equals=[1, 2]), False),
@@ -68,6 +71,9 @@ def test_collection(value, expect, result):
         (1, exp.List(), False),
         # test map before
         (1, exp.List(map_before=lambda x: [x]), True),
+        # test optional
+        (None, exp.List(), False),
+        (None, exp.List(optional=True), True),
         # test equals
         ([1, 2, 3], exp.List(equals=[1, 2, 3]), True),
         ([1, 2, 3], exp.List(equals=[1, 2]), False),
@@ -112,6 +118,9 @@ def test_list(value, expect, result):
         (1, exp.Tuple(), False),
         # test map before
         (1, exp.Tuple(map_before=lambda x: (x,)), True),
+        # test optional
+        (None, exp.Tuple(), False),
+        (None, exp.Tuple(optional=True), True),
         # test equals
         ((1, 2, 3), exp.Tuple(equals=(1, 2, 3)), True),
         ((1, 2, 3), exp.Tuple(equals=(1, 2)), False),
@@ -156,6 +165,9 @@ def test_tuple(value, expect, result):
         (1, exp.Set(), False),
         # test map before
         (1, exp.Set(map_before=lambda x: {x}), True),
+        # test optional
+        (None, exp.Set(), False),
+        (None, exp.Set(optional=True), True),
         # test equals
         ({1, 2, 3}, exp.Set(equals={1, 2, 3}), True),
         ({1, 2, 3}, exp.Set(equals={1, 2}), False),
@@ -200,6 +212,9 @@ def test_set(value, expect, result):
         (1, exp.Dict(), False),
         # test map before
         (1, exp.Dict(map_before=lambda x: {x: "a"}), True),
+        # test optional
+        (None, exp.Dict(), False),
+        (None, exp.Dict(optional=True), True),
         # test equals
         ({1: "a", 2: "b", 3: "c"}, exp.Dict(equals={1: "a", 2: "b", 3: "c"}), True),
         ({1: "a", 2: "b", 3: "c"}, exp.Dict(equals={1: "a", 2: "b"}), False),

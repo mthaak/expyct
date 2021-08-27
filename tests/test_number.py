@@ -14,6 +14,9 @@ import expyct as exp
         ("1", exp.Number(map_before=int), True),
         ("abc", exp.Number(map_before=int), False),
         ("abc", exp.Number(map_before=str), False),
+        # test optional
+        (None, exp.Number(), False),
+        (None, exp.Number(optional=True), True),
         # test instance
         (1, exp.Number(type=int), True),
         (1, exp.Number(type=float), False),

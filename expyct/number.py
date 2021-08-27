@@ -2,7 +2,7 @@ import typing
 from dataclasses import dataclass
 from numbers import Number as ParentNumber
 
-from expyct.base import MapBefore, Predicate, Equals, Instance
+from expyct.base import MapBefore, Predicate, Equals, Instance, Optional
 
 
 @dataclass
@@ -67,11 +67,14 @@ class CloseTo:
 
 
 @dataclass
-class Number(MapBefore, Instance, Equals[ParentNumber], Predicate, MinMax, MinMaxStrict, CloseTo):
+class Number(
+    MapBefore, Optional, Instance, Equals[ParentNumber], Predicate, MinMax, MinMaxStrict, CloseTo
+):
     """Match any number.
 
     Arguments:
         map_before : apply function before checking equality
+        optional : whether `None` is allowed
         type : type of object must equal to given type
         instance_of : object must be an instance of given type
         equals : object must equal exactly. This is useful together with
@@ -90,6 +93,8 @@ class Number(MapBefore, Instance, Equals[ParentNumber], Predicate, MinMax, MinMa
             other = MapBefore.map(self, other)
         except Exception:
             return False
+        if other is None:
+            return Optional.__eq__(self, other)
         if not isinstance(other, ParentNumber):
             return False
         if not Instance.__eq__(self, other):

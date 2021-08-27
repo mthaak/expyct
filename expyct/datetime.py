@@ -2,7 +2,7 @@ import typing
 from dataclasses import dataclass
 from datetime import datetime, date, time, timedelta, timezone
 
-from expyct.base import Equals, MapBefore, Predicate
+from expyct.base import Equals, MapBefore, Predicate, Optional
 
 T = typing.TypeVar("T")
 
@@ -51,12 +51,18 @@ class AfterBeforeStrict(typing.Generic[T]):
 
 @dataclass
 class DateTime(
-    MapBefore, Equals[datetime], AfterBefore[datetime], AfterBeforeStrict[datetime], Predicate
+    MapBefore,
+    Optional,
+    Equals[datetime],
+    AfterBefore[datetime],
+    AfterBeforeStrict[datetime],
+    Predicate,
 ):
     """Match any object that is an instance of `datetime`.
 
     Arguments:
         map_before : apply function before checking equality
+        optional : whether `None` is allowed
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
         after : object must occur after or exactly on given
@@ -71,6 +77,8 @@ class DateTime(
             other = MapBefore.map(self, other)
         except Exception:
             return False
+        if other is None:
+            return Optional.__eq__(self, other)
         if not type(other) == datetime:
             return False
         if not Equals.__eq__(self, other):
@@ -86,13 +94,19 @@ class DateTime(
 
 @dataclass
 class DateTimeTz(
-    MapBefore, Equals[datetime], AfterBefore[datetime], AfterBeforeStrict[datetime], Predicate
+    MapBefore,
+    Optional,
+    Equals[datetime],
+    AfterBefore[datetime],
+    AfterBeforeStrict[datetime],
+    Predicate,
 ):
     """Match any object that is an instance of `datetime` and has timezone information (`tzinfo`).
     In other words, is a timestamp.
 
     Arguments:
         map_before : apply function before checking equality
+        optional : whether `None` is allowed
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
         after : object must occur after or on given. If timedelta is given, then it is compared
@@ -114,6 +128,8 @@ class DateTimeTz(
             other = MapBefore.map(self, other)
         except Exception:
             return False
+        if other is None:
+            return Optional.__eq__(self, other)
         if not type(other) == datetime:
             return False
         if other.tzinfo is None:
@@ -161,11 +177,14 @@ class DateTimeTz(
 
 
 @dataclass
-class Date(MapBefore, Equals[date], AfterBefore[date], AfterBeforeStrict[date], Predicate):
+class Date(
+    MapBefore, Optional, Equals[date], AfterBefore[date], AfterBeforeStrict[date], Predicate
+):
     """Match any object that is an instance of `date`.
 
     Arguments:
         map_before : apply function before checking equality
+        optional : whether `None` is allowed
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
         after : object must occur after or exactly on given
@@ -180,6 +199,8 @@ class Date(MapBefore, Equals[date], AfterBefore[date], AfterBeforeStrict[date], 
             other = MapBefore.map(self, other)
         except Exception:
             return False
+        if other is None:
+            return Optional.__eq__(self, other)
         if not type(other) == date:
             return False
         if not Equals.__eq__(self, other):
@@ -194,11 +215,14 @@ class Date(MapBefore, Equals[date], AfterBefore[date], AfterBeforeStrict[date], 
 
 
 @dataclass
-class Time(MapBefore, Equals[time], AfterBefore[time], AfterBeforeStrict[time], Predicate):
+class Time(
+    MapBefore, Optional, Equals[time], AfterBefore[time], AfterBeforeStrict[time], Predicate
+):
     """Match any object that is an instance of `time`.
 
     Arguments:
         map_before : apply function before checking equality
+        optional : whether `None` is allowed
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
         after : object must occur after or exactly on given
@@ -213,6 +237,8 @@ class Time(MapBefore, Equals[time], AfterBefore[time], AfterBeforeStrict[time], 
             other = MapBefore.map(self, other)
         except Exception:
             return False
+        if other is None:
+            return Optional.__eq__(self, other)
         if not type(other) == time:
             return False
         if not Equals.__eq__(self, other):

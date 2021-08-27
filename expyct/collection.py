@@ -1,7 +1,7 @@
 import typing
 from dataclasses import dataclass
 
-from expyct.base import Equals, MapBefore, Predicate
+from expyct.base import Equals, MapBefore, Predicate, Optional
 from expyct.base import Instance
 
 
@@ -65,11 +65,14 @@ class Contains:
 
 
 @dataclass
-class Collection(MapBefore, Equals[typing.Collection], Instance, Length, Contains, Predicate):
+class Collection(
+    MapBefore, Optional, Equals[typing.Collection], Instance, Length, Contains, Predicate
+):
     """Match any object that is an instance of `Collection`.
 
     Attributes:
         map_before : apply function before checking equality
+        optional : whether `None` is allowed
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
         type : type of object must equal to given type
@@ -88,6 +91,8 @@ class Collection(MapBefore, Equals[typing.Collection], Instance, Length, Contain
             other = MapBefore.map(self, other)
         except Exception:
             return False
+        if other is None:
+            return Optional.__eq__(self, other)
         if not isinstance(other, typing.Collection):
             return False
         if not Equals.__eq__(self, other):
@@ -104,11 +109,12 @@ class Collection(MapBefore, Equals[typing.Collection], Instance, Length, Contain
 
 
 @dataclass
-class List(MapBefore, Equals[list], Length, Contains, Predicate):
+class List(MapBefore, Optional, Equals[list], Length, Contains, Predicate):
     """Match any object that is an instance of `list`.
 
     Attributes:
         map_before : apply function before checking equality
+        optional : whether `None` is allowed
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
         length : object length must be exactly
@@ -125,6 +131,8 @@ class List(MapBefore, Equals[list], Length, Contains, Predicate):
             other = MapBefore.map(self, other)
         except Exception:
             return False
+        if other is None:
+            return Optional.__eq__(self, other)
         if not isinstance(other, list):
             return False
         if not Equals.__eq__(self, other):
@@ -139,11 +147,12 @@ class List(MapBefore, Equals[list], Length, Contains, Predicate):
 
 
 @dataclass
-class Tuple(MapBefore, Equals[tuple], Length, Contains, Predicate):
+class Tuple(MapBefore, Optional, Equals[tuple], Length, Contains, Predicate):
     """Match any object that is an instance of `tuple`.
 
     Attributes:
         map_before : apply function before checking equality
+        optional : whether `None` is allowed
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
         length : object length must be exactly
@@ -160,6 +169,8 @@ class Tuple(MapBefore, Equals[tuple], Length, Contains, Predicate):
             other = MapBefore.map(self, other)
         except Exception:
             return False
+        if other is None:
+            return Optional.__eq__(self, other)
         if not isinstance(other, tuple):
             return False
         if not Equals.__eq__(self, other):
@@ -174,11 +185,12 @@ class Tuple(MapBefore, Equals[tuple], Length, Contains, Predicate):
 
 
 @dataclass
-class Set(MapBefore, Equals[set], Length, Contains, Predicate):
+class Set(MapBefore, Optional, Equals[set], Length, Contains, Predicate):
     """Match any object that is an instance of `set`.
 
     Attributes:
         map_before : apply function before checking equality
+        optional : whether `None` is allowed
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
         length : object length must be exactly
@@ -195,6 +207,8 @@ class Set(MapBefore, Equals[set], Length, Contains, Predicate):
             other = MapBefore.map(self, other)
         except Exception:
             return False
+        if other is None:
+            return Optional.__eq__(self, other)
         if not isinstance(other, set):
             return False
         if not Equals.__eq__(self, other):
@@ -209,11 +223,12 @@ class Set(MapBefore, Equals[set], Length, Contains, Predicate):
 
 
 @dataclass
-class Dict(MapBefore, Equals[dict], Length, Contains, Predicate):
+class Dict(MapBefore, Optional, Equals[dict], Length, Contains, Predicate):
     """Match any object that is an instance of `dict`.
 
     Attributes:
         map_before : apply function before checking equality
+        optional : whether `None` is allowed
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
         length : object length must be exactly
@@ -237,6 +252,8 @@ class Dict(MapBefore, Equals[dict], Length, Contains, Predicate):
             other = MapBefore.map(self, other)
         except Exception:
             return False
+        if other is None:
+            return Optional.__eq__(self, other)
         if not isinstance(other, dict):
             return False
         if not Equals.__eq__(self, other):

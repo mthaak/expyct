@@ -82,6 +82,25 @@ class Vars:
 
 
 @dataclass
+class Optional:
+    """Mixin for matching with `None`.
+
+    Attributes:
+        optional : whether `None` is allowed
+    """
+
+    optional: typing.Optional[bool] = None
+
+    def __eq__(self, other):
+        if other is None:
+            if self.optional is not None:
+                return self.optional is True
+            else:
+                return False
+        return True
+
+
+@dataclass
 class Instance:
     """Match any object that is a class instance.
 
