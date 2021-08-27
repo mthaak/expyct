@@ -7,7 +7,7 @@ from expyct.collection import Length, Contains
 
 
 @dataclass
-class String(MapBefore, Optional, Equals[str], Instance, Length, Contains, Predicate):
+class String(MapBefore, Optional, Instance, Equals[str], Length, Contains, Predicate):
     """Match any object that is a string.
 
     Arguments:
