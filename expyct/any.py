@@ -1,17 +1,18 @@
 import typing
 from dataclasses import dataclass
 
-from expyct.base import MapBefore, Predicate, Instance, Type, Equals
+from expyct.base import MapBefore, Predicate, Instance, Type, Equals, Vars
 
 
 @dataclass
-class Any(MapBefore, Equals[typing.Any], Predicate):
+class Any(MapBefore, Equals[typing.Any], Vars, Predicate):
     """Match any object.
 
     Attributes:
         map_before : apply function before checking equality
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
+        vars : object attributes (result of `vars()`) must equal
         pred : object must satisfy predicate
     """
 
@@ -21,6 +22,8 @@ class Any(MapBefore, Equals[typing.Any], Predicate):
         except Exception:
             return False
         if not Equals.__eq__(self, other):
+            return False
+        if not Vars.__eq__(self, other):
             return False
         if not Predicate.__eq__(self, other):
             return False

@@ -62,6 +62,26 @@ class Equals(typing.Generic[T]):
 
 
 @dataclass
+class Vars:
+    """Mixin for checking the presence of specific object attributes.
+
+    The attributes are compared as a dict. So anything that can be compared
+    with a dict can be used as `vars` argument, including other expyct objects like `expyct.Dict`.
+
+    Attributes:
+        vars : object attributes (result of `vars()`) must equal
+    """
+
+    vars: typing.Optional[typing.Any] = None
+
+    def __eq__(self, other):
+        if self.vars is not None:
+            if not vars(other) == self.vars:
+                return False
+        return True
+
+
+@dataclass
 class Instance:
     """Match any object that is a class instance.
 

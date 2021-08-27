@@ -5,6 +5,13 @@ import pytest
 import expyct as exp
 
 
+class ABC:
+    def __init__(self):
+        self.a = 1
+        self.b = 2
+        self.c = 3
+
+
 @pytest.mark.parametrize(
     ["value", "expect", "result"],
     [
@@ -17,6 +24,9 @@ import expyct as exp
         # test map before and equals
         (1, exp.Any(equals=2), False),
         (1, exp.Any(equals=2, map_before=lambda x: x + 1), True),
+        # test vars
+        (ABC(), exp.Any(vars={"a": 1}), False),
+        (ABC(), exp.Any(vars=exp.Dict(length=3)), True),
         # test predicate
         (1, exp.Any(pred=lambda x: x % 2 == 0), False),
         (2, exp.Any(pred=lambda x: x % 2 == 0), True),
@@ -38,6 +48,9 @@ def test_any(value, expect, result):
         # test map before and equals
         (1, exp.AnyValue(equals=2), False),
         (1, exp.AnyValue(equals=2, map_before=lambda x: x + 1), True),
+        # test vars
+        (ABC(), exp.Any(vars={"a": 1}), False),
+        (ABC(), exp.Any(vars=exp.Dict(length=3)), True),
         # test predicate
         (1, exp.AnyValue(pred=lambda x: x % 2 == 0), False),
         (2, exp.AnyValue(pred=lambda x: x % 2 == 0), True),
@@ -59,6 +72,9 @@ def test_any_value(value, expect, result):
         # test map before and equals
         (int, exp.AnyType(equals=str), False),
         (int, exp.AnyType(equals=str, map_before=lambda x: str), True),
+        # test vars
+        (ABC(), exp.Any(vars={"a": 1}), False),
+        (ABC(), exp.Any(vars=exp.Dict(length=3)), True),
         # test predicate
         (int, exp.AnyType(pred=lambda x: x == str), False),
         (str, exp.AnyType(pred=lambda x: x == str), True),
