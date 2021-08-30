@@ -92,12 +92,12 @@ def test_any_value(value, expect, result):
         (int, exp.AnyType(satisfies=lambda x: x == str), False),
         (str, exp.AnyType(satisfies=lambda x: x == str), True),
         # test type
-        (list, exp.AnyType(subclass_of=Collection), True),
-        (list, exp.AnyType(superclass_of=Collection), False),
         (Collection, exp.AnyType(subclass_of=list), False),
+        (list, exp.AnyType(subclass_of=Collection), True),
+        (list, exp.AnyType(subclass_of=list), True),
+        (list, exp.AnyType(superclass_of=Collection), False),
         (Collection, exp.AnyType(superclass_of=list), True),
         (list, exp.AnyType(superclass_of=list), True),
-        (list, exp.AnyType(subclass_of=list), True),
     ],
 )
 def test_any_type(value, expect, result):

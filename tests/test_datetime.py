@@ -31,18 +31,49 @@ UTC = timezone.utc
         (None, exp.DateTime(), False),
         (None, exp.DateTime(optional=True), True),
         # test equals
-        (datetime(2020, 1, 1, 3, 2, 1), exp.DateTime(equals=datetime(2020, 1, 1, 3, 2, 1)), True),
         (datetime(2020, 1, 1, 3, 2, 1), exp.DateTime(equals=datetime(2020, 1, 1, 3, 2, 2)), False),
+        (datetime(2020, 1, 1, 3, 2, 1), exp.DateTime(equals=datetime(2020, 1, 1, 3, 2, 1)), True),
         # test before and after
-        (datetime(2020, 3, 3), exp.DateTime(after_strict=datetime(2020, 1, 1)), True),
-        (datetime(2020, 3, 3), exp.DateTime(after_strict=datetime(2020, 3, 3)), False),
+        (
+            datetime(2020, 3, 3),
+            exp.DateTime(after=datetime(2020, 3, 4)),
+            False,
+        ),
+        (
+            datetime(2020, 3, 3),
+            exp.DateTime(after=datetime(2020, 3, 3)),
+            True,
+        ),
+        (
+            datetime(2020, 3, 3),
+            exp.DateTime(after=datetime(2020, 1, 1)),
+            True,
+        ),
+        (
+            datetime(2020, 3, 3),
+            exp.DateTime(before=datetime(2020, 1, 1)),
+            False,
+        ),
+        (
+            datetime(2020, 3, 3),
+            exp.DateTime(before=datetime(2020, 3, 3)),
+            True,
+        ),
+        (
+            datetime(2020, 3, 3),
+            exp.DateTime(before=datetime(2020, 3, 4)),
+            True,
+        ),
+        # test before and after strict
         (datetime(2020, 3, 3), exp.DateTime(after_strict=datetime(2020, 3, 4)), False),
+        (datetime(2020, 3, 3), exp.DateTime(after_strict=datetime(2020, 3, 3)), False),
+        (datetime(2020, 3, 3), exp.DateTime(after_strict=datetime(2020, 1, 1)), True),
         (datetime(2020, 3, 3), exp.DateTime(before_strict=datetime(2020, 1, 1)), False),
         (datetime(2020, 3, 3), exp.DateTime(before_strict=datetime(2020, 3, 3)), False),
         (datetime(2020, 3, 3), exp.DateTime(before_strict=datetime(2020, 3, 4)), True),
         # test predicate
-        (datetime(2020, 3, 3), exp.DateTime(satisfies=lambda x: x.year == 2020), True),
         (datetime(2020, 3, 3), exp.DateTime(satisfies=lambda x: x.year == 2021), False),
+        (datetime(2020, 3, 3), exp.DateTime(satisfies=lambda x: x.year == 2020), True),
     ],
 )
 def test_datetime(value, expect, result):
@@ -74,19 +105,19 @@ def test_datetime(value, expect, result):
         # test equals
         (
             datetime(2020, 1, 1, 3, 2, 1, tzinfo=UTC),
-            exp.DateTimeTz(equals=datetime(2020, 1, 1, 3, 2, 1, tzinfo=UTC)),
-            True,
+            exp.DateTimeTz(equals=datetime(2020, 1, 1, 3, 2, 2, tzinfo=UTC)),
+            False,
         ),
         (
             datetime(2020, 1, 1, 3, 2, 1, tzinfo=UTC),
-            exp.DateTimeTz(equals=datetime(2020, 1, 1, 3, 2, 2, tzinfo=UTC)),
-            False,
+            exp.DateTimeTz(equals=datetime(2020, 1, 1, 3, 2, 1, tzinfo=UTC)),
+            True,
         ),
         # test before and after
         (
             datetime(2020, 3, 3, tzinfo=UTC),
-            exp.DateTimeTz(after=datetime(2020, 1, 1, tzinfo=UTC)),
-            True,
+            exp.DateTimeTz(after=datetime(2020, 3, 4, tzinfo=UTC)),
+            False,
         ),
         (
             datetime(2020, 3, 3, tzinfo=UTC),
@@ -95,8 +126,8 @@ def test_datetime(value, expect, result):
         ),
         (
             datetime(2020, 3, 3, tzinfo=UTC),
-            exp.DateTimeTz(after=datetime(2020, 3, 4, tzinfo=UTC)),
-            False,
+            exp.DateTimeTz(after=datetime(2020, 1, 1, tzinfo=UTC)),
+            True,
         ),
         (
             datetime(2020, 3, 3, tzinfo=UTC),
@@ -137,8 +168,8 @@ def test_datetime(value, expect, result):
         # test before and after strict
         (
             datetime(2020, 3, 3, tzinfo=UTC),
-            exp.DateTimeTz(after_strict=datetime(2020, 1, 1, tzinfo=UTC)),
-            True,
+            exp.DateTimeTz(after_strict=datetime(2020, 3, 4, tzinfo=UTC)),
+            False,
         ),
         (
             datetime(2020, 3, 3, tzinfo=UTC),
@@ -147,8 +178,8 @@ def test_datetime(value, expect, result):
         ),
         (
             datetime(2020, 3, 3, tzinfo=UTC),
-            exp.DateTimeTz(after_strict=datetime(2020, 3, 4, tzinfo=UTC)),
-            False,
+            exp.DateTimeTz(after_strict=datetime(2020, 1, 1, tzinfo=UTC)),
+            True,
         ),
         (
             datetime(2020, 3, 3, tzinfo=UTC),
@@ -189,13 +220,13 @@ def test_datetime(value, expect, result):
         # test predicate
         (
             datetime(2020, 3, 3, tzinfo=UTC),
-            exp.DateTimeTz(satisfies=lambda x: x.year == 2020),
-            True,
+            exp.DateTimeTz(satisfies=lambda x: x.year == 2021),
+            False,
         ),
         (
             datetime(2020, 3, 3, tzinfo=UTC),
-            exp.DateTimeTz(satisfies=lambda x: x.year == 2021),
-            False,
+            exp.DateTimeTz(satisfies=lambda x: x.year == 2020),
+            True,
         ),
     ],
 )
@@ -219,25 +250,25 @@ def test_datetime_tz(value, expect, result):
         (None, exp.Date(), False),
         (None, exp.Date(optional=True), True),
         # test equals
-        (date(2020, 1, 1), exp.Date(equals=date(2020, 1, 1)), True),
         (date(2020, 1, 1), exp.Date(equals=date(2020, 1, 2)), False),
+        (date(2020, 1, 1), exp.Date(equals=date(2020, 1, 1)), True),
         # test before and after
-        (date(2020, 3, 3), exp.Date(after=date(2020, 1, 1)), True),
-        (date(2020, 3, 3), exp.Date(after=date(2020, 3, 3)), True),
         (date(2020, 3, 3), exp.Date(after=date(2020, 3, 4)), False),
+        (date(2020, 3, 3), exp.Date(after=date(2020, 3, 3)), True),
+        (date(2020, 3, 3), exp.Date(after=date(2020, 1, 1)), True),
         (date(2020, 3, 3), exp.Date(before=date(2020, 1, 1)), False),
         (date(2020, 3, 3), exp.Date(before=date(2020, 3, 3)), True),
         (date(2020, 3, 3), exp.Date(before=date(2020, 3, 4)), True),
         # test before and after strict
-        (date(2020, 3, 3), exp.Date(after_strict=date(2020, 1, 1)), True),
-        (date(2020, 3, 3), exp.Date(after_strict=date(2020, 3, 3)), False),
         (date(2020, 3, 3), exp.Date(after_strict=date(2020, 3, 4)), False),
+        (date(2020, 3, 3), exp.Date(after_strict=date(2020, 3, 3)), False),
+        (date(2020, 3, 3), exp.Date(after_strict=date(2020, 1, 1)), True),
         (date(2020, 3, 3), exp.Date(before_strict=date(2020, 1, 1)), False),
         (date(2020, 3, 3), exp.Date(before_strict=date(2020, 3, 3)), False),
         (date(2020, 3, 3), exp.Date(before_strict=date(2020, 3, 4)), True),
         # test predicate
-        (date(2020, 3, 3), exp.Date(satisfies=lambda x: x.year == 2020), True),
         (date(2020, 3, 3), exp.Date(satisfies=lambda x: x.year == 2021), False),
+        (date(2020, 3, 3), exp.Date(satisfies=lambda x: x.year == 2020), True),
     ],
 )
 def test_date(value, expect, result):
@@ -260,25 +291,25 @@ def test_date(value, expect, result):
         (None, exp.Time(), False),
         (None, exp.Time(optional=True), True),
         # test equals
-        (time(3, 2, 1), exp.Time(equals=time(3, 2, 1)), True),
         (time(3, 2, 1), exp.Time(equals=time(3, 2, 2)), False),
+        (time(3, 2, 1), exp.Time(equals=time(3, 2, 1)), True),
         # test before and after
-        (time(3, 3), exp.Time(after=time(1, 1)), True),
-        (time(3, 3), exp.Time(after=time(3, 3)), True),
         (time(3, 3), exp.Time(after=time(3, 4)), False),
+        (time(3, 3), exp.Time(after=time(3, 3)), True),
+        (time(3, 3), exp.Time(after=time(1, 1)), True),
         (time(3, 3), exp.Time(before=time(1, 1)), False),
         (time(3, 3), exp.Time(before=time(3, 3)), True),
         (time(3, 3), exp.Time(before=time(3, 4)), True),
         # test before and after strict
-        (time(3, 3), exp.Time(after_strict=time(1, 1)), True),
-        (time(3, 3), exp.Time(after_strict=time(3, 3)), False),
         (time(3, 3), exp.Time(after_strict=time(3, 4)), False),
+        (time(3, 3), exp.Time(after_strict=time(3, 3)), False),
+        (time(3, 3), exp.Time(after_strict=time(1, 1)), True),
         (time(3, 3), exp.Time(before_strict=time(1, 1)), False),
         (time(3, 3), exp.Time(before_strict=time(3, 3)), False),
         (time(3, 3), exp.Time(before_strict=time(3, 4)), True),
         # test predicate
-        (time(3, 3), exp.Time(satisfies=lambda x: x.hour == 3), True),
         (time(3, 3), exp.Time(satisfies=lambda x: x.hour == 2), False),
+        (time(3, 3), exp.Time(satisfies=lambda x: x.hour == 3), True),
     ],
 )
 def test_time(value, expect, result):

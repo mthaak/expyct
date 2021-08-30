@@ -28,31 +28,31 @@ import expyct as exp
         (None, exp.Collection(), False),
         (None, exp.Collection(optional=True), True),
         # test equals
-        ([1, 2, 3], exp.Collection(equals=[1, 2, 3]), True),
         ([1, 2, 3], exp.Collection(equals=[1, 2]), False),
+        ([1, 2, 3], exp.Collection(equals=[1, 2, 3]), True),
         # test length
-        ([1, 2, 3], exp.Collection(length=3), True),
         ([1, 2, 3], exp.Collection(length=2), False),
+        ([1, 2, 3], exp.Collection(length=3), True),
         # test min length
         ([1, 2], exp.Collection(min_length=3), False),
         ([1, 2, 3], exp.Collection(min_length=3), True),
         ([1, 2, 3, 4], exp.Collection(min_length=3), True),
         # test max length
+        ([1, 2, 3, 4], exp.Collection(max_length=3), False),
         ([1, 2], exp.Collection(max_length=3), True),
         ([1, 2, 3], exp.Collection(max_length=3), True),
-        ([1, 2, 3, 4], exp.Collection(max_length=3), False),
         # test non empty
-        ([1, 2], exp.Collection(non_empty=True), True),
         ([], exp.Collection(non_empty=True), False),
+        ([1, 2], exp.Collection(non_empty=True), True),
         # test subset of
-        ([1, 2], exp.Collection(subset_of=[1, 2, 3]), True),
         ([1, 2, 4], exp.Collection(subset_of=[1, 2, 3]), False),
+        ([1, 2], exp.Collection(subset_of=[1, 2, 3]), True),
         # test superset of
-        ([1, 2, 3], exp.Collection(superset_of=[1, 2]), True),
         ([1, 3], exp.Collection(superset_of=[1, 2]), False),
+        ([1, 2, 3], exp.Collection(superset_of=[1, 2]), True),
         # test predicate
-        ([1, 2, 3, 4], exp.Collection(satisfies=lambda x: sum(x) == 10), True),
         ([1, 2, 3, 4], exp.Collection(satisfies=lambda x: len(x) == 10), False),
+        ([1, 2, 3, 4], exp.Collection(satisfies=lambda x: sum(x) == 10), True),
         # test all
         ([1, 2, 3, 4], exp.Collection(all=2), False),
         ([2, 2, 2], exp.Collection(all=2), True),
@@ -81,34 +81,34 @@ def test_collection(value, expect, result):
         (None, exp.List(), False),
         (None, exp.List(optional=True), True),
         # test equals
-        ([1, 2, 3], exp.List(equals=[1, 2, 3]), True),
         ([1, 2, 3], exp.List(equals=[1, 2]), False),
+        ([1, 2, 3], exp.List(equals=[1, 2, 3]), True),
         # test equals with ignore order
         ([1, 2, 3], exp.List(equals=[3, 2, 1], ignore_order=False), False),
         ([1, 2, 3], exp.List(equals=[3, 2, 1], ignore_order=True), True),
         # test length
-        ([1, 2, 3], exp.List(length=3), True),
         ([1, 2, 3], exp.List(length=2), False),
+        ([1, 2, 3], exp.List(length=3), True),
         # test min length
         ([1, 2], exp.List(min_length=3), False),
         ([1, 2, 3], exp.List(min_length=3), True),
         ([1, 2, 3, 4], exp.List(min_length=3), True),
         # test max length
+        ([1, 2, 3, 4], exp.List(max_length=3), False),
         ([1, 2], exp.List(max_length=3), True),
         ([1, 2, 3], exp.List(max_length=3), True),
-        ([1, 2, 3, 4], exp.List(max_length=3), False),
         # test non empty
-        ([1, 2], exp.List(non_empty=True), True),
         ([], exp.List(non_empty=True), False),
+        ([1, 2], exp.List(non_empty=True), True),
         # test subset of
-        ([1, 2], exp.List(subset_of=[1, 2, 3]), True),
         ([1, 2, 4], exp.List(subset_of=[1, 2, 3]), False),
+        ([1, 2], exp.List(subset_of=[1, 2, 3]), True),
         # test superset of
-        ([1, 2, 3], exp.List(superset_of=[1, 2]), True),
         ([1, 3], exp.List(superset_of=[1, 2]), False),
+        ([1, 2, 3], exp.List(superset_of=[1, 2]), True),
         # test predicate
-        ([1, 2, 3, 4], exp.List(satisfies=lambda x: sum(x) == 10), True),
         ([1, 2, 3, 4], exp.List(satisfies=lambda x: len(x) == 10), False),
+        ([1, 2, 3, 4], exp.List(satisfies=lambda x: sum(x) == 10), True),
         # test all
         ([1, 2, 3, 4], exp.List(all=2), False),
         ([2, 2, 2], exp.List(all=2), True),
@@ -137,31 +137,31 @@ def test_list(value, expect, result):
         (None, exp.Tuple(), False),
         (None, exp.Tuple(optional=True), True),
         # test equals
-        ((1, 2, 3), exp.Tuple(equals=(1, 2, 3)), True),
         ((1, 2, 3), exp.Tuple(equals=(1, 2)), False),
+        ((1, 2, 3), exp.Tuple(equals=(1, 2, 3)), True),
         # test length
-        ((1, 2, 3), exp.Tuple(length=3), True),
         ((1, 2, 3), exp.Tuple(length=2), False),
+        ((1, 2, 3), exp.Tuple(length=3), True),
         # test min length
         ((1, 2), exp.Tuple(min_length=3), False),
         ((1, 2, 3), exp.Tuple(min_length=3), True),
         ((1, 2, 3, 4), exp.Tuple(min_length=3), True),
         # test max length
+        ((1, 2, 3, 4), exp.Tuple(max_length=3), False),
         ((1, 2), exp.Tuple(max_length=3), True),
         ((1, 2, 3), exp.Tuple(max_length=3), True),
-        ((1, 2, 3, 4), exp.Tuple(max_length=3), False),
         # test non empty
-        ((1, 2), exp.Tuple(non_empty=True), True),
         ((), exp.Tuple(non_empty=True), False),
+        ((1, 2), exp.Tuple(non_empty=True), True),
         # test subset of
-        ((1, 2), exp.Tuple(subset_of=(1, 2, 3)), True),
         ((1, 2, 4), exp.Tuple(subset_of=(1, 2, 3)), False),
+        ((1, 2), exp.Tuple(subset_of=(1, 2, 3)), True),
         # test superset of
-        ((1, 2, 3), exp.Tuple(superset_of=(1, 2)), True),
         ((1, 3), exp.Tuple(superset_of=(1, 2)), False),
+        ((1, 2, 3), exp.Tuple(superset_of=(1, 2)), True),
         # test predicate
-        ((1, 2, 3, 4), exp.Tuple(satisfies=lambda x: sum(x) == 10), True),
         ((1, 2, 3, 4), exp.Tuple(satisfies=lambda x: len(x) == 10), False),
+        ((1, 2, 3, 4), exp.Tuple(satisfies=lambda x: sum(x) == 10), True),
         # test all
         ((1, 2, 3, 4), exp.Tuple(all=2), False),
         ((2, 2, 2), exp.Tuple(all=2), True),
@@ -190,31 +190,31 @@ def test_tuple(value, expect, result):
         (None, exp.Set(), False),
         (None, exp.Set(optional=True), True),
         # test equals
-        ({1, 2, 3}, exp.Set(equals={1, 2, 3}), True),
         ({1, 2, 3}, exp.Set(equals={1, 2}), False),
+        ({1, 2, 3}, exp.Set(equals={1, 2, 3}), True),
         # test length
-        ({1, 2, 3}, exp.Set(length=3), True),
         ({1, 2, 3}, exp.Set(length=2), False),
+        ({1, 2, 3}, exp.Set(length=3), True),
         # test min length
         ({1, 2}, exp.Set(min_length=3), False),
         ({1, 2, 3}, exp.Set(min_length=3), True),
         ({1, 2, 3, 4}, exp.Set(min_length=3), True),
         # test max length
+        ({1, 2, 3, 4}, exp.Set(max_length=3), False),
         ({1, 2}, exp.Set(max_length=3), True),
         ({1, 2, 3}, exp.Set(max_length=3), True),
-        ({1, 2, 3, 4}, exp.Set(max_length=3), False),
         # test non empty
-        ({1, 2}, exp.Set(non_empty=True), True),
         ({}, exp.Set(non_empty=True), False),
+        ({1, 2}, exp.Set(non_empty=True), True),
         # test subset of
-        ({1, 2}, exp.Set(subset_of={1, 2, 3}), True),
         ({1, 2, 4}, exp.Set(subset_of={1, 2, 3}), False),
+        ({1, 2}, exp.Set(subset_of={1, 2, 3}), True),
         # test superset of
-        ({1, 2, 3}, exp.Set(superset_of={1, 2}), True),
         ({1, 3}, exp.Set(superset_of={1, 2}), False),
+        ({1, 2, 3}, exp.Set(superset_of={1, 2}), True),
         # test predicate
-        ({1, 2, 3, 4}, exp.Set(satisfies=lambda x: sum(x) == 10), True),
         ({1, 2, 3, 4}, exp.Set(satisfies=lambda x: len(x) == 10), False),
+        ({1, 2, 3, 4}, exp.Set(satisfies=lambda x: sum(x) == 10), True),
         # test all
         ({1, 2, 3, 4}, exp.Set(all=2), False),
         ({2, 2, 2}, exp.Set(all=2), True),
@@ -243,31 +243,31 @@ def test_set(value, expect, result):
         (None, exp.Dict(), False),
         (None, exp.Dict(optional=True), True),
         # test equals
-        ({1: "a", 2: "b", 3: "c"}, exp.Dict(equals={1: "a", 2: "b", 3: "c"}), True),
         ({1: "a", 2: "b", 3: "c"}, exp.Dict(equals={1: "a", 2: "b"}), False),
+        ({1: "a", 2: "b", 3: "c"}, exp.Dict(equals={1: "a", 2: "b", 3: "c"}), True),
         # test length
-        ({1: "a", 2: "b", 3: "c"}, exp.Dict(length=3), True),
         ({1: "a", 2: "b", 3: "c"}, exp.Dict(length=2), False),
+        ({1: "a", 2: "b", 3: "c"}, exp.Dict(length=3), True),
         # test min length
         ({1: "a", 2: "b"}, exp.Dict(min_length=3), False),
         ({1: "a", 2: "b", 3: "c"}, exp.Dict(min_length=3), True),
         ({1: "a", 2: "b", 3: "c", 4: "d"}, exp.Dict(min_length=3), True),
         # test max length
+        ({1: "a", 2: "b", 3: "c", 4: "d"}, exp.Dict(max_length=3), False),
         ({1: "a", 2: "b"}, exp.Dict(max_length=3), True),
         ({1: "a", 2: "b", 3: "c"}, exp.Dict(max_length=3), True),
-        ({1: "a", 2: "b", 3: "c", 4: "d"}, exp.Dict(max_length=3), False),
         # test non empty
-        ({1: "a", 2: "b"}, exp.Dict(non_empty=True), True),
         ({}, exp.Dict(non_empty=True), False),
+        ({1: "a", 2: "b"}, exp.Dict(non_empty=True), True),
         # test subset of
-        ({1: "a", 2: "b"}, exp.Dict(subset_of={1: "a", 2: "b", 3: "c"}), True),
         ({1: "a", 2: "b", 4: "d"}, exp.Dict(subset_of={1: "a", 2: "b", 3: "c"}), False),
+        ({1: "a", 2: "b"}, exp.Dict(subset_of={1: "a", 2: "b", 3: "c"}), True),
         # test superset of
-        ({1: "a", 2: "b", 3: "c"}, exp.Dict(superset_of={1: "a", 2: "b"}), True),
         ({1: "a", 3: "c"}, exp.Dict(superset_of={1: "a", 2: "b"}), False),
+        ({1: "a", 2: "b", 3: "c"}, exp.Dict(superset_of={1: "a", 2: "b"}), True),
         # test predicate
-        ({1: "a", 2: "b", 3: "c", 4: "d"}, exp.Dict(satisfies=lambda x: sum(x) == 10), True),
         ({1: "a", 2: "b", 3: "c", 4: "d"}, exp.Dict(satisfies=lambda x: len(x) == 10), False),
+        ({1: "a", 2: "b", 3: "c", 4: "d"}, exp.Dict(satisfies=lambda x: sum(x) == 10), True),
         # test keys all
         ({1: "a", 2: "b", 3: "c", "4": "d"}, exp.Dict(keys_all=exp.ANY_INT), False),
         ({1: "a", 2: "b", 3: "c", 4: "d"}, exp.Dict(keys_all=exp.ANY_INT), True),
