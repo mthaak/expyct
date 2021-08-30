@@ -109,10 +109,6 @@ workflows:
       - lint
 
       - test:
-          name: test-version-3.5
-          version: "3.5"
-
-      - test:
           name: test-version-3.6
           version: "3.6"
 
@@ -128,19 +124,13 @@ workflows:
           name: test-version-3.9
           version: "3.9"
 
-      - test:
-          name: test-version-3.10
-          version: "3.10"
-
       - publish-to-pypi:
           requires:
             - lint
-            - test-version-3.5
             - test-version-3.6
             - test-version-3.7
             - test-version-3.8
             - test-version-3.9
-            - test-version-3.10
           context:
             - pypi-secrets
           filters:
