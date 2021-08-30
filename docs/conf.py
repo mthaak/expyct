@@ -22,9 +22,9 @@ copyright = "2021, Hummingbird Technologies"
 author = "Hummingbird Technologies"
 
 # The full version, including alpha/beta/rc tags
-from expyct import __version__  # noqa: E402
+from expyct.__version__ import VERSION  # noqa: E402
 
-release = __version__
+release = VERSION
 
 # -- General configuration ---------------------------------------------------
 
