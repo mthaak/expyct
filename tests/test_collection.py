@@ -53,6 +53,12 @@ import expyct as exp
         # test predicate
         ([1, 2, 3, 4], exp.Collection(satisfies=lambda x: sum(x) == 10), True),
         ([1, 2, 3, 4], exp.Collection(satisfies=lambda x: len(x) == 10), False),
+        # test all
+        ([1, 2, 3, 4], exp.Collection(all=2), False),
+        ([2, 2, 2], exp.Collection(all=2), True),
+        # test any
+        ([1, 2, 3, 4], exp.Collection(any=5), False),
+        ([2, 5, 2], exp.Collection(any=5), True),
     ],
 )
 def test_collection(value, expect, result):
@@ -100,6 +106,12 @@ def test_collection(value, expect, result):
         # test predicate
         ([1, 2, 3, 4], exp.List(satisfies=lambda x: sum(x) == 10), True),
         ([1, 2, 3, 4], exp.List(satisfies=lambda x: len(x) == 10), False),
+        # test all
+        ([1, 2, 3, 4], exp.List(all=2), False),
+        ([2, 2, 2], exp.List(all=2), True),
+        # test any
+        ([1, 2, 3, 4], exp.List(any=5), False),
+        ([2, 5, 2], exp.List(any=5), True),
     ],
 )
 def test_list(value, expect, result):
@@ -147,6 +159,12 @@ def test_list(value, expect, result):
         # test predicate
         ((1, 2, 3, 4), exp.Tuple(satisfies=lambda x: sum(x) == 10), True),
         ((1, 2, 3, 4), exp.Tuple(satisfies=lambda x: len(x) == 10), False),
+        # test all
+        ((1, 2, 3, 4), exp.Tuple(all=2), False),
+        ((2, 2, 2), exp.Tuple(all=2), True),
+        # test any
+        ((1, 2, 3, 4), exp.Tuple(any=5), False),
+        ((2, 5, 2), exp.Tuple(any=5), True),
     ],
 )
 def test_tuple(value, expect, result):
@@ -194,6 +212,12 @@ def test_tuple(value, expect, result):
         # test predicate
         ({1, 2, 3, 4}, exp.Set(satisfies=lambda x: sum(x) == 10), True),
         ({1, 2, 3, 4}, exp.Set(satisfies=lambda x: len(x) == 10), False),
+        # test all
+        ({1, 2, 3, 4}, exp.Set(all=2), False),
+        ({2, 2, 2}, exp.Set(all=2), True),
+        # test any
+        ({1, 2, 3, 4}, exp.Set(any=5), False),
+        ({2, 5, 2}, exp.Set(any=5), True),
     ],
 )
 def test_set(value, expect, result):
@@ -241,6 +265,18 @@ def test_set(value, expect, result):
         # test predicate
         ({1: "a", 2: "b", 3: "c", 4: "d"}, exp.Dict(satisfies=lambda x: sum(x) == 10), True),
         ({1: "a", 2: "b", 3: "c", 4: "d"}, exp.Dict(satisfies=lambda x: len(x) == 10), False),
+        # test keys all
+        ({1: "a", 2: "b", 3: "c", "4": "d"}, exp.Dict(keys_all=exp.ANY_INT), False),
+        ({1: "a", 2: "b", 3: "c", 4: "d"}, exp.Dict(keys_all=exp.ANY_INT), True),
+        # test keys any
+        ({1: "a", 2: "b", 3: "c", 4: "d"}, exp.Dict(keys_any=5), False),
+        ({1: "a", 2: "b", 3: "c", 4: "d", 5: "e"}, exp.Dict(keys_any=5), True),
+        # test values all
+        ({1: "a", 2: "b", 3: "c", 4: "d"}, exp.Dict(values_all="a"), False),
+        ({1: "a", 2: "a", 3: "a", 4: "a"}, exp.Dict(values_all="a"), True),
+        # test values any
+        ({1: "a", 2: "b", 3: "c", 4: "d"}, exp.Dict(values_any="e"), False),
+        ({1: "a", 2: "b", 3: "c", 4: "d", 5: "e"}, exp.Dict(values_any="e"), True),
     ],
 )
 def test_dict(value, expect, result):

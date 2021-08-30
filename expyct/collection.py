@@ -6,8 +6,34 @@ from expyct.base import Instance
 
 
 @dataclass
+class AllOrAny:
+    """Mixin for matching a collection object by checking that all or at least
+    one of its members are equal to given.
+
+    Like all other `expyct` objects, these can be nested. For example,
+    `assert l == exp.AllOrAny(all=exp.Int(min=3))`.
+
+    Attributes:
+        all : all members of collection must equal
+        any : any member of collection must equal
+    """
+
+    all: typing.Optional[typing.Any] = None
+    any: typing.Optional[typing.Any] = None
+
+    def __eq__(self, other):
+        if self.all is not None:
+            if not all(x == self.all for x in other):
+                return False
+        if self.any is not None:
+            if not any(x == self.any for x in other):
+                return False
+        return True
+
+
+@dataclass
 class Length:
-    """Match a collection object by its length as the result of len().
+    """Mixin for matching a collection object by its length as the result of len().
 
     Attributes:
         length : object length must be exactly
@@ -22,20 +48,24 @@ class Length:
     non_empty: bool = False
 
     def __eq__(self, other):
-        if self.length is not None and not len(other) == self.length:
-            return False
-        if self.min_length is not None and not len(other) >= self.min_length:
-            return False
-        if self.max_length is not None and not len(other) <= self.max_length:
-            return False
-        if self.non_empty and not len(other) > 0:
-            return False
+        if self.length is not None:
+            if not len(other) == self.length:
+                return False
+        if self.min_length is not None:
+            if not len(other) >= self.min_length:
+                return False
+        if self.max_length is not None:
+            if not len(other) <= self.max_length:
+                return False
+        if self.non_empty:
+            if not len(other) > 0:
+                return False
         return True
 
 
 @dataclass
 class Contains:
-    """Match a collection object by the containment of specified members.
+    """Mixin matching a collection object by the containment of specified members.
 
     Attributes:
         superset_of : collection of which the object must be a superset
@@ -66,11 +96,13 @@ class Contains:
 
 @dataclass
 class Collection(
-    MapBefore, Optional, Equals[typing.Collection], Instance, Length, Contains, Satisfies
+    AllOrAny, MapBefore, Optional, Equals[typing.Collection], Instance, Length, Contains, Satisfies
 ):
     """Match any object that is an instance of `Collection`.
 
     Attributes:
+        all : all members of collection must equal
+        any : any member of collection must equal
         map_before : apply function before checking equality
         optional : whether `None` is allowed
         equals : object must equal exactly. This is useful together with
@@ -105,14 +137,18 @@ class Collection(
             return False
         if not Satisfies.__eq__(self, other):
             return False
+        if not AllOrAny.__eq__(self, other):
+            return False
         return True
 
 
 @dataclass
-class List(MapBefore, Optional, Equals[list], Length, Contains, Satisfies):
+class List(AllOrAny, MapBefore, Optional, Equals[list], Length, Contains, Satisfies):
     """Match any object that is an instance of `list`.
 
     Attributes:
+        all : all members of collection must equal
+        any : any member of collection must equal
         map_before : apply function before checking equality
         optional : whether `None` is allowed
         equals : object must equal exactly. This is useful together with
@@ -143,14 +179,18 @@ class List(MapBefore, Optional, Equals[list], Length, Contains, Satisfies):
             return False
         if not Satisfies.__eq__(self, other):
             return False
+        if not AllOrAny.__eq__(self, other):
+            return False
         return True
 
 
 @dataclass
-class Tuple(MapBefore, Optional, Equals[tuple], Length, Contains, Satisfies):
+class Tuple(AllOrAny, MapBefore, Optional, Equals[tuple], Length, Contains, Satisfies):
     """Match any object that is an instance of `tuple`.
 
     Attributes:
+        all : all members of collection must equal
+        any : any member of collection must equal
         map_before : apply function before checking equality
         optional : whether `None` is allowed
         equals : object must equal exactly. This is useful together with
@@ -181,14 +221,18 @@ class Tuple(MapBefore, Optional, Equals[tuple], Length, Contains, Satisfies):
             return False
         if not Satisfies.__eq__(self, other):
             return False
+        if not AllOrAny.__eq__(self, other):
+            return False
         return True
 
 
 @dataclass
-class Set(MapBefore, Optional, Equals[set], Length, Contains, Satisfies):
+class Set(AllOrAny, MapBefore, Optional, Equals[set], Length, Contains, Satisfies):
     """Match any object that is an instance of `set`.
 
     Attributes:
+        all : all members of collection must equal
+        any : any member of collection must equal
         map_before : apply function before checking equality
         optional : whether `None` is allowed
         equals : object must equal exactly. This is useful together with
@@ -219,6 +263,8 @@ class Set(MapBefore, Optional, Equals[set], Length, Contains, Satisfies):
             return False
         if not Satisfies.__eq__(self, other):
             return False
+        if not AllOrAny.__eq__(self, other):
+            return False
         return True
 
 
@@ -246,6 +292,10 @@ class Dict(MapBefore, Optional, Equals[dict], Length, Contains, Satisfies):
     values: typing.Optional[typing.List] = None
     subset_of: typing.Optional[dict] = None
     superset_of: typing.Optional[dict] = None
+    keys_all: typing.Optional[typing.Any] = None
+    keys_any: typing.Optional[typing.Any] = None
+    values_all: typing.Optional[typing.Any] = None
+    values_any: typing.Optional[typing.Any] = None
 
     def __eq__(self, other):
         try:
@@ -260,12 +310,31 @@ class Dict(MapBefore, Optional, Equals[dict], Length, Contains, Satisfies):
             return False
         if not Length.__eq__(self, other):
             return False
-        if self.keys is not None and not other.keys() == self.keys:
-            return False
-        if self.values is not None and not other.values() == self.values:
-            return False
+        if self.keys is not None:
+            if not other.keys() == self.keys:
+                return False
+        if self.values is not None:
+            if not other.values() == self.values:
+                return False
         if not Contains.__eq__(self, other):
             return False
         if not Satisfies.__eq__(self, other):
             return False
+        if self.keys_all is not None:
+            if not all(x == self.keys_all for x in other.keys()):
+                return False
+        if self.keys_any is not None:
+            if not any(x == self.keys_any for x in other.keys()):
+                return False
+        if self.values_all is not None:
+            if not all(x == self.values_all for x in other.values()):
+                return False
+        if self.values_any is not None:
+            if not any(x == self.values_any for x in other.values()):
+                return False
         return True
+
+
+Dict()
+
+List()
