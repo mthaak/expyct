@@ -114,6 +114,10 @@ workflows:
           name: test-version-3.8
           version: "3.8"
 
+      - test:
+          name: test-version-3.7
+          version: "3.7"
+
       - publish-to-pypi:
           requires:
             - lint
