@@ -2,16 +2,26 @@ import re
 import typing
 from dataclasses import dataclass
 
-from expyct.base import Equals, MapBefore, Instance, Predicate
+from expyct.base import Equals, MapBefore, Instance, Satisfies, Optional
 from expyct.collection import Length, Contains
+from expyct.helpers import copy_update
 
 
 @dataclass
-class String(MapBefore, Equals[str], Instance, Length, Contains, Predicate):
+class String(
+    Satisfies,
+    Contains,
+    Length,
+    Equals[str],
+    Instance,
+    Optional,
+    MapBefore,
+):
     """Match any object that is a string.
 
     Arguments:
           map_before : apply function before checking equality
+          optional : whether `None` is allowed
           type : type of object must equal to given type
           instance_of : object must be an instance of given type
           equals : object must equal exactly. This is useful together with
@@ -22,12 +32,19 @@ class String(MapBefore, Equals[str], Instance, Length, Contains, Predicate):
           non_empty : object must have at least one member
           superset_of : collection of which the object must be a superset
           subset_of : collection of which the object must be a subset
-          pred : object must satisfy predicate
-          regex : string must fully mach predicate
-          ignore_case : whether to ignore case for equality and regex matching
+          satisfies : object must satisfy predicate
+          ignore_order : whether to ignore order for `equals`
+          starts_with : string must start with given
+          ends_with : string must end with given
+          regex : string must fully match predicate
+          ignore_case : whether to ignore case for starts_with, ends_with,
+            equality and regex matching
     """
 
-    regex: typing.Optional[typing.Union[str, re.Pattern]] = None
+    ignore_order: bool = False
+    starts_with: typing.Optional[str] = None
+    ends_with: typing.Optional[str] = None
+    regex: typing.Optional[typing.Union[str, bytes, re.Pattern]] = None
     ignore_case: bool = False
 
     def __eq__(self, other):
@@ -35,24 +52,40 @@ class String(MapBefore, Equals[str], Instance, Length, Contains, Predicate):
             other = MapBefore.map(self, other)
         except Exception:
             return False
+        if other is None:
+            return Optional.__eq__(self, other)
         if self.ignore_case:
             other = other.lower()
             if self.equals is not None:
                 self.equals = self.equals.lower()
+            if self.starts_with is not None:
+                self.starts_with = self.starts_with.lower()
+            if self.ends_with is not None:
+                self.ends_with = self.ends_with.lower()
         if not isinstance(other, (str, bytes)):
             return False
         if not Instance.__eq__(self, other):
             return False
-        if not Equals.__eq__(self, other):
-            return False
+        if self.ignore_order and isinstance(self.equals, typing.Iterable):
+            if not Equals.__eq__(copy_update(self, equals=sorted(self.equals)), sorted(other)):
+                return False
+        else:
+            if not Equals.__eq__(self, other):
+                return False
         if not Length.__eq__(self, other):
             return False
         if not Contains.__eq__(self, other):
             return False
-        if not Predicate.__eq__(self, other):
+        if not Satisfies.__eq__(self, other):
             return False
+        if self.starts_with is not None:
+            if not other.startswith(self.starts_with):
+                return False
+        if self.ends_with is not None:
+            if not other.endswith(self.ends_with):
+                return False
         if self.regex:
-            if isinstance(self.regex, str) and not re.fullmatch(
+            if isinstance(self.regex, (str, bytes)) and not re.fullmatch(
                 self.regex, str(other), self.flags()
             ):
                 return False

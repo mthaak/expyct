@@ -2,7 +2,7 @@ import typing
 from dataclasses import dataclass
 from datetime import datetime, date, time, timedelta, timezone
 
-from expyct.base import Equals, MapBefore, Predicate
+from expyct.base import Equals, MapBefore, Satisfies, Optional
 
 T = typing.TypeVar("T")
 
@@ -51,19 +51,25 @@ class AfterBeforeStrict(typing.Generic[T]):
 
 @dataclass
 class DateTime(
-    MapBefore, Equals[datetime], AfterBefore[datetime], AfterBeforeStrict[datetime], Predicate
+    Satisfies,
+    AfterBeforeStrict[datetime],
+    AfterBefore[datetime],
+    Equals[datetime],
+    Optional,
+    MapBefore,
 ):
     """Match any object that is an instance of `datetime`.
 
     Arguments:
         map_before : apply function before checking equality
+        optional : whether `None` is allowed
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
         after : object must occur after or exactly on given
         before : object must occur before or exactly on given
         after_strict : object must occur after given
         before_strict : object must occur before given
-        pred : object must satisfy predicate
+        satisfies : object must satisfy predicate
     """
 
     def __eq__(self, other):
@@ -71,6 +77,8 @@ class DateTime(
             other = MapBefore.map(self, other)
         except Exception:
             return False
+        if other is None:
+            return Optional.__eq__(self, other)
         if not type(other) == datetime:
             return False
         if not Equals.__eq__(self, other):
@@ -79,20 +87,26 @@ class DateTime(
             return False
         if not AfterBeforeStrict.__eq__(self, other):
             return False
-        if not Predicate.__eq__(self, other):
+        if not Satisfies.__eq__(self, other):
             return False
         return True
 
 
 @dataclass
 class DateTimeTz(
-    MapBefore, Equals[datetime], AfterBefore[datetime], AfterBeforeStrict[datetime], Predicate
+    Satisfies,
+    AfterBeforeStrict[datetime],
+    AfterBefore[datetime],
+    Equals[datetime],
+    Optional,
+    MapBefore,
 ):
     """Match any object that is an instance of `datetime` and has timezone information (`tzinfo`).
     In other words, is a timestamp.
 
     Arguments:
         map_before : apply function before checking equality
+        optional : whether `None` is allowed
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
         after : object must occur after or on given. If timedelta is given, then it is compared
@@ -101,7 +115,7 @@ class DateTimeTz(
             relative to when the assertion is run
         after_strict : object must occur after given
         before_strict : object must occur before given
-        pred : object must satisfy predicate
+        satisfies : object must satisfy predicate
     """
 
     after: typing.Optional[typing.Union[datetime, timedelta]] = None  # type: ignore
@@ -114,6 +128,8 @@ class DateTimeTz(
             other = MapBefore.map(self, other)
         except Exception:
             return False
+        if other is None:
+            return Optional.__eq__(self, other)
         if not type(other) == datetime:
             return False
         if other.tzinfo is None:
@@ -143,7 +159,7 @@ class DateTimeTz(
                 raise ValueError("after_strict is missing tzinfo")
         if not AfterBeforeStrict.__eq__(self, other):
             return False
-        if not Predicate.__eq__(self, other):
+        if not Satisfies.__eq__(self, other):
             return False
         return True
 
@@ -161,18 +177,26 @@ class DateTimeTz(
 
 
 @dataclass
-class Date(MapBefore, Equals[date], AfterBefore[date], AfterBeforeStrict[date], Predicate):
+class Date(
+    Satisfies,
+    AfterBeforeStrict[date],
+    AfterBefore[date],
+    Equals[date],
+    Optional,
+    MapBefore,
+):
     """Match any object that is an instance of `date`.
 
     Arguments:
         map_before : apply function before checking equality
+        optional : whether `None` is allowed
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
         after : object must occur after or exactly on given
         before : object must occur before or exactly on given
         after_strict : object must occur after given
         before_strict : object must occur before given
-        pred : object must satisfy predicate
+        satisfies : object must satisfy predicate
     """
 
     def __eq__(self, other):
@@ -180,6 +204,8 @@ class Date(MapBefore, Equals[date], AfterBefore[date], AfterBeforeStrict[date], 
             other = MapBefore.map(self, other)
         except Exception:
             return False
+        if other is None:
+            return Optional.__eq__(self, other)
         if not type(other) == date:
             return False
         if not Equals.__eq__(self, other):
@@ -188,24 +214,32 @@ class Date(MapBefore, Equals[date], AfterBefore[date], AfterBeforeStrict[date], 
             return False
         if not AfterBeforeStrict.__eq__(self, other):
             return False
-        if not Predicate.__eq__(self, other):
+        if not Satisfies.__eq__(self, other):
             return False
         return True
 
 
 @dataclass
-class Time(MapBefore, Equals[time], AfterBefore[time], AfterBeforeStrict[time], Predicate):
+class Time(
+    Satisfies,
+    AfterBeforeStrict[time],
+    AfterBefore[time],
+    Equals[time],
+    Optional,
+    MapBefore,
+):
     """Match any object that is an instance of `time`.
 
     Arguments:
         map_before : apply function before checking equality
+        optional : whether `None` is allowed
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
         after : object must occur after or exactly on given
         before : object must occur before or exactly on given
         after_strict : object must occur after given
         before_strict : object must occur before given
-        pred : object must satisfy predicate
+        satisfies : object must satisfy predicate
     """
 
     def __eq__(self, other):
@@ -213,6 +247,8 @@ class Time(MapBefore, Equals[time], AfterBefore[time], AfterBeforeStrict[time], 
             other = MapBefore.map(self, other)
         except Exception:
             return False
+        if other is None:
+            return Optional.__eq__(self, other)
         if not type(other) == time:
             return False
         if not Equals.__eq__(self, other):
@@ -221,7 +257,7 @@ class Time(MapBefore, Equals[time], AfterBefore[time], AfterBeforeStrict[time], 
             return False
         if not AfterBeforeStrict.__eq__(self, other):
             return False
-        if not Predicate.__eq__(self, other):
+        if not Satisfies.__eq__(self, other):
             return False
         return True
 

@@ -24,21 +24,21 @@ class MapBefore:
 
 
 @dataclass
-class Predicate:
+class Satisfies:
     """Mixin for checking equality by using a predicate function.
 
-    If the pred returns True, then it is equal.
+    If `satisfies(obj)` returns `True`, then it is equal.
 
     Attributes:
-        pred : the predicate to apply
+        satisfies : object must satisfy predicate
     """
 
-    pred: typing.Optional[typing.Callable[[typing.Any], bool]] = None
+    satisfies: typing.Optional[typing.Callable[[typing.Any], bool]] = None
 
     def __eq__(self, other):
-        if self.pred:
+        if self.satisfies:
             try:
-                return self.pred(other)
+                return self.satisfies(other)
             except Exception:
                 return False
         return True
@@ -57,6 +57,45 @@ class Equals(typing.Generic[T]):
     def __eq__(self, other):
         if self.equals is not None:
             if not other == self.equals:
+                return False
+        return True
+
+
+@dataclass
+class Vars:
+    """Mixin for checking the presence of specific object attributes.
+
+    The attributes are compared as a dict. So anything that can be compared
+    with a dict can be used as `vars` argument, including other expyct objects like `expyct.Dict`.
+
+    Attributes:
+        vars : object attributes (result of `vars()`) must equal
+    """
+
+    vars: typing.Optional[typing.Any] = None
+
+    def __eq__(self, other):
+        if self.vars is not None:
+            if not vars(other) == self.vars:
+                return False
+        return True
+
+
+@dataclass
+class Optional:
+    """Mixin for matching with `None`.
+
+    Attributes:
+        optional : whether `None` is allowed
+    """
+
+    optional: typing.Optional[bool] = None
+
+    def __eq__(self, other):
+        if other is None:
+            if self.optional is not None:
+                return self.optional is True
+            else:
                 return False
         return True
 

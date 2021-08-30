@@ -3,7 +3,7 @@ expyct package
 
 Partial matching of any object. This is especially useful for testing that your functions return expected values.
 
-This library provides convenient classes that allow you to set constraints on the object you would like to test.
+This library provides convenience classes that allow you to set constraints on the object you would like to test.
 
 The constraints can be provided as constructor arguments. For example `Number(min=3, max=5)` matches any number between 3 and 5. In other words, `Number(min=3, max=5) == n` is `True` for all `3 <= n <= 5`.
 

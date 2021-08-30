@@ -1,7 +1,7 @@
 # flake8: noqa
 
 from .any import Any, AnyValue, AnyType, ANY, ANY_VALUE, ANY_TYPE
-from .base import MapBefore, Predicate, Instance, Type
+from .base import MapBefore, Satisfies, Instance, Type
 from .collection import Collection, Length, List, Tuple, Set, Dict
 from .combination import OneOf
 from .datetime import (
@@ -49,6 +49,6 @@ from .number import (
 )
 from .string import String, ANY_UUID
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 
 __all__ = dir()
