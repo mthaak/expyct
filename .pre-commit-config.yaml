@@ -25,5 +25,4 @@ repos:
     hooks:
       - id: mypy
         args: [ expyct ]
-#        additional_dependencies: [ types-backports==0.1.3 ]
         pass_filenames: false
