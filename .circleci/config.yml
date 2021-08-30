@@ -116,28 +116,28 @@ workflows:
       - lint
 
       - test:
-          name: test-version-3.6
+          name: test-python-3.6
           version: "3.6"
 
       - test:
-          name: test-version-3.7
+          name: test-python-3.7
           version: "3.7"
 
       - test:
-          name: test-version-3.8
+          name: test-python-3.8
           version: "3.8"
 
       - test:
-          name: test-version-3.9
+          name: test-python-3.9
           version: "3.9"
 
       - publish-to-pypi:
           requires:
             - lint
-            - test-version-3.6
-            - test-version-3.7
-            - test-version-3.8
-            - test-version-3.9
+            - test-python-3.6
+            - test-python-3.7
+            - test-python-3.8
+            - test-python-3.9
           context:
             - pypi-secrets
           filters:
@@ -152,7 +152,7 @@ workflows:
       - docs-deploy:
           requires:
             - lint
-            - test-version-3.8 # just passing for 3.8 is enough confidence
+            - test-python-3.8 # just passing for 3.8 is enough confidence
             - docs-build
           filters:
             branches:
