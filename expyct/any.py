@@ -5,7 +5,7 @@ from expyct.base import MapBefore, Satisfies, Instance, Type, Equals, Vars, Opti
 
 
 @dataclass
-class Any(MapBefore, Optional, Equals[typing.Any], Vars, Satisfies):
+class Any(Satisfies, Vars, Equals[typing.Any], Optional, MapBefore):
     """Match any object.
 
     Attributes:
@@ -34,7 +34,7 @@ class Any(MapBefore, Optional, Equals[typing.Any], Vars, Satisfies):
 
 
 @dataclass
-class AnyValue(MapBefore, Optional, Equals[typing.Any], Vars, Satisfies, Instance):
+class AnyValue(Instance, Satisfies, Vars, Equals[typing.Any], Optional, MapBefore):
     """Match any value.
 
     Attributes:
@@ -42,6 +42,7 @@ class AnyValue(MapBefore, Optional, Equals[typing.Any], Vars, Satisfies, Instanc
         optional : whether `None` is allowed
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
+        vars : object attributes (result of `vars()`) must equal
         satisfies : object must satisfy predicate
         type : type of object must equal to given type
         instance_of : object must be an instance of given type
@@ -66,7 +67,7 @@ class AnyValue(MapBefore, Optional, Equals[typing.Any], Vars, Satisfies, Instanc
 
 
 @dataclass
-class AnyType(MapBefore, Optional, Equals[typing.Any], Vars, Type, Satisfies):
+class AnyType(Type, Satisfies, Vars, Equals[typing.Any], Optional, MapBefore):
     """Match any class.
 
     Attributes:
@@ -74,6 +75,7 @@ class AnyType(MapBefore, Optional, Equals[typing.Any], Vars, Type, Satisfies):
         optional : whether `None` is allowed
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
+        vars : object attributes (result of `vars()`) must equal
         satisfies : object must satisfy predicate
         superclass_of : class must be superclass of given type
         subclass_of : class must be subclass of given type

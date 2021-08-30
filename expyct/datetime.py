@@ -51,12 +51,12 @@ class AfterBeforeStrict(typing.Generic[T]):
 
 @dataclass
 class DateTime(
-    MapBefore,
-    Optional,
-    Equals[datetime],
-    AfterBefore[datetime],
-    AfterBeforeStrict[datetime],
     Satisfies,
+    AfterBeforeStrict[datetime],
+    AfterBefore[datetime],
+    Equals[datetime],
+    Optional,
+    MapBefore,
 ):
     """Match any object that is an instance of `datetime`.
 
@@ -94,12 +94,12 @@ class DateTime(
 
 @dataclass
 class DateTimeTz(
-    MapBefore,
-    Optional,
-    Equals[datetime],
-    AfterBefore[datetime],
-    AfterBeforeStrict[datetime],
     Satisfies,
+    AfterBeforeStrict[datetime],
+    AfterBefore[datetime],
+    Equals[datetime],
+    Optional,
+    MapBefore,
 ):
     """Match any object that is an instance of `datetime` and has timezone information (`tzinfo`).
     In other words, is a timestamp.
@@ -178,7 +178,12 @@ class DateTimeTz(
 
 @dataclass
 class Date(
-    MapBefore, Optional, Equals[date], AfterBefore[date], AfterBeforeStrict[date], Satisfies
+    Satisfies,
+    AfterBeforeStrict[date],
+    AfterBefore[date],
+    Equals[date],
+    Optional,
+    MapBefore,
 ):
     """Match any object that is an instance of `date`.
 
@@ -216,7 +221,12 @@ class Date(
 
 @dataclass
 class Time(
-    MapBefore, Optional, Equals[time], AfterBefore[time], AfterBeforeStrict[time], Satisfies
+    Satisfies,
+    AfterBeforeStrict[time],
+    AfterBefore[time],
+    Equals[time],
+    Optional,
+    MapBefore,
 ):
     """Match any object that is an instance of `time`.
 

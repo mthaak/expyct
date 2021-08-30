@@ -68,7 +68,14 @@ class CloseTo:
 
 @dataclass
 class Number(
-    MapBefore, Optional, Instance, Equals[ParentNumber], Satisfies, MinMax, MinMaxStrict, CloseTo
+    CloseTo,
+    MinMaxStrict,
+    MinMax,
+    Satisfies,
+    Equals[ParentNumber],
+    Instance,
+    Optional,
+    MapBefore,
 ):
     """Match any number.
 

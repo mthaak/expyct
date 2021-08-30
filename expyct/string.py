@@ -8,7 +8,15 @@ from expyct.helpers import copy_update
 
 
 @dataclass
-class String(MapBefore, Optional, Instance, Equals[str], Length, Contains, Satisfies):
+class String(
+    Satisfies,
+    Contains,
+    Length,
+    Equals[str],
+    Instance,
+    Optional,
+    MapBefore,
+):
     """Match any object that is a string.
 
     Arguments:
@@ -36,7 +44,7 @@ class String(MapBefore, Optional, Instance, Equals[str], Length, Contains, Satis
     ignore_order: bool = False
     starts_with: typing.Optional[str] = None
     ends_with: typing.Optional[str] = None
-    regex: typing.Optional[typing.Union[str, re.Pattern]] = None
+    regex: typing.Optional[typing.Union[str, bytes, re.Pattern]] = None
     ignore_case: bool = False
 
     def __eq__(self, other):
@@ -77,7 +85,7 @@ class String(MapBefore, Optional, Instance, Equals[str], Length, Contains, Satis
             if not other.endswith(self.ends_with):
                 return False
         if self.regex:
-            if isinstance(self.regex, str) and not re.fullmatch(
+            if isinstance(self.regex, (str, bytes)) and not re.fullmatch(
                 self.regex, str(other), self.flags()
             ):
                 return False

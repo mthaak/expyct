@@ -97,7 +97,14 @@ class Contains:
 
 @dataclass
 class Collection(
-    AllOrAny, MapBefore, Optional, Equals[typing.Collection], Instance, Length, Contains, Satisfies
+    Satisfies,
+    Contains,
+    Length,
+    Instance,
+    Equals[typing.Collection],
+    Optional,
+    MapBefore,
+    AllOrAny,  # keep `all` argument first, so expyct.Collection(expyct.Int) is possible
 ):
     """Match any object that is an instance of `Collection`.
 
@@ -144,7 +151,15 @@ class Collection(
 
 
 @dataclass
-class List(AllOrAny, MapBefore, Optional, Equals[list], Length, Contains, Satisfies):
+class List(
+    Satisfies,
+    Contains,
+    Length,
+    Equals[list],
+    Optional,
+    MapBefore,
+    AllOrAny,  # keep `all` argument first, so expyct.List(expyct.Int) is possible
+):
     """Match any object that is an instance of `list`.
 
     Attributes:
@@ -193,7 +208,15 @@ class List(AllOrAny, MapBefore, Optional, Equals[list], Length, Contains, Satisf
 
 
 @dataclass
-class Tuple(AllOrAny, MapBefore, Optional, Equals[tuple], Length, Contains, Satisfies):
+class Tuple(
+    Satisfies,
+    Contains,
+    Length,
+    Equals[tuple],
+    Optional,
+    MapBefore,
+    AllOrAny,  # keep `all` argument first, so expyct.Tuple(expyct.Int) is possible
+):
     """Match any object that is an instance of `tuple`.
 
     Attributes:
@@ -235,7 +258,15 @@ class Tuple(AllOrAny, MapBefore, Optional, Equals[tuple], Length, Contains, Sati
 
 
 @dataclass
-class Set(AllOrAny, MapBefore, Optional, Equals[set], Length, Contains, Satisfies):
+class Set(
+    Satisfies,
+    Contains,
+    Length,
+    Equals[set],
+    Optional,
+    MapBefore,
+    AllOrAny,  # keep `all` argument first, so expyct.Set(expyct.Int) is possible
+):
     """Match any object that is an instance of `set`.
 
     Attributes:
@@ -277,7 +308,14 @@ class Set(AllOrAny, MapBefore, Optional, Equals[set], Length, Contains, Satisfie
 
 
 @dataclass
-class Dict(MapBefore, Optional, Equals[dict], Length, Contains, Satisfies):
+class Dict(
+    Satisfies,
+    Contains,
+    Length,
+    Equals[dict],
+    Optional,
+    MapBefore,
+):
     """Match any object that is an instance of `dict`.
 
     Attributes:
@@ -289,17 +327,21 @@ class Dict(MapBefore, Optional, Equals[dict], Length, Contains, Satisfies):
         min_length : object length must be at least
         max_length : object length must be at most
         non_empty : object must have at least one member
-        keys : object keys must equal
-        values : object values must equal
         superset_of : collection of which the object must be a superset
         subset_of : collection of which the object must be a subset
         satisfies : object must satisfy predicate
+        keys : dict keys must equal
+        values : dict values must equal
+        keys_all : all dict keys must equal
+        keys_any : any dict key must equal
+        values_all : all dict values must equal
+        values_any : any dict value must equal
     """
 
+    superset_of: typing.Optional[dict] = None
+    subset_of: typing.Optional[dict] = None
     keys: typing.Optional[typing.Set] = None
     values: typing.Optional[typing.List] = None
-    subset_of: typing.Optional[dict] = None
-    superset_of: typing.Optional[dict] = None
     keys_all: typing.Optional[typing.Any] = None
     keys_any: typing.Optional[typing.Any] = None
     values_all: typing.Optional[typing.Any] = None
