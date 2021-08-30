@@ -9,7 +9,9 @@ jobs:
     steps:
       - checkout
       - run:
-          command: pip install --upgrade pip
+          command: |
+            curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+            python get-pip.py
           name: Upgrade pip
       - python/install-packages:
           pkg-manager: pip-dist
@@ -41,7 +43,9 @@ jobs:
     steps:
       - checkout
       - run:
-          command: pip install --upgrade pip
+          command: |
+            curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+            python get-pip.py
           name: Upgrade pip
       - python/install-packages:
           pkg-manager: pip-dist
