@@ -49,6 +49,4 @@ from .number import (
 )
 from .string import String, ANY_UUID
 
-__version__ = "0.3.0"
-
 __all__ = dir()
