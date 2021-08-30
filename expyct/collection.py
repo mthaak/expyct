@@ -383,8 +383,3 @@ class Dict(
             if not any(x == self.values_any for x in other.values()):
                 return False
         return True
-
-
-Dict()
-
-List()

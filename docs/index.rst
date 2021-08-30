@@ -29,12 +29,12 @@ Checking nested data structures is easy as well:
             "details": {
                 "number": exp.Int(min=2),
                 "amount": exp.Float(close_to=2.3, error=0.001),
-                "purchases": exp.List(of=exp.Dict(), non_empty=True),
+                "purchases": exp.List(exp.Dict(keys={"id", "product", "category"}), non_empty=True),
             },
-            "time_of_purchase": exp.OneOf([exp.TODAY, exp.THIS_WEEK]),
+            "time_of_purchase": exp.OneOf([exp.TODAY, exp.THIS_HOUR]),
             "type": exp.AnyType(subclass_of=str),
             "item_ids": exp.Set(subset_of=[1, 2, 3]),
-            "metadata": exp.Dict(keys=exp.Collection(superset_of=["a", "b"])),
+            "metadata": exp.Dict(keys_any=exp.Collection(superset_of=["a", "b"])),
             "context": exp.ANY,
         }
 

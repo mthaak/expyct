@@ -26,7 +26,7 @@ jobs:
       - run:
           command: |
             mkdir test-results
-            pytest -v --junitxml=test-results/junit.xml
+            pytest -v --cov=expyct --junitxml=test-results/junit.xml
           name: Run pytest
       - store_test_results:
           path: test-results

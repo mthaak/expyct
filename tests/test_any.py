@@ -1,4 +1,4 @@
-from collections import Collection
+from collections.abc import Collection
 
 import pytest
 
