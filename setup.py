@@ -6,8 +6,8 @@ from setuptools import setup
 with open(Path(__file__).parent / "expyct" / "__version__.py") as file:
     VERSION = file.readline().split(" ")[2]
 
-if sys.version_info == (3, 6):
-    INSTALL_REQUIRES = ["dataclasses"]
+if (3, 6) <= sys.version_info < (3, 7):
+    INSTALL_REQUIRES = ["dataclasses", "backports-datetime-fromisoformat"]
 else:
     INSTALL_REQUIRES = []
 

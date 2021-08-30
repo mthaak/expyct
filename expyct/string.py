@@ -44,7 +44,7 @@ class String(
     ignore_order: bool = False
     starts_with: typing.Optional[str] = None
     ends_with: typing.Optional[str] = None
-    regex: typing.Optional[typing.Union[str, bytes, re.Pattern]] = None
+    regex: typing.Optional[typing.Union[str, bytes, typing.Pattern]] = None
     ignore_case: bool = False
 
     def __eq__(self, other):
@@ -89,7 +89,7 @@ class String(
                 self.regex, str(other), self.flags()
             ):
                 return False
-            if isinstance(self.regex, re.Pattern) and not self.regex.fullmatch(other):
+            if isinstance(self.regex, typing.Pattern) and not self.regex.fullmatch(other):
                 return False
         return True
 
