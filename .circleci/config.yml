@@ -9,9 +9,9 @@ jobs:
     steps:
       - checkout
       - python/install-packages:
-          pkg-manager: pip
+          pkg-manager: pip-dist
       - python/install-packages:
-          pip-dependency-file: dev-requirements.txt
+          pip-dependency-file: dev_requirements.txt
           pkg-manager: pip
       - run:
           command: black -l 100 expyct tests
@@ -37,9 +37,9 @@ jobs:
     steps:
       - checkout
       - python/install-packages:
-          pkg-manager: pip
+          pkg-manager: pip-dist
       - python/install-packages:
-          pip-dependency-file: dev-requirements.txt
+          pip-dependency-file: dev_requirements.txt
           pkg-manager: pip
       - run:
           command: |
