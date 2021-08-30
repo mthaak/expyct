@@ -4,6 +4,7 @@ from dataclasses import dataclass
 
 from expyct.base import Equals, MapBefore, Instance, Satisfies, Optional
 from expyct.collection import Length, Contains
+from expyct.helpers import copy_update
 
 
 @dataclass
@@ -24,6 +25,7 @@ class String(MapBefore, Optional, Instance, Equals[str], Length, Contains, Satis
           superset_of : collection of which the object must be a superset
           subset_of : collection of which the object must be a subset
           satisfies : object must satisfy predicate
+          ignore_order : whether to ignore order for `equals`
           starts_with : string must start with given
           ends_with : string must end with given
           regex : string must fully match predicate
@@ -31,6 +33,7 @@ class String(MapBefore, Optional, Instance, Equals[str], Length, Contains, Satis
             equality and regex matching
     """
 
+    ignore_order: bool = False
     starts_with: typing.Optional[str] = None
     ends_with: typing.Optional[str] = None
     regex: typing.Optional[typing.Union[str, re.Pattern]] = None
@@ -55,8 +58,12 @@ class String(MapBefore, Optional, Instance, Equals[str], Length, Contains, Satis
             return False
         if not Instance.__eq__(self, other):
             return False
-        if not Equals.__eq__(self, other):
-            return False
+        if self.ignore_order and isinstance(self.equals, typing.Iterable):
+            if not Equals.__eq__(copy_update(self, equals=sorted(self.equals)), sorted(other)):
+                return False
+        else:
+            if not Equals.__eq__(self, other):
+                return False
         if not Length.__eq__(self, other):
             return False
         if not Contains.__eq__(self, other):

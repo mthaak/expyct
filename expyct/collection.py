@@ -3,6 +3,7 @@ from dataclasses import dataclass
 
 from expyct.base import Equals, MapBefore, Satisfies, Optional
 from expyct.base import Instance
+from expyct.helpers import copy_update
 
 
 @dataclass
@@ -160,7 +161,10 @@ class List(AllOrAny, MapBefore, Optional, Equals[list], Length, Contains, Satisf
         superset_of : collection of which the object must be a superset
         subset_of : collection of which the object must be a subset
         satisfies : object must satisfy predicate
+        ignore_order : whether to ignore order for `equals`
     """
+
+    ignore_order: bool = False
 
     def __eq__(self, other):
         try:
@@ -171,8 +175,12 @@ class List(AllOrAny, MapBefore, Optional, Equals[list], Length, Contains, Satisf
             return Optional.__eq__(self, other)
         if not isinstance(other, list):
             return False
-        if not Equals.__eq__(self, other):
-            return False
+        if self.ignore_order and isinstance(self.equals, typing.Iterable):
+            if not Equals.__eq__(copy_update(self, equals=sorted(self.equals)), sorted(other)):
+                return False
+        else:
+            if not Equals.__eq__(self, other):
+                return False
         if not Length.__eq__(self, other):
             return False
         if not Contains.__eq__(self, other):

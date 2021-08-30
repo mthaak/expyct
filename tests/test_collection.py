@@ -83,6 +83,9 @@ def test_collection(value, expect, result):
         # test equals
         ([1, 2, 3], exp.List(equals=[1, 2, 3]), True),
         ([1, 2, 3], exp.List(equals=[1, 2]), False),
+        # test equals with ignore order
+        ([1, 2, 3], exp.List(equals=[3, 2, 1], ignore_order=False), False),
+        ([1, 2, 3], exp.List(equals=[3, 2, 1], ignore_order=True), True),
         # test length
         ([1, 2, 3], exp.List(length=3), True),
         ([1, 2, 3], exp.List(length=2), False),
