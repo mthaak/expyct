@@ -8,6 +8,9 @@ jobs:
     executor: python/default
     steps:
       - checkout
+      - run:
+          command: pip install --upgrade pip
+          name: Upgrade pip
       - python/install-packages:
           pkg-manager: pip-dist
           pip-dependency-file: setup.py
@@ -37,6 +40,9 @@ jobs:
       tag: << parameters.version >>
     steps:
       - checkout
+      - run:
+          command: pip install --upgrade pip
+          name: Upgrade pip
       - python/install-packages:
           pkg-manager: pip-dist
           pip-dependency-file: setup.py
