@@ -39,20 +39,15 @@ jobs:
       - checkout
       - run:
           command: |
-            pip_version=$(echo `pip --version` | cut -d ' ' -f 2)
-            if [[ $pip_version < "20.1.1" ]] ; then
-              curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-              python get-pip.py
-            fi
+            curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+            python get-pip.py
           name: Upgrade pip
       - python/install-packages:
           pkg-manager: pip-dist
           pip-dependency-file: setup.py
-          cache-version: 6ef0cf6f-9e94-47ce-a78f-a2949a390095
       - python/install-packages:
           pkg-manager: pip
           pip-dependency-file: dev_requirements.txt
-          cache-version: 6ef0cf6f-9e94-47ce-a78f-a2949a390095
       - run:
           command: |
             mkdir test-results
