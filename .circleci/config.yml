@@ -10,8 +10,10 @@ jobs:
       - checkout
       - run:
           command: |
-            curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-            python get-pip.py
+            pip_version=$(echo `pip --version` | cut -d ' ' -f 2)
+            if [[ $pip_version < "20.1.1" ]] ; then
+              pip install pip==20.1.1
+            fi
           name: Upgrade pip
       - python/install-packages:
           pkg-manager: pip-dist
@@ -44,8 +46,10 @@ jobs:
       - checkout
       - run:
           command: |
-            curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-            python get-pip.py
+            pip_version=$(echo `pip --version` | cut -d ' ' -f 2)
+            if [[ $pip_version < "20.1.1" ]] ; then
+              pip install pip==20.1.1
+            fi
           name: Upgrade pip
       - python/install-packages:
           pkg-manager: pip-dist
