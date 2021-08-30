@@ -1,8 +1,10 @@
 import sys
+from pathlib import Path
 
 from setuptools import setup
 
-from expyct.__version__ import VERSION
+with open(Path(__file__).parent / "expyct" / "__version__.py") as file:
+    VERSION = file.readline().split(" ")[2]
 
 if sys.version_info == (3, 6):
     INSTALL_REQUIRES = ["dataclasses"]
