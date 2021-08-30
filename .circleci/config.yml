@@ -93,17 +93,17 @@ jobs:
       - attach_workspace:
           at: docs/_build
       - run:
-          name: Disable jekyll builds
           command: touch docs/_build/html/.nojekyll
+          name: Disable jekyll builds
       - run:
-          name: Install and configure dependencies
           command: |
             npm install -g --silent gh-pages@2.0.1
             git config user.email "ci-build@hummingbirdtech.com"
             git config user.name "ci-build"
+          name: Install and configure dependencies
       - run:
-          name: Deploy docs to gh-pages branch
           command: gh-pages --dotfiles --message "[skip ci] Updates" --dist docs/_build/html
+          name: Deploy docs to gh-pages branch
 
 workflows:
   main:
