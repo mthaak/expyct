@@ -8,12 +8,11 @@ jobs:
     executor: python/default
     steps:
       - checkout
-      - run:
-          command: pip install .
-          name: Install package
-      - run:
-          command: pip install -r dev_requirements.txt
-          name: Install dev requirements
+      - python/install-packages:
+          pkg-manager: pip
+      - python/install-packages:
+          pip-dependency-file: dev-requirements.txt
+          pkg-manager: pip
       - run:
           command: black -l 100 expyct tests
           name: Run black
@@ -37,12 +36,11 @@ jobs:
       tag: << parameters.version >>
     steps:
       - checkout
-      - run:
-          command: pip install .
-          name: Install package
-      - run:
-          command: pip install -r dev_requirements.txt
-          name: Install dev requirements
+      - python/install-packages:
+          pkg-manager: pip
+      - python/install-packages:
+          pip-dependency-file: dev-requirements.txt
+          pkg-manager: pip
       - run:
           command: |
             mkdir test-results
