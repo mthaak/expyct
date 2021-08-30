@@ -45,6 +45,18 @@ import expyct as exp
         # test predicate
         ("1234", exp.String(satisfies=lambda x: x.startswith("12")), True),
         ("1234", exp.String(satisfies=lambda x: len(x) == 10), False),
+        # test starts with
+        ("abcd", exp.String(starts_with="cd"), False),
+        ("abcd", exp.String(starts_with="ab"), True),
+        ("abcd", exp.String(starts_with="AB", ignore_case=False), False),
+        ("abcd", exp.String(starts_with="AB", ignore_case=True), True),
+        ("ABCD", exp.String(starts_with="ab", ignore_case=True), True),
+        # test ends with
+        ("abcd", exp.String(ends_with="cd"), True),
+        ("abcd", exp.String(ends_with="ab"), False),
+        ("abcd", exp.String(ends_with="CD", ignore_case=False), False),
+        ("abcd", exp.String(ends_with="CD", ignore_case=True), True),
+        ("ABCD", exp.String(ends_with="cd", ignore_case=True), True),
         # test regex
         ("abc", exp.String(regex="abcd?"), True),
         ("abc", exp.String(regex="defG?"), False),

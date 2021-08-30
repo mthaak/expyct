@@ -24,10 +24,15 @@ class String(MapBefore, Optional, Instance, Equals[str], Length, Contains, Satis
           superset_of : collection of which the object must be a superset
           subset_of : collection of which the object must be a subset
           satisfies : object must satisfy predicate
-          regex : string must fully mach predicate
-          ignore_case : whether to ignore case for equality and regex matching
+          starts_with : string must start with given
+          ends_with : string must end with given
+          regex : string must fully match predicate
+          ignore_case : whether to ignore case for starts_with, ends_with,
+            equality and regex matching
     """
 
+    starts_with: typing.Optional[str] = None
+    ends_with: typing.Optional[str] = None
     regex: typing.Optional[typing.Union[str, re.Pattern]] = None
     ignore_case: bool = False
 
@@ -42,6 +47,10 @@ class String(MapBefore, Optional, Instance, Equals[str], Length, Contains, Satis
             other = other.lower()
             if self.equals is not None:
                 self.equals = self.equals.lower()
+            if self.starts_with is not None:
+                self.starts_with = self.starts_with.lower()
+            if self.ends_with is not None:
+                self.ends_with = self.ends_with.lower()
         if not isinstance(other, (str, bytes)):
             return False
         if not Instance.__eq__(self, other):
@@ -54,6 +63,12 @@ class String(MapBefore, Optional, Instance, Equals[str], Length, Contains, Satis
             return False
         if not Satisfies.__eq__(self, other):
             return False
+        if self.starts_with is not None:
+            if not other.startswith(self.starts_with):
+                return False
+        if self.ends_with is not None:
+            if not other.endswith(self.ends_with):
+                return False
         if self.regex:
             if isinstance(self.regex, str) and not re.fullmatch(
                 self.regex, str(other), self.flags()
