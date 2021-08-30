@@ -1,19 +1,19 @@
 version: 2.1
 
 orbs:
-  python: circleci/python@1.3.2
+  python: circleci/python@1.4
 
 jobs:
-  lint-and-test:
+  lint:
     executor: python/default
     steps:
       - checkout
-      - run:
-          command: pip install .
-          name: Install package
-      - run:
-          command: pip install -r dev_requirements.txt
-          name: Install dev requirements
+      - python/install-packages:
+          pkg-manager: pip-dist
+          pip-dependency-file: setup.py
+      - python/install-packages:
+          pkg-manager: pip
+          pip-dependency-file: dev_requirements.txt
       - run:
           command: black -l 100 expyct tests
           name: Run black
@@ -23,10 +23,35 @@ jobs:
       - run:
           command: mypy expyct
           name: Run mypy
+
+  test:
+    parameters:
+      version:
+        default: "3.8"
+        description: |
+          A full version tag must be specified. Example: "3.8"
+          For a full list of releases, see the following: https://hub.docker.com/r/cimg/python
+        type: string
+    executor:
+      name: python/default
+      tag: << parameters.version >>
+    steps:
+      - checkout
+      - run:
+          command: |
+            curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+            python get-pip.py
+          name: Upgrade pip
+      - python/install-packages:
+          pkg-manager: pip-dist
+          pip-dependency-file: setup.py
+      - python/install-packages:
+          pkg-manager: pip
+          pip-dependency-file: dev_requirements.txt
       - run:
           command: |
             mkdir test-results
-            pytest -v --cov=expyct --junitxml=test-results/junit.xml
+            pytest -v --cov=expyct --cov-fail-under=0.9 --junitxml=test-results/junit.xml
           name: Run pytest
       - store_test_results:
           path: test-results
@@ -49,7 +74,7 @@ jobs:
 
   docs-build:
     docker:
-      - image: python:3.7
+      - image: python:3.8
     steps:
       - checkout
       - run:
@@ -73,37 +98,61 @@ jobs:
       - attach_workspace:
           at: docs/_build
       - run:
-          name: Disable jekyll builds
           command: touch docs/_build/html/.nojekyll
+          name: Disable jekyll builds
       - run:
-          name: Install and configure dependencies
           command: |
             npm install -g --silent gh-pages@2.0.1
             git config user.email "ci-build@hummingbirdtech.com"
             git config user.name "ci-build"
+          name: Install and configure dependencies
       - run:
-          name: Deploy docs to gh-pages branch
           command: gh-pages --dotfiles --message "[skip ci] Updates" --dist docs/_build/html
+          name: Deploy docs to gh-pages branch
 
 workflows:
   main:
     jobs:
-      - lint-and-test
+      - lint
+
+      - test:
+          name: test-python-3.6
+          version: "3.6"
+
+      - test:
+          name: test-python-3.7
+          version: "3.7"
+
+      - test:
+          name: test-python-3.8
+          version: "3.8"
+
+      - test:
+          name: test-python-3.9
+          version: "3.9"
+
       - publish-to-pypi:
           requires:
-            - lint-and-test
+            - lint
+            - test-python-3.6
+            - test-python-3.7
+            - test-python-3.8
+            - test-python-3.9
           context:
             - pypi-secrets
           filters:
             branches:
               only: main
+
       - docs-build:
           filters:
             branches:
               only: main
+
       - docs-deploy:
           requires:
-            - lint-and-test
+            - lint
+            - test-python-3.8 # just passing for 3.8 is enough confidence
             - docs-build
           filters:
             branches:

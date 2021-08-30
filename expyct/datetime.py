@@ -1,8 +1,16 @@
+import sys
 import typing
 from dataclasses import dataclass
 from datetime import datetime, date, time, timedelta, timezone
 
 from expyct.base import Equals, MapBefore, Satisfies, Optional
+
+if (3, 6) <= sys.version_info < (3, 7):
+    # fromisoformat only became available in 3.7
+    # See backport https://pypi.org/project/backports-datetime-fromisoformat/
+    from backports.datetime_fromisoformat import MonkeyPatch
+
+    MonkeyPatch.patch_fromisoformat()
 
 T = typing.TypeVar("T")
 
