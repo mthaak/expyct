@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>expyct.any module &#8212; expyct 0.2.0 documentation</title>
+    <title>expyct.any module &#8212; expyct 0.3.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/nature.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
@@ -33,7 +33,7 @@
         <li class="right" >
           <a href="index.html" title="expyct package"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">expyct 0.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">expyct 0.3.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">expyct.any module</a></li> 
       </ul>
     </div>  
@@ -47,8 +47,8 @@
 <span id="expyct-any-module"></span><h1>expyct.any module<a class="headerlink" href="#module-expyct.any" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.any.Any">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.any.</span></span><span class="sig-name descname"><span class="pre">Any</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#expyct.any.Any" title="expyct.any.Any"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equals</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">expyct.base.T</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_before</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.any.Any" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="expyct.base.html#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code>], <a class="reference internal" href="expyct.base.html#expyct.base.Predicate" title="expyct.base.Predicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Predicate</span></code></a></p>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.any.</span></span><span class="sig-name descname"><span class="pre">Any</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">map_before</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equals</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">expyct.base.T</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vars</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#expyct.any.Any" title="expyct.any.Any"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">satisfies</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#expyct.any.Any" title="expyct.any.Any"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.any.Any" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="expyct.base.html#expyct.base.Satisfies" title="expyct.base.Satisfies"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Satisfies</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Vars" title="expyct.base.Vars"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Vars</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code>], <a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Optional</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a></p>
 <p>Match any object.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="expyct.any.Any.map_before">
@@ -56,7 +56,18 @@
 <dd><p>apply function before checking equality</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>Optional[Callable]</p>
+<dd class="field-odd"><p><a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional">Optional</a>[Callable]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="expyct.any.Any.optional">
+<span class="sig-name descname"><span class="pre">optional</span></span><a class="headerlink" href="#expyct.any.Any.optional" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether <cite>None</cite> is allowed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional">Optional</a>[bool]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -68,18 +79,29 @@
 <cite>map_before</cite> to check a value after applying a function</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>Optional[expyct.base.T]</p>
+<dd class="field-odd"><p><a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional">Optional</a>[expyct.base.T]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="expyct.any.Any.pred">
-<span class="sig-name descname"><span class="pre">pred</span></span><a class="headerlink" href="#expyct.any.Any.pred" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="expyct.any.Any.vars">
+<span class="sig-name descname"><span class="pre">vars</span></span><a class="headerlink" href="#expyct.any.Any.vars" title="Permalink to this definition">¶</a></dt>
+<dd><p>object attributes (result of <cite>vars()</cite>) must equal</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional">Optional</a>[<a class="reference internal" href="#expyct.any.Any" title="expyct.any.Any">Any</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="expyct.any.Any.satisfies">
+<span class="sig-name descname"><span class="pre">satisfies</span></span><a class="headerlink" href="#expyct.any.Any.satisfies" title="Permalink to this definition">¶</a></dt>
 <dd><p>object must satisfy predicate</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>Optional[Callable[[<a class="reference internal" href="#expyct.any.Any" title="expyct.any.Any">Any</a>], bool]]</p>
+<dd class="field-odd"><p><a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional">Optional</a>[Callable[[<a class="reference internal" href="#expyct.any.Any" title="expyct.any.Any">Any</a>], bool]]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -88,8 +110,8 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.any.AnyType">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.any.</span></span><span class="sig-name descname"><span class="pre">AnyType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">superclass_of</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Type</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subclass_of</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Type</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#expyct.any.Any" title="expyct.any.Any"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equals</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">expyct.base.T</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_before</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.any.AnyType" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="expyct.base.html#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code>], <a class="reference internal" href="expyct.base.html#expyct.base.Predicate" title="expyct.base.Predicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Predicate</span></code></a></p>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.any.</span></span><span class="sig-name descname"><span class="pre">AnyType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">map_before</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equals</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">expyct.base.T</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vars</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#expyct.any.Any" title="expyct.any.Any"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">satisfies</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#expyct.any.Any" title="expyct.any.Any"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">superclass_of</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Type</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subclass_of</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Type</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.any.AnyType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="expyct.base.html#expyct.base.Type" title="expyct.base.Type"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Type</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Satisfies" title="expyct.base.Satisfies"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Satisfies</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Vars" title="expyct.base.Vars"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Vars</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code>], <a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Optional</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a></p>
 <p>Match any class.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="expyct.any.AnyType.map_before">
@@ -97,7 +119,18 @@
 <dd><p>apply function before checking equality</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>Optional[Callable]</p>
+<dd class="field-odd"><p><a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional">Optional</a>[Callable]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="expyct.any.AnyType.optional">
+<span class="sig-name descname"><span class="pre">optional</span></span><a class="headerlink" href="#expyct.any.AnyType.optional" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether <cite>None</cite> is allowed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional">Optional</a>[bool]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -109,18 +142,29 @@
 <cite>map_before</cite> to check a value after applying a function</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>Optional[expyct.base.T]</p>
+<dd class="field-odd"><p><a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional">Optional</a>[expyct.base.T]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="expyct.any.AnyType.pred">
-<span class="sig-name descname"><span class="pre">pred</span></span><a class="headerlink" href="#expyct.any.AnyType.pred" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="expyct.any.AnyType.vars">
+<span class="sig-name descname"><span class="pre">vars</span></span><a class="headerlink" href="#expyct.any.AnyType.vars" title="Permalink to this definition">¶</a></dt>
+<dd><p>object attributes (result of <cite>vars()</cite>) must equal</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional">Optional</a>[<a class="reference internal" href="#expyct.any.Any" title="expyct.any.Any">Any</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="expyct.any.AnyType.satisfies">
+<span class="sig-name descname"><span class="pre">satisfies</span></span><a class="headerlink" href="#expyct.any.AnyType.satisfies" title="Permalink to this definition">¶</a></dt>
 <dd><p>object must satisfy predicate</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>Optional[Callable[[<a class="reference internal" href="#expyct.any.Any" title="expyct.any.Any">Any</a>], bool]]</p>
+<dd class="field-odd"><p><a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional">Optional</a>[Callable[[<a class="reference internal" href="#expyct.any.Any" title="expyct.any.Any">Any</a>], bool]]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -131,7 +175,7 @@
 <dd><p>class must be superclass of given type</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>Optional[<a class="reference internal" href="expyct.base.html#expyct.base.Type" title="expyct.base.Type">Type</a>]</p>
+<dd class="field-odd"><p><a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional">Optional</a>[<a class="reference internal" href="expyct.base.html#expyct.base.Type" title="expyct.base.Type">Type</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -142,7 +186,7 @@
 <dd><p>class must be subclass of given type</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>Optional[<a class="reference internal" href="expyct.base.html#expyct.base.Type" title="expyct.base.Type">Type</a>]</p>
+<dd class="field-odd"><p><a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional">Optional</a>[<a class="reference internal" href="expyct.base.html#expyct.base.Type" title="expyct.base.Type">Type</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -151,8 +195,8 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.any.AnyValue">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.any.</span></span><span class="sig-name descname"><span class="pre">AnyValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Type</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance_of</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Type</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#expyct.any.Any" title="expyct.any.Any"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equals</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">expyct.base.T</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_before</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.any.AnyValue" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="expyct.base.html#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code>], <a class="reference internal" href="expyct.base.html#expyct.base.Predicate" title="expyct.base.Predicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Predicate</span></code></a></p>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.any.</span></span><span class="sig-name descname"><span class="pre">AnyValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">map_before</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equals</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">expyct.base.T</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vars</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#expyct.any.Any" title="expyct.any.Any"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">satisfies</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#expyct.any.Any" title="expyct.any.Any"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Type</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance_of</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Type</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.any.AnyValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="expyct.base.html#expyct.base.Instance" title="expyct.base.Instance"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Instance</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Satisfies" title="expyct.base.Satisfies"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Satisfies</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Vars" title="expyct.base.Vars"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Vars</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Any</span></code>], <a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Optional</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a></p>
 <p>Match any value.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="expyct.any.AnyValue.map_before">
@@ -160,7 +204,18 @@
 <dd><p>apply function before checking equality</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>Optional[Callable]</p>
+<dd class="field-odd"><p><a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional">Optional</a>[Callable]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="expyct.any.AnyValue.optional">
+<span class="sig-name descname"><span class="pre">optional</span></span><a class="headerlink" href="#expyct.any.AnyValue.optional" title="Permalink to this definition">¶</a></dt>
+<dd><p>whether <cite>None</cite> is allowed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional">Optional</a>[bool]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -172,18 +227,29 @@
 <cite>map_before</cite> to check a value after applying a function</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>Optional[expyct.base.T]</p>
+<dd class="field-odd"><p><a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional">Optional</a>[expyct.base.T]</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="expyct.any.AnyValue.pred">
-<span class="sig-name descname"><span class="pre">pred</span></span><a class="headerlink" href="#expyct.any.AnyValue.pred" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="expyct.any.AnyValue.vars">
+<span class="sig-name descname"><span class="pre">vars</span></span><a class="headerlink" href="#expyct.any.AnyValue.vars" title="Permalink to this definition">¶</a></dt>
+<dd><p>object attributes (result of <cite>vars()</cite>) must equal</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional">Optional</a>[<a class="reference internal" href="#expyct.any.Any" title="expyct.any.Any">Any</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="expyct.any.AnyValue.satisfies">
+<span class="sig-name descname"><span class="pre">satisfies</span></span><a class="headerlink" href="#expyct.any.AnyValue.satisfies" title="Permalink to this definition">¶</a></dt>
 <dd><p>object must satisfy predicate</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>Optional[Callable[[<a class="reference internal" href="#expyct.any.Any" title="expyct.any.Any">Any</a>], bool]]</p>
+<dd class="field-odd"><p><a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional">Optional</a>[Callable[[<a class="reference internal" href="#expyct.any.Any" title="expyct.any.Any">Any</a>], bool]]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -194,7 +260,7 @@
 <dd><p>type of object must equal to given type</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>Optional[<a class="reference internal" href="expyct.base.html#expyct.base.Type" title="expyct.base.Type">Type</a>]</p>
+<dd class="field-odd"><p><a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional">Optional</a>[<a class="reference internal" href="expyct.base.html#expyct.base.Type" title="expyct.base.Type">Type</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -205,7 +271,7 @@
 <dd><p>object must be an instance of given type</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>Optional[<a class="reference internal" href="expyct.base.html#expyct.base.Type" title="expyct.base.Type">Type</a>]</p>
+<dd class="field-odd"><p><a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional">Optional</a>[<a class="reference internal" href="expyct.base.html#expyct.base.Type" title="expyct.base.Type">Type</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -214,19 +280,19 @@
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.any.ANY">
-<span class="sig-prename descclassname"><span class="pre">expyct.any.</span></span><span class="sig-name descname"><span class="pre">ANY</span></span><em class="property"> <span class="pre">=</span> <span class="pre">Any(pred=None,</span> <span class="pre">equals=None,</span> <span class="pre">map_before=None)</span></em><a class="headerlink" href="#expyct.any.ANY" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.any.</span></span><span class="sig-name descname"><span class="pre">ANY</span></span><em class="property"> <span class="pre">=</span> <span class="pre">Any(map_before=None,</span> <span class="pre">optional=None,</span> <span class="pre">equals=None,</span> <span class="pre">vars=None,</span> <span class="pre">satisfies=None)</span></em><a class="headerlink" href="#expyct.any.ANY" title="Permalink to this definition">¶</a></dt>
 <dd><p>Literally anything</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.any.ANY_TYPE">
-<span class="sig-prename descclassname"><span class="pre">expyct.any.</span></span><span class="sig-name descname"><span class="pre">ANY_TYPE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">AnyType(superclass_of=None,</span> <span class="pre">subclass_of=None,</span> <span class="pre">pred=None,</span> <span class="pre">equals=None,</span> <span class="pre">map_before=None)</span></em><a class="headerlink" href="#expyct.any.ANY_TYPE" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.any.</span></span><span class="sig-name descname"><span class="pre">ANY_TYPE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">AnyType(map_before=None,</span> <span class="pre">optional=None,</span> <span class="pre">equals=None,</span> <span class="pre">vars=None,</span> <span class="pre">satisfies=None,</span> <span class="pre">superclass_of=None,</span> <span class="pre">subclass_of=None)</span></em><a class="headerlink" href="#expyct.any.ANY_TYPE" title="Permalink to this definition">¶</a></dt>
 <dd><p>Any type (i.e. class)</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.any.ANY_VALUE">
-<span class="sig-prename descclassname"><span class="pre">expyct.any.</span></span><span class="sig-name descname"><span class="pre">ANY_VALUE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">AnyValue(type=None,</span> <span class="pre">instance_of=None,</span> <span class="pre">pred=None,</span> <span class="pre">equals=None,</span> <span class="pre">map_before=None)</span></em><a class="headerlink" href="#expyct.any.ANY_VALUE" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.any.</span></span><span class="sig-name descname"><span class="pre">ANY_VALUE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">AnyValue(map_before=None,</span> <span class="pre">optional=None,</span> <span class="pre">equals=None,</span> <span class="pre">vars=None,</span> <span class="pre">satisfies=None,</span> <span class="pre">type=None,</span> <span class="pre">instance_of=None)</span></em><a class="headerlink" href="#expyct.any.ANY_VALUE" title="Permalink to this definition">¶</a></dt>
 <dd><p>Any value</p>
 </dd></dl>
 
@@ -281,7 +347,7 @@
         <li class="right" >
           <a href="index.html" title="expyct package"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">expyct 0.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">expyct 0.3.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">expyct.any module</a></li> 
       </ul>
     </div>
