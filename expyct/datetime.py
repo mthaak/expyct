@@ -70,7 +70,7 @@ class DateTime(
 
     Arguments:
         map_before : apply function before checking equality
-        optional : whether `None` is allowed
+        optional : whether `None` is allowed [default: `False`]
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
         after : object must occur after or exactly on given
@@ -114,7 +114,7 @@ class DateTimeTz(
 
     Arguments:
         map_before : apply function before checking equality
-        optional : whether `None` is allowed
+        optional : whether `None` is allowed [default: `False`]
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
         after : object must occur after or on given. If timedelta is given, then it is compared
@@ -197,7 +197,7 @@ class Date(
 
     Arguments:
         map_before : apply function before checking equality
-        optional : whether `None` is allowed
+        optional : whether `None` is allowed [default: `False`]
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
         after : object must occur after or exactly on given
@@ -240,7 +240,7 @@ class Time(
 
     Arguments:
         map_before : apply function before checking equality
-        optional : whether `None` is allowed
+        optional : whether `None` is allowed [default: `False`]
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
         after : object must occur after or exactly on given

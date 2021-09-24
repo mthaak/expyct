@@ -40,7 +40,7 @@ class Length:
         length : object length must be exactly
         min_length : object length must be at least
         max_length : object length must be at most
-        non_empty : object must have at least one member
+        non_empty : object must have at least one member [default: `False`]
     """
 
     length: typing.Optional[int] = None
@@ -112,7 +112,7 @@ class Collection(
         all : all members of collection must equal
         any : any member of collection must equal
         map_before : apply function before checking equality
-        optional : whether `None` is allowed
+        optional : whether `None` is allowed [default: `False`]
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
         type : type of object must equal to given type
@@ -120,7 +120,7 @@ class Collection(
         length : object length must be exactly
         min_length : object length must be at least
         max_length : object length must be at most
-        non_empty : object must have at least one member
+        non_empty : object must have at least one member [default: `False`]
         superset_of : collection of which the object must be a superset
         subset_of : collection of which the object must be a subset
         satisfies : object must satisfy predicate
@@ -170,13 +170,13 @@ class List(
         all : all members of collection must equal
         any : any member of collection must equal
         map_before : apply function before checking equality
-        optional : whether `None` is allowed
+        optional : whether `None` is allowed [default: `False`]
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
         length : object length must be exactly
         min_length : object length must be at least
         max_length : object length must be at most
-        non_empty : object must have at least one member
+        non_empty : object must have at least one member [default: `False`]
         superset_of : collection of which the object must be a superset
         subset_of : collection of which the object must be a subset
         satisfies : object must satisfy predicate
@@ -235,13 +235,13 @@ class Tuple(
         all : all members of collection must equal
         any : any member of collection must equal
         map_before : apply function before checking equality
-        optional : whether `None` is allowed
+        optional : whether `None` is allowed [default: `False`]
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
         length : object length must be exactly
         min_length : object length must be at least
         max_length : object length must be at most
-        non_empty : object must have at least one member
+        non_empty : object must have at least one member [default: `False`]
         superset_of : collection of which the object must be a superset
         subset_of : collection of which the object must be a subset
         satisfies : object must satisfy predicate
@@ -285,13 +285,13 @@ class Set(
         all : all members of collection must equal
         any : any member of collection must equal
         map_before : apply function before checking equality
-        optional : whether `None` is allowed
+        optional : whether `None` is allowed [default: `False`]
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
         length : object length must be exactly
         min_length : object length must be at least
         max_length : object length must be at most
-        non_empty : object must have at least one member
+        non_empty : object must have at least one member [default: `False`]
         superset_of : collection of which the object must be a superset
         subset_of : collection of which the object must be a subset
         satisfies : object must satisfy predicate
@@ -332,13 +332,13 @@ class Dict(
 
     Attributes:
         map_before : apply function before checking equality
-        optional : whether `None` is allowed
+        optional : whether `None` is allowed [default: `False`]
         equals : object must equal exactly. This is useful together with
             `map_before` to check a value after applying a function
         length : object length must be exactly
         min_length : object length must be at least
         max_length : object length must be at most
-        non_empty : object must have at least one member
+        non_empty : object must have at least one member [default: `False`]
         superset_of : collection of which the object must be a superset
         subset_of : collection of which the object must be a subset
         satisfies : object must satisfy predicate
