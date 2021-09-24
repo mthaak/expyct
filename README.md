@@ -26,12 +26,11 @@
     <a href="https://hummingbirdtechgroup.github.io/expyct/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/HummingbirdTechGroup/expyt/issues">Report Bug</a>
+    <a href="https://github.com/HummingbirdTechGroup/expyct/issues">Report Bug</a>
     ·
-    <a href="https://github.com/HummingbirdTechGroup/expyt/issues">Request Feature</a>
+    <a href="https://github.com/HummingbirdTechGroup/expyct/issues">Request Feature</a>
   </p>
 </p>
-
 
 
 <!-- TABLE OF CONTENTS -->
@@ -39,7 +38,7 @@
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#about-the-project">Expyct</a>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -62,7 +61,17 @@
 <!-- ABOUT THE PROJECT -->
 ## Expyct
 
-_Partial matching of any Python object._
+<span style="font-size:larger;">_Partial matching of any Python object._</span>
+
+```python
+import expyct as exp
+
+
+def test_my_function():
+    result = my_function()
+
+    assert result == exp.Float(optional=True, close_to=0.076, error=0.01)
+```
 
 Using Expyct is a good idea when you need to assert something in a test case but there is some non-determinism.
 
@@ -78,7 +87,7 @@ The library also comes with many commonly used data validators like `ANY_UUID` w
 
 Checking nested data structures is easy as well.
 
-See [Usage examples](#usage-examples)
+See [Usage examples](#usage)
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -108,12 +117,13 @@ Simple example:
 
 ```python
 import expyct as exp
+from myclass import MyClass
 
 
 def test_my_function():
     result = my_function()
 
-    assert result == exp.Float(optional=True, close_to=0.076, error=0.01)
+    assert result == exp.AnyValue(instance_of=MyClass, vars={"property": "value"})
 ```
 
 More complicated nested example:
@@ -190,12 +200,12 @@ Please file an issue on Github.
 [circleci-shield]: https://circleci.com/gh/HummingbirdTechGroup/expyct/tree/main.svg?style=shield
 [circleci-url]: https://circleci.com/gh/HummingbirdTechGroup/expyct/tree/main
 [contributors-shield]: https://img.shields.io/github/contributors/HummingbirdTechGroup/repo.svg?style=svg
-[contributors-url]: https://github.com/HummingbirdTechGroup/expyt/graphs/contributors
+[contributors-url]: https://github.com/HummingbirdTechGroup/expyct/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/HummingbirdTechGroup/repo.svg?style=svg
-[forks-url]: https://github.com/HummingbirdTechGroup/expyt/network/members
+[forks-url]: https://github.com/HummingbirdTechGroup/expyct/network/members
 [stars-shield]: https://img.shields.io/github/stars/HummingbirdTechGroup/repo.svg?style=svg
-[stars-url]: https://github.com/HummingbirdTechGroup/expyt/stargazers
+[stars-url]: https://github.com/HummingbirdTechGroup/expyct/stargazers
 [issues-shield]: https://img.shields.io/github/issues/HummingbirdTechGroup/repo.svg?style=svg
-[issues-url]: https://github.com/HummingbirdTechGroup/expyt/issues
+[issues-url]: https://github.com/HummingbirdTechGroup/expyct/issues
 [license-shield]: https://img.shields.io/github/license/HummingbirdTechGroup/repo.svg?style=svg
-[license-url]: https://github.com/HummingbirdTechGroup/expyt/blob/master/LICENSE
+[license-url]: https://github.com/HummingbirdTechGroup/expyct/blob/master/LICENSE
