@@ -86,7 +86,7 @@ class Optional:
     """Mixin for matching with `None`.
 
     Attributes:
-        optional : whether `None` is allowed
+        optional : whether `None` is allowed [default: `False`]
     """
 
     optional: typing.Optional[bool] = None

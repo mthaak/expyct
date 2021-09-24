@@ -81,7 +81,7 @@ class Number(
 
     Arguments:
         map_before : apply function before checking equality
-        optional : whether `None` is allowed
+        optional : whether `None` is allowed [default: `False`]
         type : type of object must equal to given type
         instance_of : object must be an instance of given type
         equals : object must equal exactly. This is useful together with
