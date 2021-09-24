@@ -6,7 +6,7 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-<div style="text-align: center;">
+<div style="align: center;">
 
 [![CircleCI][circleci-shield]][circleci-url]
 [![Contributors][contributors-shield]][contributors-url]
