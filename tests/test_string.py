@@ -22,9 +22,6 @@ import expyct as exp
         # test equals
         ("123", exp.String(equals="12"), False),
         ("123", exp.String(equals="123"), True),
-        # test equals with ignore order
-        ("123", exp.String(equals="321", ignore_order=False), False),
-        ("123", exp.String(equals="321", ignore_order=True), True),
         # test length
         ("123", exp.String(length=2), False),
         ("123", exp.String(length=3), True),
