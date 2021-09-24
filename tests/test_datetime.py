@@ -146,23 +146,23 @@ def test_datetime(value, expect, result):
         ),
         # timedelta
         (
-            datetime.now().astimezone(UTC) + timedelta(seconds=-3),
+            datetime.now().astimezone(UTC) + timedelta(seconds=-4),
             exp.DateTimeTz(after=timedelta(seconds=-2)),
             False,
         ),
         (
             datetime.now().astimezone(UTC) + timedelta(seconds=-1),
-            exp.DateTimeTz(after=timedelta(seconds=-2)),
+            exp.DateTimeTz(after=timedelta(seconds=-3)),
             True,
         ),
         (
-            datetime.now().astimezone(UTC) + timedelta(seconds=3),
+            datetime.now().astimezone(UTC) + timedelta(seconds=4),
             exp.DateTimeTz(before=timedelta(seconds=2)),
             False,
         ),
         (
             datetime.now().astimezone(UTC) + timedelta(seconds=1),
-            exp.DateTimeTz(before=timedelta(seconds=2)),
+            exp.DateTimeTz(before=timedelta(seconds=3)),
             True,
         ),
         # test before and after strict
@@ -198,23 +198,23 @@ def test_datetime(value, expect, result):
         ),
         # timedelta
         (
-            datetime.now().astimezone(UTC) + timedelta(seconds=-3),
+            datetime.now().astimezone(UTC) + timedelta(seconds=-4),
             exp.DateTimeTz(after_strict=timedelta(seconds=-2)),
             False,
         ),
         (
             datetime.now().astimezone(UTC) + timedelta(seconds=-1),
-            exp.DateTimeTz(after_strict=timedelta(seconds=-2)),
+            exp.DateTimeTz(after_strict=timedelta(seconds=-3)),
             True,
         ),
         (
-            datetime.now().astimezone(UTC) + timedelta(seconds=3),
+            datetime.now().astimezone(UTC) + timedelta(seconds=34),
             exp.DateTimeTz(before_strict=timedelta(seconds=2)),
             False,
         ),
         (
             datetime.now().astimezone(UTC) + timedelta(seconds=1),
-            exp.DateTimeTz(before_strict=timedelta(seconds=2)),
+            exp.DateTimeTz(before_strict=timedelta(seconds=3)),
             True,
         ),
         # test predicate
