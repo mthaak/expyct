@@ -1,15 +1,19 @@
-expyct package
-==============
+Expyct
+======
 
-Partial matching of any object. This is especially useful for testing that your functions return expected values.
+*Partial matching of any Python object.*
 
-This library provides convenience classes that allow you to set constraints on the object you would like to test.
+Using Expyct is a good idea when you need to assert something in a test case but there is some non-determinism.
 
-The constraints can be provided as constructor arguments. For example `Number(min=3, max=5)` matches any number between 3 and 5. In other words, `Number(min=3, max=5) == n` is `True` for all `3 <= n <= 5`.
+For example, rounding errors prevent you from comparing a :code:`float` exactly. Or a timestamp is created on-the-fly, and therefore changes every test run.
 
-Some other examples of classes are `Float`, `String`, `Any` and `DateTime`. As you can see, they closely match the built-in Python types.
+In these cases, you need to be able to set specific constraints on the expected value. That is what Expyct is for!
 
-The library also comes with many commonly used data validators like `ANY_UUID` which matches any UUID string. And `TODAY` which matches any `datetime` occurring on the current day.
+The constraints can be provided as constructor arguments. For example :code:`n == Number(min=3, max=5)` is only true when :code:`n` is between 3 and 5.
+
+Some other examples of classes are :code:`Float`, :code:`String`, :code:`Any` and :code:`DateTime`. As you can see, they closely match the built-in Python types.
+
+The library also comes with many commonly used data validators like :code:`ANY_UUID` which matches any UUID string. And :code:`TODAY` which matches any `datetime` occurring on the current day.
 
 Checking nested data structures is easy as well:
 

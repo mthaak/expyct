@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>expyct package &#8212; expyct 0.3.2 documentation</title>
+    <title>Expyct &#8212; expyct 0.3.2 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/nature.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
@@ -30,7 +30,7 @@
           <a href="expyct.any.html" title="expyct.any module"
              accesskey="N">next</a> |</li>
         <li class="nav-item nav-item-0"><a href="#">expyct 0.3.2 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">expyct package</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Expyct</a></li> 
       </ul>
     </div>  
 
@@ -39,13 +39,15 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="expyct-package">
-<h1>expyct package<a class="headerlink" href="#expyct-package" title="Permalink to this headline">¶</a></h1>
-<p>Partial matching of any object. This is especially useful for testing that your functions return expected values.</p>
-<p>This library provides convenience classes that allow you to set constraints on the object you would like to test.</p>
-<p>The constraints can be provided as constructor arguments. For example <cite>Number(min=3, max=5)</cite> matches any number between 3 and 5. In other words, <cite>Number(min=3, max=5) == n</cite> is <cite>True</cite> for all <cite>3 &lt;= n &lt;= 5</cite>.</p>
-<p>Some other examples of classes are <cite>Float</cite>, <cite>String</cite>, <cite>Any</cite> and <cite>DateTime</cite>. As you can see, they closely match the built-in Python types.</p>
-<p>The library also comes with many commonly used data validators like <cite>ANY_UUID</cite> which matches any UUID string. And <cite>TODAY</cite> which matches any <cite>datetime</cite> occurring on the current day.</p>
+  <section id="expyct">
+<h1>Expyct<a class="headerlink" href="#expyct" title="Permalink to this headline">¶</a></h1>
+<p><em>Partial matching of any Python object.</em></p>
+<p>Using Expyct is a good idea when you need to assert something in a test case but there is some non-determinism.</p>
+<p>For example, rounding errors prevent you from comparing a <code class="code docutils literal notranslate"><span class="pre">float</span></code> exactly. Or a timestamp is created on-the-fly, and therefore changes every test run.</p>
+<p>In these cases, you need to be able to set specific constraints on the expected value. That is what Expyct is for!</p>
+<p>The constraints can be provided as constructor arguments. For example <code class="code docutils literal notranslate"><span class="pre">n</span> <span class="pre">==</span> <span class="pre">Number(min=3,</span> <span class="pre">max=5)</span></code> is only true when <code class="code docutils literal notranslate"><span class="pre">n</span></code> is between 3 and 5.</p>
+<p>Some other examples of classes are <code class="code docutils literal notranslate"><span class="pre">Float</span></code>, <code class="code docutils literal notranslate"><span class="pre">String</span></code>, <code class="code docutils literal notranslate"><span class="pre">Any</span></code> and <code class="code docutils literal notranslate"><span class="pre">DateTime</span></code>. As you can see, they closely match the built-in Python types.</p>
+<p>The library also comes with many commonly used data validators like <code class="code docutils literal notranslate"><span class="pre">ANY_UUID</span></code> which matches any UUID string. And <code class="code docutils literal notranslate"><span class="pre">TODAY</span></code> which matches any <cite>datetime</cite> occurring on the current day.</p>
 <p>Checking nested data structures is easy as well:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">expyct</span> <span class="k">as</span> <span class="nn">exp</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
@@ -96,7 +98,7 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="#">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">expyct package</a><ul>
+<li><a class="reference internal" href="#">Expyct</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 </ul>
 </li>
@@ -139,7 +141,7 @@
           <a href="expyct.any.html" title="expyct.any module"
              >next</a> |</li>
         <li class="nav-item nav-item-0"><a href="#">expyct 0.3.2 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">expyct package</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Expyct</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

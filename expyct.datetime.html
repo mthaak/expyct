@@ -86,7 +86,7 @@ date/time. In other words, it is exclusive on both sides.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>map_before</strong> – apply function before checking equality</p></li>
-<li><p><strong>optional</strong> – whether <cite>None</cite> is allowed</p></li>
+<li><p><strong>optional</strong> – whether <cite>None</cite> is allowed [default: <cite>False</cite>]</p></li>
 <li><p><strong>equals</strong> – object must equal exactly. This is useful together with
 <cite>map_before</cite> to check a value after applying a function</p></li>
 <li><p><strong>after</strong> – object must occur after or exactly on given</p></li>
@@ -108,7 +108,7 @@ date/time. In other words, it is exclusive on both sides.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>map_before</strong> – apply function before checking equality</p></li>
-<li><p><strong>optional</strong> – whether <cite>None</cite> is allowed</p></li>
+<li><p><strong>optional</strong> – whether <cite>None</cite> is allowed [default: <cite>False</cite>]</p></li>
 <li><p><strong>equals</strong> – object must equal exactly. This is useful together with
 <cite>map_before</cite> to check a value after applying a function</p></li>
 <li><p><strong>after</strong> – object must occur after or exactly on given</p></li>
@@ -131,7 +131,7 @@ In other words, is a timestamp.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>map_before</strong> – apply function before checking equality</p></li>
-<li><p><strong>optional</strong> – whether <cite>None</cite> is allowed</p></li>
+<li><p><strong>optional</strong> – whether <cite>None</cite> is allowed [default: <cite>False</cite>]</p></li>
 <li><p><strong>equals</strong> – object must equal exactly. This is useful together with
 <cite>map_before</cite> to check a value after applying a function</p></li>
 <li><p><strong>after</strong> – object must occur after or on given. If timedelta is given, then it is compared
@@ -155,7 +155,7 @@ relative to when the assertion is run</p></li>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>map_before</strong> – apply function before checking equality</p></li>
-<li><p><strong>optional</strong> – whether <cite>None</cite> is allowed</p></li>
+<li><p><strong>optional</strong> – whether <cite>None</cite> is allowed [default: <cite>False</cite>]</p></li>
 <li><p><strong>equals</strong> – object must equal exactly. This is useful together with
 <cite>map_before</cite> to check a value after applying a function</p></li>
 <li><p><strong>after</strong> – object must occur after or exactly on given</p></li>
@@ -304,19 +304,19 @@ relative to when the assertion is run</p></li>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.THIS_HOUR">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">THIS_HOUR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">DateTimeTz(map_before=None,</span> <span class="pre">optional=None,</span> <span class="pre">equals=None,</span> <span class="pre">after=None,</span> <span class="pre">before=None,</span> <span class="pre">after_strict=datetime.datetime(2021,</span> <span class="pre">9,</span> <span class="pre">24,</span> <span class="pre">17,</span> <span class="pre">0),</span> <span class="pre">before_strict=datetime.datetime(2021,</span> <span class="pre">9,</span> <span class="pre">24,</span> <span class="pre">19,</span> <span class="pre">0),</span> <span class="pre">satisfies=None)</span></em><a class="headerlink" href="#expyct.datetime.THIS_HOUR" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">THIS_HOUR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">DateTimeTz(map_before=None,</span> <span class="pre">optional=None,</span> <span class="pre">equals=None,</span> <span class="pre">after=None,</span> <span class="pre">before=None,</span> <span class="pre">after_strict=datetime.datetime(2021,</span> <span class="pre">9,</span> <span class="pre">24,</span> <span class="pre">20,</span> <span class="pre">0),</span> <span class="pre">before_strict=datetime.datetime(2021,</span> <span class="pre">9,</span> <span class="pre">24,</span> <span class="pre">22,</span> <span class="pre">0),</span> <span class="pre">satisfies=None)</span></em><a class="headerlink" href="#expyct.datetime.THIS_HOUR" title="Permalink to this definition">¶</a></dt>
 <dd><p>Any timestamp occurring in the current hour</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.THIS_MINUTE">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">THIS_MINUTE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">DateTimeTz(map_before=None,</span> <span class="pre">optional=None,</span> <span class="pre">equals=None,</span> <span class="pre">after=None,</span> <span class="pre">before=None,</span> <span class="pre">after_strict=datetime.datetime(2021,</span> <span class="pre">9,</span> <span class="pre">24,</span> <span class="pre">18,</span> <span class="pre">2),</span> <span class="pre">before_strict=datetime.datetime(2021,</span> <span class="pre">9,</span> <span class="pre">24,</span> <span class="pre">18,</span> <span class="pre">4),</span> <span class="pre">satisfies=None)</span></em><a class="headerlink" href="#expyct.datetime.THIS_MINUTE" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">THIS_MINUTE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">DateTimeTz(map_before=None,</span> <span class="pre">optional=None,</span> <span class="pre">equals=None,</span> <span class="pre">after=None,</span> <span class="pre">before=None,</span> <span class="pre">after_strict=datetime.datetime(2021,</span> <span class="pre">9,</span> <span class="pre">24,</span> <span class="pre">20,</span> <span class="pre">59),</span> <span class="pre">before_strict=datetime.datetime(2021,</span> <span class="pre">9,</span> <span class="pre">24,</span> <span class="pre">21,</span> <span class="pre">1),</span> <span class="pre">satisfies=None)</span></em><a class="headerlink" href="#expyct.datetime.THIS_MINUTE" title="Permalink to this definition">¶</a></dt>
 <dd><p>Any timestamp occurring in the current minute</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.THIS_SECOND">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">THIS_SECOND</span></span><em class="property"> <span class="pre">=</span> <span class="pre">DateTimeTz(map_before=None,</span> <span class="pre">optional=None,</span> <span class="pre">equals=None,</span> <span class="pre">after=None,</span> <span class="pre">before=None,</span> <span class="pre">after_strict=datetime.datetime(2021,</span> <span class="pre">9,</span> <span class="pre">24,</span> <span class="pre">18,</span> <span class="pre">3,</span> <span class="pre">4),</span> <span class="pre">before_strict=datetime.datetime(2021,</span> <span class="pre">9,</span> <span class="pre">24,</span> <span class="pre">18,</span> <span class="pre">3,</span> <span class="pre">6),</span> <span class="pre">satisfies=None)</span></em><a class="headerlink" href="#expyct.datetime.THIS_SECOND" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">THIS_SECOND</span></span><em class="property"> <span class="pre">=</span> <span class="pre">DateTimeTz(map_before=None,</span> <span class="pre">optional=None,</span> <span class="pre">equals=None,</span> <span class="pre">after=None,</span> <span class="pre">before=None,</span> <span class="pre">after_strict=datetime.datetime(2021,</span> <span class="pre">9,</span> <span class="pre">24,</span> <span class="pre">21,</span> <span class="pre">0,</span> <span class="pre">48),</span> <span class="pre">before_strict=datetime.datetime(2021,</span> <span class="pre">9,</span> <span class="pre">24,</span> <span class="pre">21,</span> <span class="pre">0,</span> <span class="pre">50),</span> <span class="pre">satisfies=None)</span></em><a class="headerlink" href="#expyct.datetime.THIS_SECOND" title="Permalink to this definition">¶</a></dt>
 <dd><p>Any timestamp occurring in the current second</p>
 </dd></dl>
 
