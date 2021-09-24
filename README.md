@@ -199,13 +199,13 @@ Please file an issue on Github.
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [circleci-shield]: https://circleci.com/gh/HummingbirdTechGroup/expyct/tree/main.svg?style=shield
 [circleci-url]: https://circleci.com/gh/HummingbirdTechGroup/expyct/tree/main
-[contributors-shield]: https://img.shields.io/github/contributors/HummingbirdTechGroup/repo.svg?style=svg
+[contributors-shield]: https://img.shields.io/github/contributors/HummingbirdTechGroup/expyct.svg?style=svg
 [contributors-url]: https://github.com/HummingbirdTechGroup/expyct/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/HummingbirdTechGroup/repo.svg?style=svg
+[forks-shield]: https://img.shields.io/github/forks/HummingbirdTechGroup/expyct.svg?style=svg
 [forks-url]: https://github.com/HummingbirdTechGroup/expyct/network/members
-[stars-shield]: https://img.shields.io/github/stars/HummingbirdTechGroup/repo.svg?style=svg
+[stars-shield]: https://img.shields.io/github/stars/HummingbirdTechGroup/expyct.svg?style=svg
 [stars-url]: https://github.com/HummingbirdTechGroup/expyct/stargazers
-[issues-shield]: https://img.shields.io/github/issues/HummingbirdTechGroup/repo.svg?style=svg
+[issues-shield]: https://img.shields.io/github/issues/HummingbirdTechGroup/expyct.svg?style=svg
 [issues-url]: https://github.com/HummingbirdTechGroup/expyct/issues
-[license-shield]: https://img.shields.io/github/license/HummingbirdTechGroup/repo.svg?style=svg
+[license-shield]: https://img.shields.io/github/license/HummingbirdTechGroup/expyct.svg?style=svg
 [license-url]: https://github.com/HummingbirdTechGroup/expyct/blob/master/LICENSE
