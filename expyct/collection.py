@@ -1,9 +1,9 @@
 import typing
+from collections import Counter
 from dataclasses import dataclass
 
 from expyct.base import Equals, MapBefore, Satisfies, Optional
 from expyct.base import Instance
-from expyct.helpers import copy_update
 
 
 @dataclass
@@ -150,6 +150,10 @@ class Collection(
         return True
 
 
+# a, a, b, c
+# a, b, c, c
+
+
 @dataclass
 class List(
     Satisfies,
@@ -190,8 +194,8 @@ class List(
             return Optional.__eq__(self, other)
         if not isinstance(other, list):
             return False
-        if self.ignore_order and isinstance(self.equals, typing.Iterable):
-            if not Equals.__eq__(copy_update(self, equals=sorted(self.equals)), sorted(other)):
+        if self.ignore_order:
+            if not self._equals_ignore_order(self.equals, other):
                 return False
         else:
             if not Equals.__eq__(self, other):
@@ -205,6 +209,14 @@ class List(
         if not AllOrAny.__eq__(self, other):
             return False
         return True
+
+    @staticmethod
+    def _equals_ignore_order(a: typing.List, b: typing.List):
+        # https://stackoverflow.com/a/7829249/4443309
+        try:
+            return Counter(a) == Counter(b)  # O(n)
+        except TypeError:
+            return len(a) == len(b) and all(a.count(i) == b.count(i) for i in a)  # O(n * n)
 
 
 @dataclass
