@@ -3,6 +3,8 @@ from numbers import Number as ParentNumber
 import pytest as pytest
 
 import expyct as exp
+from expyct.number import parse_number_string, parse_float_string, parse_int_string
+from tests.utils import raises_or_result
 
 
 @pytest.mark.parametrize(
@@ -101,3 +103,30 @@ def test_float_eq(value, expect, result):
 def test_float_instance():
     obj: float = exp.Float()
     assert isinstance(obj, float)
+
+
+@pytest.mark.parametrize(
+    ["value", "expect"],
+    [([], ValueError), ("abc", ValueError), ("1", 1), ("1.1", 1.1)],
+)
+def test_parse_number_string(value, expect):
+    with raises_or_result(expect):
+        parse_number_string(value)
+
+
+@pytest.mark.parametrize(
+    ["value", "expect"],
+    [([], ValueError), ("abc", ValueError), ("1", 1), ("1.1", ValueError)],
+)
+def test_parse_int_string(value, expect):
+    with raises_or_result(expect):
+        parse_int_string(value)
+
+
+@pytest.mark.parametrize(
+    ["value", "expect"],
+    [([], ValueError), ("abc", ValueError), ("1", 1.0), ("1.1", 1.1)],
+)
+def test_parse_float_string(value, expect):
+    with raises_or_result(expect):
+        parse_float_string(value)
