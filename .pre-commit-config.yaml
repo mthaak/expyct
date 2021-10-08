@@ -26,3 +26,4 @@ repos:
       - id: mypy
         args: [ expyct ]
         pass_filenames: false
+        additional_dependencies: [types-backports]

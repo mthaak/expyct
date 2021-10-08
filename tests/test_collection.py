@@ -1,3 +1,4 @@
+import typing
 from collections import defaultdict
 
 import pytest
@@ -50,7 +51,7 @@ import expyct as exp
         # test superset of
         ([1, 3], exp.Collection(superset_of=[1, 2]), False),
         ([1, 2, 3], exp.Collection(superset_of=[1, 2]), True),
-        # test predicate
+        # test satisfies
         ([1, 2, 3, 4], exp.Collection(satisfies=lambda x: len(x) == 10), False),
         ([1, 2, 3, 4], exp.Collection(satisfies=lambda x: sum(x) == 10), True),
         # test all
@@ -61,8 +62,14 @@ import expyct as exp
         ([2, 5, 2], exp.Collection(any=5), True),
     ],
 )
-def test_collection(value, expect, result):
+def test_collection_eq(value, expect, result):
     assert (value == expect) == result
+
+
+@pytest.mark.xfail  # TODO not yet implemented
+def test_collection_instance():
+    obj: typing.Collection = exp.Collection()
+    assert isinstance(obj, typing.Collection)
 
 
 @pytest.mark.parametrize(
@@ -127,7 +134,7 @@ def test_collection(value, expect, result):
         # test superset of
         ([1, 3], exp.List(superset_of=[1, 2]), False),
         ([1, 2, 3], exp.List(superset_of=[1, 2]), True),
-        # test predicate
+        # test satisfies
         ([1, 2, 3, 4], exp.List(satisfies=lambda x: len(x) == 10), False),
         ([1, 2, 3, 4], exp.List(satisfies=lambda x: sum(x) == 10), True),
         # test all
@@ -138,8 +145,13 @@ def test_collection(value, expect, result):
         ([2, 5, 2], exp.List(any=5), True),
     ],
 )
-def test_list(value, expect, result):
+def test_list_eq(value, expect, result):
     assert (value == expect) == result
+
+
+def test_list_instance():
+    obj: list = exp.List()
+    assert isinstance(obj, list)
 
 
 @pytest.mark.parametrize(
@@ -180,7 +192,7 @@ def test_list(value, expect, result):
         # test superset of
         ((1, 3), exp.Tuple(superset_of=(1, 2)), False),
         ((1, 2, 3), exp.Tuple(superset_of=(1, 2)), True),
-        # test predicate
+        # test satisfies
         ((1, 2, 3, 4), exp.Tuple(satisfies=lambda x: len(x) == 10), False),
         ((1, 2, 3, 4), exp.Tuple(satisfies=lambda x: sum(x) == 10), True),
         # test all
@@ -191,8 +203,13 @@ def test_list(value, expect, result):
         ((2, 5, 2), exp.Tuple(any=5), True),
     ],
 )
-def test_tuple(value, expect, result):
+def test_tuple_eq(value, expect, result):
     assert (value == expect) == result
+
+
+def test_tuple_instance():
+    obj: tuple = exp.Tuple()
+    assert isinstance(obj, tuple)
 
 
 @pytest.mark.parametrize(
@@ -233,7 +250,7 @@ def test_tuple(value, expect, result):
         # test superset of
         ({1, 3}, exp.Set(superset_of={1, 2}), False),
         ({1, 2, 3}, exp.Set(superset_of={1, 2}), True),
-        # test predicate
+        # test satisfies
         ({1, 2, 3, 4}, exp.Set(satisfies=lambda x: len(x) == 10), False),
         ({1, 2, 3, 4}, exp.Set(satisfies=lambda x: sum(x) == 10), True),
         # test all
@@ -244,8 +261,13 @@ def test_tuple(value, expect, result):
         ({2, 5, 2}, exp.Set(any=5), True),
     ],
 )
-def test_set(value, expect, result):
+def test_set_eq(value, expect, result):
     assert (value == expect) == result
+
+
+def test_set_instance():
+    obj: set = exp.Set()
+    assert isinstance(obj, set)
 
 
 @pytest.mark.parametrize(
@@ -286,7 +308,7 @@ def test_set(value, expect, result):
         # test superset of
         ({1: "a", 3: "c"}, exp.Dict(superset_of={1: "a", 2: "b"}), False),
         ({1: "a", 2: "b", 3: "c"}, exp.Dict(superset_of={1: "a", 2: "b"}), True),
-        # test predicate
+        # test satisfies
         ({1: "a", 2: "b", 3: "c", 4: "d"}, exp.Dict(satisfies=lambda x: len(x) == 10), False),
         ({1: "a", 2: "b", 3: "c", 4: "d"}, exp.Dict(satisfies=lambda x: sum(x) == 10), True),
         # test keys all
@@ -303,5 +325,10 @@ def test_set(value, expect, result):
         ({1: "a", 2: "b", 3: "c", 4: "d", 5: "e"}, exp.Dict(values_any="e"), True),
     ],
 )
-def test_dict(value, expect, result):
+def test_dict_eq(value, expect, result):
     assert (value == expect) == result
+
+
+def test_dict_instance():
+    obj: dict = exp.Dict()
+    assert isinstance(obj, dict)

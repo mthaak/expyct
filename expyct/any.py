@@ -6,16 +6,31 @@ from expyct.base import MapBefore, Satisfies, Instance, Type, Equals, Vars, Opti
 
 @dataclass
 class Any(Satisfies, Vars, Equals[typing.Any], Optional, MapBefore):
-    """Match any object.
+    """Match any object."""
 
-    Attributes:
-        map_before : apply function before checking equality
-        optional : whether `None` is allowed
-        equals : object must equal exactly. This is useful together with
-            `map_before` to check a value after applying a function
-        vars : object attributes (result of `vars()`) must equal
-        satisfies : object must satisfy predicate
-    """
+    def __init__(
+        self,
+        map_before: typing.Optional[typing.Callable] = None,
+        optional: typing.Optional[bool] = None,
+        equals: typing.Optional[typing.Any] = None,
+        vars: typing.Optional[typing.Any] = None,
+        satisfies: typing.Optional[typing.Callable[[typing.Any], bool]] = None,
+    ):
+        """Match any object.
+
+        Args:
+            map_before : apply function before checking equality
+            optional : whether `None` is allowed
+            equals : object must equal exactly. This is useful together with
+                `map_before` to check a value after applying a function
+            vars : object attributes (result of `vars()`) must equal
+            satisfies : object must satisfy predicate
+        """
+        self.map_before = map_before
+        self.optional = optional
+        self.equals = equals
+        self.vars = vars
+        self.satisfies = satisfies
 
     def __eq__(self, other):
         try:
@@ -35,18 +50,37 @@ class Any(Satisfies, Vars, Equals[typing.Any], Optional, MapBefore):
 
 @dataclass
 class AnyValue(Instance, Satisfies, Vars, Equals[typing.Any], Optional, MapBefore):
-    """Match any value.
+    """Match any value."""
 
-    Attributes:
-        map_before : apply function before checking equality
-        optional : whether `None` is allowed
-        equals : object must equal exactly. This is useful together with
-            `map_before` to check a value after applying a function
-        vars : object attributes (result of `vars()`) must equal
-        satisfies : object must satisfy predicate
-        type : type of object must equal to given type
-        instance_of : object must be an instance of given type
-    """
+    def __init__(
+        self,
+        map_before: typing.Optional[typing.Callable] = None,
+        optional: typing.Optional[bool] = None,
+        equals: typing.Optional[typing.Any] = None,
+        vars: typing.Optional[typing.Any] = None,
+        satisfies: typing.Optional[typing.Callable[[typing.Any], bool]] = None,
+        type: typing.Optional[typing.Type] = None,
+        instance_of: typing.Optional[typing.Type] = None,
+    ):
+        """Match any value.
+
+        Args:
+            map_before : apply function before checking equality
+            optional : whether `None` is allowed
+            equals : object must equal exactly. This is useful together with
+                `map_before` to check a value after applying a function
+            vars : object attributes (result of `vars()`) must equal
+            satisfies : object must satisfy predicate
+            type : type of object must equal to given type
+            instance_of : object must be an instance of given type
+        """
+        self.map_before = map_before
+        self.optional = optional
+        self.equals = equals
+        self.vars = vars
+        self.satisfies = satisfies
+        self.type = type
+        self.instance_of = instance_of
 
     def __eq__(self, other):
         try:
@@ -68,18 +102,37 @@ class AnyValue(Instance, Satisfies, Vars, Equals[typing.Any], Optional, MapBefor
 
 @dataclass
 class AnyType(Type, Satisfies, Vars, Equals[typing.Any], Optional, MapBefore):
-    """Match any class.
+    """Match any class."""
 
-    Attributes:
-        map_before : apply function before checking equality
-        optional : whether `None` is allowed
-        equals : object must equal exactly. This is useful together with
-            `map_before` to check a value after applying a function
-        vars : object attributes (result of `vars()`) must equal
-        satisfies : object must satisfy predicate
-        superclass_of : class must be superclass of given type
-        subclass_of : class must be subclass of given type
-    """
+    def __init__(
+        self,
+        map_before: typing.Optional[typing.Callable] = None,
+        optional: typing.Optional[bool] = None,
+        equals: typing.Optional[typing.Any] = None,
+        vars: typing.Optional[typing.Any] = None,
+        satisfies: typing.Optional[typing.Callable[[typing.Any], bool]] = None,
+        superclass_of: typing.Optional[typing.Type] = None,
+        subclass_of: typing.Optional[typing.Type] = None,
+    ):
+        """Match any class.
+
+        Args:
+            map_before : apply function before checking equality
+            optional : whether `None` is allowed
+            equals : object must equal exactly. This is useful together with
+                `map_before` to check a value after applying a function
+            vars : object attributes (result of `vars()`) must equal
+            satisfies : object must satisfy predicate
+            superclass_of : class must be superclass of given type
+            subclass_of : class must be subclass of given type
+        """
+        self.map_before = map_before
+        self.optional = optional
+        self.equals = equals
+        self.vars = vars
+        self.satisfies = satisfies
+        self.superclass_of = superclass_of
+        self.subclass_of = subclass_of
 
     def __eq__(self, other):
         try:

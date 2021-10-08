@@ -8,41 +8,82 @@ from expyct.collection import Length, Contains
 
 @dataclass
 class String(
-    Satisfies,
     Contains,
     Length,
+    Satisfies,
     Equals[str],
     Instance,
     Optional,
     MapBefore,
+    str,
 ):
-    """Match any object that is a string.
-
-    Arguments:
-          map_before : apply function before checking equality
-          optional : whether `None` is allowed
-          type : type of object must equal to given type
-          instance_of : object must be an instance of given type
-          equals : object must equal exactly. This is useful together with
-              `map_before` to check a value after applying a function
-          length : object length must be exactly
-          min_length : object length must be at least
-          max_length : object length must be at most
-          non_empty : object must have at least one member
-          superset_of : collection of which the object must be a superset
-          subset_of : collection of which the object must be a subset
-          satisfies : object must satisfy predicate
-          starts_with : string must start with given
-          ends_with : string must end with given
-          regex : string must fully match predicate
-          ignore_case : whether to ignore case for starts_with, ends_with,
-            equality and regex matching
-    """
+    """Match any object that is a string."""
 
     starts_with: typing.Optional[str] = None
     ends_with: typing.Optional[str] = None
     regex: typing.Optional[typing.Union[str, bytes, typing.Pattern]] = None
     ignore_case: bool = False
+
+    def __new__(cls, *args, **kwargs):
+        return super().__new__(cls)
+
+    def __init__(
+        self,
+        map_before: typing.Optional[typing.Callable] = None,
+        optional: typing.Optional[bool] = None,
+        type: typing.Optional[typing.Type] = None,
+        instance_of: typing.Optional[typing.Type] = None,
+        equals: typing.Optional[typing.Any] = None,
+        satisfies: typing.Optional[typing.Callable[[typing.Any], bool]] = None,
+        length: typing.Optional[int] = None,
+        min_length: typing.Optional[int] = None,
+        max_length: typing.Optional[int] = None,
+        non_empty: bool = False,
+        superset_of: typing.Optional[typing.Collection] = None,
+        subset_of: typing.Optional[typing.Collection] = None,
+        starts_with: typing.Optional[str] = None,
+        ends_with: typing.Optional[str] = None,
+        regex: typing.Optional[typing.Union[str, bytes, typing.Pattern]] = None,
+        ignore_case: bool = False,
+    ):
+        """Match any object that is a string.
+
+        Args:
+            map_before : apply function before checking equality
+            optional : whether `None` is allowed
+            type : type of object must equal to given type
+            instance_of : object must be an instance of given type
+            equals : object must equal exactly. This is useful together with
+              `map_before` to check a value after applying a function
+            satisfies : object must satisfy predicate
+            length : object length must be exactly
+            min_length : object length must be at least
+            max_length : object length must be at most
+            non_empty : object must have at least one member
+            superset_of : collection of which the object must be a superset
+            subset_of : collection of which the object must be a subset
+            starts_with : string must start with given
+            ends_with : string must end with given
+            regex : string must fully match predicate
+            ignore_case : whether to ignore case for starts_with, ends_with,
+            equality and regex matching
+        """
+        self.map_before = map_before
+        self.optional = optional
+        self.type = type
+        self.instance_of = instance_of
+        self.equals = equals
+        self.satisfies = satisfies
+        self.length = length
+        self.min_length = min_length
+        self.max_length = max_length
+        self.non_empty = non_empty
+        self.superset_of = superset_of
+        self.subset_of = subset_of
+        self.starts_with = starts_with
+        self.ends_with = ends_with
+        self.regex = regex
+        self.ignore_case = ignore_case
 
     def __eq__(self, other):
         try:

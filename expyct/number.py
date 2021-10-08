@@ -7,15 +7,24 @@ from expyct.base import MapBefore, Satisfies, Equals, Instance, Optional
 
 @dataclass
 class MinMax:
-    """Mixin for matching a number that is equal to, larger or smaller than given bounds.
-
-    Arguments:
-        min : number must be larger than or equal to given
-        max : number must be smaller than or equal to given
-    """
+    """Mixin for matching a number that is equal to, larger or smaller than given bounds."""
 
     min: typing.Optional[ParentNumber] = None  # TODO better type?
     max: typing.Optional[ParentNumber] = None
+
+    def __init__(
+        self,
+        min: typing.Optional[ParentNumber] = None,
+        max: typing.Optional[ParentNumber] = None,
+    ):
+        """Mixin for matching a number that is equal to, larger or smaller than given bounds.
+
+        Args:
+            min : number must be larger than or equal to given
+            max : number must be smaller than or equal to given
+        """
+        self.min = min
+        self.max = max
 
     def __eq__(self, other):
         if self.min is not None and not other >= self.min:
@@ -27,15 +36,24 @@ class MinMax:
 
 @dataclass
 class MinMaxStrict:
-    """Mixin for matching number that is strictly larger or smaller than given bounds.
-
-    Arguments:
-        min_strict : number must be larger than given
-        max_strict : number must be smaller than given
-    """
+    """Mixin for matching number that is strictly larger or smaller than given bounds."""
 
     min_strict: typing.Optional[ParentNumber] = None
     max_strict: typing.Optional[ParentNumber] = None
+
+    def __init__(
+        self,
+        min_strict: typing.Optional[ParentNumber] = None,
+        max_strict: typing.Optional[ParentNumber] = None,
+    ):
+        """Mixin for matching number that is strictly larger or smaller than given bounds.
+
+        Args:
+            min_strict : number must be larger than given
+            max_strict : number must be smaller than given
+        """
+        self.min_strict = min_strict
+        self.max_strict = max_strict
 
     def __eq__(self, other):
         if self.min_strict is not None and not other > self.min_strict:
@@ -48,15 +66,25 @@ class MinMaxStrict:
 @dataclass
 class CloseTo:
     """Mixin for matching number that is close to given target within a certain two-side error. In
-    other words, the difference between the number and `close_to` must be at most `error`.
-
-    Arguments:
-        close_to : number must be close to this
-        error : two-sided allowed error
-    """
+    other words, the difference between the number and `close_to` must be at most `error`."""
 
     close_to: typing.Optional[ParentNumber] = None
     error: float = 0.001
+
+    def __init__(
+        self,
+        close_to: typing.Optional[ParentNumber] = None,
+        error: float = 0.001,
+    ):
+        """Mixin for matching number that is close to given target within a certain two-side error. In
+        other words, the difference between the number and `close_to` must be at most `error`.
+
+        Args:
+            close_to : number must be close to this
+            error : two-sided allowed error
+        """
+        self.close_to = close_to
+        self.error = error
 
     def __eq__(self, other):
         if self.close_to is not None:
@@ -77,23 +105,55 @@ class Number(
     Optional,
     MapBefore,
 ):
-    """Match any number.
+    """Match any number."""
 
-    Arguments:
-        map_before : apply function before checking equality
-        optional : whether `None` is allowed
-        type : type of object must equal to given type
-        instance_of : object must be an instance of given type
-        equals : object must equal exactly. This is useful together with
-            `map_before` to check a value after applying a function
-        satisfies : object must satisfy predicate
-        min : number must be larger than or equal to given
-        max : number must be smaller than or equal to given
-        min_strict : number must be larger than given
-        max_strict : number must be smaller than given
-        close_to : number must be close to this
-        error : two-sided allowed error
-    """
+    def __new__(cls, *args, **kwargs):
+        return super().__new__(cls)
+
+    def __init__(
+        self,
+        map_before: typing.Optional[typing.Callable] = None,
+        type: typing.Optional[typing.Type] = None,
+        instance_of: typing.Optional[typing.Type] = None,
+        equals: typing.Optional[typing.Any] = None,
+        optional: typing.Optional[bool] = None,
+        satisfies: typing.Optional[typing.Callable[[typing.Any], bool]] = None,
+        min: typing.Optional[ParentNumber] = None,
+        max: typing.Optional[ParentNumber] = None,
+        min_strict: typing.Optional[ParentNumber] = None,
+        max_strict: typing.Optional[ParentNumber] = None,
+        close_to: typing.Optional[ParentNumber] = None,
+        error: float = 0.01,
+    ):
+        """Match any number.
+
+        Args:
+            map_before : apply function before checking equality
+            type : type of object must equal to given type
+            instance_of : object must be an instance of given type
+            equals : object must equal exactly. This is useful together with
+                `map_before` to check a value after applying a function
+            optional : whether `None` is allowed
+            satisfies : object must satisfy predicate
+            min : number must be larger than or equal to given
+            max : number must be smaller than or equal to given
+            min_strict : number must be larger than given
+            max_strict : number must be smaller than given
+            close_to : number must be close to this
+            error : two-sided allowed error a
+        """
+        self.map_before = map_before
+        self.type = type
+        self.instance_of = instance_of
+        self.equals = equals
+        self.optional = optional
+        self.satisfies = satisfies
+        self.min = min
+        self.max = max
+        self.min_strict = min_strict
+        self.max_strict = max_strict
+        self.close_to = close_to
+        self.error = error
 
     def __eq__(self, other):
         try:
@@ -120,23 +180,56 @@ class Number(
 
 
 @dataclass
-class Int(Number):
-    """Match any object that is an instance of `int`.
+class Int(Number, int):
+    """Match any object that is an instance of `int`."""
 
-    Arguments:
-        map_before : apply function before checking equality
-        type : type of object must equal to given type
-        instance_of : object must be an instance of given type
-        equals : object must equal exactly. This is useful together with
-            `map_before` to check a value after applying a function
-        satisfies : object must satisfy predicate
-        min : number must be larger than or equal to given
-        max : number must be smaller than or equal to given
-        min_strict : number must be larger than given
-        max_strict : number must be smaller than given
-        close_to : number must be close to this
-        error : two-sided allowed error
-    """
+    def __new__(cls, *args, **kwargs):
+        return super().__new__(cls)
+
+    def __init__(
+        self,
+        map_before: typing.Optional[typing.Callable] = None,
+        type: typing.Optional[typing.Type] = None,
+        instance_of: typing.Optional[typing.Type] = None,
+        equals: typing.Optional[typing.Any] = None,
+        optional: typing.Optional[bool] = None,
+        satisfies: typing.Optional[typing.Callable[[typing.Any], bool]] = None,
+        min: typing.Optional[ParentNumber] = None,
+        max: typing.Optional[ParentNumber] = None,
+        min_strict: typing.Optional[ParentNumber] = None,
+        max_strict: typing.Optional[ParentNumber] = None,
+        close_to: typing.Optional[ParentNumber] = None,
+        error: float = 0.01,
+    ):
+        """Match any object that is an instance of `int`.
+
+        Args:
+            map_before : apply function before checking equality
+            type : type of object must equal to given type
+            instance_of : object must be an instance of given type
+            equals : object must equal exactly. This is useful together with
+                `map_before` to check a value after applying a function
+            optional : whether `None` is allowed
+            satisfies : object must satisfy predicate
+            min : number must be larger than or equal to given
+            max : number must be smaller than or equal to given
+            min_strict : number must be larger than given
+            max_strict : number must be smaller than given
+            close_to : number must be close to this
+            error : two-sided allowed error a
+        """
+        self.map_before = map_before
+        self.type = type
+        self.instance_of = instance_of
+        self.equals = equals
+        self.optional = optional
+        self.satisfies = satisfies
+        self.min = min
+        self.max = max
+        self.min_strict = min_strict
+        self.max_strict = max_strict
+        self.close_to = close_to
+        self.error = error
 
     def __eq__(self, other):
         if not isinstance(other, int):
@@ -147,23 +240,56 @@ class Int(Number):
 
 
 @dataclass
-class Float(Number):
-    """Match any object that is an instance of `float`.
+class Float(Number, float):
+    """Match any object that is an instance of `float`."""
 
-    Arguments:
-        map_before : apply function before checking equality
-        type : type of object must equal to given type
-        instance_of : object must be an instance of given type
-        equals : object must equal exactly. This is useful together with
-            `map_before` to check a value after applying a function
-        satisfies : object must satisfy predicate
-        min : number must be larger than or equal to given
-        max : number must be smaller than or equal to given
-        min_strict : number must be larger than given
-        max_strict : number must be smaller than given
-        close_to : number must be close to this
-        error : two-sided allowed error
-    """
+    def __new__(cls, *args, **kwargs):
+        return super().__new__(cls)
+
+    def __init__(
+        self,
+        map_before: typing.Optional[typing.Callable] = None,
+        type: typing.Optional[typing.Type] = None,
+        instance_of: typing.Optional[typing.Type] = None,
+        equals: typing.Optional[typing.Any] = None,
+        optional: typing.Optional[bool] = None,
+        satisfies: typing.Optional[typing.Callable[[typing.Any], bool]] = None,
+        min: typing.Optional[ParentNumber] = None,
+        max: typing.Optional[ParentNumber] = None,
+        min_strict: typing.Optional[ParentNumber] = None,
+        max_strict: typing.Optional[ParentNumber] = None,
+        close_to: typing.Optional[ParentNumber] = None,
+        error: float = 0.01,
+    ):
+        """Match any object that is an instance of `float`.
+
+        Args:
+            map_before : apply function before checking equality
+            type : type of object must equal to given type
+            instance_of : object must be an instance of given type
+            equals : object must equal exactly. This is useful together with
+                `map_before` to check a value after applying a function
+            optional : whether `None` is allowed
+            satisfies : object must satisfy predicate
+            min : number must be larger than or equal to given
+            max : number must be smaller than or equal to given
+            min_strict : number must be larger than given
+            max_strict : number must be smaller than given
+            close_to : number must be close to this
+            error : two-sided allowed error
+        """
+        self.map_before = map_before
+        self.type = type
+        self.instance_of = instance_of
+        self.equals = equals
+        self.optional = optional
+        self.satisfies = satisfies
+        self.min = min
+        self.max = max
+        self.min_strict = min_strict
+        self.max_strict = max_strict
+        self.close_to = close_to
+        self.error = error
 
     def __eq__(self, other):
         if not isinstance(other, float):
