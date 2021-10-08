@@ -71,13 +71,18 @@ UTC = timezone.utc
         (datetime(2020, 3, 3), exp.DateTime(before_strict=datetime(2020, 1, 1)), False),
         (datetime(2020, 3, 3), exp.DateTime(before_strict=datetime(2020, 3, 3)), False),
         (datetime(2020, 3, 3), exp.DateTime(before_strict=datetime(2020, 3, 4)), True),
-        # test predicate
+        # test satisfies
         (datetime(2020, 3, 3), exp.DateTime(satisfies=lambda x: x.year == 2021), False),
         (datetime(2020, 3, 3), exp.DateTime(satisfies=lambda x: x.year == 2020), True),
     ],
 )
-def test_datetime(value, expect, result):
+def test_datetime_eq(value, expect, result):
     assert (value == expect) == result
+
+
+def test_datetime_instance():
+    obj: datetime = exp.DateTime()
+    assert isinstance(obj, datetime)
 
 
 @pytest.mark.parametrize(
@@ -217,7 +222,7 @@ def test_datetime(value, expect, result):
             exp.DateTimeTz(before_strict=timedelta(seconds=3)),
             True,
         ),
-        # test predicate
+        # test satisfies
         (
             datetime(2020, 3, 3, tzinfo=UTC),
             exp.DateTimeTz(satisfies=lambda x: x.year == 2021),
@@ -230,8 +235,13 @@ def test_datetime(value, expect, result):
         ),
     ],
 )
-def test_datetime_tz(value, expect, result):
+def test_datetime_tz_eq(value, expect, result):
     assert (value == expect) == result
+
+
+def test_datetime_tz_instance():
+    obj: datetime = exp.DateTimeTz()
+    assert isinstance(obj, datetime)
 
 
 @pytest.mark.parametrize(
@@ -266,13 +276,18 @@ def test_datetime_tz(value, expect, result):
         (date(2020, 3, 3), exp.Date(before_strict=date(2020, 1, 1)), False),
         (date(2020, 3, 3), exp.Date(before_strict=date(2020, 3, 3)), False),
         (date(2020, 3, 3), exp.Date(before_strict=date(2020, 3, 4)), True),
-        # test predicate
+        # test satisfies
         (date(2020, 3, 3), exp.Date(satisfies=lambda x: x.year == 2021), False),
         (date(2020, 3, 3), exp.Date(satisfies=lambda x: x.year == 2020), True),
     ],
 )
-def test_date(value, expect, result):
+def test_date_eq(value, expect, result):
     assert (value == expect) == result
+
+
+def test_date_instance():
+    obj: date = exp.Date()
+    assert isinstance(obj, date)
 
 
 @pytest.mark.parametrize(
@@ -307,13 +322,18 @@ def test_date(value, expect, result):
         (time(3, 3), exp.Time(before_strict=time(1, 1)), False),
         (time(3, 3), exp.Time(before_strict=time(3, 3)), False),
         (time(3, 3), exp.Time(before_strict=time(3, 4)), True),
-        # test predicate
+        # test satisfies
         (time(3, 3), exp.Time(satisfies=lambda x: x.hour == 2), False),
         (time(3, 3), exp.Time(satisfies=lambda x: x.hour == 3), True),
     ],
 )
-def test_time(value, expect, result):
+def test_time_eq(value, expect, result):
     assert (value == expect) == result
+
+
+def test_time_instance():
+    obj: time = exp.Time()
+    assert isinstance(obj, time)
 
 
 @pytest.mark.parametrize(

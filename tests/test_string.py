@@ -42,7 +42,7 @@ import expyct as exp
         # test superset of
         ("14", exp.String(superset_of="12"), False),
         ("123", exp.String(superset_of="12"), True),
-        # test predicate
+        # test satisfies
         ("1234", exp.String(satisfies=lambda x: len(x) == 10), False),
         ("1234", exp.String(satisfies=lambda x: x.startswith("12")), True),
         # test starts with
@@ -70,5 +70,10 @@ import expyct as exp
         ("abc", exp.String(regex=re.compile("ABCD?", re.IGNORECASE)), True),
     ],
 )
-def test_string(value, expect, result):
+def test_string_eq(value, expect, result):
     assert (value == expect) == result
+
+
+def test_string_instance():
+    obj: str = exp.String()
+    assert isinstance(obj, str)

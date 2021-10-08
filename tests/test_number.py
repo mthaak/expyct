@@ -1,3 +1,5 @@
+from numbers import Number as ParentNumber
+
 import pytest as pytest
 
 import expyct as exp
@@ -22,12 +24,12 @@ import expyct as exp
         (1, exp.Number(type=float), False),
         (1, exp.Number(instance_of=int), True),
         (1, exp.Number(instance_of=float), False),
-        # test predicate
-        (1, exp.Number(satisfies=lambda x: x % 2 == 0), False),
-        (1, exp.Number(satisfies=lambda x: x % 2 == 1), True),
         # test equals
         (1, exp.Number(equals=2), False),
         (1, exp.Number(equals=1), True),
+        # test satisfies
+        (1, exp.Number(satisfies=lambda x: x % 2 == 0), False),
+        (1, exp.Number(satisfies=lambda x: x % 2 == 1), True),
         # test min
         (2, exp.Number(min=3), False),
         (2, exp.Number(min=2), True),
@@ -55,8 +57,14 @@ import expyct as exp
         (1.2, exp.Number(close_to=1, error=0.3), True),
     ],
 )
-def test_number(value, expect, result):
+def test_number_eq(value, expect, result):
     assert (value == expect) == result
+
+
+@pytest.mark.xfail  # TODO not yet implemented
+def test_number_instance():
+    obj: ParentNumber = exp.Number()
+    assert isinstance(obj, ParentNumber)
 
 
 @pytest.mark.parametrize(
@@ -68,8 +76,13 @@ def test_number(value, expect, result):
         (1.2, exp.Int(), False),
     ],
 )
-def test_int(value, expect, result):
+def test_int_eq(value, expect, result):
     assert (value == expect) == result
+
+
+def test_int_instance():
+    obj: int = exp.Int()
+    assert isinstance(obj, int)
 
 
 @pytest.mark.parametrize(
@@ -81,5 +94,10 @@ def test_int(value, expect, result):
         (1.2, exp.Float(), True),
     ],
 )
-def test_float(value, expect, result):
+def test_float_eq(value, expect, result):
     assert (value == expect) == result
+
+
+def test_float_instance():
+    obj: float = exp.Float()
+    assert isinstance(obj, float)

@@ -24,6 +24,6 @@ repos:
     files: expyct/
     hooks:
       - id: mypy
-        additional_dependencies: [types-backports]
         args: [ expyct ]
         pass_filenames: false
+        additional_dependencies: [types-backports]

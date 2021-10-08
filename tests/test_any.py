@@ -34,7 +34,7 @@ class ABC:
         # test vars
         (ABC(), exp.Any(vars={"x": 4}), False),
         (ABC(), exp.Any(vars=exp.Dict(length=3)), True),
-        # test predicate
+        # test satisfies
         (1, exp.Any(satisfies=lambda x: x % 2 == 0), False),
         (2, exp.Any(satisfies=lambda x: x % 2 == 0), True),
     ],
@@ -61,7 +61,7 @@ def test_any(value, expect, result):
         # test vars
         (ABC(), exp.AnyValue(vars={"x": 4}), False),
         (ABC(), exp.AnyValue(vars=exp.Dict(length=3)), True),
-        # test predicate
+        # test satisfies
         (1, exp.AnyValue(satisfies=lambda x: x % 2 == 0), False),
         (2, exp.AnyValue(satisfies=lambda x: x % 2 == 0), True),
     ],
@@ -88,7 +88,7 @@ def test_any_value(value, expect, result):
         # test vars
         (ABC, exp.AnyType(vars={"a": 1}), False),
         (ABC, exp.AnyType(vars=exp.Dict(superset_of={"a": 1})), True),
-        # test predicate
+        # test satisfies
         (int, exp.AnyType(satisfies=lambda x: x == str), False),
         (str, exp.AnyType(satisfies=lambda x: x == str), True),
         # test type
