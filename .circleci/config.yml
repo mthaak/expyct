@@ -51,7 +51,7 @@ jobs:
       - run:
           command: |
             mkdir test-results
-            pytest -v --cov=expyct --cov-fail-under=0.9 --junitxml=test-results/junit.xml
+            pytest -v --cov=expyct --cov-fail-under=90 --junitxml=test-results/junit.xml
           name: Run pytest
       - store_test_results:
           path: test-results
