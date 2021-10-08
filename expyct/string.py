@@ -50,7 +50,7 @@ class String(
 
         Args:
             map_before : apply function before checking equality
-            optional : whether `None` is allowed
+            optional : whether `None` is allowed [default: `False`]
             type : type of object must equal to given type
             instance_of : object must be an instance of given type
             equals : object must equal exactly. This is useful together with
@@ -59,14 +59,14 @@ class String(
             length : object length must be exactly
             min_length : object length must be at least
             max_length : object length must be at most
-            non_empty : object must have at least one member
+            non_empty : object must have at least one member [default: `False`]
             superset_of : collection of which the object must be a superset
             subset_of : collection of which the object must be a subset
             starts_with : string must start with given
             ends_with : string must end with given
             regex : string must fully match predicate
             ignore_case : whether to ignore case for starts_with, ends_with,
-            equality and regex matching
+            equality and regex matching [default: `False`]
         """
         self.map_before = map_before
         self.optional = optional

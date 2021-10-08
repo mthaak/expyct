@@ -133,7 +133,7 @@ class Number(
             instance_of : object must be an instance of given type
             equals : object must equal exactly. This is useful together with
                 `map_before` to check a value after applying a function
-            optional : whether `None` is allowed
+            optional : whether `None` is allowed [default: `False`]
             satisfies : object must satisfy predicate
             min : number must be larger than or equal to given
             max : number must be smaller than or equal to given

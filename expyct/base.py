@@ -109,7 +109,7 @@ class Optional:
         """Mixin for matching with `None`.
 
         Args:
-            optional : whether `None` is allowed
+            optional : whether `None` is allowed [default: `False`]
         """
         self.optional = optional
 

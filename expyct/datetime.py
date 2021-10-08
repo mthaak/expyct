@@ -112,7 +112,7 @@ class DateTime(
 
         Args:
             map_before : apply function before checking equality
-            optional : whether `None` is allowed
+            optional : whether `None` is allowed [default: `False`]
             equals : object must equal exactly. This is useful together with
                 `map_before` to check a value after applying a function
             after : object must occur after or exactly on given
@@ -167,7 +167,6 @@ class DateTimeTz(
     before: typing.Optional[typing.Union[datetime, timedelta]] = None  # type: ignore
     after_strict: typing.Optional[typing.Union[datetime, timedelta]] = None  # type: ignore
     before_strict: typing.Optional[typing.Union[datetime, timedelta]] = None  # type: ignore
-    """Match any object that is an instance of `datetime`. """
 
     def __new__(cls, *args, **kwargs):
         return super().__new__(cls, 1, 1, 1)
@@ -188,7 +187,7 @@ class DateTimeTz(
 
         Args:
             map_before : apply function before checking equality
-            optional : whether `None` is allowed
+            optional : whether `None` is allowed [default: `False`]
             equals : object must equal exactly. This is useful together with
                 `map_before` to check a value after applying a function
             after : object must occur after or on given. If timedelta is given,
@@ -207,6 +206,11 @@ class DateTimeTz(
         self.after_strict = after_strict
         self.before_strict = before_strict
         self.satisfies = satisfies
+
+    after: typing.Optional[typing.Union[datetime, timedelta]] = None  # type: ignore
+    before: typing.Optional[typing.Union[datetime, timedelta]] = None  # type: ignore
+    after_strict: typing.Optional[typing.Union[datetime, timedelta]] = None  # type: ignore
+    before_strict: typing.Optional[typing.Union[datetime, timedelta]] = None  # type: ignore
 
     def __eq__(self, other):
         try:

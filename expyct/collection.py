@@ -66,7 +66,7 @@ class Length:
             length : object length must be exactly
             min_length : object length must be at least
             max_length : object length must be at most
-            non_empty : object must have at least one member
+            non_empty : object must have at least one member [default: `False`]
         """
         self.length = length
         self.min_length = min_length
@@ -173,7 +173,7 @@ class Collection(
             length : object length must be exactly
             min_length : object length must be at least
             max_length : object length must be at most
-            non_empty : object must have at least one member
+            non_empty : object must have at least one member [default: `False`]
             superset_of : collection of which the object must be a superset
             subset_of : collection of which the object must be a subset
             satisfies : object must satisfy predicate
@@ -254,7 +254,7 @@ class List(Satisfies, Contains, Length, Equals[list], Optional, MapBefore, AllOr
             length : object length must be exactly
             min_length : object length must be at least
             max_length : object length must be at most
-            non_empty : object must have at least one member
+            non_empty : object must have at least one member [default: `False`]
             superset_of : collection of which the object must be a superset
             subset_of : collection of which the object must be a subset
             satisfies : object must satisfy predicate
@@ -344,7 +344,7 @@ class Tuple(Satisfies, Contains, Length, Equals[tuple], Optional, MapBefore, All
             length : object length must be exactly
             min_length : object length must be at least
             max_length : object length must be at most
-            non_empty : object must have at least one member
+            non_empty : object must have at least one member [default: `False`]
             superset_of : collection of which the object must be a superset
             subset_of : collection of which the object must be a subset
             satisfies : object must satisfy predicate
@@ -420,7 +420,7 @@ class Set(Satisfies, Contains, Length, Equals[set], Optional, MapBefore, AllOrAn
             length : object length must be exactly
             min_length : object length must be at least
             max_length : object length must be at most
-            non_empty : object must have at least one member
+            non_empty : object must have at least one member [default: `False`]
             superset_of : collection of which the object must be a superset
             subset_of : collection of which the object must be a subset
             satisfies : object must satisfy predicate
@@ -505,7 +505,7 @@ class Dict(Satisfies, Contains, Length, Equals[dict], Optional, MapBefore, dict)
             length : object length must be exactly
             min_length : object length must be at least
             max_length : object length must be at most
-            non_empty : object must have at least one member
+            non_empty : object must have at least one member [default: `False`]
             superset_of : collection of which the object must be a superset
             subset_of : collection of which the object must be a subset
             satisfies : object must satisfy predicate

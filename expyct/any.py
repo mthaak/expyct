@@ -20,7 +20,7 @@ class Any(Satisfies, Vars, Equals[typing.Any], Optional, MapBefore):
 
         Args:
             map_before : apply function before checking equality
-            optional : whether `None` is allowed
+            optional : whether `None` is allowed [default: `False`]
             equals : object must equal exactly. This is useful together with
                 `map_before` to check a value after applying a function
             vars : object attributes (result of `vars()`) must equal
@@ -66,7 +66,7 @@ class AnyValue(Instance, Satisfies, Vars, Equals[typing.Any], Optional, MapBefor
 
         Args:
             map_before : apply function before checking equality
-            optional : whether `None` is allowed
+            optional : whether `None` is allowed [default: `False`]
             equals : object must equal exactly. This is useful together with
                 `map_before` to check a value after applying a function
             vars : object attributes (result of `vars()`) must equal
@@ -118,7 +118,7 @@ class AnyType(Type, Satisfies, Vars, Equals[typing.Any], Optional, MapBefore):
 
         Args:
             map_before : apply function before checking equality
-            optional : whether `None` is allowed
+            optional : whether `None` is allowed [default: `False`]
             equals : object must equal exactly. This is useful together with
                 `map_before` to check a value after applying a function
             vars : object attributes (result of `vars()`) must equal
