@@ -1,6 +1,7 @@
 import typing
-from dataclasses import dataclass
 from numbers import Number as ParentNumber
+
+from dataclasses import dataclass
 
 from expyct.base import MapBefore, Satisfies, Equals, Instance, Optional
 
@@ -184,7 +185,7 @@ class Int(Number, int):
     """Match any object that is an instance of `int`."""
 
     def __new__(cls, *args, **kwargs):
-        return super().__new__(cls)
+        return int.__new__(cls)
 
     def __init__(
         self,
@@ -244,7 +245,7 @@ class Float(Number, float):
     """Match any object that is an instance of `float`."""
 
     def __new__(cls, *args, **kwargs):
-        return super().__new__(cls)
+        return float.__new__(cls)
 
     def __init__(
         self,

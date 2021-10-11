@@ -1,7 +1,8 @@
 import sys
 import typing
-from dataclasses import dataclass
 from datetime import datetime, date, time, timedelta, timezone
+
+from dataclasses import dataclass
 
 from expyct.base import Equals, MapBefore, Satisfies, Optional
 
@@ -95,7 +96,7 @@ class DateTime(
     """Match any object that is an instance of `datetime`."""
 
     def __new__(cls, *args, **kwargs):
-        return super().__new__(cls, 1, 1, 1)
+        return datetime.__new__(cls, 1, 1, 1)
 
     def __init__(
         self,
@@ -169,7 +170,7 @@ class DateTimeTz(
     before_strict: typing.Optional[typing.Union[datetime, timedelta]] = None  # type: ignore
 
     def __new__(cls, *args, **kwargs):
-        return super().__new__(cls, 1, 1, 1)
+        return datetime.__new__(cls, 1, 1, 1)
 
     def __init__(
         self,
@@ -272,7 +273,7 @@ class Date(
     """Match any object that is an instance of `date`."""
 
     def __new__(cls, *args, **kwargs):
-        return super().__new__(cls, 1, 1, 1)
+        return date.__new__(cls, 1, 1, 1)
 
     def __init__(
         self,
@@ -336,7 +337,7 @@ class Time(
     """Match any object that is an instance of `time`."""
 
     def __new__(cls, *args, **kwargs):
-        return super().__new__(cls, 1, 1, 1)
+        return time.__new__(cls, 1, 1, 1)
 
     def __init__(
         self,
