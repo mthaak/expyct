@@ -1,5 +1,6 @@
 import re
 import typing
+
 from dataclasses import dataclass
 
 from expyct.base import Equals, MapBefore, Instance, Satisfies, Optional
@@ -25,7 +26,7 @@ class String(
     ignore_case: bool = False
 
     def __new__(cls, *args, **kwargs):
-        return super().__new__(cls)
+        return str.__new__(cls)
 
     def __init__(
         self,

@@ -1,5 +1,6 @@
 import typing
 from collections import Counter
+
 from dataclasses import dataclass
 
 from expyct.base import Equals, MapBefore, Satisfies, Optional
@@ -224,7 +225,7 @@ class List(Satisfies, Contains, Length, Equals[list], Optional, MapBefore, AllOr
     ignore_order: bool = False
 
     def __new__(cls, *args, **kwargs):
-        return super().__new__(cls)
+        return list.__new__(cls)
 
     def __init__(
         self,
@@ -313,7 +314,7 @@ class Tuple(Satisfies, Contains, Length, Equals[tuple], Optional, MapBefore, All
     """Match any object that is an instance of `tuple`."""
 
     def __new__(cls, *args, **kwargs):
-        return super().__new__(cls)
+        return tuple.__new__(cls)
 
     def __init__(
         self,
@@ -389,7 +390,7 @@ class Set(Satisfies, Contains, Length, Equals[set], Optional, MapBefore, AllOrAn
     """Match any object that is an instance of `set`."""
 
     def __new__(cls, *args, **kwargs):
-        return super().__new__(cls)
+        return set.__new__(cls)
 
     def __init__(
         self,
@@ -474,7 +475,7 @@ class Dict(Satisfies, Contains, Length, Equals[dict], Optional, MapBefore, dict)
     values_any: typing.Optional[typing.Any] = None
 
     def __new__(cls, *args, **kwargs):
-        return super().__new__(cls)
+        return dict.__new__(cls)
 
     def __init__(
         self,
