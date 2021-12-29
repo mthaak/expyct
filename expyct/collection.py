@@ -3,12 +3,12 @@ from collections import Counter
 
 from dataclasses import dataclass
 
-from expyct.base import Equals, MapBefore, Satisfies, Optional
+from expyct.base import Equals, MapBefore, Satisfies, Optional, BaseMatcher
 from expyct.base import Instance
 
 
-@dataclass
-class AllOrAny:
+@dataclass(repr=False)
+class AllOrAny(BaseMatcher):
     """Mixin for matching a collection object by checking that all or at least
     one of its members are equal to given.
 
@@ -35,6 +35,8 @@ class AllOrAny:
         self.any = any
 
     def __eq__(self, other):
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
         if self.all is not None:
             if not all(x == self.all for x in other):
                 return False
@@ -44,8 +46,8 @@ class AllOrAny:
         return True
 
 
-@dataclass
-class Length:
+@dataclass(repr=False)
+class Length(BaseMatcher):
     """Mixin for matching a collection object by its length as the result of len()."""
 
     length: typing.Optional[int] = None
@@ -75,6 +77,8 @@ class Length:
         self.non_empty = non_empty
 
     def __eq__(self, other):
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
         if self.length is not None:
             if not len(other) == self.length:
                 return False
@@ -90,8 +94,8 @@ class Length:
         return True
 
 
-@dataclass
-class Contains:
+@dataclass(repr=False)
+class Contains(BaseMatcher):
     """Mixin matching a collection object by the containment of specified members."""
 
     superset_of: typing.Optional[typing.Collection] = None
@@ -112,6 +116,8 @@ class Contains:
         self.subset_of = subset_of
 
     def __eq__(self, other):
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
         if self.subset_of is not None:
             if isinstance(other, dict) and isinstance(self.subset_of, dict):
                 if not all(x in self.subset_of.items() for x in other.items()):
@@ -130,7 +136,7 @@ class Contains:
         return True
 
 
-@dataclass
+@dataclass(repr=False)
 class Collection(
     Satisfies,
     Contains,
@@ -140,6 +146,7 @@ class Collection(
     Optional,
     MapBefore,
     AllOrAny,
+    BaseMatcher,
 ):
     """Match any object that is an instance of `typing.Collection`."""
 
@@ -195,6 +202,8 @@ class Collection(
         self.satisfies = satisfies
 
     def __eq__(self, other):
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
         try:
             other = MapBefore.map(self, other)
         except Exception:
@@ -218,8 +227,10 @@ class Collection(
         return True
 
 
-@dataclass
-class List(Satisfies, Contains, Length, Equals[list], Optional, MapBefore, AllOrAny, list):
+@dataclass(repr=False)
+class List(
+    Satisfies, Contains, Length, Equals[list], Optional, MapBefore, AllOrAny, BaseMatcher, list
+):
     """Match any object that is an instance of `list`."""
 
     ignore_order: bool = False
@@ -276,6 +287,8 @@ class List(Satisfies, Contains, Length, Equals[list], Optional, MapBefore, AllOr
         self.ignore_order = ignore_order
 
     def __eq__(self, other):
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
         try:
             other = MapBefore.map(self, other)
         except Exception:
@@ -309,8 +322,10 @@ class List(Satisfies, Contains, Length, Equals[list], Optional, MapBefore, AllOr
             return len(a) == len(b) and all(a.count(i) == b.count(i) for i in a)  # O(n * n)
 
 
-@dataclass
-class Tuple(Satisfies, Contains, Length, Equals[tuple], Optional, MapBefore, AllOrAny, tuple):
+@dataclass(repr=False)
+class Tuple(
+    Satisfies, Contains, Length, Equals[tuple], Optional, MapBefore, AllOrAny, BaseMatcher, tuple
+):
     """Match any object that is an instance of `tuple`."""
 
     def __new__(cls, *args, **kwargs):
@@ -364,6 +379,8 @@ class Tuple(Satisfies, Contains, Length, Equals[tuple], Optional, MapBefore, All
         self.satisfies = satisfies
 
     def __eq__(self, other):
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
         try:
             other = MapBefore.map(self, other)
         except Exception:
@@ -385,8 +402,10 @@ class Tuple(Satisfies, Contains, Length, Equals[tuple], Optional, MapBefore, All
         return True
 
 
-@dataclass
-class Set(Satisfies, Contains, Length, Equals[set], Optional, MapBefore, AllOrAny, set):
+@dataclass(repr=False)
+class Set(
+    Satisfies, Contains, Length, Equals[set], Optional, MapBefore, AllOrAny, BaseMatcher, set
+):
     """Match any object that is an instance of `set`."""
 
     def __new__(cls, *args, **kwargs):
@@ -440,6 +459,8 @@ class Set(Satisfies, Contains, Length, Equals[set], Optional, MapBefore, AllOrAn
         self.satisfies = satisfies
 
     def __eq__(self, other):
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
         try:
             other = MapBefore.map(self, other)
         except Exception:
@@ -461,8 +482,8 @@ class Set(Satisfies, Contains, Length, Equals[set], Optional, MapBefore, AllOrAn
         return True
 
 
-@dataclass
-class Dict(Satisfies, Contains, Length, Equals[dict], Optional, MapBefore, dict):
+@dataclass(repr=False)
+class Dict(Satisfies, Contains, Length, Equals[dict], Optional, MapBefore, BaseMatcher, dict):
     """Match any object that is an instance of `dict`."""
 
     superset_of: typing.Optional[dict] = None
@@ -537,6 +558,8 @@ class Dict(Satisfies, Contains, Length, Equals[dict], Optional, MapBefore, dict)
         self.values_any = values_any
 
     def __eq__(self, other):
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
         try:
             other = MapBefore.map(self, other)
         except Exception:

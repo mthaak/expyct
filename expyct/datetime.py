@@ -4,7 +4,7 @@ from datetime import datetime, date, time, timedelta, timezone
 
 from dataclasses import dataclass
 
-from expyct.base import Equals, MapBefore, Satisfies, Optional
+from expyct.base import Equals, MapBefore, Satisfies, Optional, BaseMatcher
 
 if (3, 6) <= sys.version_info < (3, 7):
     # fromisoformat only became available in 3.7
@@ -16,8 +16,8 @@ if (3, 6) <= sys.version_info < (3, 7):
 T = typing.TypeVar("T")
 
 
-@dataclass
-class AfterBefore(typing.Generic[T]):
+@dataclass(repr=False)
+class AfterBefore(typing.Generic[T], BaseMatcher):
     """Mixin for matching a `date`, `time`, or `datetime` that takes place after, before, or on
     given date/time. In other words, it is inclusive on both sides.
 
@@ -45,6 +45,8 @@ class AfterBefore(typing.Generic[T]):
         self.before = before
 
     def __eq__(self, other):
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
         if self.after is not None and not other >= self.after:
             return False
         if self.before is not None and not other <= self.before:
@@ -52,8 +54,8 @@ class AfterBefore(typing.Generic[T]):
         return True
 
 
-@dataclass
-class AfterBeforeStrict(typing.Generic[T]):
+@dataclass(repr=False)
+class AfterBeforeStrict(typing.Generic[T], BaseMatcher):
     """Mixin for matching a `date`, `time`, or `datetime` that takes place after and/or before given
     date/time. In other words, it is exclusive on both sides."""
 
@@ -76,6 +78,8 @@ class AfterBeforeStrict(typing.Generic[T]):
         self.before_strict = before_strict
 
     def __eq__(self, other):
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
         if self.after_strict is not None and not other > self.after_strict:
             return False
         if self.before_strict is not None and not other < self.before_strict:
@@ -83,7 +87,7 @@ class AfterBeforeStrict(typing.Generic[T]):
         return True
 
 
-@dataclass
+@dataclass(repr=False)
 class DateTime(
     Satisfies,
     AfterBeforeStrict[datetime],
@@ -91,6 +95,7 @@ class DateTime(
     Equals[datetime],
     Optional,
     MapBefore,
+    BaseMatcher,
     datetime,
 ):
     """Match any object that is an instance of `datetime`."""
@@ -132,6 +137,8 @@ class DateTime(
         self.satisfies = satisfies
 
     def __eq__(self, other):
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
         try:
             other = MapBefore.map(self, other)
         except Exception:
@@ -151,7 +158,7 @@ class DateTime(
         return True
 
 
-@dataclass
+@dataclass(repr=False)
 class DateTimeTz(
     Satisfies,
     AfterBeforeStrict[datetime],
@@ -159,6 +166,7 @@ class DateTimeTz(
     Equals[datetime],
     Optional,
     MapBefore,
+    BaseMatcher,
     datetime,
 ):
     """Match any object that is an instance of `datetime` and has timezone information (`tzinfo`).
@@ -214,6 +222,8 @@ class DateTimeTz(
     before_strict: typing.Optional[typing.Union[datetime, timedelta]] = None  # type: ignore
 
     def __eq__(self, other):
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
         try:
             other = MapBefore.map(self, other)
         except Exception:
@@ -266,9 +276,16 @@ class DateTimeTz(
             return bound
 
 
-@dataclass
+@dataclass(repr=False)
 class Date(
-    Satisfies, AfterBeforeStrict[date], AfterBefore[date], Equals[date], Optional, MapBefore, date
+    Satisfies,
+    AfterBeforeStrict[date],
+    AfterBefore[date],
+    Equals[date],
+    Optional,
+    MapBefore,
+    BaseMatcher,
+    date,
 ):
     """Match any object that is an instance of `date`."""
 
@@ -311,6 +328,8 @@ class Date(
         self.satisfies = satisfies
 
     def __eq__(self, other):
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
         try:
             other = MapBefore.map(self, other)
         except Exception:
@@ -330,9 +349,16 @@ class Date(
         return True
 
 
-@dataclass
+@dataclass(repr=False)
 class Time(
-    Satisfies, AfterBeforeStrict[time], AfterBefore[time], Equals[time], Optional, MapBefore, time
+    Satisfies,
+    AfterBeforeStrict[time],
+    AfterBefore[time],
+    Equals[time],
+    Optional,
+    MapBefore,
+    BaseMatcher,
+    time,
 ):
     """Match any object that is an instance of `time`."""
 
@@ -375,6 +401,8 @@ class Time(
         self.satisfies = satisfies
 
     def __eq__(self, other):
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
         try:
             other = MapBefore.map(self, other)
         except Exception:

@@ -1,9 +1,12 @@
 import typing
+
 from dataclasses import dataclass
 
+from expyct.base import BaseMatcher
 
-@dataclass
-class OneOf:
+
+@dataclass(repr=False)
+class OneOf(BaseMatcher):
     """Object must equal one of the given options.
 
     This can be recursively used to check nested objects. For example:
@@ -27,4 +30,6 @@ class OneOf:
         self.options = options
 
     def __eq__(self, other):
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
         return any(option.__eq__(other) for option in self.options)

@@ -1,11 +1,12 @@
 import typing
+
 from dataclasses import dataclass
 
-from expyct.base import MapBefore, Satisfies, Instance, Type, Equals, Vars, Optional
+from expyct.base import MapBefore, Satisfies, Instance, Type, Equals, Vars, Optional, BaseMatcher
 
 
-@dataclass
-class Any(Satisfies, Vars, Equals[typing.Any], Optional, MapBefore):
+@dataclass(repr=False)
+class Any(Satisfies, Vars, Equals[typing.Any], Optional, MapBefore, BaseMatcher):
     """Match any object."""
 
     def __init__(
@@ -33,6 +34,8 @@ class Any(Satisfies, Vars, Equals[typing.Any], Optional, MapBefore):
         self.satisfies = satisfies
 
     def __eq__(self, other):
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
         try:
             other = MapBefore.map(self, other)
         except Exception:
@@ -48,8 +51,8 @@ class Any(Satisfies, Vars, Equals[typing.Any], Optional, MapBefore):
         return True
 
 
-@dataclass
-class AnyValue(Instance, Satisfies, Vars, Equals[typing.Any], Optional, MapBefore):
+@dataclass(repr=False)
+class AnyValue(Instance, Satisfies, Vars, Equals[typing.Any], Optional, MapBefore, BaseMatcher):
     """Match any value."""
 
     def __init__(
@@ -83,6 +86,8 @@ class AnyValue(Instance, Satisfies, Vars, Equals[typing.Any], Optional, MapBefor
         self.instance_of = instance_of
 
     def __eq__(self, other):
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
         try:
             other = MapBefore.map(self, other)
         except Exception:
@@ -100,8 +105,8 @@ class AnyValue(Instance, Satisfies, Vars, Equals[typing.Any], Optional, MapBefor
         return True
 
 
-@dataclass
-class AnyType(Type, Satisfies, Vars, Equals[typing.Any], Optional, MapBefore):
+@dataclass(repr=False)
+class AnyType(Type, Satisfies, Vars, Equals[typing.Any], Optional, MapBefore, BaseMatcher):
     """Match any class."""
 
     def __init__(
@@ -135,6 +140,8 @@ class AnyType(Type, Satisfies, Vars, Equals[typing.Any], Optional, MapBefore):
         self.subclass_of = subclass_of
 
     def __eq__(self, other):
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
         try:
             other = MapBefore.map(self, other)
         except Exception:

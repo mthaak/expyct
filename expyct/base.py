@@ -1,17 +1,36 @@
 import abc
 import inspect
 import typing
+
 from dataclasses import dataclass
 
 T = typing.TypeVar("T")
 
 
-@dataclass
-class MapBefore:
-    """Mixing for applying a function before checking equality."""
+@dataclass(repr=False)
+class BaseMatcher:
+    """Parent class from which all matchers inherit."""
+
+    def __repr__(self):
+        args = ", ".join(f"{k}={repr(v)}" for k, v in vars(self).items() if v is not None)
+        return f"expyct.{self.__class__.__name__}({args})"
+
+    def __str__(self):
+        args = ", ".join(f"{k}={v}" for k, v in vars(self).items() if v is not None)
+        return f"{self.__class__.__name__}({args})"
+
+    def __eq__(self, other):
+        if not isinstance(other, type(self)):
+            return False
+        return vars(other) == vars(self)
+
+
+@dataclass(repr=False)
+class MapBefore(BaseMatcher):
+    """Mixin for applying a function before checking equality."""
 
     def __init__(self, map_before: typing.Optional[typing.Callable] = None):
-        """Mixing for applying a function before checking equality.
+        """Mixin for applying a function before checking equality.
 
         Args:
             map_before : the mapping function to apply
@@ -27,8 +46,8 @@ class MapBefore:
             return other
 
 
-@dataclass
-class Satisfies:
+@dataclass(repr=False)
+class Satisfies(BaseMatcher):
     """Mixin for checking equality by using a predicate function.
 
     If `satisfies(obj)` returns `True`, then it is equal.
@@ -45,7 +64,9 @@ class Satisfies:
         self.satisfies = satisfies
 
     def __eq__(self, other):
-        if self.satisfies:
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
+        if self.satisfies is not None:
             try:
                 return self.satisfies(other)
             except Exception:
@@ -53,8 +74,8 @@ class Satisfies:
         return True
 
 
-@dataclass
-class Equals(typing.Generic[T]):
+@dataclass(repr=False)
+class Equals(typing.Generic[T], BaseMatcher):
     """Mixin for checking equality using a specific object to compare against."""
 
     equals: typing.Optional[T] = None
@@ -68,14 +89,16 @@ class Equals(typing.Generic[T]):
         self.equals = equals
 
     def __eq__(self, other):
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
         if self.equals is not None:
             if not other == self.equals:
                 return False
         return True
 
 
-@dataclass
-class Vars:
+@dataclass(repr=False)
+class Vars(BaseMatcher):
     """Mixin for checking the presence of specific object attributes.
 
     The attributes are compared as a dict. So anything that can be compared
@@ -93,14 +116,16 @@ class Vars:
         self.vars = vars
 
     def __eq__(self, other):
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
         if self.vars is not None:
             if not vars(other) == self.vars:
                 return False
         return True
 
 
-@dataclass
-class Optional:
+@dataclass(repr=False)
+class Optional(BaseMatcher):
     """Mixin for matching with `None`."""
 
     optional: typing.Optional[bool] = None
@@ -114,6 +139,8 @@ class Optional:
         self.optional = optional
 
     def __eq__(self, other):
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
         if other is None:
             if self.optional is not None:
                 return self.optional is True
@@ -122,8 +149,8 @@ class Optional:
         return True
 
 
-@dataclass
-class Instance:
+@dataclass(repr=False)
+class Instance(BaseMatcher):
     """Match any object that is a class instance."""
 
     type: typing.Optional[typing.Type] = None
@@ -144,6 +171,8 @@ class Instance:
         self.instance_of = instance_of
 
     def __eq__(self, other):
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
         # TODO check
         if (
             inspect.ismodule(other)
@@ -159,8 +188,8 @@ class Instance:
         return True
 
 
-@dataclass
-class Type:
+@dataclass(repr=False)
+class Type(BaseMatcher):
     """Match any object that is a type."""
 
     superclass_of: typing.Optional[typing.Type] = None
@@ -181,6 +210,8 @@ class Type:
         self.subclass_of = subclass_of
 
     def __eq__(self, other):
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
         if not (type(other) == type or type(other) == abc.ABCMeta):
             return False
         if self.superclass_of and not issubclass(self.superclass_of, other):

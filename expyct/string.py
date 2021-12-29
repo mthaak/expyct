@@ -3,11 +3,11 @@ import typing
 
 from dataclasses import dataclass
 
-from expyct.base import Equals, MapBefore, Instance, Satisfies, Optional
+from expyct.base import Equals, MapBefore, Instance, Satisfies, Optional, BaseMatcher
 from expyct.collection import Length, Contains
 
 
-@dataclass
+@dataclass(repr=False)
 class String(
     Contains,
     Length,
@@ -16,6 +16,7 @@ class String(
     Instance,
     Optional,
     MapBefore,
+    BaseMatcher,
     str,
 ):
     """Match any object that is a string."""
@@ -87,6 +88,8 @@ class String(
         self.ignore_case = ignore_case
 
     def __eq__(self, other):
+        if isinstance(other, BaseMatcher):
+            return BaseMatcher.__eq__(self, other)
         try:
             other = MapBefore.map(self, other)
         except Exception:
