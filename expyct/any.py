@@ -1,4 +1,5 @@
 import typing
+
 from dataclasses import dataclass
 
 from expyct.base import MapBefore, Satisfies, Instance, Type, Equals, Vars, Optional
@@ -49,7 +50,14 @@ class Any(Satisfies, Vars, Equals[typing.Any], Optional, MapBefore):
 
 
 @dataclass
-class AnyValue(Instance, Satisfies, Vars, Equals[typing.Any], Optional, MapBefore):
+class AnyValue(
+    Instance,
+    Satisfies,
+    Vars,
+    Equals[typing.Any],
+    Optional,
+    MapBefore,
+):
     """Match any value."""
 
     def __init__(

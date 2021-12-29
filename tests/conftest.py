@@ -1,0 +1,3 @@
+from expyct import patch_pytest_assert_comp_order
+
+patch_pytest_assert_comp_order()
