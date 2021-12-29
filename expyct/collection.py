@@ -7,7 +7,7 @@ from expyct.base import Equals, MapBefore, Satisfies, Optional, BaseMatcher
 from expyct.base import Instance
 
 
-@dataclass(repr=False)
+@dataclass(repr=False, eq=False)
 class AllOrAny(BaseMatcher):
     """Mixin for matching a collection object by checking that all or at least
     one of its members are equal to given.
@@ -34,9 +34,7 @@ class AllOrAny(BaseMatcher):
         self.all = all
         self.any = any
 
-    def __eq__(self, other):
-        if isinstance(other, BaseMatcher):
-            return BaseMatcher.__eq__(self, other)
+    def _eq(self, other):
         if self.all is not None:
             if not all(x == self.all for x in other):
                 return False
@@ -46,7 +44,7 @@ class AllOrAny(BaseMatcher):
         return True
 
 
-@dataclass(repr=False)
+@dataclass(repr=False, eq=False)
 class Length(BaseMatcher):
     """Mixin for matching a collection object by its length as the result of len()."""
 
@@ -76,9 +74,7 @@ class Length(BaseMatcher):
         self.max_length = max_length
         self.non_empty = non_empty
 
-    def __eq__(self, other):
-        if isinstance(other, BaseMatcher):
-            return BaseMatcher.__eq__(self, other)
+    def _eq(self, other):
         if self.length is not None:
             if not len(other) == self.length:
                 return False
@@ -94,7 +90,7 @@ class Length(BaseMatcher):
         return True
 
 
-@dataclass(repr=False)
+@dataclass(repr=False, eq=False)
 class Contains(BaseMatcher):
     """Mixin matching a collection object by the containment of specified members."""
 
@@ -115,9 +111,7 @@ class Contains(BaseMatcher):
         self.superset_of = superset_of
         self.subset_of = subset_of
 
-    def __eq__(self, other):
-        if isinstance(other, BaseMatcher):
-            return BaseMatcher.__eq__(self, other)
+    def _eq(self, other):
         if self.subset_of is not None:
             if isinstance(other, dict) and isinstance(self.subset_of, dict):
                 if not all(x in self.subset_of.items() for x in other.items()):
@@ -136,7 +130,7 @@ class Contains(BaseMatcher):
         return True
 
 
-@dataclass(repr=False)
+@dataclass(repr=False, eq=False)
 class Collection(
     Satisfies,
     Contains,
@@ -201,33 +195,31 @@ class Collection(
         self.subset_of = subset_of
         self.satisfies = satisfies
 
-    def __eq__(self, other):
-        if isinstance(other, BaseMatcher):
-            return BaseMatcher.__eq__(self, other)
+    def _eq(self, other):
         try:
             other = MapBefore.map(self, other)
         except Exception:
             return False
         if other is None:
-            return Optional.__eq__(self, other)
+            return Optional._eq(self, other)
         if not isinstance(other, typing.Collection):
             return False
-        if not Equals.__eq__(self, other):
+        if not Equals._eq(self, other):
             return False
-        if not Instance.__eq__(self, other):
+        if not Instance._eq(self, other):
             return False
-        if not Length.__eq__(self, other):
+        if not Length._eq(self, other):
             return False
-        if not Contains.__eq__(self, other):
+        if not Contains._eq(self, other):
             return False
-        if not Satisfies.__eq__(self, other):
+        if not Satisfies._eq(self, other):
             return False
-        if not AllOrAny.__eq__(self, other):
+        if not AllOrAny._eq(self, other):
             return False
         return True
 
 
-@dataclass(repr=False)
+@dataclass(repr=False, eq=False)
 class List(
     Satisfies, Contains, Length, Equals[list], Optional, MapBefore, AllOrAny, BaseMatcher, list
 ):
@@ -286,30 +278,28 @@ class List(
         self.satisfies = satisfies
         self.ignore_order = ignore_order
 
-    def __eq__(self, other):
-        if isinstance(other, BaseMatcher):
-            return BaseMatcher.__eq__(self, other)
+    def _eq(self, other):
         try:
             other = MapBefore.map(self, other)
         except Exception:
             return False
         if other is None:
-            return Optional.__eq__(self, other)
+            return Optional._eq(self, other)
         if not isinstance(other, list):
             return False
         if self.ignore_order:
             if not self._equals_ignore_order(self.equals, other):
                 return False
         else:
-            if not Equals.__eq__(self, other):
+            if not Equals._eq(self, other):
                 return False
-        if not Length.__eq__(self, other):
+        if not Length._eq(self, other):
             return False
-        if not Contains.__eq__(self, other):
+        if not Contains._eq(self, other):
             return False
-        if not Satisfies.__eq__(self, other):
+        if not Satisfies._eq(self, other):
             return False
-        if not AllOrAny.__eq__(self, other):
+        if not AllOrAny._eq(self, other):
             return False
         return True
 
@@ -322,7 +312,7 @@ class List(
             return len(a) == len(b) and all(a.count(i) == b.count(i) for i in a)  # O(n * n)
 
 
-@dataclass(repr=False)
+@dataclass(repr=False, eq=False)
 class Tuple(
     Satisfies, Contains, Length, Equals[tuple], Optional, MapBefore, AllOrAny, BaseMatcher, tuple
 ):
@@ -378,31 +368,29 @@ class Tuple(
         self.subset_of = subset_of
         self.satisfies = satisfies
 
-    def __eq__(self, other):
-        if isinstance(other, BaseMatcher):
-            return BaseMatcher.__eq__(self, other)
+    def _eq(self, other):
         try:
             other = MapBefore.map(self, other)
         except Exception:
             return False
         if other is None:
-            return Optional.__eq__(self, other)
+            return Optional._eq(self, other)
         if not isinstance(other, tuple):
             return False
-        if not Equals.__eq__(self, other):
+        if not Equals._eq(self, other):
             return False
-        if not Length.__eq__(self, other):
+        if not Length._eq(self, other):
             return False
-        if not Contains.__eq__(self, other):
+        if not Contains._eq(self, other):
             return False
-        if not Satisfies.__eq__(self, other):
+        if not Satisfies._eq(self, other):
             return False
-        if not AllOrAny.__eq__(self, other):
+        if not AllOrAny._eq(self, other):
             return False
         return True
 
 
-@dataclass(repr=False)
+@dataclass(repr=False, eq=False)
 class Set(
     Satisfies, Contains, Length, Equals[set], Optional, MapBefore, AllOrAny, BaseMatcher, set
 ):
@@ -458,31 +446,29 @@ class Set(
         self.subset_of = subset_of
         self.satisfies = satisfies
 
-    def __eq__(self, other):
-        if isinstance(other, BaseMatcher):
-            return BaseMatcher.__eq__(self, other)
+    def _eq(self, other):
         try:
             other = MapBefore.map(self, other)
         except Exception:
             return False
         if other is None:
-            return Optional.__eq__(self, other)
+            return Optional._eq(self, other)
         if not isinstance(other, set):
             return False
-        if not Equals.__eq__(self, other):
+        if not Equals._eq(self, other):
             return False
-        if not Length.__eq__(self, other):
+        if not Length._eq(self, other):
             return False
-        if not Contains.__eq__(self, other):
+        if not Contains._eq(self, other):
             return False
-        if not Satisfies.__eq__(self, other):
+        if not Satisfies._eq(self, other):
             return False
-        if not AllOrAny.__eq__(self, other):
+        if not AllOrAny._eq(self, other):
             return False
         return True
 
 
-@dataclass(repr=False)
+@dataclass(repr=False, eq=False)
 class Dict(Satisfies, Contains, Length, Equals[dict], Optional, MapBefore, BaseMatcher, dict):
     """Match any object that is an instance of `dict`."""
 
@@ -557,20 +543,18 @@ class Dict(Satisfies, Contains, Length, Equals[dict], Optional, MapBefore, BaseM
         self.values_all = values_all
         self.values_any = values_any
 
-    def __eq__(self, other):
-        if isinstance(other, BaseMatcher):
-            return BaseMatcher.__eq__(self, other)
+    def _eq(self, other):
         try:
             other = MapBefore.map(self, other)
         except Exception:
             return False
         if other is None:
-            return Optional.__eq__(self, other)
+            return Optional._eq(self, other)
         if not isinstance(other, dict):
             return False
-        if not Equals.__eq__(self, other):
+        if not Equals._eq(self, other):
             return False
-        if not Length.__eq__(self, other):
+        if not Length._eq(self, other):
             return False
         if self.keys is not None:
             if not other.keys() == self.keys:
@@ -578,9 +562,9 @@ class Dict(Satisfies, Contains, Length, Equals[dict], Optional, MapBefore, BaseM
         if self.values is not None:
             if not other.values() == self.values:
                 return False
-        if not Contains.__eq__(self, other):
+        if not Contains._eq(self, other):
             return False
-        if not Satisfies.__eq__(self, other):
+        if not Satisfies._eq(self, other):
             return False
         if self.keys_all is not None:
             if not all(x == self.keys_all for x in other.keys()):

@@ -16,7 +16,7 @@ if (3, 6) <= sys.version_info < (3, 7):
 T = typing.TypeVar("T")
 
 
-@dataclass(repr=False)
+@dataclass(repr=False, eq=False)
 class AfterBefore(typing.Generic[T], BaseMatcher):
     """Mixin for matching a `date`, `time`, or `datetime` that takes place after, before, or on
     given date/time. In other words, it is inclusive on both sides.
@@ -44,9 +44,7 @@ class AfterBefore(typing.Generic[T], BaseMatcher):
         self.after = after
         self.before = before
 
-    def __eq__(self, other):
-        if isinstance(other, BaseMatcher):
-            return BaseMatcher.__eq__(self, other)
+    def _eq(self, other):
         if self.after is not None and not other >= self.after:
             return False
         if self.before is not None and not other <= self.before:
@@ -54,7 +52,7 @@ class AfterBefore(typing.Generic[T], BaseMatcher):
         return True
 
 
-@dataclass(repr=False)
+@dataclass(repr=False, eq=False)
 class AfterBeforeStrict(typing.Generic[T], BaseMatcher):
     """Mixin for matching a `date`, `time`, or `datetime` that takes place after and/or before given
     date/time. In other words, it is exclusive on both sides."""
@@ -77,9 +75,7 @@ class AfterBeforeStrict(typing.Generic[T], BaseMatcher):
         self.after_strict = after_strict
         self.before_strict = before_strict
 
-    def __eq__(self, other):
-        if isinstance(other, BaseMatcher):
-            return BaseMatcher.__eq__(self, other)
+    def _eq(self, other):
         if self.after_strict is not None and not other > self.after_strict:
             return False
         if self.before_strict is not None and not other < self.before_strict:
@@ -87,7 +83,7 @@ class AfterBeforeStrict(typing.Generic[T], BaseMatcher):
         return True
 
 
-@dataclass(repr=False)
+@dataclass(repr=False, eq=False)
 class DateTime(
     Satisfies,
     AfterBeforeStrict[datetime],
@@ -136,29 +132,27 @@ class DateTime(
         self.before_strict = before_strict
         self.satisfies = satisfies
 
-    def __eq__(self, other):
-        if isinstance(other, BaseMatcher):
-            return BaseMatcher.__eq__(self, other)
+    def _eq(self, other):
         try:
             other = MapBefore.map(self, other)
         except Exception:
             return False
         if other is None:
-            return Optional.__eq__(self, other)
+            return Optional._eq(self, other)
         if not type(other) == datetime:
             return False
-        if not Equals.__eq__(self, other):
+        if not Equals._eq(self, other):
             return False
-        if not AfterBefore.__eq__(self, other):
+        if not AfterBefore._eq(self, other):
             return False
-        if not AfterBeforeStrict.__eq__(self, other):
+        if not AfterBeforeStrict._eq(self, other):
             return False
-        if not Satisfies.__eq__(self, other):
+        if not Satisfies._eq(self, other):
             return False
         return True
 
 
-@dataclass(repr=False)
+@dataclass(repr=False, eq=False)
 class DateTimeTz(
     Satisfies,
     AfterBeforeStrict[datetime],
@@ -221,15 +215,13 @@ class DateTimeTz(
     after_strict: typing.Optional[typing.Union[datetime, timedelta]] = None  # type: ignore
     before_strict: typing.Optional[typing.Union[datetime, timedelta]] = None  # type: ignore
 
-    def __eq__(self, other):
-        if isinstance(other, BaseMatcher):
-            return BaseMatcher.__eq__(self, other)
+    def _eq(self, other):
         try:
             other = MapBefore.map(self, other)
         except Exception:
             return False
         if other is None:
-            return Optional.__eq__(self, other)
+            return Optional._eq(self, other)
         if not type(other) == datetime:
             return False
         if other.tzinfo is None:
@@ -237,7 +229,7 @@ class DateTimeTz(
         if self.equals:
             if self.equals.tzinfo is None:
                 raise ValueError("equals is missing tzinfo")
-        if not Equals.__eq__(self, other):
+        if not Equals._eq(self, other):
             return False
         if self.before:
             self.before = DateTimeTz._handle_timedelta(self.before)
@@ -247,7 +239,7 @@ class DateTimeTz(
             self.after = DateTimeTz._handle_timedelta(self.after)
             if self.after.tzinfo is None:
                 raise ValueError("after is missing tzinfo")
-        if not AfterBefore.__eq__(self, other):
+        if not AfterBefore._eq(self, other):
             return False
         if self.before_strict:
             self.before_strict = DateTimeTz._handle_timedelta(self.before_strict)
@@ -257,9 +249,9 @@ class DateTimeTz(
             self.after_strict = DateTimeTz._handle_timedelta(self.after_strict)
             if self.after_strict.tzinfo is None:
                 raise ValueError("after_strict is missing tzinfo")
-        if not AfterBeforeStrict.__eq__(self, other):
+        if not AfterBeforeStrict._eq(self, other):
             return False
-        if not Satisfies.__eq__(self, other):
+        if not Satisfies._eq(self, other):
             return False
         return True
 
@@ -276,7 +268,7 @@ class DateTimeTz(
             return bound
 
 
-@dataclass(repr=False)
+@dataclass(repr=False, eq=False)
 class Date(
     Satisfies,
     AfterBeforeStrict[date],
@@ -327,29 +319,27 @@ class Date(
         self.before_strict = before_strict
         self.satisfies = satisfies
 
-    def __eq__(self, other):
-        if isinstance(other, BaseMatcher):
-            return BaseMatcher.__eq__(self, other)
+    def _eq(self, other):
         try:
             other = MapBefore.map(self, other)
         except Exception:
             return False
         if other is None:
-            return Optional.__eq__(self, other)
+            return Optional._eq(self, other)
         if not type(other) == date:
             return False
-        if not Equals.__eq__(self, other):
+        if not Equals._eq(self, other):
             return False
-        if not AfterBefore.__eq__(self, other):
+        if not AfterBefore._eq(self, other):
             return False
-        if not AfterBeforeStrict.__eq__(self, other):
+        if not AfterBeforeStrict._eq(self, other):
             return False
-        if not Satisfies.__eq__(self, other):
+        if not Satisfies._eq(self, other):
             return False
         return True
 
 
-@dataclass(repr=False)
+@dataclass(repr=False, eq=False)
 class Time(
     Satisfies,
     AfterBeforeStrict[time],
@@ -400,24 +390,22 @@ class Time(
         self.before_strict = before_strict
         self.satisfies = satisfies
 
-    def __eq__(self, other):
-        if isinstance(other, BaseMatcher):
-            return BaseMatcher.__eq__(self, other)
+    def _eq(self, other):
         try:
             other = MapBefore.map(self, other)
         except Exception:
             return False
         if other is None:
-            return Optional.__eq__(self, other)
+            return Optional._eq(self, other)
         if not type(other) == time:
             return False
-        if not Equals.__eq__(self, other):
+        if not Equals._eq(self, other):
             return False
-        if not AfterBefore.__eq__(self, other):
+        if not AfterBefore._eq(self, other):
             return False
-        if not AfterBeforeStrict.__eq__(self, other):
+        if not AfterBeforeStrict._eq(self, other):
             return False
-        if not Satisfies.__eq__(self, other):
+        if not Satisfies._eq(self, other):
             return False
         return True
 

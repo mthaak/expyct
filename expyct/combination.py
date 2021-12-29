@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from expyct.base import BaseMatcher
 
 
-@dataclass(repr=False)
+@dataclass(repr=False, eq=False)
 class OneOf(BaseMatcher):
     """Object must equal one of the given options.
 
@@ -29,7 +29,5 @@ class OneOf(BaseMatcher):
         """
         self.options = options
 
-    def __eq__(self, other):
-        if isinstance(other, BaseMatcher):
-            return BaseMatcher.__eq__(self, other)
+    def _eq(self, other):
         return any(option.__eq__(other) for option in self.options)
