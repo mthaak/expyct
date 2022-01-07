@@ -46,16 +46,23 @@
   <section id="module-expyct.base">
 <span id="expyct-base-module"></span><h1>expyct.base module<a class="headerlink" href="#module-expyct.base" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
+<dt class="sig sig-object py" id="expyct.base.BaseMatcher">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.base.</span></span><span class="sig-name descname"><span class="pre">BaseMatcher</span></span><a class="headerlink" href="#expyct.base.BaseMatcher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Abstract base class from which all matchers inherit.</p>
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="expyct.base.Equals">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.base.</span></span><span class="sig-name descname"><span class="pre">Equals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">equals</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#expyct.base.Optional" title="expyct.base.Optional"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><span class="pre">expyct.base.T</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.base.Equals" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">expyct.base.T</span></code>]</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">expyct.base.T</span></code>], <a class="reference internal" href="#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a></p>
 <p>Mixin for checking equality using a specific object to compare against.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.base.Instance">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.base.</span></span><span class="sig-name descname"><span class="pre">Instance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#expyct.base.Optional" title="expyct.base.Optional"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#expyct.base.Type" title="expyct.base.Type"><span class="pre">Type</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance_of</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#expyct.base.Optional" title="expyct.base.Optional"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#expyct.base.Type" title="expyct.base.Type"><span class="pre">Type</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.base.Instance" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a></p>
 <p>Match any object that is a class instance.</p>
 </dd></dl>
 
@@ -63,20 +70,21 @@
 <dt class="sig sig-object py" id="expyct.base.MapBefore">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.base.</span></span><span class="sig-name descname"><span class="pre">MapBefore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">map_before</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#expyct.base.Optional" title="expyct.base.Optional"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.base.MapBefore" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Mixing for applying a function before checking equality.</p>
+<p>Mixin for applying a function before checking equality.</p>
+<p>This class is not meant to be used by itself.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.base.Optional">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.base.</span></span><span class="sig-name descname"><span class="pre">Optional</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#expyct.base.Optional" title="expyct.base.Optional"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.base.Optional" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a></p>
 <p>Mixin for matching with <cite>None</cite>.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.base.Satisfies">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.base.</span></span><span class="sig-name descname"><span class="pre">Satisfies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">satisfies</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#expyct.base.Optional" title="expyct.base.Optional"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.base.Satisfies" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a></p>
 <p>Mixin for checking equality by using a predicate function.</p>
 <p>If <cite>satisfies(obj)</cite> returns <cite>True</cite>, then it is equal.</p>
 </dd></dl>
@@ -84,14 +92,14 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.base.Type">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.base.</span></span><span class="sig-name descname"><span class="pre">Type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">superclass_of</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#expyct.base.Optional" title="expyct.base.Optional"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#expyct.base.Type" title="expyct.base.Type"><span class="pre">Type</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subclass_of</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#expyct.base.Optional" title="expyct.base.Optional"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#expyct.base.Type" title="expyct.base.Type"><span class="pre">Type</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.base.Type" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a></p>
 <p>Match any object that is a type.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.base.Vars">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.base.</span></span><span class="sig-name descname"><span class="pre">Vars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vars</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#expyct.base.Optional" title="expyct.base.Optional"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.base.Vars" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a></p>
 <p>Mixin for checking the presence of specific object attributes.</p>
 <p>The attributes are compared as a dict. So anything that can be compared
 with a dict can be used as <cite>vars</cite> argument, including other expyct objects like <cite>expyct.Dict</cite>.</p>
