@@ -85,6 +85,45 @@ def test_datetime_instance():
     assert isinstance(obj, datetime)
 
 
+def test_datetime_repr():
+    # Test repr() representation of DateTime without arguments
+    obj: datetime = exp.DateTime()
+    assert repr(obj) == "expyct.DateTime()"
+
+    # Now with arguments
+    obj = exp.DateTime(
+        after=datetime(2020, 1, 1, 1, 1, 3),
+        before=datetime(2020, 1, 1, 4, 1, 3),
+    )
+    assert (
+        repr(obj) == "expyct.DateTime(after=datetime.datetime(2020, 1, 1, 1, 1, 3), "
+        "before=datetime.datetime(2020, 1, 1, 4, 1, 3))"
+    )
+
+    def eval_repr(obj):
+        # These need to imported without alias:
+        import expyct  # noqa
+        import datetime  # noqa
+
+        return eval(repr(obj))
+
+    # `eval(repr(obj)) == obj` for all `obj` is a requirement for `repr`
+    assert eval_repr(obj) == obj
+
+
+def test_datetime_str():
+    # Test str() representation of DateTime without arguments
+    obj: datetime = exp.DateTime()
+    assert str(obj) == "DateTime()"
+
+    # Now with arguments
+    obj = exp.DateTime(
+        after=datetime(2020, 1, 1, 1, 1, 3),
+        before=datetime(2020, 1, 1, 4, 1, 3),
+    )
+    assert str(obj) == "DateTime(after=2020-01-01 01:01:03, before=2020-01-01 04:01:03)"
+
+
 @pytest.mark.parametrize(
     ["value", "expect", "result"],
     [

@@ -2,11 +2,11 @@ import typing
 
 from dataclasses import dataclass
 
-from expyct.base import MapBefore, Satisfies, Instance, Type, Equals, Vars, Optional
+from expyct.base import MapBefore, Satisfies, Instance, Type, Equals, Vars, Optional, BaseMatcher
 
 
-@dataclass
-class Any(Satisfies, Vars, Equals[typing.Any], Optional, MapBefore):
+@dataclass(repr=False, eq=False)
+class Any(Satisfies, Vars, Equals[typing.Any], Optional, MapBefore, BaseMatcher):
     """Match any object."""
 
     def __init__(
@@ -33,23 +33,23 @@ class Any(Satisfies, Vars, Equals[typing.Any], Optional, MapBefore):
         self.vars = vars
         self.satisfies = satisfies
 
-    def __eq__(self, other):
+    def _eq(self, other):
         try:
             other = MapBefore.map(self, other)
         except Exception:
             return False
         if other is None:
-            return Optional.__eq__(self, other)
-        if not Equals.__eq__(self, other):
+            return Optional._eq(self, other)
+        if not Equals._eq(self, other):
             return False
-        if not Vars.__eq__(self, other):
+        if not Vars._eq(self, other):
             return False
-        if not Satisfies.__eq__(self, other):
+        if not Satisfies._eq(self, other):
             return False
         return True
 
 
-@dataclass
+@dataclass(repr=False, eq=False)
 class AnyValue(
     Instance,
     Satisfies,
@@ -57,6 +57,7 @@ class AnyValue(
     Equals[typing.Any],
     Optional,
     MapBefore,
+    BaseMatcher,
 ):
     """Match any value."""
 
@@ -90,26 +91,26 @@ class AnyValue(
         self.type = type
         self.instance_of = instance_of
 
-    def __eq__(self, other):
+    def _eq(self, other):
         try:
             other = MapBefore.map(self, other)
         except Exception:
             return False
         if other is None:
-            return Optional.__eq__(self, other)
-        if not Equals.__eq__(self, other):
+            return Optional._eq(self, other)
+        if not Equals._eq(self, other):
             return False
-        if not Vars.__eq__(self, other):
+        if not Vars._eq(self, other):
             return False
-        if not Satisfies.__eq__(self, other):
+        if not Satisfies._eq(self, other):
             return False
-        if not Instance.__eq__(self, other):
+        if not Instance._eq(self, other):
             return False
         return True
 
 
-@dataclass
-class AnyType(Type, Satisfies, Vars, Equals[typing.Any], Optional, MapBefore):
+@dataclass(repr=False, eq=False)
+class AnyType(Type, Satisfies, Vars, Equals[typing.Any], Optional, MapBefore, BaseMatcher):
     """Match any class."""
 
     def __init__(
@@ -142,20 +143,20 @@ class AnyType(Type, Satisfies, Vars, Equals[typing.Any], Optional, MapBefore):
         self.superclass_of = superclass_of
         self.subclass_of = subclass_of
 
-    def __eq__(self, other):
+    def _eq(self, other):
         try:
             other = MapBefore.map(self, other)
         except Exception:
             return False
         if other is None:
-            return Optional.__eq__(self, other)
-        if not Equals.__eq__(self, other):
+            return Optional._eq(self, other)
+        if not Equals._eq(self, other):
             return False
-        if not Vars.__eq__(self, other):
+        if not Vars._eq(self, other):
             return False
-        if not Satisfies.__eq__(self, other):
+        if not Satisfies._eq(self, other):
             return False
-        if not Type.__eq__(self, other):
+        if not Type._eq(self, other):
             return False
         return True
 
