@@ -1,5 +1,6 @@
 # flake8: noqa
 
+from ._patch import patch_pytest_assert_comp_order
 from .any import Any, AnyValue, AnyType, ANY, ANY_VALUE, ANY_TYPE
 from .base import MapBefore, Satisfies, Instance, Type, Equals, Vars, Optional
 from .collection import Collection, Length, List, Tuple, Set, Dict

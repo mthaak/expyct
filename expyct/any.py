@@ -50,7 +50,15 @@ class Any(Satisfies, Vars, Equals[typing.Any], Optional, MapBefore, BaseMatcher)
 
 
 @dataclass(repr=False, eq=False)
-class AnyValue(Instance, Satisfies, Vars, Equals[typing.Any], Optional, MapBefore, BaseMatcher):
+class AnyValue(
+    Instance,
+    Satisfies,
+    Vars,
+    Equals[typing.Any],
+    Optional,
+    MapBefore,
+    BaseMatcher,
+):
     """Match any value."""
 
     def __init__(

@@ -246,7 +246,7 @@ class List(
         satisfies: typing.Optional[typing.Callable[[typing.Any], bool]] = None,
         ignore_order: bool = False,
     ):
-        """ "Match any object that is an instance of `list`.
+        """Match any object that is an instance of `list`.
 
         Args:
             all : all members of collection must equal

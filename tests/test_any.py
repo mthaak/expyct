@@ -1,25 +1,27 @@
 from collections.abc import Collection
 
 import pytest
+from dataclasses import dataclass
 
 import expyct as exp
 
 
+@dataclass(init=True)
 class ABC:
-    a = 1
-    b = 2
-    c = 3
+    a: int = 1
+    b: int = 2
+    c: int = 3
 
-    def __init__(self):
-        self.x = 4
-        self.y = 5
-        self.z = 6
+    def __eq__(self, other):
+        if not isinstance(other, ABC):
+            return False
+        return vars(self) == vars(other)
 
 
 @pytest.mark.parametrize(
     ["value", "expect", "result"],
     [
-        # test type
+        # test no args
         (1, exp.Any(), True),
         ("abc", exp.Any(), True),
         ([], exp.Any(), True),
@@ -32,8 +34,8 @@ class ABC:
         (None, exp.Any(), False),
         (None, exp.Any(optional=True), True),
         # test vars
-        (ABC(), exp.Any(vars={"x": 4}), False),
-        (ABC(), exp.Any(vars=exp.Dict(length=3)), True),
+        (ABC(1, 2, 3), exp.Any(vars={"x": 4}), False),
+        (ABC(1, 2, 3), exp.Any(vars=exp.Dict(length=3)), True),
         # test satisfies
         (1, exp.Any(satisfies=lambda x: x % 2 == 0), False),
         (2, exp.Any(satisfies=lambda x: x % 2 == 0), True),
@@ -46,21 +48,30 @@ def test_any(value, expect, result):
 @pytest.mark.parametrize(
     ["value", "expect", "result"],
     [
-        # test type
+        # test no args
         (1, exp.AnyValue(), True),
         ("abc", exp.AnyValue(), True),
         ([], exp.AnyValue(), True),
         (int, exp.AnyValue(), False),
         (lambda x: x + 1, exp.AnyValue(), False),
+        # test type
+        ("abc", exp.AnyValue(type=int), False),
+        (4, exp.AnyValue(type=int), True),
+        (ABC(1, 2, 3), exp.AnyValue(type=ABC), True),
         # test map before and equals
         (1, exp.AnyValue(equals=2), False),
         (1, exp.AnyValue(equals=2, map_before=lambda x: x + 1), True),
         # test optional
         (None, exp.AnyValue(), False),
         (None, exp.AnyValue(optional=True), True),
+        # test equals
+        (1, exp.AnyValue(equals=2), False),
+        (2, exp.AnyValue(equals=2), True),
+        (ABC(1, 2, 3), exp.AnyValue(equals=ABC(4, 5, 6)), False),
+        (ABC(4, 5, 6), exp.AnyValue(equals=ABC(4, 5, 6)), True),
         # test vars
-        (ABC(), exp.AnyValue(vars={"x": 4}), False),
-        (ABC(), exp.AnyValue(vars=exp.Dict(length=3)), True),
+        (ABC(1, 2, 3), exp.AnyValue(vars={"x": 4}), False),
+        (ABC(1, 2, 3), exp.AnyValue(vars=exp.Dict(length=3)), True),
         # test satisfies
         (1, exp.AnyValue(satisfies=lambda x: x % 2 == 0), False),
         (2, exp.AnyValue(satisfies=lambda x: x % 2 == 0), True),
