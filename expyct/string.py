@@ -3,11 +3,11 @@ import typing
 
 from dataclasses import dataclass
 
-from expyct.base import Equals, MapBefore, Instance, Satisfies, Optional
+from expyct.base import Equals, MapBefore, Instance, Satisfies, Optional, BaseMatcher
 from expyct.collection import Length, Contains
 
 
-@dataclass
+@dataclass(repr=False, eq=False)
 class String(
     Contains,
     Length,
@@ -16,6 +16,7 @@ class String(
     Instance,
     Optional,
     MapBefore,
+    BaseMatcher,
     str,
 ):
     """Match any object that is a string."""
@@ -86,13 +87,13 @@ class String(
         self.regex = regex
         self.ignore_case = ignore_case
 
-    def __eq__(self, other):
+    def _eq(self, other):
         try:
             other = MapBefore.map(self, other)
         except Exception:
             return False
         if other is None:
-            return Optional.__eq__(self, other)
+            return Optional._eq(self, other)
         if self.ignore_case:
             other = other.lower()
             if self.equals is not None:
@@ -103,15 +104,15 @@ class String(
                 self.ends_with = self.ends_with.lower()
         if not isinstance(other, (str, bytes)):
             return False
-        if not Instance.__eq__(self, other):
+        if not Instance._eq(self, other):
             return False
-        if not Equals.__eq__(self, other):
+        if not Equals._eq(self, other):
             return False
-        if not Length.__eq__(self, other):
+        if not Length._eq(self, other):
             return False
-        if not Contains.__eq__(self, other):
+        if not Contains._eq(self, other):
             return False
-        if not Satisfies.__eq__(self, other):
+        if not Satisfies._eq(self, other):
             return False
         if self.starts_with is not None:
             if not other.startswith(self.starts_with):

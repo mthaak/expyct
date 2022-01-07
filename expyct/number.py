@@ -3,14 +3,14 @@ from numbers import Number as ParentNumber
 
 from dataclasses import dataclass
 
-from expyct.base import MapBefore, Satisfies, Equals, Instance, Optional
+from expyct.base import MapBefore, Satisfies, Equals, Instance, Optional, BaseMatcher
 
 
-@dataclass
-class MinMax:
+@dataclass(repr=False, eq=False)
+class MinMax(BaseMatcher):
     """Mixin for matching a number that is equal to, larger or smaller than given bounds."""
 
-    min: typing.Optional[ParentNumber] = None  # TODO better type?
+    min: typing.Optional[ParentNumber] = None
     max: typing.Optional[ParentNumber] = None
 
     def __init__(
@@ -27,7 +27,7 @@ class MinMax:
         self.min = min
         self.max = max
 
-    def __eq__(self, other):
+    def _eq(self, other):
         if self.min is not None and not other >= self.min:
             return False
         if self.max is not None and not other <= self.max:
@@ -35,8 +35,8 @@ class MinMax:
         return True
 
 
-@dataclass
-class MinMaxStrict:
+@dataclass(repr=False, eq=False)
+class MinMaxStrict(BaseMatcher):
     """Mixin for matching number that is strictly larger or smaller than given bounds."""
 
     min_strict: typing.Optional[ParentNumber] = None
@@ -56,7 +56,7 @@ class MinMaxStrict:
         self.min_strict = min_strict
         self.max_strict = max_strict
 
-    def __eq__(self, other):
+    def _eq(self, other):
         if self.min_strict is not None and not other > self.min_strict:
             return False
         if self.max_strict is not None and not other < self.max_strict:
@@ -64,8 +64,8 @@ class MinMaxStrict:
         return True
 
 
-@dataclass
-class CloseTo:
+@dataclass(repr=False, eq=False)
+class CloseTo(BaseMatcher):
     """Mixin for matching number that is close to given target within a certain two-side error. In
     other words, the difference between the number and `close_to` must be at most `error`."""
 
@@ -87,7 +87,7 @@ class CloseTo:
         self.close_to = close_to
         self.error = error
 
-    def __eq__(self, other):
+    def _eq(self, other):
         if self.close_to is not None:
             d = self.error * self.close_to
             if not self.close_to - d <= other <= self.close_to + d:
@@ -95,7 +95,7 @@ class CloseTo:
         return True
 
 
-@dataclass
+@dataclass(repr=False, eq=False)
 class Number(
     CloseTo,
     MinMaxStrict,
@@ -105,6 +105,7 @@ class Number(
     Instance,
     Optional,
     MapBefore,
+    BaseMatcher,
 ):
     """Match any number."""
 
@@ -156,32 +157,32 @@ class Number(
         self.close_to = close_to
         self.error = error
 
-    def __eq__(self, other):
+    def _eq(self, other):
         try:
             other = MapBefore.map(self, other)
         except Exception:
             return False
         if other is None:
-            return Optional.__eq__(self, other)
+            return Optional._eq(self, other)
         if not isinstance(other, ParentNumber):
             return False
-        if not Instance.__eq__(self, other):
+        if not Instance._eq(self, other):
             return False
-        if not Equals.__eq__(self, other):
+        if not Equals._eq(self, other):
             return False
-        if not Satisfies.__eq__(self, other):
+        if not Satisfies._eq(self, other):
             return False
-        if not MinMax.__eq__(self, other):
+        if not MinMax._eq(self, other):
             return False
-        if not MinMaxStrict.__eq__(self, other):
+        if not MinMaxStrict._eq(self, other):
             return False
-        if not CloseTo.__eq__(self, other):
+        if not CloseTo._eq(self, other):
             return False
         return True
 
 
-@dataclass
-class Int(Number, int):
+@dataclass(repr=False, eq=False)
+class Int(Number, BaseMatcher, int):
     """Match any object that is an instance of `int`."""
 
     def __new__(cls, *args, **kwargs):
@@ -232,16 +233,16 @@ class Int(Number, int):
         self.close_to = close_to
         self.error = error
 
-    def __eq__(self, other):
+    def _eq(self, other):
         if not isinstance(other, int):
             return False
-        if not Number.__eq__(self, other):
+        if not Number._eq(self, other):
             return False
         return True
 
 
-@dataclass
-class Float(Number, float):
+@dataclass(repr=False, eq=False)
+class Float(Number, BaseMatcher, float):
     """Match any object that is an instance of `float`."""
 
     def __new__(cls, *args, **kwargs):
@@ -292,10 +293,10 @@ class Float(Number, float):
         self.close_to = close_to
         self.error = error
 
-    def __eq__(self, other):
+    def _eq(self, other):
         if not isinstance(other, float):
             return False
-        if not Number.__eq__(self, other):
+        if not Number._eq(self, other):
             return False
         return True
 
