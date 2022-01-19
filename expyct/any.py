@@ -1,3 +1,4 @@
+import inspect
 import typing
 
 from dataclasses import dataclass
@@ -6,7 +7,7 @@ from expyct.base import MapBefore, Satisfies, Instance, Type, Equals, Vars, Opti
 
 
 @dataclass(repr=False, eq=False)
-class Any(Satisfies, Vars, Equals[typing.Any], Optional, MapBefore, BaseMatcher):
+class Any(Instance, Satisfies, Vars, Equals[typing.Any], Optional, MapBefore, BaseMatcher):
     """Match any object."""
 
     def __init__(
@@ -16,6 +17,8 @@ class Any(Satisfies, Vars, Equals[typing.Any], Optional, MapBefore, BaseMatcher)
         equals: typing.Optional[typing.Any] = None,
         vars: typing.Optional[typing.Any] = None,
         satisfies: typing.Optional[typing.Callable[[typing.Any], bool]] = None,
+        type: typing.Optional[typing.Type] = None,
+        instance_of: typing.Optional[typing.Type] = None,
     ):
         """Match any object.
 
@@ -26,12 +29,16 @@ class Any(Satisfies, Vars, Equals[typing.Any], Optional, MapBefore, BaseMatcher)
                 `map_before` to check a value after applying a function
             vars : object attributes (result of `vars()`) must equal
             satisfies : object must satisfy predicate
+            type : type of object must equal to given type
+            instance_of : object must be an instance of given type
         """
         self.map_before = map_before
         self.optional = optional
         self.equals = equals
         self.vars = vars
         self.satisfies = satisfies
+        self.type = type
+        self.instance_of = instance_of
 
     def _eq(self, other):
         try:
@@ -45,6 +52,8 @@ class Any(Satisfies, Vars, Equals[typing.Any], Optional, MapBefore, BaseMatcher)
         if not Vars._eq(self, other):
             return False
         if not Satisfies._eq(self, other):
+            return False
+        if not Instance._eq(self, other):
             return False
         return True
 
@@ -95,6 +104,14 @@ class AnyValue(
         try:
             other = MapBefore.map(self, other)
         except Exception:
+            return False
+        # TODO check
+        if (
+            inspect.ismodule(other)
+            or inspect.isclass(other)
+            or inspect.isfunction(other)
+            or inspect.ismethod(other)
+        ):
             return False
         if other is None:
             return Optional._eq(self, other)
