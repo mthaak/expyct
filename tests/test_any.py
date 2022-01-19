@@ -39,6 +39,12 @@ class ABC:
         # test satisfies
         (1, exp.Any(satisfies=lambda x: x % 2 == 0), False),
         (2, exp.Any(satisfies=lambda x: x % 2 == 0), True),
+        # test type
+        (1, exp.Any(type=float), False),
+        (2, exp.Any(type=int), True),
+        # test instance_of
+        (ABC(), exp.Any(instance_of=dict), False),
+        (ABC(), exp.Any(instance_of=object), True),
     ],
 )
 def test_any(value, expect, result):
@@ -75,6 +81,12 @@ def test_any(value, expect, result):
         # test satisfies
         (1, exp.AnyValue(satisfies=lambda x: x % 2 == 0), False),
         (2, exp.AnyValue(satisfies=lambda x: x % 2 == 0), True),
+        # test type
+        (1, exp.AnyValue(type=float), False),
+        (2, exp.AnyValue(type=int), True),
+        # test instance_of
+        (ABC(), exp.AnyValue(instance_of=dict), False),
+        (ABC(), exp.AnyValue(instance_of=object), True),
     ],
 )
 def test_any_value(value, expect, result):

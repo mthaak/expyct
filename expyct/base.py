@@ -1,5 +1,4 @@
 import abc
-import inspect
 import typing
 
 from dataclasses import dataclass
@@ -169,19 +168,27 @@ class Instance(BaseMatcher):
         self.instance_of = instance_of
 
     def _eq(self, other):
-        # TODO check
-        if (
-            inspect.ismodule(other)
-            or inspect.isclass(other)
-            or inspect.isfunction(other)
-            or inspect.ismethod(other)
-        ):
-            return False
         if self.type and type(other) != self.type:
             return False
         if self.instance_of and not isinstance(other, self.instance_of):
             return False
         return True
+
+    @property  # type: ignore
+    def __class__(self):
+        """
+        Allows Instance objects to pretend to be an instance of another class.
+
+        For example:
+            `isinstance(Instance(type=float), float)` is true
+
+        This is needed for type-checking libraries like mypy.
+        """
+
+        fake_class = self.type or self.instance_of
+        if fake_class:
+            return fake_class
+        return type(self)
 
 
 @dataclass(repr=False, eq=False)
