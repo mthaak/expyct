@@ -10,12 +10,12 @@ class BaseMatcher(abc.ABC):
     """Abstract base class from which all matchers inherit."""
 
     def __repr__(self):
-        name = getattr(self, "__name__", self.__class__.__name__)
+        name = self._get_name()
         args = ", ".join(f"{k}={repr(v)}" for k, v in vars(self).items() if v is not None)
         return f"expyct.{name}({args})"
 
     def __str__(self):
-        name = getattr(self, "__name__", self.__class__.__name__)
+        name = self._get_name()
         args = ", ".join(f"{k}={v}" for k, v in vars(self).items() if v is not None)
         return f"{name}({args})"
 
@@ -28,6 +28,12 @@ class BaseMatcher(abc.ABC):
     def _eq(self, other):
         # This method needs to be overriden by children
         ...
+
+    def _get_name(self) -> str:
+        try:
+            return self.__name__  # type: ignore
+        except AttributeError:
+            return self.__class__.__name__
 
 
 class MapBefore:
@@ -195,19 +201,6 @@ class Instance(BaseMatcher):
     @property
     def __name__(self):
         return "Instance"
-
-    def __getattr__(self, name):
-        """
-        This override is needed because Instance objects need to have the attributes of the class
-        they are pretending to be.
-        """
-        try:
-            return getattr(self, name)
-        except AttributeError as err:
-            fake_class = self.type or self.instance_of
-            if fake_class:
-                return getattr(fake_class, name)
-            raise err
 
 
 @dataclass(repr=False, eq=False)
