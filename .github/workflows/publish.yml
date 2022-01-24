@@ -1,0 +1,36 @@
+# This workflow will build the package and publish it to PyPi
+
+name: Publish package
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+#  workflow_run:
+#    workflows: ["Test"]
+#    types:
+#      - completed
+
+jobs:
+  docs-build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dev requirements
+      run: |
+        pip install -r dev_requirements.txt
+    - name: Build package
+      run: |
+        python setup.py sdist
+        python setup.py bdist_wheel
+    - name: Upload to Pypi
+      run: twine upload -u $PYPI_USERNAME -p $PYPI_PASSWORD dist/*
+      env:
+        PYPI_USERNAME: hummingbirdtech
