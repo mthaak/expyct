@@ -7,6 +7,7 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 [![CircleCI][circleci-shield]][circleci-url]
+[![GitHub Actions][gh-actions-shield]][gh-actions-url]
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -198,6 +199,8 @@ Please file an issue on Github.
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [circleci-shield]: https://circleci.com/gh/HummingbirdTechGroup/expyct/tree/main.svg?style=shield
 [circleci-url]: https://circleci.com/gh/HummingbirdTechGroup/expyct/tree/main
+[gh-actions-shield]: https://github.com/HummingbirdTechGroup/expyct/actions/workflows/test.yml/badge.svg
+[gh-actions-url]: https://github.com/HummingbirdTechGroup/expyct/actions
 [contributors-shield]: https://img.shields.io/github/contributors/HummingbirdTechGroup/expyct.svg?style=svg
 [contributors-url]: https://github.com/HummingbirdTechGroup/expyct/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/HummingbirdTechGroup/expyct.svg?style=svg
