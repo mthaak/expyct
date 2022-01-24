@@ -1,6 +1,6 @@
 # This workflow will build the docs with Sphinx and deploy them to Github pages
 
-name: Build & Publish Docs
+name: Document
 
 on:
   push:
@@ -55,6 +55,8 @@ jobs:
         npm install -g --silent gh-pages@2.0.1
     - name: Configure git
       run: |
+        echo ${GITHUB_TOKEN}
+        echo ${GITHUB_REPOSITORY}
         git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

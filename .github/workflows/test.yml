@@ -1,6 +1,6 @@
 # This workflow will install the package, run the tests and lint with a variety of Python versions
 
-name: Test package
+name: Test
 
 on:
   push:

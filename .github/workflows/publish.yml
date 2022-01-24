@@ -1,6 +1,6 @@
 # This workflow will build the package and publish it to PyPi
 
-name: Publish package
+name: Publish
 
 on:
   push:
