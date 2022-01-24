@@ -56,10 +56,8 @@ jobs:
         npm install -g --silent gh-pages@2.0.1
     - name: Configure git
       run: |
-        echo ${GITHUB_TOKEN}
-        echo ${GITHUB_REPOSITORY}
         git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Deploy docs to gh-pages branch
-      run: gh-pages --dotfiles u "github-actions-bot <support+actions@github.com>" --message "[skip ci] Updates" --dist docs/_build/html
+      run: gh-pages -d build -u "github-actions-bot <support+actions@github.com>" --message "[skip ci] Updates" --dist docs/_build/html
