@@ -4,10 +4,12 @@
 name: Build & Publish Docs
 
 on:
-  workflow_run:
-    workflows: ["Test"]
-    types:
-      - completed
+  push:
+  pull_request:
+#  workflow_run:
+#    workflows: ["Test"]
+#    types:
+#      - completed
 
 jobs:
   docs-build:
