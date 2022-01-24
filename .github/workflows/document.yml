@@ -44,6 +44,7 @@ jobs:
     - uses: actions/download-artifact@v2
       with:
         name: docs
+        path: docs/_build
     - name: Set up Python
       uses: actions/setup-node@v2
       with:
