@@ -36,3 +36,5 @@ jobs:
       run: twine upload -u $PYPI_USERNAME -p $PYPI_PASSWORD dist/*
       env:
         PYPI_USERNAME: hummingbirdtech
+      with: # Set the secret as an input
+        PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
