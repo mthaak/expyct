@@ -6,7 +6,6 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![CircleCI][circleci-shield]][circleci-url]
 [![GitHub Actions][gh-actions-shield]][gh-actions-url]
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
@@ -197,8 +196,6 @@ Please file an issue on Github.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[circleci-shield]: https://circleci.com/gh/HummingbirdTechGroup/expyct/tree/main.svg?style=shield
-[circleci-url]: https://circleci.com/gh/HummingbirdTechGroup/expyct/tree/main
 [gh-actions-shield]: https://github.com/HummingbirdTechGroup/expyct/actions/workflows/test.yml/badge.svg
 [gh-actions-url]: https://github.com/HummingbirdTechGroup/expyct/actions
 [contributors-shield]: https://img.shields.io/github/contributors/HummingbirdTechGroup/expyct.svg?style=svg
