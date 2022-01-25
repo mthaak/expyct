@@ -1,4 +1,4 @@
-# This workflow will install the package, run the tests and lint with a variety of Python versions
+# This workflow will install the package, lint and run the tests with a variety of Python versions
 
 name: Test
 
