@@ -18,8 +18,8 @@ sys.path.insert(0, os.path.abspath(".."))
 # -- Project information -----------------------------------------------------
 
 project = "expyct"
-copyright = "2021, Hummingbird Technologies"
-author = "Hummingbird Technologies"
+copyright = "2022, mthaak"
+author = "mthaak"
 
 # The full version, including alpha/beta/rc tags
 from expyct.__version__ import VERSION  # noqa: E402
