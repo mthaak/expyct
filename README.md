@@ -175,8 +175,8 @@ Any contributions you make are **greatly appreciated**.
 5. Push the Branch (`git push origin feature/AmazingFeature`)
 6. Open a Pull Request
 
-Before starting to contribute to Expyct, please install [pre-commit](https://pre-commit.com) to make sure your
-changes get checked for style and standards before committing them to repository:
+Before starting to contribute to Expyct, please install [pre-commit](https://pre-commit.com) to make sure your changes
+get checked for style and standards before committing them to repository:
 
     $ pre-commit install
 
