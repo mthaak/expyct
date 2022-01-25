@@ -22,12 +22,12 @@
   <p align="center">
     Partial matching of any Python object.
     <br />
-    <a href="https://hummingbirdtechgroup.github.io/expyct/"><strong>Explore the docs »</strong></a>
+    <a href="https://mthaak.github.io/expyct/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/HummingbirdTechGroup/expyct/issues">Report Bug</a>
+    <a href="https://github.com/mthaak/expyct/issues">Report Bug</a>
     ·
-    <a href="https://github.com/HummingbirdTechGroup/expyct/issues">Request Feature</a>
+    <a href="https://github.com/mthaak/expyct/issues">Request Feature</a>
   </p>
 </p>
 
@@ -160,7 +160,7 @@ def test_my_function():
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/HummingbirdTechGroup/expyct/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/mthaak/expyct/issues) for a list of proposed features (and known issues).
 
 
 <!-- CONTRIBUTING -->
@@ -200,15 +200,15 @@ Please file an issue on Github.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[gh-actions-shield]: https://github.com/HummingbirdTechGroup/expyct/actions/workflows/test.yml/badge.svg
-[gh-actions-url]: https://github.com/HummingbirdTechGroup/expyct/actions
-[contributors-shield]: https://img.shields.io/github/contributors/HummingbirdTechGroup/expyct.svg?style=svg
-[contributors-url]: https://github.com/HummingbirdTechGroup/expyct/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/HummingbirdTechGroup/expyct.svg?style=svg
-[forks-url]: https://github.com/HummingbirdTechGroup/expyct/network/members
-[stars-shield]: https://img.shields.io/github/stars/HummingbirdTechGroup/expyct.svg?style=svg
-[stars-url]: https://github.com/HummingbirdTechGroup/expyct/stargazers
-[issues-shield]: https://img.shields.io/github/issues/HummingbirdTechGroup/expyct.svg?style=svg
-[issues-url]: https://github.com/HummingbirdTechGroup/expyct/issues
-[license-shield]: https://img.shields.io/github/license/HummingbirdTechGroup/expyct.svg?style=svg
-[license-url]: https://github.com/HummingbirdTechGroup/expyct/blob/master/LICENSE
+[gh-actions-shield]: https://github.com/mthaak/expyct/actions/workflows/test.yml/badge.svg
+[gh-actions-url]: https://github.com/mthaak/expyct/actions
+[contributors-shield]: https://img.shields.io/github/contributors/mthaak/expyct.svg?style=svg
+[contributors-url]: https://github.com/mthaak/expyct/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/mthaak/expyct.svg?style=svg
+[forks-url]: https://github.com/mthaak/expyct/network/members
+[stars-shield]: https://img.shields.io/github/stars/mthaak/expyct.svg?style=svg
+[stars-url]: https://github.com/mthaak/expyct/stargazers
+[issues-shield]: https://img.shields.io/github/issues/mthaak/expyct.svg?style=svg
+[issues-url]: https://github.com/mthaak/expyct/issues
+[license-shield]: https://img.shields.io/github/license/mthaak/expyct.svg?style=svg
+[license-url]: https://github.com/mthaak/expyct/blob/master/LICENSE
