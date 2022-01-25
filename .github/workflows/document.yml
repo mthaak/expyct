@@ -56,4 +56,4 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Deploy docs to gh-pages branch
-      run: gh-pages -d build -u "github-actions-bot <support+actions@github.com>" --message "[skip ci] Updates" --dist docs/_build/html
+      run: gh-pages --dotfiles -u "github-actions-bot <support+actions@github.com>" --message "[skip ci] Updates" --dist docs/_build/html
