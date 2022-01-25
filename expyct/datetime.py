@@ -1,8 +1,7 @@
 import sys
 import typing
-from datetime import datetime, date, time, timedelta, timezone
-
 from dataclasses import dataclass
+from datetime import datetime, date, time, timedelta, timezone
 
 from expyct.base import Equals, MapBefore, Satisfies, Optional, BaseMatcher
 
@@ -420,14 +419,14 @@ def parse_isoformat(dt: str) -> typing.Union[date, time, datetime]:
     """
     if isinstance(dt, str):
         try:
-            return date.fromisoformat(dt)
+            return date.fromisoformat(dt)  # type: ignore
         except ValueError:
             try:
-                return time.fromisoformat(dt)
+                return time.fromisoformat(dt)  # type: ignore
             except ValueError:
                 if dt.endswith("Z"):
                     dt = dt[:-1] + "+00:00"
-                return datetime.fromisoformat(dt).astimezone(timezone.utc)
+                return datetime.fromisoformat(dt).astimezone(timezone.utc)  # type: ignore
     raise ValueError("Only str is allowed as input")
 
 
