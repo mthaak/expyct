@@ -74,15 +74,19 @@ def test_my_function():
 
 Using Expyct is a good idea when you need to assert something in a test case but there is some non-determinism.
 
-For example, rounding errors prevent you from comparing a `float` exactly. Or a timestamp is created on-the-fly, and therefore changes every test run.
+For example, rounding errors prevent you from comparing a `float` exactly. Or a timestamp is created on-the-fly, and
+therefore changes every test run.
 
 In these cases, you need to be able to set specific constraints on the expected value. That is what Expyct is for!
 
-The constraints can be provided as constructor arguments. For example `n == Number(min=3, max=5)` is only true when `n` is between 3 and 5.
+The constraints can be provided as constructor arguments. For example `n == Number(min=3, max=5)` is only true when `n`
+is between 3 and 5.
 
-Some other examples of classes are `Float`, `String`, `Any` and `DateTime`. As you can see, they closely match the built-in Python types.
+Some other examples of classes are `Float`, `String`, `Any` and `DateTime`. As you can see, they closely match the
+built-in Python types.
 
-The library also comes with many commonly used data validators like `ANY_UUID` which matches any UUID string. And `TODAY` which matches any datetime occurring on the current day.
+The library also comes with many commonly used data validators like `ANY_UUID` which matches any UUID string.
+And `TODAY` which matches any datetime occurring on the current day.
 
 Checking nested data structures is easy as well.
 
