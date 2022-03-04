@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>expyct.combination module &mdash; expyct 1.0.5 documentation</title>
+  <title>Installation &mdash; expyct 1.0.5 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,8 +18,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="expyct.datetime module" href="expyct.datetime.html" />
-    <link rel="prev" title="expyct.collection module" href="expyct.collection.html" /> 
+    <link rel="next" title="expyct.any module" href="expyct.any.html" />
+    <link rel="prev" title="Expyct" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -37,16 +37,20 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Expyct</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Installation</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Modules</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="expyct.any.html">expyct.any module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="expyct.base.html">expyct.base module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="expyct.collection.html">expyct.collection module</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">expyct.combination module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expyct.combination.html">expyct.combination module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="expyct.datetime.html">expyct.datetime module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="expyct.number.html">expyct.number module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="expyct.string.html">expyct.string module</a></li>
@@ -66,9 +70,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>expyct.combination module</li>
+      <li>Installation</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/expyct.combination.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -76,35 +80,33 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-expyct.combination">
-<span id="expyct-combination-module"></span><h1>expyct.combination module<a class="headerlink" href="#module-expyct.combination" title="Permalink to this headline"></a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="expyct.combination.OneOf">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.combination.</span></span><span class="sig-name descname"><span class="pre">OneOf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Collection</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.combination.OneOf" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="expyct.base.html#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a></p>
-<p>Object must equal one of the given options.</p>
-<p>This can be recursively used to check nested objects. For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">expyct</span><span class="o">.</span><span class="n">OneOf</span><span class="p">([</span>
-    <span class="n">expyct</span><span class="o">.</span><span class="n">ANY_DATE</span><span class="p">,</span>
-    <span class="n">expyct</span><span class="o">.</span><span class="n">dict</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;from&quot;</span><span class="p">,</span> <span class="s2">&quot;until&quot;</span><span class="p">],</span> <span class="n">values</span><span class="o">=</span><span class="n">expyct</span><span class="o">.</span><span class="n">ANY_DATE</span><span class="p">)</span>
-<span class="p">])</span>
+  <section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline"></a></h2>
+<p>Supported and tested for:</p>
+<ul class="simple">
+<li><p>Python 3.6</p></li>
+<li><p>Python 3.7</p></li>
+<li><p>Python 3.8</p></li>
+<li><p>Python 3.9</p></li>
+</ul>
+</section>
+<section id="id1">
+<h2>Installation<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">expyct</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>options</strong> – objects to compare to</p>
-</dd>
-</dl>
-</dd></dl>
-
+<p>Or install using any Python package manager like conda, pipenv or poetry.</p>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="expyct.collection.html" class="btn btn-neutral float-left" title="expyct.collection module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="expyct.datetime.html" class="btn btn-neutral float-right" title="expyct.datetime module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Expyct" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="expyct.any.html" class="btn btn-neutral float-right" title="expyct.any module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

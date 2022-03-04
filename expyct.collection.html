@@ -1,167 +1,305 @@
-
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>expyct.collection module &#8212; expyct 1.0.4 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>expyct.collection module &mdash; expyct 1.0.5 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="expyct.combination module" href="expyct.combination.html" />
     <link rel="prev" title="expyct.base module" href="expyct.base.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="expyct.combination.html" title="expyct.combination module"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="expyct.base.html" title="expyct.base module"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">expyct 1.0.4 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">expyct.collection module</a></li> 
-      </ul>
-    </div>  
+</head>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> expyct
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Expyct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="expyct.any.html">expyct.any module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expyct.base.html">expyct.base module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">expyct.collection module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expyct.combination.html">expyct.combination module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expyct.datetime.html">expyct.datetime module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expyct.number.html">expyct.number module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expyct.string.html">expyct.string module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">expyct</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>expyct.collection module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/expyct.collection.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <section id="module-expyct.collection">
-<span id="expyct-collection-module"></span><h1>expyct.collection module<a class="headerlink" href="#module-expyct.collection" title="Permalink to this headline">¶</a></h1>
+<span id="expyct-collection-module"></span><h1>expyct.collection module<a class="headerlink" href="#module-expyct.collection" title="Permalink to this headline"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.collection.AllOrAny">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.collection.</span></span><span class="sig-name descname"><span class="pre">AllOrAny</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">any</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.collection.AllOrAny" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.collection.</span></span><span class="sig-name descname"><span class="pre">AllOrAny</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">any</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.collection.AllOrAny" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="expyct.base.html#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a></p>
 <p>Mixin for matching a collection object by checking that all or at least
-one of its members are equal to given.</p>
+one of its members are equal to the given.</p>
 <p>Like all other <cite>expyct</cite> objects, these can be nested. For example,
 <cite>assert l == exp.AllOrAny(all=exp.Int(min=3))</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>all</strong> – all members of collection must equal</p></li>
+<li><p><strong>any</strong> – any member of collection must equal</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.collection.Collection">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.collection.</span></span><span class="sig-name descname"><span class="pre">Collection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">any</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_before</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equals</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Type</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance_of</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Type</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">non_empty</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">superset_of</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#expyct.collection.Collection" title="expyct.collection.Collection"><span class="pre">Collection</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset_of</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#expyct.collection.Collection" title="expyct.collection.Collection"><span class="pre">Collection</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">satisfies</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.collection.Collection" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.collection.</span></span><span class="sig-name descname"><span class="pre">Collection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">any</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_before</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">equals</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Type</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance_of</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Type</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">non_empty</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">superset_of</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#expyct.collection.Collection" title="expyct.collection.Collection"><span class="pre">Collection</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset_of</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#expyct.collection.Collection" title="expyct.collection.Collection"><span class="pre">Collection</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">satisfies</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.collection.Collection" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="expyct.base.html#expyct.base.Satisfies" title="expyct.base.Satisfies"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Satisfies</span></code></a>, <a class="reference internal" href="#expyct.collection.Contains" title="expyct.collection.Contains"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.Contains</span></code></a>, <a class="reference internal" href="#expyct.collection.Length" title="expyct.collection.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.Length</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Instance" title="expyct.base.Instance"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Instance</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Collection</span></code>], <a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Optional</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="#expyct.collection.AllOrAny" title="expyct.collection.AllOrAny"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.AllOrAny</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a></p>
 <p>Match any object that is an instance of <cite>typing.Collection</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>all</strong> – all members of collection must equal</p></li>
+<li><p><strong>any</strong> – any member of collection must equal</p></li>
+<li><p><strong>map_before</strong> – apply function before checking equality</p></li>
+<li><p><strong>optional</strong> – whether <cite>None</cite> is allowed</p></li>
+<li><p><strong>equals</strong> – object must equal exactly. This is useful together with
+<cite>map_before</cite> to check a value after applying a function</p></li>
+<li><p><strong>type</strong> – type of object must equal to given type</p></li>
+<li><p><strong>instance_of</strong> – object must be an instance of given type</p></li>
+<li><p><strong>length</strong> – object length must be exactly</p></li>
+<li><p><strong>min_length</strong> – object length must be at least</p></li>
+<li><p><strong>max_length</strong> – object length must be at most</p></li>
+<li><p><strong>non_empty</strong> – object must have at least one member [default: <cite>False</cite>]</p></li>
+<li><p><strong>superset_of</strong> – collection of which the object must be a superset</p></li>
+<li><p><strong>subset_of</strong> – collection of which the object must be a subset</p></li>
+<li><p><strong>satisfies</strong> – object must satisfy predicate</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.collection.Contains">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.collection.</span></span><span class="sig-name descname"><span class="pre">Contains</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">superset_of</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#expyct.collection.Collection" title="expyct.collection.Collection"><span class="pre">Collection</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset_of</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#expyct.collection.Collection" title="expyct.collection.Collection"><span class="pre">Collection</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.collection.Contains" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.collection.</span></span><span class="sig-name descname"><span class="pre">Contains</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">superset_of</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#expyct.collection.Collection" title="expyct.collection.Collection"><span class="pre">Collection</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subset_of</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#expyct.collection.Collection" title="expyct.collection.Collection"><span class="pre">Collection</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.collection.Contains" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="expyct.base.html#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a></p>
 <p>Mixin matching a collection object by the containment of specified members.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>superset_of</strong> – collection of which the object must be a superset</p></li>
+<li><p><strong>subset_of</strong> – collection of which the object must be a subset</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.collection.Dict">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.collection.</span></span><span class="sig-name descname"><span class="pre">Dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.collection.Dict" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.collection.</span></span><span class="sig-name descname"><span class="pre">Dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.collection.Dict" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="expyct.base.html#expyct.base.Satisfies" title="expyct.base.Satisfies"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Satisfies</span></code></a>, <a class="reference internal" href="#expyct.collection.Contains" title="expyct.collection.Contains"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.Contains</span></code></a>, <a class="reference internal" href="#expyct.collection.Length" title="expyct.collection.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.Length</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>], <a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Optional</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
 <p>Match any object that is an instance of <cite>dict</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>map_before</strong> – apply function before checking equality</p></li>
+<li><p><strong>optional</strong> – whether <cite>None</cite> is allowed</p></li>
+<li><p><strong>equals</strong> – object must equal exactly. This is useful together with
+<cite>map_before</cite> to check a value after applying a function</p></li>
+<li><p><strong>length</strong> – object length must be exactly</p></li>
+<li><p><strong>min_length</strong> – object length must be at least</p></li>
+<li><p><strong>max_length</strong> – object length must be at most</p></li>
+<li><p><strong>non_empty</strong> – object must have at least one member [default: <cite>False</cite>]</p></li>
+<li><p><strong>superset_of</strong> – collection of which the object must be a superset</p></li>
+<li><p><strong>subset_of</strong> – collection of which the object must be a subset</p></li>
+<li><p><strong>satisfies</strong> – object must satisfy predicate</p></li>
+<li><p><strong>keys</strong> – dict keys must equal</p></li>
+<li><p><strong>values</strong> – dict values must equal</p></li>
+<li><p><strong>keys_all</strong> – all dict keys must equal</p></li>
+<li><p><strong>keys_any</strong> – any dict key must equal</p></li>
+<li><p><strong>values_all</strong> – all dict values must equal</p></li>
+<li><p><strong>values_any</strong> – any dict value must equal</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.collection.Length">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.collection.</span></span><span class="sig-name descname"><span class="pre">Length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">non_empty</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.collection.Length" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.collection.</span></span><span class="sig-name descname"><span class="pre">Length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_length</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">non_empty</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.collection.Length" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="expyct.base.html#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a></p>
-<p>Mixin for matching a collection object by its length as the result of len().</p>
+<p>Mixin for matching a collection object by its length as the result of <cite>len()</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>length</strong> – object length must be exactly</p></li>
+<li><p><strong>min_length</strong> – object length must be at least</p></li>
+<li><p><strong>max_length</strong> – object length must be at most</p></li>
+<li><p><strong>non_empty</strong> – object must have at least one member [default: <cite>False</cite>]</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.collection.List">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.collection.</span></span><span class="sig-name descname"><span class="pre">List</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.collection.List" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.collection.</span></span><span class="sig-name descname"><span class="pre">List</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.collection.List" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="expyct.base.html#expyct.base.Satisfies" title="expyct.base.Satisfies"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Satisfies</span></code></a>, <a class="reference internal" href="#expyct.collection.Contains" title="expyct.collection.Contains"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.Contains</span></code></a>, <a class="reference internal" href="#expyct.collection.Length" title="expyct.collection.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.Length</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>], <a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Optional</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="#expyct.collection.AllOrAny" title="expyct.collection.AllOrAny"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.AllOrAny</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></p>
 <p>Match any object that is an instance of <cite>list</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>all</strong> – all members of collection must equal</p></li>
+<li><p><strong>any</strong> – any member of collection must equal</p></li>
+<li><p><strong>map_before</strong> – apply function before checking equality</p></li>
+<li><p><strong>optional</strong> – whether <cite>None</cite> is allowed</p></li>
+<li><p><strong>equals</strong> – object must equal exactly. This is useful together with
+<cite>map_before</cite> to check a value after applying a function</p></li>
+<li><p><strong>length</strong> – object length must be exactly</p></li>
+<li><p><strong>min_length</strong> – object length must be at least</p></li>
+<li><p><strong>max_length</strong> – object length must be at most</p></li>
+<li><p><strong>non_empty</strong> – object must have at least one member [default: <cite>False</cite>]</p></li>
+<li><p><strong>superset_of</strong> – collection of which the object must be a superset</p></li>
+<li><p><strong>subset_of</strong> – collection of which the object must be a subset</p></li>
+<li><p><strong>satisfies</strong> – object must satisfy predicate</p></li>
+<li><p><strong>ignore_order</strong> – whether to ignore order for <cite>equals</cite></p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.collection.Set">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.collection.</span></span><span class="sig-name descname"><span class="pre">Set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.collection.Set" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.collection.</span></span><span class="sig-name descname"><span class="pre">Set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.collection.Set" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="expyct.base.html#expyct.base.Satisfies" title="expyct.base.Satisfies"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Satisfies</span></code></a>, <a class="reference internal" href="#expyct.collection.Contains" title="expyct.collection.Contains"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.Contains</span></code></a>, <a class="reference internal" href="#expyct.collection.Length" title="expyct.collection.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.Length</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">set</span></code>], <a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Optional</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="#expyct.collection.AllOrAny" title="expyct.collection.AllOrAny"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.AllOrAny</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">set</span></code></p>
 <p>Match any object that is an instance of <cite>set</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>all</strong> – all members of collection must equal</p></li>
+<li><p><strong>any</strong> – any member of collection must equal</p></li>
+<li><p><strong>map_before</strong> – apply function before checking equality</p></li>
+<li><p><strong>optional</strong> – whether <cite>None</cite> is allowed</p></li>
+<li><p><strong>equals</strong> – object must equal exactly. This is useful together with
+<cite>map_before</cite> to check a value after applying a function</p></li>
+<li><p><strong>type</strong> – type of object must equal to given type</p></li>
+<li><p><strong>instance_of</strong> – object must be an instance of given type</p></li>
+<li><p><strong>length</strong> – object length must be exactly</p></li>
+<li><p><strong>min_length</strong> – object length must be at least</p></li>
+<li><p><strong>max_length</strong> – object length must be at most</p></li>
+<li><p><strong>non_empty</strong> – object must have at least one member [default: <cite>False</cite>]</p></li>
+<li><p><strong>superset_of</strong> – collection of which the object must be a superset</p></li>
+<li><p><strong>subset_of</strong> – collection of which the object must be a subset</p></li>
+<li><p><strong>satisfies</strong> – object must satisfy predicate</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.collection.Tuple">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.collection.</span></span><span class="sig-name descname"><span class="pre">Tuple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.collection.Tuple" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.collection.</span></span><span class="sig-name descname"><span class="pre">Tuple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.collection.Tuple" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="expyct.base.html#expyct.base.Satisfies" title="expyct.base.Satisfies"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Satisfies</span></code></a>, <a class="reference internal" href="#expyct.collection.Contains" title="expyct.collection.Contains"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.Contains</span></code></a>, <a class="reference internal" href="#expyct.collection.Length" title="expyct.collection.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.Length</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>], <a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Optional</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="#expyct.collection.AllOrAny" title="expyct.collection.AllOrAny"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.collection.AllOrAny</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
 <p>Match any object that is an instance of <cite>tuple</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>all</strong> – all members of collection must equal</p></li>
+<li><p><strong>any</strong> – any member of collection must equal</p></li>
+<li><p><strong>map_before</strong> – apply function before checking equality</p></li>
+<li><p><strong>optional</strong> – whether <cite>None</cite> is allowed</p></li>
+<li><p><strong>equals</strong> – object must equal exactly. This is useful together with
+<cite>map_before</cite> to check a value after applying a function</p></li>
+<li><p><strong>type</strong> – type of object must equal to given type</p></li>
+<li><p><strong>instance_of</strong> – object must be an instance of given type</p></li>
+<li><p><strong>length</strong> – object length must be exactly</p></li>
+<li><p><strong>min_length</strong> – object length must be at least</p></li>
+<li><p><strong>max_length</strong> – object length must be at most</p></li>
+<li><p><strong>non_empty</strong> – object must have at least one member [default: <cite>False</cite>]</p></li>
+<li><p><strong>superset_of</strong> – collection of which the object must be a superset</p></li>
+<li><p><strong>subset_of</strong> – collection of which the object must be a subset</p></li>
+<li><p><strong>satisfies</strong> – object must satisfy predicate</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
 
 
-            <div class="clearer"></div>
+           </div>
           </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="expyct.base.html" class="btn btn-neutral float-left" title="expyct.base module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="expyct.combination.html" class="btn btn-neutral float-right" title="expyct.combination module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, mthaak.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="expyct.base.html"
-                        title="previous chapter">expyct.base module</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="expyct.combination.html"
-                        title="next chapter">expyct.combination module</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/expyct.collection.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="expyct.combination.html" title="expyct.combination module"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="expyct.base.html" title="expyct.base module"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">expyct 1.0.4 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">expyct.collection module</a></li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, mthaak.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
-    </div>
-  </body>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

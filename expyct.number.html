@@ -1,96 +1,210 @@
-
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>expyct.number module &#8212; expyct 1.0.4 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>expyct.number module &mdash; expyct 1.0.5 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="expyct.string module" href="expyct.string.html" />
     <link rel="prev" title="expyct.datetime module" href="expyct.datetime.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="expyct.string.html" title="expyct.string module"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="expyct.datetime.html" title="expyct.datetime module"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">expyct 1.0.4 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">expyct.number module</a></li> 
-      </ul>
-    </div>  
+</head>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> expyct
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Expyct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="expyct.any.html">expyct.any module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expyct.base.html">expyct.base module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expyct.collection.html">expyct.collection module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expyct.combination.html">expyct.combination module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expyct.datetime.html">expyct.datetime module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">expyct.number module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expyct.string.html">expyct.string module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">expyct</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>expyct.number module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/expyct.number.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <section id="module-expyct.number">
-<span id="expyct-number-module"></span><h1>expyct.number module<a class="headerlink" href="#module-expyct.number" title="Permalink to this headline">¶</a></h1>
+<span id="expyct-number-module"></span><h1>expyct.number module<a class="headerlink" href="#module-expyct.number" title="Permalink to this headline"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.number.CloseTo">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">CloseTo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">close_to</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numbers.Number</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.001</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.number.CloseTo" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">CloseTo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">close_to</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numbers.Number</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0.001</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.number.CloseTo" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="expyct.base.html#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a></p>
 <p>Mixin for matching number that is close to given target within a certain two-side error. In
 other words, the difference between the number and <cite>close_to</cite> must be at most <cite>error</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>close_to</strong> – number must be close to this</p></li>
+<li><p><strong>error</strong> – two-sided allowed error</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.number.Float">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">Float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.number.Float" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">Float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.number.Float" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#expyct.number.CloseTo" title="expyct.number.CloseTo"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.number.CloseTo</span></code></a>, <a class="reference internal" href="#expyct.number.MinMaxStrict" title="expyct.number.MinMaxStrict"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.number.MinMaxStrict</span></code></a>, <a class="reference internal" href="#expyct.number.MinMax" title="expyct.number.MinMax"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.number.MinMax</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Satisfies" title="expyct.base.Satisfies"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Satisfies</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">numbers.Number</span></code>], <a class="reference internal" href="expyct.base.html#expyct.base.Instance" title="expyct.base.Instance"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Instance</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Optional</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a></p>
 <p>Match any object that is an instance of <cite>float</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>map_before</strong> – apply function before checking equality</p></li>
+<li><p><strong>type</strong> – type of object must equal to given type</p></li>
+<li><p><strong>instance_of</strong> – object must be an instance of given type</p></li>
+<li><p><strong>equals</strong> – object must equal exactly. This is useful together with
+<cite>map_before</cite> to check a value after applying a function</p></li>
+<li><p><strong>optional</strong> – whether <cite>None</cite> is allowed</p></li>
+<li><p><strong>satisfies</strong> – object must satisfy predicate</p></li>
+<li><p><strong>min</strong> – number must be larger than or equal to given</p></li>
+<li><p><strong>max</strong> – number must be smaller than or equal to given</p></li>
+<li><p><strong>min_strict</strong> – number must be larger than given</p></li>
+<li><p><strong>max_strict</strong> – number must be smaller than given</p></li>
+<li><p><strong>close_to</strong> – number must be close to this</p></li>
+<li><p><strong>error</strong> – two-sided allowed error</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.number.Int">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">Int</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.number.Int" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">Int</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.number.Int" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#expyct.number.CloseTo" title="expyct.number.CloseTo"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.number.CloseTo</span></code></a>, <a class="reference internal" href="#expyct.number.MinMaxStrict" title="expyct.number.MinMaxStrict"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.number.MinMaxStrict</span></code></a>, <a class="reference internal" href="#expyct.number.MinMax" title="expyct.number.MinMax"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.number.MinMax</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Satisfies" title="expyct.base.Satisfies"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Satisfies</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">numbers.Number</span></code>], <a class="reference internal" href="expyct.base.html#expyct.base.Instance" title="expyct.base.Instance"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Instance</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Optional</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a></p>
 <p>Match any object that is an instance of <cite>int</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>map_before</strong> – apply function before checking equality</p></li>
+<li><p><strong>type</strong> – type of object must equal to given type</p></li>
+<li><p><strong>instance_of</strong> – object must be an instance of given type</p></li>
+<li><p><strong>equals</strong> – object must equal exactly. This is useful together with
+<cite>map_before</cite> to check a value after applying a function</p></li>
+<li><p><strong>optional</strong> – whether <cite>None</cite> is allowed</p></li>
+<li><p><strong>satisfies</strong> – object must satisfy predicate</p></li>
+<li><p><strong>min</strong> – number must be larger than or equal to given</p></li>
+<li><p><strong>max</strong> – number must be smaller than or equal to given</p></li>
+<li><p><strong>min_strict</strong> – number must be larger than given</p></li>
+<li><p><strong>max_strict</strong> – number must be smaller than given</p></li>
+<li><p><strong>close_to</strong> – number must be close to this</p></li>
+<li><p><strong>error</strong> – two-sided allowed error a</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.number.MinMax">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">MinMax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numbers.Number</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numbers.Number</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.number.MinMax" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">MinMax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numbers.Number</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numbers.Number</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.number.MinMax" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="expyct.base.html#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a></p>
 <p>Mixin for matching a number that is equal to, larger or smaller than given bounds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>min</strong> – number must be larger than or equal to given</p></li>
+<li><p><strong>max</strong> – number must be smaller than or equal to given</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.number.MinMaxStrict">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">MinMaxStrict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_strict</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numbers.Number</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_strict</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numbers.Number</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.number.MinMaxStrict" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">MinMaxStrict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_strict</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numbers.Number</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_strict</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">numbers.Number</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.number.MinMaxStrict" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="expyct.base.html#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a></p>
 <p>Mixin for matching number that is strictly larger or smaller than given bounds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>min_strict</strong> – number must be larger than given</p></li>
+<li><p><strong>max_strict</strong> – number must be smaller than given</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.number.Number">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">Number</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.number.Number" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">Number</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.number.Number" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#expyct.number.CloseTo" title="expyct.number.CloseTo"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.number.CloseTo</span></code></a>, <a class="reference internal" href="#expyct.number.MinMaxStrict" title="expyct.number.MinMaxStrict"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.number.MinMaxStrict</span></code></a>, <a class="reference internal" href="#expyct.number.MinMax" title="expyct.number.MinMax"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.number.MinMax</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Satisfies" title="expyct.base.Satisfies"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Satisfies</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">numbers.Number</span></code>], <a class="reference internal" href="expyct.base.html#expyct.base.Instance" title="expyct.base.Instance"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Instance</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Optional</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a></p>
 <p>Match any number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>map_before</strong> – apply function before checking equality</p></li>
+<li><p><strong>type</strong> – type of object must equal to given type</p></li>
+<li><p><strong>instance_of</strong> – object must be an instance of given type</p></li>
+<li><p><strong>equals</strong> – object must equal exactly. This is useful together with
+<cite>map_before</cite> to check a value after applying a function</p></li>
+<li><p><strong>optional</strong> – whether <cite>None</cite> is allowed [default: <cite>False</cite>]</p></li>
+<li><p><strong>satisfies</strong> – object must satisfy predicate</p></li>
+<li><p><strong>min</strong> – number must be larger than or equal to given</p></li>
+<li><p><strong>max</strong> – number must be smaller than or equal to given</p></li>
+<li><p><strong>min_strict</strong> – number must be larger than given</p></li>
+<li><p><strong>max_strict</strong> – number must be smaller than given</p></li>
+<li><p><strong>close_to</strong> – number must be close to this</p></li>
+<li><p><strong>error</strong> – two-sided allowed error a</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="expyct.number.parse_float_string">
-<span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">parse_float_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#expyct.number.parse_float_string" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">parse_float_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#expyct.number.parse_float_string" title="Permalink to this definition"></a></dt>
 <dd><p>Parse a string as <cite>float</cite>. Throws a ValueError if <cite>obj</cite> is not a string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -101,7 +215,7 @@ other words, the difference between the number and <cite>close_to</cite> must be
 
 <dl class="py function">
 <dt class="sig sig-object py" id="expyct.number.parse_int_string">
-<span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">parse_int_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#expyct.number.parse_int_string" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">parse_int_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#expyct.number.parse_int_string" title="Permalink to this definition"></a></dt>
 <dd><p>Parse a string as <cite>int</cite>. Throws a ValueError if <cite>obj</cite> is not a string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -112,7 +226,7 @@ other words, the difference between the number and <cite>close_to</cite> must be
 
 <dl class="py function">
 <dt class="sig sig-object py" id="expyct.number.parse_number_string">
-<span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">parse_number_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#expyct.number.parse_number_string" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">parse_number_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#expyct.number.parse_number_string" title="Permalink to this definition"></a></dt>
 <dd><p>Parse a string as number. First tries to parse as <cite>int</cite>, then as <cite>float</cite>. Throws a ValueError
 if <cite>obj</cite> is not a string.</p>
 <dl class="field-list simple">
@@ -124,98 +238,71 @@ if <cite>obj</cite> is not a string.</p>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.number.ANY_FLOAT">
-<span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">ANY_FLOAT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.Instance(error=0.01)</span></em><a class="headerlink" href="#expyct.number.ANY_FLOAT" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">ANY_FLOAT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.Instance(error=0.01)</span></em><a class="headerlink" href="#expyct.number.ANY_FLOAT" title="Permalink to this definition"></a></dt>
 <dd><p>Any instance of <cite>float</cite></p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.number.ANY_FLOAT_STRING">
-<span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">ANY_FLOAT_STRING</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.Instance(map_before=&lt;function</span> <span class="pre">parse_float_string&gt;,</span> <span class="pre">error=0.01)</span></em><a class="headerlink" href="#expyct.number.ANY_FLOAT_STRING" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">ANY_FLOAT_STRING</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.Instance(map_before=&lt;function</span> <span class="pre">parse_float_string&gt;,</span> <span class="pre">error=0.01)</span></em><a class="headerlink" href="#expyct.number.ANY_FLOAT_STRING" title="Permalink to this definition"></a></dt>
 <dd><p>Any instance of <cite>float</cite></p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.number.ANY_INT">
-<span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">ANY_INT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.Instance(error=0.01)</span></em><a class="headerlink" href="#expyct.number.ANY_INT" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">ANY_INT</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.Instance(error=0.01)</span></em><a class="headerlink" href="#expyct.number.ANY_INT" title="Permalink to this definition"></a></dt>
 <dd><p>Any instance of <cite>int</cite></p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.number.ANY_INT_STRING">
-<span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">ANY_INT_STRING</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.Instance(map_before=&lt;function</span> <span class="pre">parse_int_string&gt;,</span> <span class="pre">error=0.01)</span></em><a class="headerlink" href="#expyct.number.ANY_INT_STRING" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">ANY_INT_STRING</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.Instance(map_before=&lt;function</span> <span class="pre">parse_int_string&gt;,</span> <span class="pre">error=0.01)</span></em><a class="headerlink" href="#expyct.number.ANY_INT_STRING" title="Permalink to this definition"></a></dt>
 <dd><p>Any instance of <cite>int</cite></p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.number.ANY_NUMBER">
-<span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">ANY_NUMBER</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.Instance(error=0.01)</span></em><a class="headerlink" href="#expyct.number.ANY_NUMBER" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">ANY_NUMBER</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.Instance(error=0.01)</span></em><a class="headerlink" href="#expyct.number.ANY_NUMBER" title="Permalink to this definition"></a></dt>
 <dd><p>Any number</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.number.ANY_NUMBER_STRING">
-<span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">ANY_NUMBER_STRING</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.Instance(map_before=&lt;function</span> <span class="pre">parse_number_string&gt;,</span> <span class="pre">error=0.01)</span></em><a class="headerlink" href="#expyct.number.ANY_NUMBER_STRING" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.number.</span></span><span class="sig-name descname"><span class="pre">ANY_NUMBER_STRING</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.Instance(map_before=&lt;function</span> <span class="pre">parse_number_string&gt;,</span> <span class="pre">error=0.01)</span></em><a class="headerlink" href="#expyct.number.ANY_NUMBER_STRING" title="Permalink to this definition"></a></dt>
 <dd><p>Any number, parsed from a string</p>
 </dd></dl>
 
 </section>
 
 
-            <div class="clearer"></div>
+           </div>
           </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="expyct.datetime.html" class="btn btn-neutral float-left" title="expyct.datetime module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="expyct.string.html" class="btn btn-neutral float-right" title="expyct.string module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, mthaak.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="expyct.datetime.html"
-                        title="previous chapter">expyct.datetime module</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="expyct.string.html"
-                        title="next chapter">expyct.string module</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/expyct.number.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="expyct.string.html" title="expyct.string module"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="expyct.datetime.html" title="expyct.datetime module"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">expyct 1.0.4 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">expyct.number module</a></li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, mthaak.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
-    </div>
-  </body>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

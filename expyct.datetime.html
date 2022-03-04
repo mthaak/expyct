@@ -1,53 +1,86 @@
-
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>expyct.datetime module &#8212; expyct 1.0.4 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>expyct.datetime module &mdash; expyct 1.0.5 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="expyct.number module" href="expyct.number.html" />
     <link rel="prev" title="expyct.combination module" href="expyct.combination.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="expyct.number.html" title="expyct.number module"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="expyct.combination.html" title="expyct.combination module"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">expyct 1.0.4 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">expyct.datetime module</a></li> 
-      </ul>
-    </div>  
+</head>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> expyct
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Expyct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="expyct.any.html">expyct.any module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expyct.base.html">expyct.base module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expyct.collection.html">expyct.collection module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expyct.combination.html">expyct.combination module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">expyct.datetime module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expyct.number.html">expyct.number module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expyct.string.html">expyct.string module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">expyct</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>expyct.datetime module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/expyct.datetime.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <section id="module-expyct.datetime">
-<span id="expyct-datetime-module"></span><h1>expyct.datetime module<a class="headerlink" href="#module-expyct.datetime" title="Permalink to this headline">¶</a></h1>
+<span id="expyct-datetime-module"></span><h1>expyct.datetime module<a class="headerlink" href="#module-expyct.datetime" title="Permalink to this headline"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.datetime.AfterBefore">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">AfterBefore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">after</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">expyct.datetime.T</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">before</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">expyct.datetime.T</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.datetime.AfterBefore" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">AfterBefore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">after</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">expyct.datetime.T</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">before</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">expyct.datetime.T</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.datetime.AfterBefore" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">expyct.datetime.T</span></code>], <a class="reference internal" href="expyct.base.html#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a></p>
 <p>Mixin for matching a <cite>date</cite>, <cite>time</cite>, or <cite>datetime</cite> that takes place after, before, or on
 given date/time. In other words, it is inclusive on both sides.</p>
@@ -63,44 +96,118 @@ given date/time. In other words, it is inclusive on both sides.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.datetime.AfterBeforeStrict">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">AfterBeforeStrict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">after_strict</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">expyct.datetime.T</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">before_strict</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">expyct.datetime.T</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.datetime.AfterBeforeStrict" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">AfterBeforeStrict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">after_strict</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">expyct.datetime.T</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">before_strict</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">expyct.datetime.T</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.datetime.AfterBeforeStrict" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">expyct.datetime.T</span></code>], <a class="reference internal" href="expyct.base.html#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a></p>
 <p>Mixin for matching a <cite>date</cite>, <cite>time</cite>, or <cite>datetime</cite> that takes place after and/or before given
 date/time. In other words, it is exclusive on both sides.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>after_strict</strong> – object must occur after given</p></li>
+<li><p><strong>before_strict</strong> – object must occur before given</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.datetime.Date">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">Date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.datetime.Date" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">Date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.datetime.Date" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="expyct.base.html#expyct.base.Satisfies" title="expyct.base.Satisfies"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Satisfies</span></code></a>, <a class="reference internal" href="#expyct.datetime.AfterBeforeStrict" title="expyct.datetime.AfterBeforeStrict"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.datetime.AfterBeforeStrict</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.date</span></code>], <a class="reference internal" href="#expyct.datetime.AfterBefore" title="expyct.datetime.AfterBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.datetime.AfterBefore</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.date</span></code>], <a class="reference internal" href="expyct.base.html#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.date</span></code>], <a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Optional</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.date</span></code></p>
 <p>Match any object that is an instance of <cite>date</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>map_before</strong> – apply function before checking equality</p></li>
+<li><p><strong>optional</strong> – whether <cite>None</cite> is allowed</p></li>
+<li><p><strong>equals</strong> – object must equal exactly. This is useful together with
+<cite>map_before</cite> to check a value after applying a function</p></li>
+<li><p><strong>after</strong> – object must occur after or on given. If timedelta is given,
+then it is compared relative to when the assertion is run</p></li>
+<li><p><strong>before</strong> – object must occur before or on given. If timedelta is given,
+then it is compared relative to when the assertion is run</p></li>
+<li><p><strong>after_strict</strong> – object must occur after given</p></li>
+<li><p><strong>before_strict</strong> – object must occur before given</p></li>
+<li><p><strong>satisfies</strong> – object must satisfy predicate</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.datetime.DateTime">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">DateTime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.datetime.DateTime" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">DateTime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.datetime.DateTime" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="expyct.base.html#expyct.base.Satisfies" title="expyct.base.Satisfies"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Satisfies</span></code></a>, <a class="reference internal" href="#expyct.datetime.AfterBeforeStrict" title="expyct.datetime.AfterBeforeStrict"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.datetime.AfterBeforeStrict</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code>], <a class="reference internal" href="#expyct.datetime.AfterBefore" title="expyct.datetime.AfterBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.datetime.AfterBefore</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code>], <a class="reference internal" href="expyct.base.html#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code>], <a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Optional</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></p>
 <p>Match any object that is an instance of <cite>datetime</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>map_before</strong> – apply function before checking equality</p></li>
+<li><p><strong>optional</strong> – whether <cite>None</cite> is allowed [default: <cite>False</cite>]</p></li>
+<li><p><strong>equals</strong> – object must equal exactly. This is useful together with
+<cite>map_before</cite> to check a value after applying a function</p></li>
+<li><p><strong>after</strong> – object must occur after or exactly on given</p></li>
+<li><p><strong>before</strong> – object must occur before or exactly on given</p></li>
+<li><p><strong>after_strict</strong> – object must occur after given</p></li>
+<li><p><strong>before_strict</strong> – object must occur before given</p></li>
+<li><p><strong>satisfies</strong> – object must satisfy predicate</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.datetime.DateTimeTz">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">DateTimeTz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.datetime.DateTimeTz" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">DateTimeTz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.datetime.DateTimeTz" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="expyct.base.html#expyct.base.Satisfies" title="expyct.base.Satisfies"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Satisfies</span></code></a>, <a class="reference internal" href="#expyct.datetime.AfterBeforeStrict" title="expyct.datetime.AfterBeforeStrict"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.datetime.AfterBeforeStrict</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code>], <a class="reference internal" href="#expyct.datetime.AfterBefore" title="expyct.datetime.AfterBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.datetime.AfterBefore</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code>], <a class="reference internal" href="expyct.base.html#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code>], <a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Optional</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></p>
 <p>Match any object that is an instance of <cite>datetime</cite> and has timezone information (<cite>tzinfo</cite>).
 In other words, is a timestamp.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>map_before</strong> – apply function before checking equality</p></li>
+<li><p><strong>optional</strong> – whether <cite>None</cite> is allowed [default: <cite>False</cite>]</p></li>
+<li><p><strong>equals</strong> – object must equal exactly. This is useful together with
+<cite>map_before</cite> to check a value after applying a function</p></li>
+<li><p><strong>after</strong> – object must occur after or on given. If timedelta is given,
+then it is compared relative to when the assertion is run</p></li>
+<li><p><strong>before</strong> – object must occur before or on given. If timedelta is given,
+then it is compared relative to when the assertion is run</p></li>
+<li><p><strong>after_strict</strong> – object must occur after given</p></li>
+<li><p><strong>before_strict</strong> – object must occur before given</p></li>
+<li><p><strong>satisfies</strong> – object must satisfy predicate</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="expyct.datetime.Time">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">Time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.datetime.Time" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">Time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#expyct.datetime.Time" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="expyct.base.html#expyct.base.Satisfies" title="expyct.base.Satisfies"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Satisfies</span></code></a>, <a class="reference internal" href="#expyct.datetime.AfterBeforeStrict" title="expyct.datetime.AfterBeforeStrict"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.datetime.AfterBeforeStrict</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.time</span></code>], <a class="reference internal" href="#expyct.datetime.AfterBefore" title="expyct.datetime.AfterBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.datetime.AfterBefore</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.time</span></code>], <a class="reference internal" href="expyct.base.html#expyct.base.Equals" title="expyct.base.Equals"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Equals</span></code></a>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.time</span></code>], <a class="reference internal" href="expyct.base.html#expyct.base.Optional" title="expyct.base.Optional"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.Optional</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.MapBefore" title="expyct.base.MapBefore"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.MapBefore</span></code></a>, <a class="reference internal" href="expyct.base.html#expyct.base.BaseMatcher" title="expyct.base.BaseMatcher"><code class="xref py py-class docutils literal notranslate"><span class="pre">expyct.base.BaseMatcher</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.time</span></code></p>
 <p>Match any object that is an instance of <cite>time</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>map_before</strong> – apply function before checking equality</p></li>
+<li><p><strong>optional</strong> – whether <cite>None</cite> is allowed</p></li>
+<li><p><strong>equals</strong> – object must equal exactly. This is useful together with
+<cite>map_before</cite> to check a value after applying a function</p></li>
+<li><p><strong>after</strong> – object must occur after or on given. If timedelta is given,
+then it is compared relative to when the assertion is run</p></li>
+<li><p><strong>before</strong> – object must occur before or on given. If timedelta is given,
+then it is compared relative to when the assertion is run</p></li>
+<li><p><strong>after_strict</strong> – object must occur after given</p></li>
+<li><p><strong>before_strict</strong> – object must occur before given</p></li>
+<li><p><strong>satisfies</strong> – object must satisfy predicate</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="expyct.datetime.parse_isoformat">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">parse_isoformat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime.date</span><span class="p"><span class="pre">,</span> </span><span class="pre">datetime.time</span><span class="p"><span class="pre">,</span> </span><span class="pre">datetime.datetime</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#expyct.datetime.parse_isoformat" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">parse_isoformat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime.date</span><span class="p"><span class="pre">,</span> </span><span class="pre">datetime.time</span><span class="p"><span class="pre">,</span> </span><span class="pre">datetime.datetime</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#expyct.datetime.parse_isoformat" title="Permalink to this definition"></a></dt>
 <dd><p>Parse a ISO8601-formatted string as a <cite>date</cite>, <cite>datetime</cite> or <cite>datetime</cite> object.</p>
 <blockquote>
 <div><p>This will depend on the amount of information that is given.</p>
@@ -114,212 +221,185 @@ In other words, is a timestamp.</p>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.ANY_DATE">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">ANY_DATE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.Date()</span></em><a class="headerlink" href="#expyct.datetime.ANY_DATE" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">ANY_DATE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.Date()</span></em><a class="headerlink" href="#expyct.datetime.ANY_DATE" title="Permalink to this definition"></a></dt>
 <dd><p>Any instance of <cite>date</cite></p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.ANY_DATETIME">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">ANY_DATETIME</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTime()</span></em><a class="headerlink" href="#expyct.datetime.ANY_DATETIME" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">ANY_DATETIME</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTime()</span></em><a class="headerlink" href="#expyct.datetime.ANY_DATETIME" title="Permalink to this definition"></a></dt>
 <dd><p>Any instance of <cite>datetime</cite></p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.ANY_DATETIME_ISO">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">ANY_DATETIME_ISO</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTime(map_before=&lt;function</span> <span class="pre">parse_isoformat&gt;)</span></em><a class="headerlink" href="#expyct.datetime.ANY_DATETIME_ISO" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">ANY_DATETIME_ISO</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTime(map_before=&lt;function</span> <span class="pre">parse_isoformat&gt;)</span></em><a class="headerlink" href="#expyct.datetime.ANY_DATETIME_ISO" title="Permalink to this definition"></a></dt>
 <dd><p>Any string that can be parsed as <cite>datetime</cite> using the ISO8601 format</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.ANY_DATE_ISO">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">ANY_DATE_ISO</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.Date(map_before=&lt;function</span> <span class="pre">parse_isoformat&gt;)</span></em><a class="headerlink" href="#expyct.datetime.ANY_DATE_ISO" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">ANY_DATE_ISO</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.Date(map_before=&lt;function</span> <span class="pre">parse_isoformat&gt;)</span></em><a class="headerlink" href="#expyct.datetime.ANY_DATE_ISO" title="Permalink to this definition"></a></dt>
 <dd><p>Any string that can be parsed as <cite>date</cite> using the ISO8601 format</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.ANY_TIME">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">ANY_TIME</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.Time()</span></em><a class="headerlink" href="#expyct.datetime.ANY_TIME" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">ANY_TIME</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.Time()</span></em><a class="headerlink" href="#expyct.datetime.ANY_TIME" title="Permalink to this definition"></a></dt>
 <dd><p>Any instance <cite>time</cite></p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.ANY_TIME_ISO">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">ANY_TIME_ISO</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.Time(map_before=&lt;function</span> <span class="pre">parse_isoformat&gt;)</span></em><a class="headerlink" href="#expyct.datetime.ANY_TIME_ISO" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">ANY_TIME_ISO</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.Time(map_before=&lt;function</span> <span class="pre">parse_isoformat&gt;)</span></em><a class="headerlink" href="#expyct.datetime.ANY_TIME_ISO" title="Permalink to this definition"></a></dt>
 <dd><p>Any string that can be parsed as <cite>time</cite> using the ISO8601 format</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.LAST_DAY">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">LAST_DAY</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(after=datetime.timedelta(days=-1),</span> <span class="pre">before=datetime.timedelta(0))</span></em><a class="headerlink" href="#expyct.datetime.LAST_DAY" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">LAST_DAY</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(after=datetime.timedelta(days=-1),</span> <span class="pre">before=datetime.timedelta(0))</span></em><a class="headerlink" href="#expyct.datetime.LAST_DAY" title="Permalink to this definition"></a></dt>
 <dd><p>Any timestamp occurring during the last 24 hours</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.LAST_DAY_ISO">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">LAST_DAY_ISO</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(map_before=&lt;function</span> <span class="pre">parse_isoformat&gt;,</span> <span class="pre">after=datetime.timedelta(days=-1),</span> <span class="pre">before=datetime.timedelta(0))</span></em><a class="headerlink" href="#expyct.datetime.LAST_DAY_ISO" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">LAST_DAY_ISO</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(map_before=&lt;function</span> <span class="pre">parse_isoformat&gt;,</span> <span class="pre">after=datetime.timedelta(days=-1),</span> <span class="pre">before=datetime.timedelta(0))</span></em><a class="headerlink" href="#expyct.datetime.LAST_DAY_ISO" title="Permalink to this definition"></a></dt>
 <dd><p>Any timestamp occurring during the last 24 hours, parsed from ISO8601 string</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.LAST_HOUR">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">LAST_HOUR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(after=datetime.timedelta(days=-1,</span> <span class="pre">seconds=82800),</span> <span class="pre">before=datetime.timedelta(0))</span></em><a class="headerlink" href="#expyct.datetime.LAST_HOUR" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">LAST_HOUR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(after=datetime.timedelta(days=-1,</span> <span class="pre">seconds=82800),</span> <span class="pre">before=datetime.timedelta(0))</span></em><a class="headerlink" href="#expyct.datetime.LAST_HOUR" title="Permalink to this definition"></a></dt>
 <dd><p>Any timestamp occurring during the last 60 minutes</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.LAST_HOUR_ISO">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">LAST_HOUR_ISO</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(map_before=&lt;function</span> <span class="pre">parse_isoformat&gt;,</span> <span class="pre">after=datetime.timedelta(days=-1,</span> <span class="pre">seconds=82800),</span> <span class="pre">before=datetime.timedelta(0))</span></em><a class="headerlink" href="#expyct.datetime.LAST_HOUR_ISO" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">LAST_HOUR_ISO</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(map_before=&lt;function</span> <span class="pre">parse_isoformat&gt;,</span> <span class="pre">after=datetime.timedelta(days=-1,</span> <span class="pre">seconds=82800),</span> <span class="pre">before=datetime.timedelta(0))</span></em><a class="headerlink" href="#expyct.datetime.LAST_HOUR_ISO" title="Permalink to this definition"></a></dt>
 <dd><p>Any timestamp occurring during the last 60 minutes, parsed from ISO8601 string</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.LAST_MINUTE">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">LAST_MINUTE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(after=datetime.timedelta(days=-1,</span> <span class="pre">seconds=86340),</span> <span class="pre">before=datetime.timedelta(0))</span></em><a class="headerlink" href="#expyct.datetime.LAST_MINUTE" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">LAST_MINUTE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(after=datetime.timedelta(days=-1,</span> <span class="pre">seconds=86340),</span> <span class="pre">before=datetime.timedelta(0))</span></em><a class="headerlink" href="#expyct.datetime.LAST_MINUTE" title="Permalink to this definition"></a></dt>
 <dd><p>Any timestamp occurring during the last 60 seconds</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.LAST_MINUTE_ISO">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">LAST_MINUTE_ISO</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(map_before=&lt;function</span> <span class="pre">parse_isoformat&gt;,</span> <span class="pre">after=datetime.timedelta(days=-1,</span> <span class="pre">seconds=86340),</span> <span class="pre">before=datetime.timedelta(0))</span></em><a class="headerlink" href="#expyct.datetime.LAST_MINUTE_ISO" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">LAST_MINUTE_ISO</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(map_before=&lt;function</span> <span class="pre">parse_isoformat&gt;,</span> <span class="pre">after=datetime.timedelta(days=-1,</span> <span class="pre">seconds=86340),</span> <span class="pre">before=datetime.timedelta(0))</span></em><a class="headerlink" href="#expyct.datetime.LAST_MINUTE_ISO" title="Permalink to this definition"></a></dt>
 <dd><p>Any timestamp occurring during the last 60 seconds, parsed from ISO8601 string</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.LAST_SECOND">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">LAST_SECOND</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(after=datetime.timedelta(days=-1,</span> <span class="pre">seconds=86399),</span> <span class="pre">before=datetime.timedelta(0))</span></em><a class="headerlink" href="#expyct.datetime.LAST_SECOND" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">LAST_SECOND</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(after=datetime.timedelta(days=-1,</span> <span class="pre">seconds=86399),</span> <span class="pre">before=datetime.timedelta(0))</span></em><a class="headerlink" href="#expyct.datetime.LAST_SECOND" title="Permalink to this definition"></a></dt>
 <dd><p>Any timestamp occurring during the last second</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.LAST_SECOND_ISO">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">LAST_SECOND_ISO</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(map_before=&lt;function</span> <span class="pre">parse_isoformat&gt;,</span> <span class="pre">after=datetime.timedelta(days=-1,</span> <span class="pre">seconds=86399),</span> <span class="pre">before=datetime.timedelta(0))</span></em><a class="headerlink" href="#expyct.datetime.LAST_SECOND_ISO" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">LAST_SECOND_ISO</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(map_before=&lt;function</span> <span class="pre">parse_isoformat&gt;,</span> <span class="pre">after=datetime.timedelta(days=-1,</span> <span class="pre">seconds=86399),</span> <span class="pre">before=datetime.timedelta(0))</span></em><a class="headerlink" href="#expyct.datetime.LAST_SECOND_ISO" title="Permalink to this definition"></a></dt>
 <dd><p>Any timestamp occurring during the last second, parsed from ISO8601 string</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.LAST_WEEK">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">LAST_WEEK</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(after=datetime.timedelta(days=-7),</span> <span class="pre">before=datetime.timedelta(0))</span></em><a class="headerlink" href="#expyct.datetime.LAST_WEEK" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">LAST_WEEK</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(after=datetime.timedelta(days=-7),</span> <span class="pre">before=datetime.timedelta(0))</span></em><a class="headerlink" href="#expyct.datetime.LAST_WEEK" title="Permalink to this definition"></a></dt>
 <dd><p>Any timestamp occurring during the last 7 days</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.LAST_WEEK_ISO">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">LAST_WEEK_ISO</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(map_before=&lt;function</span> <span class="pre">parse_isoformat&gt;,</span> <span class="pre">after=datetime.timedelta(days=-7),</span> <span class="pre">before=datetime.timedelta(0))</span></em><a class="headerlink" href="#expyct.datetime.LAST_WEEK_ISO" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">LAST_WEEK_ISO</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(map_before=&lt;function</span> <span class="pre">parse_isoformat&gt;,</span> <span class="pre">after=datetime.timedelta(days=-7),</span> <span class="pre">before=datetime.timedelta(0))</span></em><a class="headerlink" href="#expyct.datetime.LAST_WEEK_ISO" title="Permalink to this definition"></a></dt>
 <dd><p>Any timestamp occurring during the last 7 days, parsed from ISO8601 string</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.LAST_YEAR">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">LAST_YEAR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(after=datetime.timedelta(days=-365),</span> <span class="pre">before=datetime.timedelta(0))</span></em><a class="headerlink" href="#expyct.datetime.LAST_YEAR" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">LAST_YEAR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(after=datetime.timedelta(days=-365),</span> <span class="pre">before=datetime.timedelta(0))</span></em><a class="headerlink" href="#expyct.datetime.LAST_YEAR" title="Permalink to this definition"></a></dt>
 <dd><p>Any timestamp occurring during the last 365 days</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.LAST_YEAR_ISO">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">LAST_YEAR_ISO</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(map_before=&lt;function</span> <span class="pre">parse_isoformat&gt;,</span> <span class="pre">after=datetime.timedelta(days=-365),</span> <span class="pre">before=datetime.timedelta(0))</span></em><a class="headerlink" href="#expyct.datetime.LAST_YEAR_ISO" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">LAST_YEAR_ISO</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(map_before=&lt;function</span> <span class="pre">parse_isoformat&gt;,</span> <span class="pre">after=datetime.timedelta(days=-365),</span> <span class="pre">before=datetime.timedelta(0))</span></em><a class="headerlink" href="#expyct.datetime.LAST_YEAR_ISO" title="Permalink to this definition"></a></dt>
 <dd><p>Any timestamp occurring during the last 365 days, parsed from ISO8601 string</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.THIS_DAY">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">THIS_DAY</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(after_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">3,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">before_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">5,</span> <span class="pre">0,</span> <span class="pre">0))</span></em><a class="headerlink" href="#expyct.datetime.THIS_DAY" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">THIS_DAY</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(after_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">3,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">before_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">5,</span> <span class="pre">0,</span> <span class="pre">0))</span></em><a class="headerlink" href="#expyct.datetime.THIS_DAY" title="Permalink to this definition"></a></dt>
 <dd><p>Any timestamp occurring on the current day</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.THIS_DAY_ISO">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">THIS_DAY_ISO</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(map_before=&lt;function</span> <span class="pre">parse_isoformat&gt;,</span> <span class="pre">after_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">3,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">before_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">5,</span> <span class="pre">0,</span> <span class="pre">0))</span></em><a class="headerlink" href="#expyct.datetime.THIS_DAY_ISO" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">THIS_DAY_ISO</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(map_before=&lt;function</span> <span class="pre">parse_isoformat&gt;,</span> <span class="pre">after_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">3,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">before_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">5,</span> <span class="pre">0,</span> <span class="pre">0))</span></em><a class="headerlink" href="#expyct.datetime.THIS_DAY_ISO" title="Permalink to this definition"></a></dt>
 <dd><p>Any timestamp occurring on the current day, parsed from ISO8601 string</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.THIS_HOUR">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">THIS_HOUR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(after_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">16,</span> <span class="pre">0),</span> <span class="pre">before_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">18,</span> <span class="pre">0))</span></em><a class="headerlink" href="#expyct.datetime.THIS_HOUR" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">THIS_HOUR</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(after_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">16,</span> <span class="pre">0),</span> <span class="pre">before_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">18,</span> <span class="pre">0))</span></em><a class="headerlink" href="#expyct.datetime.THIS_HOUR" title="Permalink to this definition"></a></dt>
 <dd><p>Any timestamp occurring in the current hour</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.THIS_MINUTE">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">THIS_MINUTE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(after_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">17,</span> <span class="pre">46),</span> <span class="pre">before_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">17,</span> <span class="pre">48))</span></em><a class="headerlink" href="#expyct.datetime.THIS_MINUTE" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">THIS_MINUTE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(after_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">17,</span> <span class="pre">48),</span> <span class="pre">before_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">17,</span> <span class="pre">50))</span></em><a class="headerlink" href="#expyct.datetime.THIS_MINUTE" title="Permalink to this definition"></a></dt>
 <dd><p>Any timestamp occurring in the current minute</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.THIS_SECOND">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">THIS_SECOND</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(after_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">17,</span> <span class="pre">47,</span> <span class="pre">47),</span> <span class="pre">before_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">17,</span> <span class="pre">47,</span> <span class="pre">49))</span></em><a class="headerlink" href="#expyct.datetime.THIS_SECOND" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">THIS_SECOND</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(after_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">17,</span> <span class="pre">49,</span> <span class="pre">2),</span> <span class="pre">before_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">17,</span> <span class="pre">49,</span> <span class="pre">4))</span></em><a class="headerlink" href="#expyct.datetime.THIS_SECOND" title="Permalink to this definition"></a></dt>
 <dd><p>Any timestamp occurring in the current second</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.TODAY">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">TODAY</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(after_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">3,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">before_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">5,</span> <span class="pre">0,</span> <span class="pre">0))</span></em><a class="headerlink" href="#expyct.datetime.TODAY" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">TODAY</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(after_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">3,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">before_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">5,</span> <span class="pre">0,</span> <span class="pre">0))</span></em><a class="headerlink" href="#expyct.datetime.TODAY" title="Permalink to this definition"></a></dt>
 <dd><p>The same as THIS_DAY</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="expyct.datetime.TODAY_ISO">
-<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">TODAY_ISO</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(map_before=&lt;function</span> <span class="pre">parse_isoformat&gt;,</span> <span class="pre">after_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">3,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">before_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">5,</span> <span class="pre">0,</span> <span class="pre">0))</span></em><a class="headerlink" href="#expyct.datetime.TODAY_ISO" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">expyct.datetime.</span></span><span class="sig-name descname"><span class="pre">TODAY_ISO</span></span><em class="property"> <span class="pre">=</span> <span class="pre">expyct.DateTimeTz(map_before=&lt;function</span> <span class="pre">parse_isoformat&gt;,</span> <span class="pre">after_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">3,</span> <span class="pre">0,</span> <span class="pre">0),</span> <span class="pre">before_strict=datetime.datetime(2022,</span> <span class="pre">3,</span> <span class="pre">5,</span> <span class="pre">0,</span> <span class="pre">0))</span></em><a class="headerlink" href="#expyct.datetime.TODAY_ISO" title="Permalink to this definition"></a></dt>
 <dd><p>The same as THIS_DAY_ISO</p>
 </dd></dl>
 
 </section>
 
 
-            <div class="clearer"></div>
+           </div>
           </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="expyct.combination.html" class="btn btn-neutral float-left" title="expyct.combination module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="expyct.number.html" class="btn btn-neutral float-right" title="expyct.number module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, mthaak.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="expyct.combination.html"
-                        title="previous chapter">expyct.combination module</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="expyct.number.html"
-                        title="next chapter">expyct.number module</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/expyct.datetime.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="expyct.number.html" title="expyct.number module"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="expyct.combination.html" title="expyct.combination module"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">expyct 1.0.4 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">expyct.datetime module</a></li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, mthaak.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.1.2.
-    </div>
-  </body>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>
