@@ -20,7 +20,7 @@ class AfterBefore(typing.Generic[T], BaseMatcher):
     """Mixin for matching a `date`, `time`, or `datetime` that takes place after, before, or on
     given date/time. In other words, it is inclusive on both sides.
 
-    Arguments:
+    Args:
         after : object must occur after or exactly on given
         before : object must occur before or exactly on given
     """
@@ -33,13 +33,6 @@ class AfterBefore(typing.Generic[T], BaseMatcher):
         after: typing.Optional[T] = None,
         before: typing.Optional[T] = None,
     ):
-        """Mixin for matching a `date`, `time`, or `datetime` that takes place after, before, or on
-        given date/time. In other words, it is inclusive on both sides.
-
-            Args:
-                after : object must occur after given
-                before : object must occur before given
-        """
         self.after = after
         self.before = before
 
@@ -54,7 +47,12 @@ class AfterBefore(typing.Generic[T], BaseMatcher):
 @dataclass(repr=False, eq=False)
 class AfterBeforeStrict(typing.Generic[T], BaseMatcher):
     """Mixin for matching a `date`, `time`, or `datetime` that takes place after and/or before given
-    date/time. In other words, it is exclusive on both sides."""
+    date/time. In other words, it is exclusive on both sides.
+
+    Args:
+        after_strict : object must occur after given
+        before_strict : object must occur before given
+    """
 
     after_strict: typing.Optional[T] = None
     before_strict: typing.Optional[T] = None
@@ -64,13 +62,7 @@ class AfterBeforeStrict(typing.Generic[T], BaseMatcher):
         after_strict: typing.Optional[T] = None,
         before_strict: typing.Optional[T] = None,
     ):
-        """Mixin for matching a `date`, `time`, or `datetime` that takes place after and/or before given
-        date/time. In other words, it is exclusive on both sides.
 
-            Args:
-                after_strict : object must occur after given
-                before_strict : object must occur before given
-        """
         self.after_strict = after_strict
         self.before_strict = before_strict
 
@@ -93,7 +85,19 @@ class DateTime(
     BaseMatcher,
     datetime,
 ):
-    """Match any object that is an instance of `datetime`."""
+    """Match any object that is an instance of `datetime`.
+
+    Args:
+        map_before : apply function before checking equality
+        optional : whether `None` is allowed [default: `False`]
+        equals : object must equal exactly. This is useful together with
+            `map_before` to check a value after applying a function
+        after : object must occur after or exactly on given
+        before : object must occur before or exactly on given
+        after_strict : object must occur after given
+        before_strict : object must occur before given
+        satisfies : object must satisfy predicate
+    """
 
     def __new__(cls, *args, **kwargs):
         return datetime.__new__(cls, 1, 1, 1)
@@ -109,19 +113,7 @@ class DateTime(
         before_strict: typing.Optional[datetime] = None,
         satisfies: typing.Optional[typing.Callable[[typing.Any], bool]] = None,
     ):
-        """Match any object that is an instance of `datetime`.
 
-        Args:
-            map_before : apply function before checking equality
-            optional : whether `None` is allowed [default: `False`]
-            equals : object must equal exactly. This is useful together with
-                `map_before` to check a value after applying a function
-            after : object must occur after or exactly on given
-            before : object must occur before or exactly on given
-            after_strict : object must occur after given
-            before_strict : object must occur before given
-            satisfies : object must satisfy predicate
-        """
         self.map_before = map_before
         self.optional = optional
         self.equals = equals
@@ -163,7 +155,21 @@ class DateTimeTz(
     datetime,
 ):
     """Match any object that is an instance of `datetime` and has timezone information (`tzinfo`).
-    In other words, is a timestamp."""
+    In other words, is a timestamp.
+
+    Args:
+        map_before : apply function before checking equality
+        optional : whether `None` is allowed [default: `False`]
+        equals : object must equal exactly. This is useful together with
+            `map_before` to check a value after applying a function
+        after : object must occur after or on given. If timedelta is given,
+            then it is compared relative to when the assertion is run
+        before : object must occur before or on given. If timedelta is given,
+            then it is compared relative to when the assertion is run
+        after_strict : object must occur after given
+        before_strict : object must occur before given
+        satisfies : object must satisfy predicate
+    """
 
     after: typing.Optional[typing.Union[datetime, timedelta]] = None  # type: ignore
     before: typing.Optional[typing.Union[datetime, timedelta]] = None  # type: ignore
@@ -184,22 +190,6 @@ class DateTimeTz(
         before_strict: typing.Optional[typing.Union[datetime, timedelta]] = None,
         satisfies: typing.Optional[typing.Callable[[typing.Any], bool]] = None,
     ):
-        """Match any object that is an instance of `datetime` and has timezone information (`tzinfo`).
-        In other words, is a timestamp.
-
-        Args:
-            map_before : apply function before checking equality
-            optional : whether `None` is allowed [default: `False`]
-            equals : object must equal exactly. This is useful together with
-                `map_before` to check a value after applying a function
-            after : object must occur after or on given. If timedelta is given,
-                then it is compared relative to when the assertion is run
-            before : object must occur before or on given. If timedelta is given,
-                then it is compared relative to when the assertion is run
-            after_strict : object must occur after given
-            before_strict : object must occur before given
-            satisfies : object must satisfy predicate
-        """
         self.map_before = map_before
         self.optional = optional
         self.equals = equals
@@ -278,7 +268,21 @@ class Date(
     BaseMatcher,
     date,
 ):
-    """Match any object that is an instance of `date`."""
+    """Match any object that is an instance of `date`.
+
+    Args:
+            map_before : apply function before checking equality
+            optional : whether `None` is allowed
+            equals : object must equal exactly. This is useful together with
+                `map_before` to check a value after applying a function
+            after : object must occur after or on given. If timedelta is given,
+                then it is compared relative to when the assertion is run
+            before : object must occur before or on given. If timedelta is given,
+                then it is compared relative to when the assertion is run
+            after_strict : object must occur after given
+            before_strict : object must occur before given
+            satisfies : object must satisfy predicate
+    """
 
     def __new__(cls, *args, **kwargs):
         return date.__new__(cls, 1, 1, 1)
@@ -294,21 +298,6 @@ class Date(
         before_strict: typing.Optional[date] = None,
         satisfies: typing.Optional[typing.Callable[[typing.Any], bool]] = None,
     ):
-        """Match any object that is an instance of `date`.
-
-        Args:
-            map_before : apply function before checking equality
-            optional : whether `None` is allowed
-            equals : object must equal exactly. This is useful together with
-                `map_before` to check a value after applying a function
-            after : object must occur after or on given. If timedelta is given,
-                then it is compared relative to when the assertion is run
-            before : object must occur before or on given. If timedelta is given,
-                then it is compared relative to when the assertion is run
-            after_strict : object must occur after given
-            before_strict : object must occur before given
-            satisfies : object must satisfy predicate
-        """
         self.map_before = map_before
         self.optional = optional
         self.equals = equals
@@ -349,7 +338,21 @@ class Time(
     BaseMatcher,
     time,
 ):
-    """Match any object that is an instance of `time`."""
+    """Match any object that is an instance of `time`.
+
+    Args:
+        map_before : apply function before checking equality
+        optional : whether `None` is allowed
+        equals : object must equal exactly. This is useful together with
+            `map_before` to check a value after applying a function
+        after : object must occur after or on given. If timedelta is given,
+            then it is compared relative to when the assertion is run
+        before : object must occur before or on given. If timedelta is given,
+            then it is compared relative to when the assertion is run
+        after_strict : object must occur after given
+        before_strict : object must occur before given
+        satisfies : object must satisfy predicate
+    """
 
     def __new__(cls, *args, **kwargs):
         return time.__new__(cls, 1, 1, 1)
@@ -365,21 +368,6 @@ class Time(
         before_strict: typing.Optional[time] = None,
         satisfies: typing.Optional[typing.Callable[[typing.Any], bool]] = None,
     ):
-        """Match any object that is an instance of `time`.
-
-        Args:
-            map_before : apply function before checking equality
-            optional : whether `None` is allowed
-            equals : object must equal exactly. This is useful together with
-                `map_before` to check a value after applying a function
-            after : object must occur after or on given. If timedelta is given,
-                then it is compared relative to when the assertion is run
-            before : object must occur before or on given. If timedelta is given,
-                then it is compared relative to when the assertion is run
-            after_strict : object must occur after given
-            before_strict : object must occur before given
-            satisfies : object must satisfy predicate
-        """
         self.map_before = map_before
         self.optional = optional
         self.equals = equals

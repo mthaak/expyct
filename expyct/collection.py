@@ -10,10 +10,14 @@ from expyct.base import Instance
 @dataclass(repr=False, eq=False)
 class AllOrAny(BaseMatcher):
     """Mixin for matching a collection object by checking that all or at least
-    one of its members are equal to given.
+    one of its members are equal to the given.
 
     Like all other `expyct` objects, these can be nested. For example,
     `assert l == exp.AllOrAny(all=exp.Int(min=3))`.
+
+    Args:
+        all : all members of collection must equal
+        any : any member of collection must equal
     """
 
     all: typing.Optional[typing.Any] = None
@@ -24,13 +28,6 @@ class AllOrAny(BaseMatcher):
         all: typing.Optional[typing.Any] = None,
         any: typing.Optional[typing.Any] = None,
     ):
-        """Mixin for matching a collection object by checking that all or at least
-        one of its members are equal to given.
-
-        Args:
-            all : all members of collection must equal
-            any : any member of collection must equal
-        """
         self.all = all
         self.any = any
 
@@ -46,7 +43,14 @@ class AllOrAny(BaseMatcher):
 
 @dataclass(repr=False, eq=False)
 class Length(BaseMatcher):
-    """Mixin for matching a collection object by its length as the result of len()."""
+    """Mixin for matching a collection object by its length as the result of `len()`.
+
+    Args:
+        length : object length must be exactly
+        min_length : object length must be at least
+        max_length : object length must be at most
+        non_empty : object must have at least one member [default: `False`]
+    """
 
     length: typing.Optional[int] = None
     min_length: typing.Optional[int] = None
@@ -60,15 +64,6 @@ class Length(BaseMatcher):
         max_length: typing.Optional[int] = None,
         non_empty: bool = False,
     ):
-        """Mixin for matching a collection object by its length as the result of len().
-
-        Args:
-        Args:
-            length : object length must be exactly
-            min_length : object length must be at least
-            max_length : object length must be at most
-            non_empty : object must have at least one member [default: `False`]
-        """
         self.length = length
         self.min_length = min_length
         self.max_length = max_length
@@ -92,7 +87,12 @@ class Length(BaseMatcher):
 
 @dataclass(repr=False, eq=False)
 class Contains(BaseMatcher):
-    """Mixin matching a collection object by the containment of specified members."""
+    """Mixin matching a collection object by the containment of specified members.
+
+    Args:
+        superset_of : collection of which the object must be a superset
+        subset_of : collection of which the object must be a subset
+    """
 
     superset_of: typing.Optional[typing.Collection] = None
     subset_of: typing.Optional[typing.Collection] = None
@@ -102,12 +102,6 @@ class Contains(BaseMatcher):
         superset_of: typing.Optional[typing.Collection] = None,
         subset_of: typing.Optional[typing.Collection] = None,
     ):
-        """Mixin matching a collection object by the containment of specified members.
-
-        Args:
-            superset_of : collection of which the object must be a superset
-            subset_of : collection of which the object must be a subset
-        """
         self.superset_of = superset_of
         self.subset_of = subset_of
 
@@ -142,7 +136,25 @@ class Collection(
     AllOrAny,
     BaseMatcher,
 ):
-    """Match any object that is an instance of `typing.Collection`."""
+    """Match any object that is an instance of `typing.Collection`.
+
+    Args:
+        all : all members of collection must equal
+        any : any member of collection must equal
+        map_before : apply function before checking equality
+        optional : whether `None` is allowed
+        equals : object must equal exactly. This is useful together with
+            `map_before` to check a value after applying a function
+        type : type of object must equal to given type
+        instance_of : object must be an instance of given type
+        length : object length must be exactly
+        min_length : object length must be at least
+        max_length : object length must be at most
+        non_empty : object must have at least one member [default: `False`]
+        superset_of : collection of which the object must be a superset
+        subset_of : collection of which the object must be a subset
+        satisfies : object must satisfy predicate
+    """
 
     def __init__(
         self,
@@ -161,25 +173,6 @@ class Collection(
         subset_of: typing.Optional[typing.Collection] = None,
         satisfies: typing.Optional[typing.Callable[[typing.Any], bool]] = None,
     ):
-        """Match any object that is an instance of `typing.Collection`.
-
-        Args:
-            all : all members of collection must equal
-            any : any member of collection must equal
-            map_before : apply function before checking equality
-            optional : whether `None` is allowed
-            equals : object must equal exactly. This is useful together with
-                `map_before` to check a value after applying a function
-            type : type of object must equal to given type
-            instance_of : object must be an instance of given type
-            length : object length must be exactly
-            min_length : object length must be at least
-            max_length : object length must be at most
-            non_empty : object must have at least one member [default: `False`]
-            superset_of : collection of which the object must be a superset
-            subset_of : collection of which the object must be a subset
-            satisfies : object must satisfy predicate
-        """
         self.all = all
         self.any = any
         self.map_before = map_before
@@ -223,7 +216,24 @@ class Collection(
 class List(
     Satisfies, Contains, Length, Equals[list], Optional, MapBefore, AllOrAny, BaseMatcher, list
 ):
-    """Match any object that is an instance of `list`."""
+    """Match any object that is an instance of `list`.
+
+    Args:
+        all : all members of collection must equal
+        any : any member of collection must equal
+        map_before : apply function before checking equality
+        optional : whether `None` is allowed
+        equals : object must equal exactly. This is useful together with
+            `map_before` to check a value after applying a function
+        length : object length must be exactly
+        min_length : object length must be at least
+        max_length : object length must be at most
+        non_empty : object must have at least one member [default: `False`]
+        superset_of : collection of which the object must be a superset
+        subset_of : collection of which the object must be a subset
+        satisfies : object must satisfy predicate
+        ignore_order : whether to ignore order for `equals`
+    """
 
     ignore_order: bool = False
 
@@ -246,24 +256,6 @@ class List(
         satisfies: typing.Optional[typing.Callable[[typing.Any], bool]] = None,
         ignore_order: bool = False,
     ):
-        """Match any object that is an instance of `list`.
-
-        Args:
-            all : all members of collection must equal
-            any : any member of collection must equal
-            map_before : apply function before checking equality
-            optional : whether `None` is allowed
-            equals : object must equal exactly. This is useful together with
-                `map_before` to check a value after applying a function
-            length : object length must be exactly
-            min_length : object length must be at least
-            max_length : object length must be at most
-            non_empty : object must have at least one member [default: `False`]
-            superset_of : collection of which the object must be a superset
-            subset_of : collection of which the object must be a subset
-            satisfies : object must satisfy predicate
-            ignore_order : whether to ignore order for `equals`
-        """
         self.all = all
         self.any = any
         self.map_before = map_before
@@ -316,7 +308,25 @@ class List(
 class Tuple(
     Satisfies, Contains, Length, Equals[tuple], Optional, MapBefore, AllOrAny, BaseMatcher, tuple
 ):
-    """Match any object that is an instance of `tuple`."""
+    """Match any object that is an instance of `tuple`.
+
+    Args:
+        all : all members of collection must equal
+        any : any member of collection must equal
+        map_before : apply function before checking equality
+        optional : whether `None` is allowed
+        equals : object must equal exactly. This is useful together with
+            `map_before` to check a value after applying a function
+        type : type of object must equal to given type
+        instance_of : object must be an instance of given type
+        length : object length must be exactly
+        min_length : object length must be at least
+        max_length : object length must be at most
+        non_empty : object must have at least one member [default: `False`]
+        superset_of : collection of which the object must be a superset
+        subset_of : collection of which the object must be a subset
+        satisfies : object must satisfy predicate
+    """
 
     def __new__(cls, *args, **kwargs):
         return tuple.__new__(cls)
@@ -336,25 +346,6 @@ class Tuple(
         subset_of: typing.Optional[typing.Collection] = None,
         satisfies: typing.Optional[typing.Callable[[typing.Any], bool]] = None,
     ):
-        """Match any object that is an instance of `tuple`.
-
-        Args:
-            all : all members of collection must equal
-            any : any member of collection must equal
-            map_before : apply function before checking equality
-            optional : whether `None` is allowed
-            equals : object must equal exactly. This is useful together with
-                `map_before` to check a value after applying a function
-            type : type of object must equal to given type
-            instance_of : object must be an instance of given type
-            length : object length must be exactly
-            min_length : object length must be at least
-            max_length : object length must be at most
-            non_empty : object must have at least one member [default: `False`]
-            superset_of : collection of which the object must be a superset
-            subset_of : collection of which the object must be a subset
-            satisfies : object must satisfy predicate
-        """
         self.all = all
         self.any = any
         self.map_before = map_before
@@ -394,7 +385,25 @@ class Tuple(
 class Set(
     Satisfies, Contains, Length, Equals[set], Optional, MapBefore, AllOrAny, BaseMatcher, set
 ):
-    """Match any object that is an instance of `set`."""
+    """Match any object that is an instance of `set`.
+
+    Args:
+        all : all members of collection must equal
+        any : any member of collection must equal
+        map_before : apply function before checking equality
+        optional : whether `None` is allowed
+        equals : object must equal exactly. This is useful together with
+            `map_before` to check a value after applying a function
+        type : type of object must equal to given type
+        instance_of : object must be an instance of given type
+        length : object length must be exactly
+        min_length : object length must be at least
+        max_length : object length must be at most
+        non_empty : object must have at least one member [default: `False`]
+        superset_of : collection of which the object must be a superset
+        subset_of : collection of which the object must be a subset
+        satisfies : object must satisfy predicate
+    """
 
     def __new__(cls, *args, **kwargs):
         return set.__new__(cls)
@@ -414,25 +423,6 @@ class Set(
         subset_of: typing.Optional[typing.Collection] = None,
         satisfies: typing.Optional[typing.Callable[[typing.Any], bool]] = None,
     ):
-        """Match any object that is an instance of `set`.
-
-        Args:
-            all : all members of collection must equal
-            any : any member of collection must equal
-            map_before : apply function before checking equality
-            optional : whether `None` is allowed
-            equals : object must equal exactly. This is useful together with
-                `map_before` to check a value after applying a function
-            type : type of object must equal to given type
-            instance_of : object must be an instance of given type
-            length : object length must be exactly
-            min_length : object length must be at least
-            max_length : object length must be at most
-            non_empty : object must have at least one member [default: `False`]
-            superset_of : collection of which the object must be a superset
-            subset_of : collection of which the object must be a subset
-            satisfies : object must satisfy predicate
-        """
         self.all = all
         self.any = any
         self.map_before = map_before
@@ -470,7 +460,27 @@ class Set(
 
 @dataclass(repr=False, eq=False)
 class Dict(Satisfies, Contains, Length, Equals[dict], Optional, MapBefore, BaseMatcher, dict):
-    """Match any object that is an instance of `dict`."""
+    """Match any object that is an instance of `dict`.
+
+    Args:
+       map_before : apply function before checking equality
+       optional : whether `None` is allowed
+       equals : object must equal exactly. This is useful together with
+           `map_before` to check a value after applying a function
+       length : object length must be exactly
+       min_length : object length must be at least
+       max_length : object length must be at most
+       non_empty : object must have at least one member [default: `False`]
+       superset_of : collection of which the object must be a superset
+       subset_of : collection of which the object must be a subset
+       satisfies : object must satisfy predicate
+       keys : dict keys must equal
+       values : dict values must equal
+       keys_all : all dict keys must equal
+       keys_any : any dict key must equal
+       values_all : all dict values must equal
+       values_any : any dict value must equal
+    """
 
     superset_of: typing.Optional[dict] = None
     subset_of: typing.Optional[dict] = None
@@ -503,27 +513,6 @@ class Dict(Satisfies, Contains, Length, Equals[dict], Optional, MapBefore, BaseM
         values_all: typing.Optional[typing.Any] = None,
         values_any: typing.Optional[typing.Any] = None,
     ):
-        """Match any object that is an instance of `dict`.
-
-        Args:
-            map_before : apply function before checking equality
-            optional : whether `None` is allowed
-            equals : object must equal exactly. This is useful together with
-                `map_before` to check a value after applying a function
-            length : object length must be exactly
-            min_length : object length must be at least
-            max_length : object length must be at most
-            non_empty : object must have at least one member [default: `False`]
-            superset_of : collection of which the object must be a superset
-            subset_of : collection of which the object must be a subset
-            satisfies : object must satisfy predicate
-            keys : dict keys must equal
-            values : dict values must equal
-            keys_all : all dict keys must equal
-            keys_any : any dict key must equal
-            values_all : all dict values must equal
-            values_any : any dict value must equal
-        """
         self.all = all
         self.any = any
         self.map_before = map_before

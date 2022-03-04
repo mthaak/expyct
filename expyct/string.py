@@ -19,7 +19,28 @@ class String(
     BaseMatcher,
     str,
 ):
-    """Match any object that is a string."""
+    """Match any object that is a string.
+
+    Args:
+        map_before : apply function before checking equality
+        optional : whether `None` is allowed [default: `False`]
+        type : type of object must equal to given type
+        instance_of : object must be an instance of given type
+        equals : object must equal exactly. This is useful together with
+          `map_before` to check a value after applying a function
+        satisfies : object must satisfy predicate
+        length : object length must be exactly
+        min_length : object length must be at least
+        max_length : object length must be at most
+        non_empty : object must have at least one member [default: `False`]
+        superset_of : collection of which the object must be a superset
+        subset_of : collection of which the object must be a subset
+        starts_with : string must start with given
+        ends_with : string must end with given
+        regex : string must fully match predicate
+        ignore_case : whether to ignore case for starts_with, ends_with,
+        equality and regex matching [default: `False`]
+    """
 
     starts_with: typing.Optional[str] = None
     ends_with: typing.Optional[str] = None
@@ -48,28 +69,6 @@ class String(
         regex: typing.Optional[typing.Union[str, bytes, typing.Pattern]] = None,
         ignore_case: bool = False,
     ):
-        """Match any object that is a string.
-
-        Args:
-            map_before : apply function before checking equality
-            optional : whether `None` is allowed [default: `False`]
-            type : type of object must equal to given type
-            instance_of : object must be an instance of given type
-            equals : object must equal exactly. This is useful together with
-              `map_before` to check a value after applying a function
-            satisfies : object must satisfy predicate
-            length : object length must be exactly
-            min_length : object length must be at least
-            max_length : object length must be at most
-            non_empty : object must have at least one member [default: `False`]
-            superset_of : collection of which the object must be a superset
-            subset_of : collection of which the object must be a subset
-            starts_with : string must start with given
-            ends_with : string must end with given
-            regex : string must fully match predicate
-            ignore_case : whether to ignore case for starts_with, ends_with,
-            equality and regex matching [default: `False`]
-        """
         self.map_before = map_before
         self.optional = optional
         self.type = type

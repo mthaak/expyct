@@ -17,16 +17,14 @@ class OneOf(BaseMatcher):
             expyct.ANY_DATE,
             expyct.dict(keys=["from", "until"], values=expyct.ANY_DATE)
         ])
+
+    Args:
+            options: objects to compare to
     """
 
     options: typing.Collection
 
     def __init__(self, options: typing.Collection):
-        """Object must equal one of the given options.
-
-        Args:
-            options: objects to compare to
-        """
         self.options = options
 
     def _eq(self, other):
