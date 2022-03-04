@@ -39,15 +39,11 @@ class BaseMatcher(abc.ABC):
 class MapBefore:
     """Mixin for applying a function before checking equality.
 
-    This class is not meant to be used by itself.
+    Args:
+        map_before : the mapping function to apply
     """
 
     def __init__(self, map_before: typing.Optional[typing.Callable] = None):
-        """Mixin for applying a function before checking equality.
-
-        Args:
-            map_before : the mapping function to apply
-        """
         self.map_before = map_before
 
     map_before: typing.Optional[typing.Callable] = None
@@ -63,17 +59,13 @@ class MapBefore:
 class Satisfies(BaseMatcher):
     """Mixin for checking equality by using a predicate function.
 
-    If `satisfies(obj)` returns `True`, then it is equal.
+    Args:
+        satisfies : object must satisfy predicate
     """
 
     satisfies: typing.Optional[typing.Callable[[typing.Any], bool]] = None
 
     def __init__(self, satisfies: typing.Optional[typing.Callable[[typing.Any], bool]] = None):
-        """Mixin for checking equality by using a predicate function.
-
-        Args:
-            satisfies : object must satisfy predicate
-        """
         self.satisfies = satisfies
 
     def _eq(self, other):
@@ -87,16 +79,15 @@ class Satisfies(BaseMatcher):
 
 @dataclass(repr=False, eq=False)
 class Equals(typing.Generic[T], BaseMatcher):
-    """Mixin for checking equality using a specific object to compare against."""
+    """Mixin for checking equality using a specific object to compare against.
+
+    Args:
+        equals : the object to check equality with
+    """
 
     equals: typing.Optional[T] = None
 
     def __init__(self, equals: typing.Optional[T] = None):
-        """Mixin for checking equality using a specific object to compare against.
-
-        Args:
-            equals : the object to check equality with
-        """
         self.equals = equals
 
     def _eq(self, other):
@@ -112,16 +103,14 @@ class Vars(BaseMatcher):
 
     The attributes are compared as a dict. So anything that can be compared
     with a dict can be used as `vars` argument, including other expyct objects like `expyct.Dict`.
+
+    Args:
+        vars : object attributes (result of `vars()`) must equal
     """
 
     vars: typing.Optional[typing.Any] = None
 
     def __init__(self, vars: typing.Optional[typing.Any] = None):
-        """Mixin for checking the presence of specific object attributes.
-
-        Args:
-            vars : object attributes (result of `vars()`) must equal
-        """
         self.vars = vars
 
     def _eq(self, other):
@@ -133,16 +122,15 @@ class Vars(BaseMatcher):
 
 @dataclass(repr=False, eq=False)
 class Optional(BaseMatcher):
-    """Mixin for matching with `None`."""
+    """Mixin for matching with `None`.
+
+    Args:
+        optional : whether `None` is allowed [default: `False`]
+    """
 
     optional: typing.Optional[bool] = None
 
     def __init__(self, optional: typing.Optional[bool] = None):
-        """Mixin for matching with `None`.
-
-        Args:
-            optional : whether `None` is allowed [default: `False`]
-        """
         self.optional = optional
 
     def _eq(self, other):
@@ -156,7 +144,12 @@ class Optional(BaseMatcher):
 
 @dataclass(repr=False, eq=False)
 class Instance(BaseMatcher):
-    """Match any object that is a class instance."""
+    """Match any object that is a class instance.
+
+    Args:
+        type : type of object must equal to given type
+        instance_of : object must be an instance of given type
+    """
 
     type: typing.Optional[typing.Type] = None
     instance_of: typing.Optional[typing.Type] = None
@@ -166,12 +159,6 @@ class Instance(BaseMatcher):
         type: typing.Optional[typing.Type] = None,
         instance_of: typing.Optional[typing.Type] = None,
     ):
-        """Match any object that is a class instance.
-
-        Args:
-            type : type of object must equal to given type
-            instance_of : object must be an instance of given type
-        """
         self.type = type
         self.instance_of = instance_of
 
@@ -205,7 +192,12 @@ class Instance(BaseMatcher):
 
 @dataclass(repr=False, eq=False)
 class Type(BaseMatcher):
-    """Match any object that is a type."""
+    """Match any object that is a type.
+
+    Args:
+        superclass_of : the type of which the matched object must be a superclass
+        subclass_of : the type of which the matched object must be a subclass
+    """
 
     superclass_of: typing.Optional[typing.Type] = None
     subclass_of: typing.Optional[typing.Type] = None
@@ -215,12 +207,6 @@ class Type(BaseMatcher):
         superclass_of: typing.Optional[typing.Type] = None,
         subclass_of: typing.Optional[typing.Type] = None,
     ):
-        """Match any object that is a type.
-
-        Args:
-            superclass_of : the type of which the matched object must be a superclass
-            subclass_of : the type of which the matched object must be a subclass
-        """
         self.superclass_of = superclass_of
         self.subclass_of = subclass_of
 

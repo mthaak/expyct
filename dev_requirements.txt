@@ -4,5 +4,6 @@ mypy==0.910
 pytest-cov==2.12.1
 pytest==6.2.4
 sphinx==4.1.2
+sphinx-rtd-theme==1.0.0
 twine==3.4.2
 types-backports==0.1.3

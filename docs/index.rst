@@ -7,7 +7,7 @@ Using Expyct is a good idea when you need to assert something in a test case but
 
 For example, rounding errors prevent you from comparing a :code:`float` exactly. Or a timestamp is created on-the-fly, and therefore changes every test run.
 
-In these cases, you need to be able to set specific constraints on the expected value. That is what Expyct is for!
+In these cases, you need to be able to set specific constraints on the expected value. That is what **Expyct** is for!
 
 The constraints can be provided as constructor arguments. For example :code:`n == Number(min=3, max=5)` is only true when :code:`n` is between 3 and 5.
 
@@ -42,11 +42,14 @@ Checking nested data structures is easy as well:
             "context": exp.ANY,
         }
 
-Submodules
-----------
+.. toctree::
+   :hidden:
+
+   self
+   installation
 
 .. toctree::
-   :maxdepth: 4
+   :caption: Modules
 
    expyct.any
    expyct.base
