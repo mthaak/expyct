@@ -3,7 +3,24 @@
 from ._patch import patch_pytest_assert_comp_order
 from .any import Any, AnyValue, AnyType, ANY, ANY_VALUE, ANY_TYPE
 from .base import MapBefore, Satisfies, Instance, Type, Equals, Vars, Optional
-from .collection import Collection, Length, List, Tuple, Set, Dict
+from .collection import (
+    Collection,
+    Length,
+    List,
+    Tuple,
+    Set,
+    Dict,
+    ANY_COLLECTION,
+    ANY_NONEMPTY_COLLECTION,
+    ANY_LIST,
+    ANY_NONEMPTY_LIST,
+    ANY_TUPLE,
+    ANY_NONEMPTY_TUPLE,
+    ANY_SET,
+    ANY_NONEMPTY_SET,
+    ANY_DICT,
+    ANY_NONEMPTY_DICT,
+)
 from .combination import OneOf
 from .datetime import (
     DateTime,
@@ -48,6 +65,6 @@ from .number import (
     ANY_INT,
     ANY_FLOAT,
 )
-from .string import String, ANY_UUID
+from .string import String, ANY_STRING, ANY_NONEMPTY_STRING, ANY_ALPHANUMERIC_STRING, ANY_UUID
 
 __all__ = dir()

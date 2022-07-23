@@ -135,6 +135,12 @@ class String(
         return flags
 
 
+#: Any string
+ANY_STRING = String()
+#: Any string with length more than 0
+ANY_NONEMPTY_STRING = String(non_empty=True)
+#: Any string only consisting of the characters a-z, A-Z, 0-9 and _
+ANY_ALPHANUMERIC_STRING = String(regex=re.compile("[a-zA-Z0-9_]*"))
 #: Any string in the form of a UUID
 ANY_UUID = String(
     regex=re.compile("[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89aAbB][a-f0-9]{3}-[a-f0-9]{12}")
