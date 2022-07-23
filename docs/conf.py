@@ -55,4 +55,4 @@ autodoc_member_order = "groupwise"
 #
 html_theme = "sphinx_rtd_theme"
 
-html_sidebars = { '**': ['globaltoc.html', 'relations.html', 'sourcelink.html', 'searchbox.html'] }
+html_sidebars = {"**": ["globaltoc.html", "relations.html", "sourcelink.html", "searchbox.html"]}
