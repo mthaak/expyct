@@ -33,7 +33,7 @@ import expyct as exp
         ("1234", exp.String(max_length=3), False),
         ("123", exp.String(max_length=3), True),
         ("12", exp.String(max_length=3), True),
-        # test non empty
+        # test non-empty
         ([], exp.String(non_empty=True), False),
         ("12", exp.String(non_empty=True), True),
         # test subset of

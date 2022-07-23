@@ -42,7 +42,7 @@ import expyct as exp
         ([1, 2, 3, 4], exp.Collection(max_length=3), False),
         ([1, 2], exp.Collection(max_length=3), True),
         ([1, 2, 3], exp.Collection(max_length=3), True),
-        # test non empty
+        # test non-empty
         ([], exp.Collection(non_empty=True), False),
         ([1, 2], exp.Collection(non_empty=True), True),
         # test subset of
@@ -125,7 +125,7 @@ def test_collection_instance():
         ([1, 2, 3, 4], exp.List(max_length=3), False),
         ([1, 2], exp.List(max_length=3), True),
         ([1, 2, 3], exp.List(max_length=3), True),
-        # test non empty
+        # test non-empty
         ([], exp.List(non_empty=True), False),
         ([1, 2], exp.List(non_empty=True), True),
         # test subset of
@@ -183,7 +183,7 @@ def test_list_instance():
         ((1, 2, 3, 4), exp.Tuple(max_length=3), False),
         ((1, 2), exp.Tuple(max_length=3), True),
         ((1, 2, 3), exp.Tuple(max_length=3), True),
-        # test non empty
+        # test non-empty
         ((), exp.Tuple(non_empty=True), False),
         ((1, 2), exp.Tuple(non_empty=True), True),
         # test subset of
@@ -241,7 +241,7 @@ def test_tuple_instance():
         ({1, 2, 3, 4}, exp.Set(max_length=3), False),
         ({1, 2}, exp.Set(max_length=3), True),
         ({1, 2, 3}, exp.Set(max_length=3), True),
-        # test non empty
+        # test non-empty
         ({}, exp.Set(non_empty=True), False),
         ({1, 2}, exp.Set(non_empty=True), True),
         # test subset of
@@ -299,7 +299,7 @@ def test_set_instance():
         ({1: "a", 2: "b", 3: "c", 4: "d"}, exp.Dict(max_length=3), False),
         ({1: "a", 2: "b"}, exp.Dict(max_length=3), True),
         ({1: "a", 2: "b", 3: "c"}, exp.Dict(max_length=3), True),
-        # test non empty
+        # test non-empty
         ({}, exp.Dict(non_empty=True), False),
         ({1: "a", 2: "b"}, exp.Dict(non_empty=True), True),
         # test subset of

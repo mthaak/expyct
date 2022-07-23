@@ -568,3 +568,25 @@ class Dict(Satisfies, Contains, Length, Equals[dict], Optional, MapBefore, BaseM
             if not any(x == self.values_any for x in other.values()):
                 return False
         return True
+
+
+#: Any collection
+ANY_COLLECTION = Collection()
+#: Any non-empty collection
+ANY_NONEMPTY_COLLECTION = Collection(non_empty=True)
+#: Any instance of `list`
+ANY_LIST = List()
+#: Any non-empty instance of `list`
+ANY_NONEMPTY_LIST = List(non_empty=True)
+#: Any instance of `tuple`
+ANY_TUPLE = Tuple()
+#: Any non-empty instance of `tuple`
+ANY_NONEMPTY_TUPLE = Tuple(non_empty=True)
+#: Any instance of `set`
+ANY_SET = Set()
+#: Any non-empty instance of `set`
+ANY_NONEMPTY_SET = Set()
+#: Any instance of `dict`
+ANY_DICT = Dict()
+#: Any non-empty instance of `dict`
+ANY_NONEMPTY_DICT = Dict(non_empty=True)

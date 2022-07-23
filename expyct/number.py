@@ -340,7 +340,7 @@ ANY_FLOAT = Float()
 
 #: Any number, parsed from a string
 ANY_NUMBER_STRING = Number(map_before=parse_number_string)
-#: Any instance of `int`
+#: Any instance of `int`, parsed from a string
 ANY_INT_STRING = Int(map_before=parse_int_string)
-#: Any instance of `float`
+#: Any instance of `float`, parsed from a string
 ANY_FLOAT_STRING = Float(map_before=parse_float_string)
